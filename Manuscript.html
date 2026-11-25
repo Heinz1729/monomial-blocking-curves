@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>有限域上单项式曲线的竖直平移与阻塞数</title>
+<style>
+@page {size:A4;margin:17mm 21mm 16mm;@bottom-center{content:counter(page);font:9pt Georgia;color:#61716c}}
+*{box-sizing:border-box}html{background:#edeee9}body{margin:0 auto;max-width:850px;padding:45px 55px;background:white;color:#182825;font:16px/1.8 "Noto Serif SC","SimSun",serif}header,h1,h2,h3,.meta,th,strong{font-family:"Microsoft YaHei","Noto Sans SC",sans-serif}header{border-bottom:2px solid #155d54;margin-bottom:1.4em;padding-bottom:1em}h1{font-size:2.13em;line-height:1.38;margin:.26em 0}.meta{color:#526b66;font-size:.88em}h2{color:#175d54;font-size:1.48em;line-height:1.35;margin:0 0 .8em;padding-bottom:.25em;border-bottom:1px solid #a4bdb0}h3{font-size:1.06em;color:#244a41;margin:1.12em 0 .28em}p{margin:.52em 0}section{margin:0 0 3.4em}.eq,.box{font-family:"Cambria Math","Noto Serif SC","SimSun",serif;text-align:center;line-height:1.65;padding:.12em 0;margin:.58em 0}.box{background:#edf4ef;border-top:1px solid #7ca28e;border-bottom:1px solid #7ca28e;padding:.62em .4em;font-size:1.2em}.formula{font-family:"Cambria Math","Noto Serif SC","SimSun",serif}.note{border-left:3px solid #92ac9d;padding-left:.85em}.proofend{float:right}sub,sup{font-size:.72em;line-height:0}table{width:100%;border-collapse:collapse;margin:.8em 0;font-size:.94em}td,th{padding:.42em .55em;text-align:left;border-bottom:1px solid #d9dfda}th{background:#eff3ef}a{color:#175d54}code,pre{font-family:Consolas,"Microsoft YaHei",monospace;font-size:.88em}pre{background:#f2f4f1;padding:10px 15px;line-height:1.4;white-space:pre-wrap}small{font-size:.85em}.ref{font-family:"Microsoft YaHei",sans-serif;font-size:.86em;line-height:1.55}.ref p{margin:.65em 0}
+@media print{html,body{background:white}body{padding:0;max-width:none;font-size:11pt;line-height:1.65}section{margin:0}section+section{break-before:page}header{margin-bottom:5mm}h1{font-size:23pt}h2{font-size:16.4pt}h3{break-after:avoid}pre,table,.eq,.box{break-inside:avoid}*{-webkit-print-color-adjust:exact;print-color-adjust:exact}a{text-decoration:none}}@media(max-width:600px){body{padding:20px}h1{font-size:1.65em}.eq{overflow-wrap:anywhere}}
+</style></head><body>
+<section><header><div class="meta">算术几何与有限几何　·　研究手稿　·　2026 年 11 月 25 日</div>
+<h1>有限域上单项式曲线的<br>竖直平移与阻塞数</h1>
+<div class="meta">Asgarli–Ghioca–Yip 问题 5.4 的两个特例　｜　附 Lean 4 证明</div></header>
+<h2>问题与主结果</h2>
+<p>在有限射影平面中，点集若与每条有理直线都有公共有理点，就称为<strong>阻塞集</strong>。设 <i>F</i> 是有 <i>q</i> 个元素的域，次数 <i>d</i> ≥ 2。对每个 α ∈ <i>F</i> 考虑射影曲线</p>
+<div class="eq"><i>C</i><sub>α</sub>　:　<i>YZ</i><sup>d−1</sup> = <i>X</i><sup>d</sup> − α<i>Z</i><sup>d</sup>。</div>
+<p>在图表 <i>Z</i> = 1 内，这些曲线是 <i>y</i> = <i>x</i><sup>d</sup> 的竖直平移。仿射方程对 <i>y</i> 是首一的一次式，在代数闭包上不可约。齐次方程又无 <i>Z</i> 因子，故各曲线几何不可约。记 <i>B</i>(<i>q</i>, <i>d</i>) 为使这些曲线的有理点并集成为阻塞集所需的最少参数个数。Asgarli、Ghioca 和 Yip 在期刊版问题 5.4 提出求此数，并指出当 gcd(<i>d</i>, <i>q</i>−1) = 1 时，他们给出的对数下界论证不适用。[1]</p>
+<h3>定理 1　Frobenius 次数的精确阻塞数</h3>
+<p>设 <i>p</i> 为素数，<i>h</i>, <i>e</i> ≥ 1，<i>q</i> = <i>p</i><sup>h</sup>，<i>d</i> = <i>p</i><sup>e</sup>。令 <i>g</i> = gcd(<i>h</i>, <i>e</i>)。则</p>
+<div class="box"><i>B</i>(<i>p</i><sup>h</sup>, <i>p</i><sup>e</sup>) = 1 + (<i>h</i>/<i>g</i>)(<i>p</i><sup>g</sup> − 1)。</div>
+<p>构造也可以显式给出。取子域 <i>K</i> = 𝔽<sub>p<sup>g</sup></sub>，把 <i>F</i> 看作 <i>K</i> 上的向量空间。取一组基，每个基向量生成一条过原点的 <i>K</i>-直线。这些直线的并集就是最优的参数集。</p>
+<p>固定 <i>p</i>、<i>e</i> 并令 <i>h</i> 增大时，答案为 1 + ((<i>p</i><sup>g</sup>−1)/<i>g</i>) log<sub>p</sub> <i>q</i>。系数仅由 <i>h</i> 与 <i>e</i> 的最大公因数决定。这给出了原问题互素情形中的一条对数增长子族。</p>
+<h3>定理 2　四十一元域上的三次曲线</h3>
+<p><i>B</i>(41, 3) = 5。五次单位根 <i>H</i> = {1, 10, 16, 18, 37} 给出一个最优参数集。全部最优集恰为 <i>uH</i> + <i>v</i>，其中 <i>u</i> ≠ 0，共 328 个不同的集合。这个例子的特征为 41，立方映射不属于定理 1 的 Frobenius 子族。</p>
+</section>
+<section><h2>1　由射影直线化到子域上的超平面</h2>
+<p>每条 <i>C</i><sub>α</sub> 在 <i>Z</i> = 0 上恰有一点 [0:1:0]。只要参数集 <i>S</i> 非空，无穷远线和所有竖直线已经被这个点阻塞。有限斜率直线 <i>y</i> = <i>mx</i> + <i>b</i> 不过此点。因此它被阻塞，当且仅当存在 <i>x</i> ∈ <i>F</i> 使 <i>x</i><sup>d</sup> − <i>mx</i> − <i>b</i> ∈ <i>S</i>。空集对这两种检验都失败。这也是原文公式 (5.4) 的等价写法。[1]</p>
+<h3>引理 1　Frobenius 斜率的像</h3>
+<p>令 σ(<i>x</i>) = <i>x</i><sup>p<sup>e</sup></sup>，<i>K</i> 为 σ 的不动域。函数 <i>D</i><sub>m</sub>(<i>x</i>) = σ(<i>x</i>) − <i>mx</i> 是 <i>K</i>-线性的。设 <i>W</i> = im(σ − 1)。由于 ker(σ − 1) = <i>K</i>，由秩－零度定理，<i>W</i> 在 <i>F</i> 中的余维恰为 1。</p>
+<p>若 <i>D</i><sub>m</sub> 的核为零，则 <i>D</i><sub>m</sub> 满射。否则取非零核向量 <i>u</i>，即 σ(<i>u</i>) = <i>mu</i>。对任意 <i>z</i> ∈ <i>F</i> 有</p>
+<div class="eq"><i>D</i><sub>m</sub>(<i>uz</i>) = σ(<i>u</i>)(σ(<i>z</i>) − <i>z</i>)。</div>
+<p>故 im <i>D</i><sub>m</sub> = σ(<i>u</i>)<i>W</i>。反过来，每一个非零 <i>u</i> 都对应斜率 <i>m</i> = σ(<i>u</i>)/<i>u</i>。由于 σ 为自同构，所有出现的非满像恰为 <i>aW</i>（<i>a</i> ∈ <i>F</i><sup>×</sup>）。</p>
+<h3>引理 2　这些像给出所有超平面方向</h3>
+<p>选一个非零 <i>K</i>-线性泛函 λ，使 ker λ = <i>W</i>。映射 <i>c</i> ↦ (<i>x</i> ↦ λ(<i>cx</i>)) 从 <i>F</i> 到 <i>K</i>-对偶空间是线性的。若 <i>c</i> ≠ 0，则乘 <i>c</i> 为双射，所得泛函非零。此映射单射，且两边维数相同，因而是同构。每个非零泛函的核都是某个 <i>c</i><sup>−1</sup><i>W</i>。</p>
+<p>让截距 <i>b</i> 跑遍 <i>F</i>，便得到这些线性超平面的全部仿射平移。结合引理 1，曲线阻塞条件化为</p>
+<div class="box"><i>S</i> 与 <i>F</i> 作为 <i>K</i>-仿射空间的每个超平面相交。</div>
+<p>最后，<i>F</i> = 𝔽<sub>p<sup>h</sup></sub> 上的 <i>p</i>-Frobenius 生成阶为 <i>h</i> 的循环伽罗瓦群。其 <i>e</i> 次幂的阶为 <i>h</i>/gcd(<i>h</i>,<i>e</i>)。由伽罗瓦对应，|<i>K</i>| = <i>p</i><sup>g</sup> 且 [<i>F</i>:<i>K</i>] = <i>h</i>/<i>g</i>。</p>
+</section>
+<section><h2>2　最优性与一个可手算的例子</h2>
+<h3>引理 3　仿射阻塞数（Jamison，Brouwer–Schrijver）</h3>
+<p>设 <i>K</i> 有 <i>Q</i> 个元素，<i>n</i> ≥ 1。<i>K</i><sup>n</sup> 中与所有仿射超平面相交的点集，最少有 1 + <i>n</i>(<i>Q</i> − 1) 个点。[2, 3]</p>
+<p><strong>上界。</strong>取所有坐标轴的并集，它们只在原点相交，故恰有 1 + <i>n</i>(<i>Q</i> − 1) 个点。若 λ 是非零泛函，至少有一个基向量 <i>e</i><sub>i</sub> 满足 λ(<i>e</i><sub>i</sub>) ≠ 0。坐标轴上的点 (<i>b</i>/λ(<i>e</i><sub>i</sub>))<i>e</i><sub>i</sub> 就落在超平面 λ = <i>b</i> 上。</p>
+<p><strong>下界。</strong>平移一个阻塞集 <i>S</i>，使它含原点。用 · 表示标准坐标点积，在 <i>n</i> 个变量上构造多项式</p>
+<div class="eq"><i>P</i>(<i>X</i>) = ∏<sub>s∈S∖{0}</sub> (1 − <i>s</i> · <i>X</i>)。</div>
+<p>当 <i>X</i> = 0 时取值 1。当 <i>X</i> ≠ 0 时，超平面 <i>s</i> · <i>X</i> = 1 必含某个 <i>s</i> ∈ <i>S</i>，故 <i>P</i>(<i>X</i>) = 0。于是 <i>P</i> 在全部点上的值之和为 1。</p>
+<p>若总次数小于 <i>n</i>(<i>Q</i> − 1)，则每个单项式至少有一个变量的指数 <i>j</i> &lt; <i>Q</i> − 1。在该坐标上求和得到 0。当 <i>j</i> = 0 时，这是因为 <i>Q</i> 在 <i>K</i> 中为零。当 1 ≤ <i>j</i> &lt; <i>Q</i> − 1 时，取乘法群生成元并对几何级数求和即可。因此低次多项式在全空间的值之和必为 0。矛盾！故 |<i>S</i>| − 1 ≥ deg <i>P</i> ≥ <i>n</i>(<i>Q</i> − 1)。代入 <i>Q</i> = <i>p</i><sup>g</sup>、<i>n</i> = <i>h</i>/<i>g</i>，定理 1 得证。</p>
+<h3>八元域上为什么恰有 56 个最优解？</h3>
+<p>取 <i>F</i> = 𝔽₂[<i>t</i>]/(<i>t</i>³ + <i>t</i> + 1)，<i>d</i> = 2。多项式在 0、1 处均非零，作为三次式不可约。引理 2 把问题变为三维二元空间中的平面阻塞问题。一个仿射平面的补集恰为它的平行平面，故 <i>S</i> 击中所有平面当且仅当它仿射张成整个空间。</p>
+<p>最小集就是仿射基，例如 {0, 1, <i>t</i>, <i>t</i>²}。有序选取仿射基的首点有 8 种，其余三点相对首点的差依次有 7、6、4 种选择。因此不同最小集数为 8·7·6·4/4! = 56。独立的 Lean 文件直接检查全部 256 个参数集和原始二次方程，给出同一答案。</p>
+</section>
+<section><h2>3　哪类线性化多项式有同一个阻塞数？</h2>
+<p>设 <i>E</i>/<i>K</i> 是有限域扩张，维数为 <i>n</i>，|<i>K</i>| = <i>Q</i>。给定 <i>K</i>-线性映射 <i>T</i> : <i>E</i> → <i>E</i>。我们称参数集 <i>S</i> 满足<strong>图像条件</strong>，若对每一对 <i>m</i>, <i>b</i> ∈ <i>E</i>，都存在 <i>x</i> 使 <i>T</i>(<i>x</i>) − <i>mx</i> − <i>b</i> ∈ <i>S</i>。这精确描述竖直平移图像对有限斜率直线的阻塞。</p>
+<p>置 <i>D</i><sub>m</sub>(<i>x</i>) = <i>T</i>(<i>x</i>) − <i>mx</i>。文献称 <i>T</i> 为 <em>scattered</em>，如果所有 <i>m</i> 都满足 dim<sub>K</sub> ker <i>D</i><sub>m</sub> ≤ 1。这个条件就是说，满足 <i>T</i>(<i>x</i>)/<i>x</i> = <i>m</i> 的非零 <i>x</i> 至多占据一条 <i>K</i>-直线。[4]</p>
+<h3>定理 3　用任意平移参数集刻画 scatteredness</h3>
+<p>以下两条等价。(i) <i>T</i> 是 scattered。(ii) 对每个 <i>S</i> ⊆ <i>E</i>，<i>S</i> 满足图像条件当且仅当 <i>S</i> 与每个仿射 <i>K</i>-超平面相交。因此，对每个 scattered 映射，图像条件所需的最小参数集大小都等于 1 + <i>n</i>(<i>Q</i> − 1)。</p>
+<p><strong>图像条件总能推出超平面条件。</strong> 固定非零泛函 λ 和目标值 <i>t</i> ∈ <i>K</i>。由引理 2 中的对偶同构，存在 <i>m</i> ∈ <i>E</i> 使 λ(<i>T</i>(<i>x</i>)) = λ(<i>mx</i>) 对所有 <i>x</i> 成立。取 λ(<i>v</i>) = <i>t</i>。图像条件给出 <i>s</i> = <i>T</i>(<i>x</i>) − <i>mx</i> + <i>v</i> ∈ <i>S</i>，于是 λ(<i>s</i>) = <i>t</i>。</p>
+<p><strong>(i) 推出 (ii)。</strong> 若零度至多为 1，则每个 im <i>D</i><sub>m</sub> 由秩－零度定理可知是全空间或超平面。与每个超平面相交的集合非空，因而也与这些像的每个平移相交，这正是图像条件。</p>
+<p><strong>(ii) 推出 (i)。</strong> 假设某个 <i>D</i><sub>m</sub> 的零度至少为 2，则 <i>W</i> = im <i>D</i><sub>m</sub> 的维数至多为 <i>n</i> − 2。取 <i>S</i> = <i>E</i> ∖ <i>W</i>。每个仿射超平面的维数都是 <i>n</i> − 1，无法包含在 <i>W</i> 中，故必与 <i>S</i> 相交。但斜率取上述 <i>m</i>，截距取零，就有 <i>D</i><sub>m</sub>(<i>x</i>) ∉ <i>S</i> 对全部 <i>x</i> 成立。这与 (ii) 矛盾。最后的最小值由引理 3 得出。</p>
+<p class="note">定理陈述中的“每个 <i>S</i>”是必要的量词。反向证明专门选择了一个异常像空间的补集，构成能区分两种阻塞条件的参数集。</p>
+</section>
+<section><h2>4　四十一元域上的全部最优三次曲线族</h2>
+<p>取 <i>F</i> = 𝔽₄₁，<i>d</i> = 3。参数集的阻塞性在仿射变换 <i>S</i> ↦ <i>uS</i> + <i>v</i>（<i>u</i> ≠ 0）下保持不变。事实上，gcd(3,40) = 1，故可写 <i>u</i> = <i>t</i>³。变换 (<i>x</i>,<i>y</i>) ↦ (<i>tx</i>,<i>t</i>³<i>y</i> − <i>v</i>) 将参数 α 的图像送到参数 <i>u</i>α + <i>v</i> 的图像，并置换各条直线。因此任意两个不同的参数都能归一到 0 和 1。</p>
+<h3>可复核的有限判定</h3>
+<p>对每个 (<i>m</i>,<i>b</i>) ∈ <i>F</i>²，列出 <i>R</i><sub>m,b</sub> = {<i>x</i>³ + <i>mx</i> + <i>b</i> : <i>x</i> ∈ <i>F</i>}。这里对斜率和截距同时换号，仍枚举全部直线。共有 1,681 行。归一集已含 0、1，故凡含这两者中任一个的行都已命中，余下 182 行。对每个候选集，逐行检验其交集非空。以下伪代码给出整个判定。</p>
+<pre>R = [{(x³ + m·x + b) mod 41 for x in 0..40}
+     for m in 0..40 for b in 0..40]
+for k in {4, 5}:
+    for D in combinations({2,…,40}, k−2):
+        if every row in R meets {0,1} ∪ D: record D</pre>
+<table><tr><th>参数个数</th><th>归一候选数</th><th>通过检验的额外参数 <i>D</i></th></tr>
+<tr><td>4</td><td>741</td><td>无</td></tr>
+<tr><td>5</td><td>9,139</td><td>{4,11,29}，{13,31,38}，{15,19,25}，{17,23,27}</td></tr></table>
+<p>若少于四个参数可以阻塞，补足四个也可阻塞，与第一行矛盾。第二行给出五元见证，故最小值为 5。Lean 从立方表达式重新生成所有行，并证明位运算的命中条件等价于原始的逐线存在性条件。</p>
+<h3>为什么只有一个仿射轨道？</h3>
+<p>直接取五次单位根群 <i>H</i> = {1,10,16,18,37}。表中四个五元集（各补入 0、1）依次等于 2<i>H</i>+9、5<i>H</i>+33、3<i>H</i>+12、11<i>H</i>+30。因此所有最优集恰为 <i>H</i> 的仿射像。若 <i>uH</i>+<i>v</i>=<i>H</i>，对集合元素求和。因 ∑<sub>x∈H</sub> <i>x</i>=0，得 5<i>v</i>=0，从而 <i>v</i>=0。此时 <i>uH</i>=<i>H</i> 当且仅当 <i>u</i>∈<i>H</i>。稳定子大小为 5，轨道大小为 41·40/5=328。</p>
+</section>
+<section><h2>5　文献、优先权与形式证明</h2>
+<h3>与已有结果的关系</h3>
+<p>截至 2026 年 11 月 25 日，本次公开检索核对了原文问题 5.4 及其引用的相邻构造，另用 “vertical translates”、 “Frobenius graph”、 “scattered linearized polynomial”、 “affine blocking sets”、 “cubic intersection distribution” 和 “PG(2,41)” 等词交叉检索。原文已经给出逐线的值集判据，仿射超平面阻塞数和 scattered 多项式的核判据也已有文献。Bruen–Fisher 等较早的三次曲线阻塞构造允许选取不同曲线。Li–Pott 等工作研究单个图像与直线的交点数分布。[1–6]</p>
+<p>在查到的资料中，未找到定理 1 的精确公式以本题的同一竖直平移族表述，也未找到定理 2 的五元最优集轨道分类。两者在本文均有可核验的证明。等价表述、未公开手稿及尚未被索引的成果仍可能存在，所以这是一份<strong>优先权待核的研究手稿</strong>。一般的 <i>B</i>(<i>q</i>,<i>d</i>) 仍未由本文确定。</p>
+<h3>形式证明与复现</h3>
+<p>工程锁定 Lean 4.8.0 与 mathlib v4.8.0。<code>Paper.lean</code> 中的 <code>projective_prime_power_minimum</code> 直接量化射影直线方程、非零点代表和有限参数集，并用 <code>IsLeast</code> 同时表达可达性与下界。<code>GeneralGeometry.lean</code> 给出定理 3 的充要条件。<code>F8Example.lean</code> 单独检查八元域。<code>Cubic41.lean</code> 与 <code>Cubic41Semantics.lean</code> 将四十一元域的有限枚举与模 41 的方程联系起来。<code>CubicGlobal.lean</code> 证明了对全部参数集的射影最小值为 5。<code>CubicOrbit.lean</code> 给出全部最优集的仿射轨道及其基数。工程附有逐项验证记录与复现命令。</p>
+<h3>参考文献</h3>
+<div class="ref">
+<p>[1] S. Asgarli, D. Ghioca, C. H. Yip. <i>Blocking sets from a union of plane curves</i>. Designs, Codes and Cryptography 94, 217 (2026), §5. <a href="https://doi.org/10.1007/s10623-026-01958-z">期刊版与问题 5.4</a> · <a href="https://arxiv.org/abs/2510.15332">预印本</a>。</p>
+<p>[2] R. E. Jamison. <i>Covering finite fields with cosets of subspaces</i>. J. Combin. Theory A 22 (1977), 253–266. <a href="https://doi.org/10.1016/0097-3165(77)90001-2">原文</a>。</p>
+<p>[3] A. E. Brouwer, A. Schrijver. <i>The blocking number of an affine space</i>. J. Combin. Theory A 24 (1978), 251–253. <a href="https://ir.cwi.nl/pub/9858/9858D.pdf">原文</a>。</p>
+<p>[4] C. Zanella. <i>A condition for scattered linearized polynomials involving Dickson matrices</i>. J. Geom. 110, 50 (2019). <a href="https://arxiv.org/abs/1909.07802">原文</a>。</p>
+<p>[5] A. Bruen, J. C. Fisher. <i>Blocking sets and complete k-arcs</i>. Pacific J. Math. 53 (1974), 73–84. <a href="https://doi.org/10.2140/pjm.1974.53.73">原文</a>。</p>
+<p>[6] S. Li, A. Pott. <i>Intersection distribution, non-hitting index and Kakeya sets in affine planes</i> (2020). <a href="https://arxiv.org/abs/2003.06678">原文</a>。</p></div>
+</section></body></html>
+
+

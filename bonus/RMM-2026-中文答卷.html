@@ -1,0 +1,73 @@
+<!doctype html><html lang="zh-CN"><meta charset="utf-8"><title>RMM 2026 · 六题中文答卷</title><style>
+@page{size:A4;margin:16mm 19mm 15mm;@bottom-center{content:counter(page);font:9pt Georgia;color:#536b6a}}
+*{box-sizing:border-box}html{background:#eff1ee}body{max-width:850px;margin:auto;padding:34px 52px;background:white;color:#182c32;font:16px/1.7 "Noto Serif SC","SimSun",serif}header,h1,h2,h3,b,strong{font-family:"Microsoft YaHei","Noto Sans SC",sans-serif}header{border-bottom:2px solid #146b70;padding-bottom:12px;margin-bottom:18px}header small,.meta{font-size:.85em;color:#486567}h1{font-size:2em;margin:.2em 0}h2{font-size:1.55em;line-height:1.4;padding-bottom:5px;margin:0 0 12px;border-bottom:1px solid #aac3bc;color:#135b60}h3{font-size:1.08em}section{margin-bottom:40px}p{margin:.6em 0}a{color:#135b60}sub,sup{font-size:.72em;line-height:0}.eq{text-align:center;margin:.58em 0;color:#153b46;font-family:"Cambria Math","Noto Serif SC","SimSun",serif}.problem>p:first-of-type{padding:7px 12px;background:#eff5f3;border-left:3px solid #71968e}h2,h3,.eq{break-inside:avoid}h2,h3{break-after:avoid}
+@media print{html,body{background:white}body{font-size:11pt;line-height:1.6;max-width:none;padding:0}section{margin:0}section+section{break-before:page}h1{font-size:23pt}h2{font-size:16pt}.eq{margin:.45em 0}p{margin:.5em 0}*{-webkit-print-color-adjust:exact;print-color-adjust:exact}}@media(max-width:620px){body{padding:20px}.eq{overflow-wrap:anywhere}}
+</style><header><small>第 17 届罗马尼亚数学大师赛　／　布加勒斯特　／　2026 年 2 月 25–26 日</small><h1>RMM 2026 · 六题中文答卷</h1><div class="meta">每题 7 分，满分 42 分。官方英文试卷　<a href="https://rmms.lbi.ro/rmm2026/pr1/RMM2026-Day1-English.pdf">第一天（第 1–3 题）</a>　·　<a href="https://rmms.lbi.ro/rmm2026/pr2/RMM2026-Day2-English.pdf">第二天（第 4–6 题）</a></div></header>
+
+<section class="problem" id="p1">
+<h2>第 1 题　三块相邻三角形的面积</h2>
+<p><b>题意。</b> 从一个面积为 1 的三角形开始，每步选一个未分割的小三角形，在其内部标一点并连到三个顶点。经过 <i>n</i> 步，Bob 选三个小三角形，其中一个与另外两个分别共边。求 Bob 能保证的最大面积和下界。</p>
+<p><b>答案为 3/(2<i>n</i> + 1)。</b> 第一次分割后，三个小三角形可以排成一个环，相邻两项共边，末项和首项也共边。假设将要分割的三角形为 Δ，它在环中的两个邻居分别贴着它的两条不同边。用三个子块替换环上的 Δ：先放贴着前邻居的子块，中间放第三块，最后放贴着后邻居的子块。子块两两共边，新顺序仍满足条件。</p>
+<p>每步使小三角形数目净增 2，故最终的环有 2<i>n</i> + 1 项。对每个起点，取环上从此处开始的连续三项。每块恰被计入三次，所以这些合法面积和的平均值为 3/(2<i>n</i> + 1)，至少一个达到平均值。</p>
+<p>反之，令 <i>u</i> = 1/(2<i>n</i> + 1)。每次将待分三角形的面积 <i>A</i> 分成 <i>u</i>、<i>u</i>、<i>A</i> − 2<i>u</i>，下一次继续分割第三块。每步开始时 <i>A</i> ≥ 3<i>u</i>，三块面积均为正，取重心坐标与这三个数成比例的内点即可实现。最后每块面积都是 <i>u</i>，任何合法选择都恰得 3<i>u</i>。这就证明了最优性。</p>
+</section>
+<section class="problem" id="p2">
+<h2>第 2 题　互异的阶乘余数</h2>
+<p><b>题意。</b> 素数 <i>p</i> ≥ 11，且 1!, 2!, …, (<i>p</i> − 3)! 模 <i>p</i> 两两不同。证明 <i>p</i> ≡ 5 (mod 8)。</p>
+<p>以下等式均在模 <i>p</i> 意义下成立。记 <i>f</i><sub>j</sub> = <i>j</i>!、<i>m</i> = (<i>p</i> − 1)/2。由威尔逊定理 (<i>p</i> − 1)! = −1，将最后 <i>j</i> 个因子写成 −<i>j</i>, …, −1，便有</p>
+<div class="eq"><i>f</i><sub>j</sub> <i>f</i><sub>p−1−j</sub> = (−1)<sup>j+1</sup>。</div>
+<p>若 <i>p</i> ≡ 3 (mod 4)，则 <i>m</i> 为奇数，故 <i>f</i><sub>m</sub><sup>2</sup> = 1。若取值 1，就会与 1! 重复。取值 −1 时，因 <i>m</i> = −1/2，有 <i>f</i><sub>m−1</sub> = (−1)/<i>m</i> = 2，与 2! 重复（<i>p</i> ≥ 11 保证 <i>m</i> − 1 &gt; 2）。所以 <i>p</i> = 4<i>k</i> + 1。</p>
+<p>此时 <i>m</i> = 2<i>k</i> 为偶数。令 <i>t</i> = <i>f</i><sub>m</sub>，则 <i>t</i><sup>2</sup> = −1。我们证明 −1 和 −<i>t</i> 都不出现在所列阶乘中。两者均不等于 1!。对 2 ≤ <i>j</i> ≤ <i>p</i> − 3，令 <i>j</i>′ = <i>p</i> − 1 − <i>j</i>，它也在此区间，且与 <i>j</i> 同奇偶。</p>
+<p>若 <i>f</i><sub>j</sub> = −1，则偶数 <i>j</i> 给出 <i>f</i><sub>j′</sub> = 1，与 1! 重复；奇数 <i>j</i> 给出 <i>f</i><sub>j′</sub> = −1，迫使 <i>j</i> = <i>j</i>′ = <i>m</i>，与奇偶性矛盾。若 <i>f</i><sub>j</sub> = −<i>t</i>，则偶数 <i>j</i> 给出 <i>f</i><sub>j′</sub> = −<i>t</i>，只能有 <i>j</i> = <i>m</i>，但 <i>f</i><sub>m</sub> = <i>t</i>；奇数 <i>j</i> 给出 <i>f</i><sub>j′</sub> = <i>t</i>，迫使奇数 <i>j</i>′ 等于偶数 <i>m</i>。矛盾。</p>
+<p>共有 <i>p</i> − 3 个互异的阶乘余数，因此 −1 和 −<i>t</i> 恰好是缺失的两个非零余数。从所有非零余数的乘积中除去它们，得</p>
+<div class="eq">∏<sub>j=1</sub><sup>p−3</sup> <i>f</i><sub>j</sub> = (−1)/[(−1)(−<i>t</i>)] = <i>t</i>。</div>
+<p>又可把 1! 和正中的 <i>f</i><sub>m</sub> 单独留下，其余按 <i>j</i> 与 <i>j</i>′ 配对。每对奇数指标贡献 1，每对偶数指标贡献 −1。2 至 <i>p</i> − 3 共有 2<i>k</i> − 1 个偶数指标，去掉 <i>m</i> 后恰成 <i>k</i> − 1 对。因此同一乘积等于 <i>t</i>(−1)<sup>k−1</sup>。比较可知 <i>k</i> 为奇数，故 <i>p</i> ≡ 5 (mod 8)。</p>
+</section>
+<section class="problem" id="p3">
+<h2>第 3 题　恰好漏掉指定有限点集的多项式映射</h2>
+<p><b>题意。</b> 给定有限集 <i>S</i> ⊂ ℝ<sup>3</sup>，构造三个实多项式，使它们组成的映射的值域恰为 ℝ<sup>3</sup> ∖ <i>S</i>。</p>
+<p><b>把有限点集移到同一条轴上。</b> 若 <i>S</i> 为空，取恒等映射。否则选择一个线性坐标 <i>t</i>，使 <i>S</i> 中各点的 <i>t</i> 坐标两两不同。可取 <i>t</i> = <i>x</i> + λ<i>y</i> + λ<sup>2</sup><i>z</i>，因为每对不同的点只排除有限个 λ。补上两个线性坐标，在新坐标系中用 (<i>a</i><sub>j</sub>, <i>b</i><sub>j</sub>, <i>t</i><sub>j</sub>) 表示各点。由多项式插值，可取 <i>A</i>、<i>B</i> 满足 <i>A</i>(<i>t</i><sub>j</sub>) = <i>a</i><sub>j</sub>、<i>B</i>(<i>t</i><sub>j</sub>) = <i>b</i><sub>j</sub>。再从前两坐标分别减去 <i>A</i>(<i>t</i>)、<i>B</i>(<i>t</i>)，便得到可逆的多项式变换 <i>H</i>，其逆也是多项式，且 <i>H</i>(<i>S</i>) = {(0, 0, <i>t</i><sub>j</sub>)}。</p>
+<p><b>逐层构造。</b> 令 <i>g</i>(<i>t</i>) = ∏<sub>j</sub>(<i>t</i> − <i>t</i><sub>j</sub>)。对输入 (<i>x</i>, <i>y</i>, <i>t</i>)，定义</p>
+<div class="eq"><i>u</i> = <i>x</i>,　<i>v</i> = <i>xy</i> − 1 + <i>g</i>(<i>t</i>)<i>y</i><sup>3</sup>,　<i>w</i> = <i>u</i> + i<i>v</i>；<br><i>F</i>(<i>x</i>, <i>y</i>, <i>t</i>) = (Re(<i>w</i><sup>3</sup>), Im(<i>w</i><sup>3</sup>), <i>t</i>)。</div>
+<p>前两分量分别为 <i>u</i><sup>3</sup> − 3<i>uv</i><sup>2</sup>、3<i>u</i><sup>2</sup><i>v</i> − <i>v</i><sup>3</sup>，所以 <i>F</i> 是实多项式映射。当 <i>g</i>(<i>t</i>) ≠ 0，任意固定 <i>x</i> 后，<i>v</i> 都是关于 <i>y</i> 的三次多项式，取遍实数。所以 <i>w</i> 取遍复平面，<i>w</i><sup>3</sup> 也取遍复平面。</p>
+<p>当 <i>g</i>(<i>t</i>) = 0，有 <i>w</i> = <i>x</i> + i(<i>xy</i> − 1)。它永远不为零，又能取到实部非零的每个复数：指定实部 <i>x</i> ≠ 0 和虚部 <i>v</i>，取 <i>y</i> = (<i>v</i> + 1)/<i>x</i> 即可。每个非零复数都有三个不同的立方根，三根位于同一圆上，而圆与虚轴至多有两个交点，故至少一根的实部非零。于是这一层的 <i>w</i><sup>3</sup> 恰好取遍所有非零复数。</p>
+<p>综合各层，<i>F</i> 的值域为 ℝ<sup>3</sup> ∖ <i>H</i>(<i>S</i>)。取 <i>H</i><sup>−1</sup> ∘ <i>F</i> 的三个分量作为 <i>P</i>、<i>Q</i>、<i>R</i>，即得所求。</p>
+</section>
+
+<section class="problem" id="p4"><h2>第 4 题　迭代欧拉函数的素因子</h2>
+<p>设 φ 是欧拉函数，φ<sub>0</sub>(m)=m，φ<sub>j+1</sub>(m)=φ(φ<sub>j</sub>(m))。对 n≥3，证明从 m=2<sup>n</sup>−3 开始的前 n+1 项 φ<sub>0</sub>(m), …, φ<sub>n</sub>(m) 的乘积至多有 n 个不同的素因子。</p>
+<p>从 m 的素因数分解出发，把每个奇素因子写在一张卡片上，重数有多少就写多少张。每次取走一张写有奇素数 p 的卡片，写下 p−1 的全部奇素因子，同样按重数计。没有奇素因子时就不添卡片。</p>
+<p>设当前所有卡片数字之积为 M，空积取 1。记 p−1 的最大奇因数为 d。每操作一次，乘积变成 M·d/p，而 d≤(p−1)/2。因此新乘积严格小于 M/2。乘积始终是正整数，故操作必定结束。设共操作 T 次，则</p>
+<div class="eq">1 &lt; m/2<sup>T</sup> &lt; 2<sup>n−T</sup>，　从而 T≤n−1。</div>
+<p>为什么这些卡片覆盖了迭代中出现的所有奇素数？由欧拉函数公式</p>
+<div class="eq">φ(∏ p<sup>e</sup>) = ∏ p<sup>e−1</sup>(p−1)，</div>
+<p>若奇素数 q 整除 φ(a)，则 q 已经整除 a，或存在素数 p 整除 a 使 q 整除 p−1。后一种情形的 p 必为奇数，而处理一张 p 卡片时一定会写下 q。因此从 m 开始归纳，每一轮出现的奇素数都在卡片上出现过。每种这样的奇素数至少被取走一次，故至多有 T 种。再计入素数 2，总数至多为 T+1≤n。</p></section>
+
+<section class="problem" id="p5"><h2>第 5 题　平行四边形的中心</h2>
+<p><b>题意。</b>三角形 ABC 中，AB&lt;AC，O 为外心。平行四边形 XYZT 位于三角形内部，满足 ∠AXB=∠AZC，∠AZB=∠AXC，∠AYB=∠ATC，∠ATB=∠AYC。证明其中心 M 在三角形 BOC 的外接圆上。</p>
+<p><b>两条对角线各确定一对圆。</b> 令 (P,Q) 依次取 (X,Z) 或 (Y,T)。由 P、Q 在三角形内部及两组角相等，有 ∠BPC=360°−∠BPA−∠APC=∠BQC。因此 B、C、P、Q 共圆。以下用模 180° 的有向角。由共圆及题设，</p>
+<div class="eq">∠PQA = ∠PQB + ∠BQA = ∠PCB + ∠APC = ∠(AP,BC)。</div>
+<p>其中 ∠BQA 与 ∠APC 的转向相同，这由 P、Q 均在 ABC 内部可知。因此由弦切角定理的逆定理，圆 APQ 在 A 处的切线平行于 BC。这里 A、P、Q 不共线，否则上式将给出 AP∥BC，而 P 位于三角形内部。</p>
+<p><b>用公共弦的中点确定 M。</b> 取 B=(−1,0)，C=(1,0)，A=(a,b)，b&gt;0。由 AB&lt;AC 有 a≠0。设 M=(s,t)。上述两圆的圆心分别为 U=(0,u)、V=(a,v)，半径平方分别为 1+u²、(v−b)²。两圆心都在 PQ 的垂直平分线上，故 U、M、V 共线。此外 M 对两圆的幂都等于 −MP²。将这两个条件展开，得到</p>
+<div class="eq">(a−s)u+sv=at，<br>−tu+(t−b)v=−as+(a²−b²+1)/2。</div>
+<p>两个圆心不同，因为 a≠0。同一对圆只能确定一条公共弦所在的直线，所以两条不同的对角线给出上述方程组的两组不同解 (u,v)。系数行列式必为零，即 at+bs=ab。于是第二式左边恰为第一式左边的 −b/a 倍，右边也须满足同一比例，得 as−bt=(a²−b²+1)/2。联立，记 D=a²+b²，则</p>
+<div class="eq">s=a(D+1)/(2D)，　t=b(D−1)/(2D)。</div>
+<p><b>验证共圆。</b> 因 M 在三角形内部，t&gt;0，故 D&gt;1。由 OA=OB 可得 O=(0,h)，其中 h=(D−1)/(2b)&gt;0。过 B、C、O 的圆的方程为 x²+y²+(1/h−h)y=1。由上式得 t/h=b²/D、ht=(D−1)²/(4D)，且</p>
+<div class="eq">s²+t² = [D²+1+2(a²−b²)]/(4D) = 1 − b²/D + (D−1)²/(4D)。</div>
+<p>所以 s²+t²+(1/h−h)t=1，即 M 在所求圆上。</p></section>
+
+<section class="problem" id="p6">
+<h2>第 6 题　唯一的单调子序列</h2>
+<p><b>题目。</b>设整数 k &gt; 1，N = k<sup>2</sup> + 1。给定位置 1 ≤ x<sub>1</sub> &lt; ⋯ &lt; x<sub>k+1</sub> ≤ N，记它们组成的元组为 X。证明：存在 1 到 N 的排列，使 X 恰为唯一一个长度为 k + 1 的单调子序列的位置元组，当且仅当</p>
+<div class="eq">min<sub>1≤i≤k</sub> ⌊x<sub>i</sub>/i⌋ + min<sub>2≤i≤k+1</sub> ⌊(N+1−x<sub>i</sub>)/(k+2−i)⌋ ≥ k + 1.</div>
+<p>两个最小值都是正整数。因此题设不等式等价于存在正整数 r、s，使 r + s = k + 1，且</p>
+<div class="eq">x<sub>i</sub> ≥ ir　(1 ≤ i ≤ k)，　N + 1 − x<sub>i</sub> ≥ (k + 2 − i)s　(2 ≤ i ≤ k + 1).　(∗)</div>
+<p><b>必要性。</b>把每个值 v 换成 N + 1 − v 可以交换递增、递减，故可设 X 上的值递增。对每个位置，记 d 为以它结尾的最长递减子序列长度。所有 d 都在 1 到 k 之间。相同 d 的位置按先后组成递增序列，因为若后一个值更小，就能把前一个位置的递减序列延长一项。将 N 个位置按 d 分类，至少有一类含 k + 1 项。由唯一性，此类恰为 X。于是 X 上的 d 恒等于某个 r。同理，记 e 为从该位置开始的最长递减子序列长度，则 X 上的 e 恒等于某个 s。</p>
+<p>删去 X 中任一项，余下 k<sup>2</sup> 项不含长 k + 1 的单调子序列。在这个短序列中重新计算 d、e，再记 a 为以某位置结尾的最长递增子序列长度。从较早位置到较晚位置，若值增大，a 必增大；若值减小，d 必增大。所以各位置的数对 (a, d) 各不相同，恰好布满 {1,…,k}<sup>2</sup>。若两格子中一个的两个坐标均不大于另一个的对应坐标，则前者必先出现，否则先出现的格子到后出现的格子两个坐标都未增加。对从各位置开始的两个长度作同样的计数，可知 d、e 都各取 1 到 k 中的每个数恰 k 次。经过任一位置可以拼成长度 d + e − 1 的递减子序列，故 d + e ≤ k + 1。两边在全部位置上的平均值都是 k + 1，因而处处取等号。删去的那一项不能与其余 X 中任何一项同在一条递减子序列中，所以其余各项的 d、e 均未改变。这给出 r + s = k + 1。</p>
+<p>现删去 x<sub>k+1</sub>。余下 X 的 k 项依次占据格子 (1,r),…,(k,r)。格子 (i,r) 出现时，前 i 列、前 r 行的所有 ir 个格子都已出现。故 x<sub>i</sub> ≥ ir。再把原排列的顺序和值同时反转，X 仍递增，而其结尾递减长度变成原先的起始递减长度 s。应用刚证的结论，便得 (∗) 的另一半。</p>
+<p><b>充分性。</b>取满足 (∗) 的 r、s，置 u = r − 1，v = s − 1，则 u + v = k − 1。在 X 以外的 k(k − 1) 个位置中，将前 ku 个称为 A，其余 kv 个称为 B。把最小的 kv 个值给 B，中间的 k + 1 个值依次递增地给 X，最大的 ku 个值给 A。按位置顺序把 A 分成 k 个大小为 u 的块，块内按值递减，每一块的值都小于后一块的所有值。B 同样分成 k 个大小为 v 的块并填数。大小为零的块略去。</p>
+<p>在 x<sub>i</sub> 前有 x<sub>i</sub> − i ≥ iu 个非 X 位置，故 A 的第 i 块全在 x<sub>i</sub> 前。类似地，x<sub>i+1</sub> 之后的非 X 位置有 N − x<sub>i+1</sub> − (k − i) ≥ (k + 1 − i)v 个。因此 B 从第 i 块到最后一块全在 x<sub>i+1</sub> 后。</p>
+<p>任一递减子序列在 A、B 中各至多使用一块，在 X 中至多用一项，总长至多 u + v + 1 = k。任一递增子序列无法同时使用 A、B，因为所有 A 位置都更早、值都更大。如果它使用的第一个 A 项在第 i 块，此前至多有 i − 1 项来自 X，随后连同该项至多可从 A 的各块取 k − i + 1 项。如果它使用的最后一个 B 项在第 i 块，则至多取了 i 个 B 项，其后至多有 k − i 个 X 项。两种情况下总长都至多为 k。所以长度达到 k + 1 的单调子序列恰好只有 X。</p>
+</section>
+
+</html>

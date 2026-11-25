@@ -1,0 +1,38 @@
+Research manuscript verification / 形式验证记录
+2026-11-25, Asia/Shanghai
+Lean 4.8.0 (df668f00e6c0), mathlib b5eba595428809e96f3ed113bc7ba776c5f801ac
+Fresh project directory. Pinned library dependencies were available in a local cache. Project modules were compiled from source.
+
+$ lake build
+Build completed successfully. Exit code 0.
+
+$ lake env lean BlockingCurves.lean
+Exit code 0.
+'BlockingCurves.projective_prime_power_minimum' depends on axioms: [propext, Quot.sound, Classical.choice]
+'BlockingCurves.scattered_iff_forall_graphHits_iff' depends on axioms: [propext, Quot.sound, Classical.choice]
+'BlockingCurves.exact_scattered_minimum' depends on axioms: [propext, Quot.sound, Classical.choice]
+'BlockingCurves.Cubic41.projective_cubic_minimum' depends on axioms: [propext, Quot.sound, Classical.choice]
+'BlockingCurves.Cubic41.projective_cubic_orbit' depends on axioms: [propext, Quot.sound, Classical.choice]
+'BlockingCurves.Cubic41.orbit_card' depends on axioms: [propext, Quot.sound, Classical.choice]
+'CubicPencil41.classify_normalized_five' depends on axioms: [propext]
+'CubicFieldExample.optimal_sets' depends on axioms: [propext]
+
+SHA-256 of packaged source files
+c3c27e9135bdb0a315d201703700e3058dbdce33e11ccedccc556c6fd9a6b5a5  BlockingCurves.lean
+626cd88a4e5c40b4602fe74c29b8c711b6d238f1b16e43c493f9621a75e5402f  Cubic41.lean
+da432c523306c0267c0dee96ff81242a672a60f1a971b246de0750d925d8597c  Cubic41Semantics.lean
+8006393b21f99e1b39f9a860b943cfef5000b34d50fbe01c3ba8c4b5e2f74ef6  CubicGlobal.lean
+df6478c718f046eab0dff5c9caafc5e263f73e3a17fe8db08a027cee4776c454  CubicOrbit.lean
+496d1a7dd9ef9fef9c59c424f44dcf0d538b31a50b31bcab7177e613077bae14  CubicSymmetry.lean
+dc7797646943fc50548a26498c460d1c426d05276f1a6856cea74a3be73a26ee  F8Example.lean
+a075529e6804f9e75c8576959e7450d2d580f79a80836bc30cf1e4ba30250b3f  Frobenius.lean
+ba7ce7fd80139fce6f2abbc59fa3d94dbcd42e2310cf1f7d391d8af59e0d8906  GeneralGeometry.lean
+5e05e61cae4f29d4daa7dfa66af2d2d492ac7462a52eca847bc42e42881021a8  lakefile.lean
+408c799b9d6175668789fe91d4112e1f18e74ec5c45baef4ec5223af147f4c1a  LowerBound.lean
+8646e90a3ac95cf27218f1bfb3893666d1f3a22b44dd11ff4c87e2e2a7e47086  MainResult.lean
+2e44c8136ddfb48b9d021825f5620952e74f6e0e2493924801c06adf700e978a  Paper.lean
+ed2993b4f66e5ec652e4788931ce46c923b8f58c4923e78fecbdfff639471e15  Projective.lean
+2e906616c04bc8a2e91c101f9cfb8e3d62a458e84193beff13331ca68b594de4  UpperBound.lean
+153acda58c89be5482115fe67ee11493a8211764f5d83f5b760e4fcf59b6222a  lake-manifest.json
+0df6875bfd9a61fc67fb394183802c10d10d54e5d0b3ffcb4804055cb2e76bc3  lean-toolchain
+b0fde49185c0e7aa0ae900cfca50b93113c9615c11385390d48ecac76fb2fc6c  README.md
