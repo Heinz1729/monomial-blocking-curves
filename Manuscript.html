@@ -5,8 +5,9 @@
 @page {size:A4;margin:17mm 21mm 16mm;@bottom-center{content:counter(page);font:9pt Georgia;color:#61716c}}
 *{box-sizing:border-box}html{background:#edeee9}body{margin:0 auto;max-width:850px;padding:45px 55px;background:white;color:#182825;font:16px/1.8 "Noto Serif SC","SimSun",serif}header,h1,h2,h3,.meta,th,strong{font-family:"Microsoft YaHei","Noto Sans SC",sans-serif}header{border-bottom:2px solid #155d54;margin-bottom:1.4em;padding-bottom:1em}h1{font-size:2.13em;line-height:1.38;margin:.26em 0}.meta{color:#526b66;font-size:.88em}h2{color:#175d54;font-size:1.48em;line-height:1.35;margin:0 0 .8em;padding-bottom:.25em;border-bottom:1px solid #a4bdb0}h3{font-size:1.06em;color:#244a41;margin:1.12em 0 .28em}p{margin:.52em 0}section{margin:0 0 3.4em}.eq,.box{font-family:"Cambria Math","Noto Serif SC","SimSun",serif;text-align:center;line-height:1.65;padding:.12em 0;margin:.58em 0}.box{background:#edf4ef;border-top:1px solid #7ca28e;border-bottom:1px solid #7ca28e;padding:.62em .4em;font-size:1.2em}.formula{font-family:"Cambria Math","Noto Serif SC","SimSun",serif}.note{border-left:3px solid #92ac9d;padding-left:.85em}.proofend{float:right}sub,sup{font-size:.72em;line-height:0}table{width:100%;border-collapse:collapse;margin:.8em 0;font-size:.94em}td,th{padding:.42em .55em;text-align:left;border-bottom:1px solid #d9dfda}th{background:#eff3ef}a{color:#175d54}code,pre{font-family:Consolas,"Microsoft YaHei",monospace;font-size:.88em}pre{background:#f2f4f1;padding:10px 15px;line-height:1.4;white-space:pre-wrap}small{font-size:.85em}.ref{font-family:"Microsoft YaHei",sans-serif;font-size:.86em;line-height:1.55}.ref p{margin:.65em 0}
 @media print{html,body{background:white}body{padding:0;max-width:none;font-size:11pt;line-height:1.65}section{margin:0}section+section{break-before:page}header{margin-bottom:5mm}h1{font-size:23pt}h2{font-size:16.4pt}h3{break-after:avoid}pre,table,.eq,.box{break-inside:avoid}*{-webkit-print-color-adjust:exact;print-color-adjust:exact}a{text-decoration:none}}@media(max-width:600px){body{padding:20px}h1{font-size:1.65em}.eq{overflow-wrap:anywhere}}
+@media print{#references .ref p{margin:.36em 0;break-inside:avoid}#references .ref{line-height:1.47}}
 </style></head><body>
-<section><header><div class="meta">GPT-Astra　·　研究手稿　·　2026 年 11 月 26 日　·　三次首项常数修订版</div>
+<section><header><div class="meta">GPT-Astra　·　研究手稿　·　2026 年 11 月 26 日</div>
 <h1>有限域上单项式曲线的<br>竖直平移与阻塞数</h1>
 <div class="meta">Asgarli–Ghioca–Yip 问题 5.4　｜　驯分歧情形的对数阶与有限域上的精确解</div></header>
 <h2>问题与主结果</h2>
@@ -14,11 +15,11 @@
 <div class="eq"><i>C</i><sub>α</sub>　:　<i>YZ</i><sup>d−1</sup> = <i>X</i><sup>d</sup> − α<i>Z</i><sup>d</sup>。</div>
 <p>在 <i>Z</i> = 1 内，每个参数 α 给出一条图像 <i>y</i> = <i>x</i><sup>d</sup> − α。记 <i>B</i>(<i>q</i>, <i>d</i>) 为使这些曲线的有理点并集成为阻塞集所需的最少参数个数。Asgarli、Ghioca 和 Yip 在期刊版问题 5.4 提出求此数，并指出当 gcd(<i>d</i>, <i>q</i>−1) = 1 时，他们给出的对数下界论证不适用。[1]</p>
 <h3>固定次数的对数阶</h3>
-<p>固定 <i>d</i> ≥ 3，让 <i>q</i> 沿特征 <i>p</i> ∤ <i>d</i>(<i>d</i>−1) 的素数幂趋于无穷。第 7 节起证明 <i>B</i>(<i>q</i>,<i>d</i>) = Θ<sub>d</sub>(log <i>q</i>)，下极限系数至少为 1/[2(<i>d</i>−1)log 2]。三次且 <i>q</i> ≡ 2 (mod 3)、<i>p</i> &gt; 3 时，第 12–16 节同时计数斜率与截距，将下极限系数提高到 <strong>1/log 4</strong>。第 17 节给出上界 (2 log <i>q</i> − log log <i>q</i>)/log 3 + <i>O</i>(1)。本文的 log 为自然对数。</p>
+<p>固定 <i>d</i> ≥ 3，让 <i>q</i> 沿特征 <i>p</i> ∤ <i>d</i>(<i>d</i>−1) 的素数幂趋于无穷。第 7 节起证明 <i>B</i>(<i>q</i>,<i>d</i>) = Θ<sub>d</sub>(log <i>q</i>)，下极限系数至少为 1/[2(<i>d</i>−1)log 2]。三次且 <i>q</i> ≡ 2 (mod 3)、<i>p</i> &gt; 3 时，第 12–16 节同时计数斜率与截距，将下极限系数提高到 <strong>1/log 4</strong>。更精确的下界为 (log <i>q</i> − 2 log log <i>q</i>)/log 4 − <i>O</i>(1)，第 17 节给出上界 (2 log <i>q</i> − log log <i>q</i>)/log 3 + <i>O</i>(1)。本文的 log 为自然对数。</p>
 <h3>定理 1　Frobenius 次数的精确阻塞数</h3>
 <p>设 <i>p</i> 为素数，<i>h</i>, <i>e</i> ≥ 1，<i>q</i> = <i>p</i><sup>h</sup>，<i>d</i> = <i>p</i><sup>e</sup>。令 <i>g</i> = gcd(<i>h</i>, <i>e</i>)。则</p>
 <div class="box"><i>B</i>(<i>p</i><sup>h</sup>, <i>p</i><sup>e</sup>) = 1 + (<i>h</i>/<i>g</i>)(<i>p</i><sup>g</sup> − 1)。</div>
-<p>构造也可以显式给出。取子域 <i>K</i> = 𝔽<sub>p<sup>g</sup></sub>，把 <i>F</i> 看作 <i>K</i> 上的向量空间。取一组基，每个基向量生成一条过原点的 <i>K</i>-直线。这些直线的并集就是最优的参数集。</p>
+<p>若 <i>h</i> ∣ <i>e</i>，唯一阻塞参数集为全域，所成阻塞集含整条有理直线。若 <i>h</i> ∤ <i>e</i>，同一最小值由非平凡阻塞集达到。取子域 <i>K</i> = 𝔽<sub>p<sup>g</sup></sub>，把 <i>F</i> 看作 <i>K</i> 上的向量空间。取一组基，每个基向量生成一条过原点的 <i>K</i>-直线。这些直线的并集就是最优的参数集。</p>
 <h3>定理 2　四十一元域上的三次曲线</h3>
 <p><i>B</i>(41, 3) = 5。五次单位根 <i>H</i> = {1, 10, 16, 18, 37} 给出一个最优参数集。全部最优集恰为 <i>uH</i> + <i>v</i>，其中 <i>u</i> ≠ 0，共 328 个不同的集合。这个例子的特征为 41，立方映射不属于定理 1 的 Frobenius 子族。</p>
 <p><strong>四十七元域的情形。</strong> 同样有 <i>B</i>(47, 3) = 5。五元集 {0, 1, 3, 15, 33} 的仿射轨道给出全部 2,162 个最优解。第 5 节给出有限穷举与轨道计数。Lean 已验证最小值、分类与精确计数。</p>
@@ -88,21 +89,15 @@ for k in {4, 5}:
 <p><strong>轨道与分类。</strong> gcd(3, 46) = 1，故每个非零 <i>u</i> 都是某个 <i>t</i>³。沿用第 4 节的坐标变换 (<i>x</i>, <i>y</i>) ↦ (<i>tx</i>, <i>uy</i> − <i>v</i>)，得到 <i>uA</i> + <i>v</i> 亦为解。<i>A</i> 的元素和为 52 ≡ 5 (mod 47)，重心为 1。保持 <i>A</i> 的仿射变换固定重心，因而形如 <i>x</i> ↦ 1 + <i>u</i>(<i>x</i> − 1)。其乘子构成 <i>F</i><sup>×</sup> 的子群，并在 <i>A</i> ∖ {1} 上自由作用，故阶整除 46 和 4。唯一可能的非平凡乘子是 −1，但它把 0 送到 2 ∉ <i>A</i>。稳定子遂为平凡群，轨道大小为 46 · 47 = 2,162，恰好穷尽全部最优解。</p>
 <p class="note">在仓库根目录运行 <code>python checks/cubic47.py</code> 可复核上表与仿射轨道。Lean 利用仿射对称性同时固定 0、1，在 990 个四元候选中得到 0 个解，在 14,190 个五元候选中得到 20 个解。上表列出的 230 个含 0 的解各含四个非零元素，乘法对称性使 46 个非零元素出现次数相同，故含 0、1 的解有 230 · 4 / 46 = 20 个。</p>
 </section>
-<section><h2>6　文献、优先权与形式证明</h2>
-<h3>与已有结果的关系</h3>
-<p>2026 年 11 月 25 日的首版检索核对了原文问题 5.4 及其引用的相邻构造，另用 “vertical translates”、 “Frobenius graph”、 “scattered linearized polynomial”、 “affine blocking sets”、 “cubic intersection distribution” 和 “PG(2,41)” 等词交叉检索。原文已经给出逐线的值集判据，仿射超平面阻塞数和 scattered 多项式的核判据也已有文献。Bruen–Fisher 等较早的三次曲线阻塞构造允许选取不同曲线。Li–Pott 等工作研究单个图像与直线的交点数分布。[1–6]</p>
-<p>在查到的资料中，未找到定理 1 的精确公式以本题的同一竖直平移族表述，也未找到定理 2 的五元最优集轨道分类。两者在本文均有可核验的证明。等价表述、未公开手稿及尚未被索引的成果仍可能存在，所以这是一份<strong>优先权待核的研究手稿</strong>。第 7 节起沿 Dot 建议的避碰斜率路线，确定驯分歧条件下的增长阶。一般参数的精确最小值与最佳渐近常数仍待确定。</p>
-<h3>形式证明与复现</h3>
-<p>工程锁定 Lean 4.8.0 与 mathlib v4.8.0。<code>Paper.lean</code> 中的 <code>projective_prime_power_minimum</code> 直接量化射影直线方程、非零点代表和有限参数集，并用 <code>IsLeast</code> 同时表达可达性与下界。<code>GeneralGeometry.lean</code> 给出定理 3 的充要条件。<code>F8Example.lean</code> 单独检查八元域。<code>Cubic41.lean</code> 与 <code>Cubic41Semantics.lean</code> 将四十一元域的有限枚举与模 41 的方程联系起来。<code>CubicGlobal.lean</code> 证明了对全部参数集的射影最小值为 5。<code>CubicOrbit.lean</code> 给出全部最优集的仿射轨道及其基数。工程附有逐项验证记录与复现命令。</p>
-<p>四十七元域的相应定理位于 <code>BlockingCurves.Cubic47</code> 命名空间。<code>Cubic47Global.lean</code> 的 <code>projective_cubic_minimum</code> 证明射影阻塞数为 5。<code>Cubic47Orbit.lean</code> 的 <code>projective_cubic_orbit</code> 刻画全部最优集，<code>stabilizer_exact</code> 给出代表元的平凡稳定子，<code>orbit_card</code> 证明轨道基数为 2,162。新对数界的数学证明见第 7–10 节，三次避碰引理的形式化范围见第 11 节。</p>
-<h3>参考文献</h3>
-<div class="ref">
-<p>[1] S. Asgarli, D. Ghioca, C. H. Yip. <i>Blocking sets from a union of plane curves</i>. Designs, Codes and Cryptography 94, 217 (2026), §5. <a href="https://doi.org/10.1007/s10623-026-01958-z">期刊版与问题 5.4</a> · <a href="https://arxiv.org/abs/2510.15332">预印本</a>。</p>
-<p>[2] R. E. Jamison. <i>Covering finite fields with cosets of subspaces</i>. J. Combin. Theory A 22 (1977), 253–266. <a href="https://doi.org/10.1016/0097-3165(77)90001-2">原文</a>。</p>
-<p>[3] A. E. Brouwer, A. Schrijver. <i>The blocking number of an affine space</i>. J. Combin. Theory A 24 (1978), 251–253. <a href="https://ir.cwi.nl/pub/9858/9858D.pdf">原文</a>。</p>
-<p>[4] C. Zanella. <i>A condition for scattered linearized polynomials involving Dickson matrices</i>. J. Geom. 110, 50 (2019). <a href="https://arxiv.org/abs/1909.07802">原文</a>。</p>
-<p>[5] A. Bruen, J. C. Fisher. <i>Blocking sets and complete k-arcs</i>. Pacific J. Math. 53 (1974), 73–84. <a href="https://doi.org/10.2140/pjm.1974.53.73">原文</a>。</p>
-<p>[6] S. Li, A. Pott. <i>Intersection distribution, non-hitting index and Kakeya sets in affine planes</i> (2020). <a href="https://arxiv.org/abs/2003.06678">原文</a>。</p></div>
+<section id="formal"><h2>6　几何结论、来源与形式化范围</h2>
+<p>问题 5.4 问普通阻塞集的最小值。原文定义 1.1 要求曲线几何不可约且次数大于 1，备注 5.2 另论构造的非平凡性。[1] 对本族可对所有域阶给出精确判据。</p>
+<h3>何时包含一整条射影直线？</h3>
+<p>设 <i>d</i> ≥ 2。若参数遍及全域，曲线并包含全部仿射点和 [0:1:0]，因而包含每条竖直线。若参数集为真子集，取一个未选的 α。在每条竖直线 <i>x</i>=<i>a</i> 上，点 (<i>a</i>, <i>a</i><sup>d</sup>−α) 均未覆盖。每条非竖直仿射线在无穷远的点也不属于曲线并，而无穷远线上至多覆盖一点。故阻塞参数集产生非平凡阻塞集当且仅当它是真子集。定理 1 中写 <i>b</i>=<i>p</i><sup>g</sup>、<i>n</i>=<i>h</i>/<i>g</i>。当 <i>n</i>=1 时最小值是 <i>q</i>；当 <i>n</i>≥2 时，1+<i>n</i>(<i>b</i>−1)&lt;<i>b</i><sup>n</sup>=<i>q</i>，最优解均非平凡。</p>
+<h3>陈述与核验入口</h3>
+<p><code>ProblemStatement.lean</code> 直接编码 [1] 式 (5.4)，只导入 mathlib。<code>StatementComparison.lean</code> 将它与射影直线相交条件双向连接。<code>GeometricIrreducibility.lean</code> 在三个变量上构造原齐次式，证明求值条件、齐次性和在代数闭包上的不可约性。<code>ScatteredComparison.lean</code> 将第 3 节的核维数与非零向量的斜率碰撞条件互推。[4]</p>
+<p>八元域的 256 个掩码与真实参数集一一对应，这一对应保持基数与阻塞性，四元最优参数集恰有 56 个。41、47 元域的位运算由方程逐线生成，枚举证书经仿射归一化覆盖所有参数集。域同构把素域上的最小值搬到与定理 1 相同的 <code>GaloisField</code> 接口。定理入口、锁定依赖、逐项公理和源文件摘要见 <code>lean/README.md</code> 与 <code>lean/verification.txt</code>。</p>
+<h3>与有限几何文献的关系</h3>
+<p>仿射超平面阻塞数归于 [2, 3]。Bruen–Fisher 的三次几何构造允许选取不同曲线 [5]，Li–Pott 研究单个图像与直线的交数 [6]。本文在固定竖直平移族中应用经典阻塞数并对两个素域给出完整最优轨道。四十七元域的代表元和计算分类、下文通过选斜率避免临界值碰撞的思路由 Dot 提出。</p>
 </section><section id="log-bound"><h2>7　非线性平移族的对数下界</h2>
 <p>以下 <i>d</i> ≥ 3 固定，<i>q</i> 为素数幂，<i>p</i> 为其特征，log 取自然对数。我们处理 <i>p</i> ∤ <i>d</i>(<i>d</i>−1) 的情形。这包含所有 <i>p</i> &gt; <i>d</i>，允许特征固定而扩张次数趋于无穷。</p>
 <h3>定理 5　驯分歧情形的渐近阶</h3>
@@ -150,28 +145,20 @@ for k in {4, 5}:
 <div class="eq">3<sup>−ℓ</sup>[<i>q</i>−2(<i>g</i>√<i>q</i>+<i>g</i>+6<sup>ℓ</sup>)]−2ℓ。</div>
 <p>若 ℓ = ⌊<i>c</i> log <i>q</i>⌋，0 &lt; <i>c</i> &lt; 1/(2 log 6)，则 ℓ6<sup>ℓ</sup> = <i>o</i>(√<i>q</i>)。上述两个下界对充分大的 <i>q</i> 均为正。代换 <i>T</i> = <i>x</i>−<i>a</i>/3 将 <i>h</i>(<i>T</i>)−<i>v</i> 化为 <i>x</i>³−<i>mx</i>−<i>b</i>，保持每个平移的不可约性。故仅由 [11] 即可推出三次阻塞数的下极限系数至少为 1/(2 log 6)。第 9 节用逐特征标估计将此系数提高到 1/(4 log 2)。</p>
 </section>
-<section id="research-scope"><h2>11　与已有工作的关系及证明范围</h2>
+<section id="research-scope"><h2>11　固定斜率方法的适用范围</h2>
 <p>[1] 的定理 1.3 固定 <i>d</i> ≥ 3，在 <i>p</i> &gt; <i>d</i> 时允许次数介于 2 与 <i>d</i> 的任意几何不可约曲线，证明形成阻塞集所需的最少曲线数随 <i>q</i> 趋于无穷。本文的对数定理专用于 <i>y</i>=<i>x</i><sup>d</sup>−α 这一族。对这同一族，[1] 的定理 5.1 给出对数上界，备注 5.3（预印本 v1 为 5.2）用水平线处理 gcd(<i>d,q</i>−1)&gt;1。定理 5 也适用于水平线无法给出下界的互素情形。所得渐近阶仍容许不同首项常数。问题 5.4 的一般精确值仍待确定。</p>
 <p>Dot 建议将避碰斜率用于本题。对于一般 <i>d</i>，本文在 [7, 10, 11] 的几何方法上显式计数单项式的例外参数，再将 [8, 12] 的估计用于 [1] 的阻塞问题。检索到的这些文献没有以 <i>B</i>(<i>q,d</i>) 表述定理 5。第 10 节指出三次情形可由 [11] 直接推出对数阶，几何独立性、全轮换范数和逐特征标迹界也各有先例。</p>
 <p><strong>小特征。</strong> 第 8 节使用局部驯性，故即使 <i>p</i> ≤ <i>d</i>，只要 <i>p</i> ∤ <i>d</i>(<i>d</i>−1) 证明仍然适用。当 <i>p</i> | <i>d</i> 或 <i>p</i> | (<i>d</i>−1) 时，临界点结构或无穷远的驯性会改变。对奇 <i>p</i>，<i>d</i>=<i>p</i>+1 和 <i>d</i>=2<i>p</i> 本身都是偶数，gcd(<i>d,q</i>−1) ≥ 2，因而这两族的<strong>对数阶</strong>已由 [1，定理 5.1 与备注 5.3] 得到。其分歧结构、锐常数和最优参数集是不同的问题。此处没有导出所有野分歧互素情形的结论。</p>
 <p><strong>核验范围。</strong> 第 7–10 节为数学证明。在 𝔽<sub>200003</sub> 取 <i>S</i>={0,4,32}，首个可用 <i>u</i> 为 3，斜率为 27。此斜率有 7,339 条遗漏直线，其中一条为 <i>y</i>=27<i>x</i>+15。可运行 <code>python checks/cubic_slope.py</code> 复核。仓库中关于精确最小值和完整轨道的 Lean 定理见第 6 节。<code>CubicSlope.lean</code> 中的 <code>BlockingCurves.CubicSlope.exists_collision_free</code> 已形式验证三次置换情形下由 |<i>S</i>−<i>S</i>| &lt; <i>q</i> 选取无碰撞斜率的步骤。单值群、迹估计和渐近定理有待形式化。</p>
-<h3>补充参考文献</h3>
-<div class="ref">
-<p>[7] P. Kurlberg, L. Rosenzweig. <i>Prime and Möbius correlations for very short intervals in 𝔽<sub>q</sub>[x]</i>，§7，定理 13、推论 14、16。<a href="https://preprint.press.jhu.edu/ajm/sites/default/files/AJM-kurl-rosen-FINAL.pdf">期刊定稿</a>。</p>
-<p>[8] D. Zywina. <i>Hilbert’s irreducibility theorem and the larger sieve</i>, §5.1，命题 5.1 的证明。<a href="https://davidzywina.github.io/papers/Quantitative-HIT.pdf">作者全文</a>。</p>
-<p>[9] W.-S. Chou, J. Gomez-Calderon, G. L. Mullen. <i>Value sets of Dickson polynomials over finite fields</i>, J. Number Theory 30 (1988), 334–344。<a href="https://doi.org/10.1016/0022-314X(88)90006-6">原文</a>。</p>
-<p>[10] P. Kurlberg. <i>Poisson spacing statistics for value sets of polynomials</i>, Int. J. Number Theory 5 (2009), 489–513，§2，命题 8。<a href="https://arxiv.org/abs/math/0602673">2006 年预印本</a> · <a href="https://kurlberg.github.io/eprints/crt2.pdf">作者全文</a>。</p>
-<p>[11] P. Pollack. <i>Simultaneous prime specializations of polynomials over finite fields</i>, Proc. Lond. Math. Soc. 97 (2008), 545–567，特别是引理 6–8、推论 15 与式 (4.4)。<a href="https://doi.org/10.1112/plms/pdn013">期刊版</a> · <a href="https://www.pollack-math.net/twinsl.pdf">作者全文</a>。</p>
-<p>[12] J. Bellaïche. <i>Théorème de Chebotarev et complexité de Littlewood</i>, Ann. Sci. Éc. Norm. Supér. (4) 49 (2016), 579–632，命题 6、10。<a href="https://doi.org/10.24033/asens.2291">期刊版</a> · <a href="https://www.numdam.org/item/10.24033/asens.2291.pdf#page=18">命题 10，第 594 页</a>。</p>
-</div></section>
+<p>第 9 节在一条穿孔直线上同时计数不可约纤维。为进一步利用三次族的两个自由参数，下面把合格的斜率和截距改写成穿孔直线上两个有序点。两种权重对误差的贡献不同，较高权重的项需要第 14 节的一阶维数估计。</p></section>
 <section id="cubic-two-parameters"><h2>12　三次置换族的两参数下界</h2>
 <p>本节至第 17 节取 <i>p</i> &gt; 3、<i>q</i> ≡ 2 (mod 3)，允许固定特征并改变扩张次数。先给出有限 <i>q</i> 上的计数定理。下极限和上极限都沿这一整族素数幂取。</p>
 <h3>定理 7　同时改变斜率和截距</h3>
 <div class="box">1/log 4 ≤ lim inf <i>B</i>(<i>q</i>,3)/log <i>q</i><br>≤ lim sup <i>B</i>(<i>q</i>,3)/log <i>q</i> ≤ 2/log 3。</div>
 <p>固定任意非空参数集 <i>S</i>，记 ℓ = |<i>S</i>|。令 <i>X</i> = 𝔸¹ ∖ (−<i>S</i>)，<i>U</i> = {(<i>v,w</i>) ∈ <i>X</i>² : <i>v</i> ≠ <i>w</i>}，均定义在 𝔽<sub>q</sub> 上。对 α ∈ <i>S</i> 置</p>
 <div class="eq"><i>t</i><sub>α</sub> = 2(<i>v</i>+<i>w</i>+2α)/(<i>v</i>−<i>w</i>)。</div>
-<p>令 <i>N</i> 计数使全部 <i>T</i>³−3<i>T</i>−<i>t</i><sub>α</sub> 不可约的 (<i>v,w</i>) ∈ <i>U</i>(𝔽<sub>q</sub>)。置 <i>M</i><sub>ℓ</sub> = ∑<sub>0≤j≤min(2,ℓ)</sub> C(ℓ,<i>j</i>)2<sup>ℓ−j</sup>。则</p>
-<div class="eq">|3<sup>ℓ</sup><i>N</i> − (<i>q</i>−ℓ)(<i>q</i>−ℓ−1)|<br>≤ ℓ(ℓ−1)(4<sup>ℓ</sup>−1)<i>q</i> + (6ℓ+2)<i>M</i><sub>ℓ</sub>(<i>q</i>+<i>q</i><sup>3/2</sup>)。　(12.1)</div>
+<p>令 <i>N</i> 计数使全部 <i>T</i>³−3<i>T</i>−<i>t</i><sub>α</sub> 不可约的 (<i>v,w</i>) ∈ <i>U</i>(𝔽<sub>q</sub>)。置 <i>H</i><sub>ℓ</sub> = (6ℓ+2)(2<sup>ℓ</sup>−1) + 2ℓ·2<sup>ℓ−1</sup> + ℓ(ℓ−1)/2。则</p>
+<div class="eq">|3<sup>ℓ</sup><i>N</i> − (<i>q</i>−ℓ)(<i>q</i>−ℓ−1)|<br>≤ ℓ(ℓ−1)(4<sup>ℓ</sup>−1)<i>q</i> + <i>H</i><sub>ℓ</sub>(<i>q</i>+<i>q</i><sup>3/2</sup>)。　(12.1)</div>
 <p><strong>还原为直线。</strong> 由立方双射，给定 <i>v</i> ≠ <i>w</i>，有唯一的 <i>u</i> 满足 4<i>u</i>³ = <i>v</i>−<i>w</i>。取 <i>m</i>=3<i>u</i>²、<i>b</i>=(<i>v</i>+<i>w</i>)/2，并令 <i>x</i>=<i>uT</i>。方程 <i>x</i>³−<i>mx</i>−(<i>b</i>+α)=0 就化为上面的三次式。三次式无有理根当且仅当它不可约。每个遗漏的此类斜率、截距对应两种次序 (<i>v,w</i>) 和 (<i>w,v</i>)。被删的 <i>t</i><sub>α</sub>=±2 是有有理根的分支纤维。因此 <i>N</i>&gt;0 即排除 <i>S</i> 的阻塞性。</p>
 <p>将计数同样乘以 3<sup>ℓ</sup> 后，第 9 节固定斜率的主项约为 <i>q</i>，这里的主项为 (<i>q</i>−ℓ)(<i>q</i>−ℓ−1)。要利用这一差别，需要分别控制紧支撑二阶和三阶上同调。后一项若按所有表示的秩相加，便会失去新的下界系数。</p></section>
 <section id="cubic-meridians"><h2>13　二点配置空间的单值作用</h2>
@@ -189,11 +176,15 @@ for k in {4, 5}:
 <div class="eq">(1−<i>B</i><sub>j</sub>)<i>u</i><sub>i</sub> = (1−<i>A</i><sub>i</sub>)<i>v</i><sub>j</sub>　(<i>i</i> ≠ <i>j</i>)。　(14.1)</div>
 <p>将 <i>u</i><sub>i</sub> 投到 <i>W</i>/im(1−<i>A</i><sub>i</sub>)。该类被所有 <i>B</i><sub>j</sub>（<i>j</i> ≠ <i>i</i>）固定。局部商维数至多 1，其他每个因子的固定空间也至多一维，故投影的自由度至多 1。交换两方向同理。全部 2ℓ 个投影至多贡献 2ℓ 维，且均消去余边界。</p>
 <p><strong>投影的核。</strong> 此时 <i>u</i><sub>i</sub>=(1−<i>A</i><sub>i</sub>)<i>P</i><sub>i</sub>，<i>v</i><sub>j</sub>=(1−<i>B</i><sub>j</sub>)<i>Q</i><sub>j</sub>。在每个标准因子取基 <i>e</i>、<i>f</i>，分别张成两对换的固定线；它们不同，因为两对换生成 <i>S</i>₃ 且标准表示无不变量。对每个张量基词 ξ，在 <i>P</i><sub>i</sub> 模 ker(1−<i>A</i><sub>i</sub>) 中，其系数仅在第 <i>i</i> 位为 <i>f</i> 或符号因子时保留；在 <i>Q</i><sub>j</sub> 中，保留条件为 <i>e</i> 或符号因子。(14.1) 令两类保留系数在 <i>i</i> ≠ <i>j</i> 时相等：两算子作用在不同位置，其乘积的核正是两个核之和。</p>
-<p>固定 ξ，以保留的 <i>P</i>、<i>Q</i> 系数为两侧顶点，不同指标间连边。若 ξ 中同时有 <i>e</i> 和 <i>f</i>，相应两个不同指标相连，所有符号顶点也都接到这个连通分量。所有系数遂相同，可用一个余边界的 ξ 系数同时消去。至多两个常值词尚待处理（无标准因子时仅一个空词），各有至多 2ℓ 个顶点，总贡献至多 4ℓ。有限圈数据给定后，若两个余循环具有相同数据，其在 <i>x</i><sub>∞</sub> 上的差由 (13.1) 被全部 <i>B</i><sub>j</sub> 固定，维数至多 1；<i>y</i><sub>∞</sub> 同理。这就得到 6ℓ+2。</p>
-<p><strong>三个符号因子。</strong> 在这些指标上两种圈均作用为 −1。(14.1) 给出 <i>u</i><sub>i</sub>=<i>v</i><sub>j</sub>（<i>i</i> ≠ <i>j</i>）。至少三个指标时，删去同指标边的完全二部图连通，用一个余边界可使它们全零。每个其余生成元都与对侧某个这样的圈交换，由交叉同态关系，其值也为零。这证明了消没断言。</p></section>
+<p>固定 ξ，以保留的 <i>P</i>、<i>Q</i> 系数为两侧顶点，不同指标间连边。若 ξ 中同时有 <i>e</i> 和 <i>f</i>，相应两个不同指标相连，所有符号顶点也都接到这个连通分量。所有系数遂相同，记此共同系数为 <i>c</i><sub>ξ</sub>。对所有混合词一次取 <i>z</i>=∑<sub>ξ</sub><i>c</i><sub>ξ</sub>ξ，减去它的余边界，即同时消去这些词。这里使用两个核之和的商基，各位置的两对换无须同时对角化。至多两个常值词尚待处理（无标准因子时仅一个空词），各有至多 2ℓ 个顶点，总贡献至多 4ℓ。有限圈数据给定后，若两个余循环具有相同数据，其在 <i>x</i><sub>∞</sub> 上的差由 (13.1) 被全部 <i>B</i><sub>j</sub> 固定，维数至多 1；<i>y</i><sub>∞</sub> 同理。这就得到 6ℓ+2。</p>
+<p><strong>三个符号因子。</strong> 在这些指标上两种圈均作用为 −1。(14.1) 给出 <i>u</i><sub>i</sub>=<i>v</i><sub>j</sub>（<i>i</i> ≠ <i>j</i>）。至少三个指标时，删去同指标边的完全二部图连通，用一个余边界可使它们全零。每个其余生成元都与对侧某个这样的圈交换，由交叉同态关系，其值也为零。这证明了消没断言。</p>
+<h3>有符号因子的精细估计</h3>
+<p>固定一个符号位置 <i>s</i>。减去 <i>z</i>=<i>u</i><sub>s</sub>/2 的余边界后，<i>u</i><sub>s</sub>=0。这个代表唯一，因为 1−<i>A</i><sub>s</sub>=2。记 <i>h</i>=<i>v</i><sub>s</sub>。与该位置两侧的圈交换给出，对每个 <i>j</i>≠<i>s</i>（包括 ∞），</p>
+<div class="eq"><i>v</i><sub>j</sub>=0，　2<i>u</i><sub>j</sub>=(1−<i>A</i><sub>j</sub>)<i>h</i>。</div>
+<p>因所有圈生成基本群，上同调类线性单射到可行的 <i>h</i> 空间。对其余相异有限指标 <i>i,j</i>，(14.1) 给出 (1−<i>A</i><sub>i</sub>)(1−<i>B</i><sub>j</sub>)<i>h</i>=0。若恰有一个符号因子，这个等式排除每个在 <i>i</i> 位为 <i>f</i>、在 <i>j</i> 位为 <i>e</i> 的词（乘积核的商基同上）。至多剩两个常值词，故 <i>b</i>₁≤2。若另一个符号位置为 <i>t</i>，并有标准位置 <i>i</i>，分别代入 (<i>i,t</i>) 和 (<i>t,i</i>)，得 <i>A</i><sub>i</sub><i>h</i>=<i>B</i><sub>i</sub><i>h</i>=<i>h</i>。两条固定线的交为零，故 <i>b</i>₁=0。若恰有两个符号位置且其余全平凡，<i>W</i> 本身一维，故 <i>b</i>₁≤1。</p></section>
 <section id="cubic-comparison"><h2>15　正特征比较与曲面的迹估计</h2>
-<p>取辅助素数 2，在 ℚ₂ 上计算。第 13 节的各个 <i>S</i>₃ 表示有不变 ℤ₂ 格。把标记提升到混合特征离散赋值环中互不相交的截面。例如对非零有限标记取单位根提升，∞ 取无穷远截面，若 0 在标记集中则提升为 0。在 ℙ¹×ℙ¹ 的相对模型中删去相应的竖线、横线和对角线。于每个三重交点 (<i>a,a</i>)、<i>a</i> ∈ <i>A</i>，沿该截面吹起一次，得到光滑固有紧化，边界为相对简单正规交叉除子。三次分裂覆盖在开集上由同一批方程定义且有限平展，群的阶仅有素因子 2、3，故在边界驯分歧。</p>
-<p>SGA 1 的驯专化定理 [14，XIII，推论 2.9 与 §2.10] 将此正规交叉对的几何基本群的素于 <i>p</i> 商与几何特征零纤维对应。对格模 2<sup>h</sup> 的一阶余循环，所需有限群嵌入格的加法群与 (<i>S</i>₃)<sup>ℓ</sup> 的半直积，其阶仍与 <i>p</i> 互素。故该专化保留一阶上同调和上述单值作用。取逆极限后张量 ℚ₂，结合复比较，得到第 14 节在 𝔽̄<sub>q</sub> 上的两个结论。这里仅转移一阶上同调。由于各多项式在 𝔽<sub>q</sub> 上有定义，算术群也在同一乘积中，因而等于满几何群。</p>
+<p>取辅助素数 2，各表示取稳定 ℤ₂ 格 Λ。可用分圆域 ℚ(ζ<sub>q−1</sub>) 在 <i>p</i> 上方的离散赋值环作底。若 <i>q</i>=<i>p</i><sup>h</sup>，<i>p</i> 模 <i>q</i>−1 的阶为 <i>h</i>，剩余域为 𝔽<sub>q</sub>。非零标记用单位根提升，0 和 ∞ 取常截面。在 ℙ¹×ℙ¹ 的相对模型上将竖线、横线与对角线的全部三重交截面 (<i>a,a</i>) 吹起，包括 <i>a</i>=∞。三条切向为坐标方向与对角方向，吹起后边界是相对简单正规交叉除子，紧化光滑固有。同一批三次式在开集上判别式可逆，给出排序各根的有限平展挠子，结构群 (<i>S</i>₃)<sup>ℓ</sup> 阶与 <i>p</i> 互素，沿边界驯分歧。</p>
+<p>每个 Λ/2<sup>n</sup> 在全族上是局部常值的有限交换群层，纤维为 2 群，单值群阶只含素因子 2 和 3。SGA 1 第 XIII 讲推论 2.9 适用于此光滑固有对及其驯系数层，给出几何一般纤维与特殊纤维在 0、1 阶的基变换同构。[14] 对根排序挠子的 ℤ/2 值函数层比较零阶，其维数就是挠子的几何连通分支数。由第 13 节两纤维的挠子均几何连通，算术群遂也等于整个乘积。有限层同构与降模相容，有限的零阶群形成 Mittag–Leffler 系统，故一阶连续上同调的逆极限没有 lim¹ 修正。张量 ℚ₂，并对分圆域的复嵌入作 étale–奇异比较，即得第 14 节在 𝔽̄<sub>q</sub> 上的全部维数界。</p>
 <h3>二阶和三阶分别估计</h3>
 <p>设 <i>W</i> 是一个非平凡的上述张量积，秩为 <i>r</i>，<i>b</i>₁=<i>b</i>₁(<i>W</i>)。这些表示自对偶。<i>U</i> 是光滑仿射曲面（平面中一个主开集），故由仿射消没与对偶，紧支撑 <i>H</i>⁰ 和 <i>H</i>¹ 为零，<i>H</i>³ 的维数为 <i>b</i>₁。几何直积无 <i>W</i> 不变量，故紧支撑 <i>H</i>⁴ 为零。</p>
 <p>令 <i>Y</i> 为平凡化各表示的有限几何伽罗瓦覆盖。每个非恒等甲板变换均无不动点，且阶与 <i>p</i> 互素。Deligne–Lusztig 的有限阶不动点公式 [15，定理 3.2] 使它在 <i>H</i><sub>c</sub><sup>∗</sup>(<i>Y</i>) 上的交错迹为零。虚特征标遂为正则特征标的倍数；取群不变量得该倍数为 χ<sub>c</sub>(<i>U</i>)。于是 χ<sub>c</sub>(<i>U,W</i>) = <i>r</i>χ<sub>c</sub>(<i>U</i>)。由乘法性和删去对角线，χ<sub>c</sub>(<i>U</i>) = (1−ℓ)²−(1−ℓ)=ℓ(ℓ−1)。所以紧支撑 <i>H</i>² 的维数恰为 <i>r</i>ℓ(ℓ−1)+<i>b</i>₁。</p>
@@ -201,14 +192,17 @@ for k in {4, 5}:
 <div class="eq">|∑<sub>(v,w)∈U(𝔽q)</sub> tr(Frob<sub>v,w</sub> | <i>W</i>)| ≤ <i>r</i>ℓ(ℓ−1)<i>q</i> + <i>b</i>₁(<i>q</i>+<i>q</i><sup>3/2</sup>)。</div></section>
 <section id="cubic-leading-term"><h2>16　汇总误差与首项系数</h2>
 <p>在 <i>S</i>₃ 上，三轮换示性函数的三倍为 1+sgn−std，其中 std 指二维标准表示的特征标。对 ℓ 个因子相乘，每个有序点对的乘积恰为 3<sup>ℓ</sup> 乘同时不可约的示性函数。全平凡项的和为 (<i>q</i>−ℓ)(<i>q</i>−ℓ−1)。其余项的秩之和为 (1+1+2)<sup>ℓ</sup>−1 = 4<sup>ℓ</sup>−1。</p>
-<p>第 15 节的 <i>q</i><sup>3/2</sup> 项由一阶上同调控制。含至少三个符号因子的张量项在此贡献零。余下至多 <i>M</i><sub>ℓ</sub> 项：选 <i>j</i> 个符号位置，其余位置各有平凡与标准两种选择。每项分别用 6ℓ+2 作维数上界，无须乘以该表示的秩。逐项相加即得 (12.1)。整个推导对 <i>S</i>、ℓ 和允许的 <i>q</i> 一致。</p>
-<p>任取 0 &lt; <i>c</i> &lt; 1/log 4，令 ℓ=⌊<i>c</i> log <i>q</i>⌋。将 (12.1) 除以 <i>q</i>²，误差至多为</p>
-<div class="eq"><i>O</i>(ℓ²4<sup>ℓ</sup>/<i>q</i> + (ℓ+1)³2<sup>ℓ</sup>/√<i>q</i>) = <i>o</i>(1)。</div>
-<p>主项除以 <i>q</i>² 趋于 1，故对任意 ℓ 元集都有遗漏的直线，<i>B</i>(<i>q</i>,3) ≥ ℓ+1。令 <i>c</i> 递增到 1/log 4 即得定理 7。这里的优点来自把最高的非平凡权项控制在多项式乘 2<sup>ℓ</sup>；若对它也使用总秩 4<sup>ℓ</sup>，只能恢复推论 6 的较小下界。</p>
+<p>无符号的非平凡项有 2<sup>ℓ</sup>−1 个，每项 <i>b</i>₁≤6ℓ+2。有一个符号的项有 ℓ2<sup>ℓ−1</sup> 个，每项至多 2。两个符号只有其余全平凡时才可能贡献，每个指标对至多贡献 1。更多符号时贡献为零。故 ∑<sub>W≠1</sub> <i>b</i>₁(<i>W</i>) ≤ <i>H</i><sub>ℓ</sub> ≤ 10ℓ2<sup>ℓ</sup>（ℓ≥1）。结合秩和即得 (12.1)，常数对参数集及域阶一致。</p>
+<h3>靠近端点时的误差</h3>
+<p>记 <i>L</i>=log <i>q</i>。除以 <i>q</i>² 后，两项误差至多为 ℓ²4<sup>ℓ</sup>/<i>q</i> 及 10ℓ2<sup>ℓ</sup>(1+1/√<i>q</i>)/√<i>q</i>。凡 ℓ=⌊<i>cL</i>⌋ 且 0&lt;<i>c</i>&lt;1/log 4，两项均趋零。更靠近端点，取</p>
+<div class="eq">ℓ = ⌊(<i>L</i>−2 log <i>L</i>)/log 4 − 5⌋。</div>
+<p>此时 2<sup>ℓ</sup> ≤ 2<sup>−5</sup>√<i>q</i>/<i>L</i>，归一误差的上极限至多 4<sup>−5</sup>/(log 4)² + 10·2<sup>−5</sup>/log 4 &lt; 0.23。主项除以 <i>q</i>² 趋于 1。因此充分大时任何 ℓ 元集都有遗漏直线，由单调性得 <i>B</i>(<i>q</i>,3) ≥ ℓ+1。特别地，</p>
+<div class="box"><i>B</i>(<i>q</i>,3) &gt; (log <i>q</i>−2 log log <i>q</i>)/log 4 − 5　（充分大的 <i>q</i>）。</div>
+<p>除以 log <i>q</i> 即得定理 7 的下极限。真实次项、最优首项常数及比值的收敛性仍待确定。</p>
 <h3>与三次多项式相关计数的关系</h3>
 <p>Pollack 的一般同时不可约估计与本题的三次归约见第 10 节。Bary-Soroker 的大有限域元组定理 [17] 在固定次数、固定平移数时给出渐近式。Bary-Soroker 与 Stix [18] 对两平移给出精确计数，Gorodetsky 与 Sawin [19] 研究两因子相关及其误差。在本题中，两平移的<strong>全斜率</strong>计数亦有直接校验：遗漏参数集大小恒为 <i>h</i>=(<i>q</i>+1)/3。由平移及立方缩放，仿射群在有序相异参数对上二重传递；对 <i>q</i>(<i>q</i>−1) 条非水平线作双计数，每对参数恰有 <i>h</i>(<i>h</i>−1) 条遗漏线。</p>
 <p>Cohen–Dimca–Orlik 的超平面配置非共振定理 [20，定理 1] 在适当单值假设下给出消没。考虑恰好两个标准因子、其余平凡的项。在 (<i>v,w</i>) 平面的射影闭包中，每条竖线、横线的惯性均有特征值 1。对角线的两因子均为三轮换，二者张量含特征值 1。无穷远直线的一般点处各 <i>t</i><sub>α</sub> 取非分支值，惯性平凡。因此没有一条边界直线满足 [20] 对该直线本身的非共振条件。第 14 节的维数上界也处理这类项。</p>
-<p>定理 7 需要对指定的任意 ℓ 元集控制两参数计数，且 ℓ 随 <i>q</i> 增长。此次查到的上述论文没有给出 (12.1)、第 14 节的张量一阶维数界或相应的阻塞系数。这里的优先权判断限于已检索的文献。<code>checks/cubic_pairs.py</code> 对小素域独立比较有序点对、三轮换和原始直线。第 12–18 节为数学证明。</p></section>
+<p>定理 7 需要对指定的任意 ℓ 元集控制两参数计数，且 ℓ 随 <i>q</i> 增长。Cohen–Suciu [21] 给出纤维型配置上一般局部系统的有限分辨率，Denham–Suciu [22，定理 1.2] 的消没定理要求相应圈无不变量。标准因子的有限子午圈有一条固定线。Shpilka [23，定理 1.4] 给出随覆盖复杂度变化的显式 Chebotarev 界，其定理 1.6 要求代入次数至少为 4。在所核对的公开来源中，未找到直接给出 (12.1) 的一致误差、上述次阶下界或相应阻塞系数的定理。</p></section>
 <section id="cubic-alteration"><h2>17　上界的对数对数改进</h2>
 <p>令 <i>q</i> ≡ 2 (mod 3)，且特征 <i>p</i> &gt; 3。第 10 节用随机平移覆盖直线。若允许第一步留下少量直线，再用一个参数同时击中它们，可以得到</p>
 <div class="box"><i>B</i>(<i>q</i>,3) ≤ (2 log <i>q</i> − log log <i>q</i>)/log 3 + <i>O</i>(1)。</div>
@@ -233,8 +227,26 @@ for k in {4, 5}:
 <p><strong>上界的次阶项。</strong> 第 17 节的光滑点在此特征仍满足同一雅可比判据。用 Castelnuovo–Severi 不等式估计过此点的分支亏格（亦见 [11，§4]）。在几何常数域 <i>k</i> 上令 <i>F</i><sub>i</sub>=<i>k</i>(α,<i>x</i>₁,…,<i>x</i><sub>i</sub>)。<i>F</i>₁=<i>k</i>(<i>x</i>₁) 为有理函数域，<i>F</i><sub>i</sub> 是 <i>F</i><sub>i−1</sub> 与 <i>k</i>(<i>x</i><sub>i</sub>) 的复合，对两者次数分别至多 3、3<sup><i>i</i>−1</sup>。故 <i>g</i><sub>i</sub> ≤ 3<i>g</i><sub>i−1</sub>+2·3<sup><i>i</i>−1</sup>，归纳得 <i>g</i><sub>t</sub> ≤ 2(<i>t</i>−1)3<sup><i>t</i>−1</sup>。所以 2<i>g</i><sub>t</sub> ≤ <i>G</i><sub>t</sub>；同一补点引理与随机取样仍给出 (2 log <i>q</i> − log log <i>q</i>)/log 3 + <i>O</i>(1) 的上界。</p>
 <p class="note">这是第 9 节特征标估计在一个野分支点上的应用，系数取自固定斜率。此处辅助素数取异于 2 的素数。[7，定理 13] 假设 <i>p</i> ∤ <i>d</i>(<i>d</i>−1)。Carmon 在特征 2 研究平移的相关性及通用分裂域。[9] 给出 Dickson 值集的一般公式。<a href="https://doi.org/10.1098/rsta.2014.0311">Carmon（2015）</a>。</p>
 </section>
-<section id="cubic-sources"><h2>两参数计数的参考文献与复算</h2>
-<div class="ref">
+<section id="checks"><h2>计算检验</h2>
+<h3>一个可以逐线比较的实例</h3>
+<p>在 𝔽₄₇ 取 <i>S</i>={0,1,3,5}。开集有 43·42=1,806 个有序点对。程序用多项式模幂判别三轮换，得到 18 个同时不可约点对；换回原坐标并直接代入所有域元素，得到 9 条斜率形如 3<i>u</i>² 的遗漏直线，每条恰出现两次。对每对不同平移，另在全部斜率上得到 16·15=240 条遗漏直线。</p>
+<pre>python checks/cubic_pairs.py</pre>
+<p>程序还对 11、17、41 元域运行相同检验，并在全部四个域上遍历每个非零的双平移差。第 14 节的一阶维数估计及定理 7 的渐近量词由证明给出。</p>
+<h3>配置空间上的有限线性代数检查</h3>
+<p><code>python checks/cubic_cohomology.py</code> 只施加异指标交换关系，构造包含真实余循环空间的解空间，扣除余边界。模 101 消元只会降低整系数关系矩阵的秩，且余边界秩在此特征保持。默认遍历 ℓ=1,…,6 的全部 83 个张量类型（按因子置换合并），逐项检查符号因子细分及总和。这个计算用来检出符号与维数计数错误，任意 ℓ 的结论由第 14 节证明。</p></section>
+<section id="references"><h2>参考文献</h2><div class="ref">
+<p>[1] S. Asgarli, D. Ghioca, C. H. Yip. <i>Blocking sets from a union of plane curves</i>. Designs, Codes and Cryptography 94, 217 (2026), §5. <a href="https://doi.org/10.1007/s10623-026-01958-z">期刊版与问题 5.4</a> · <a href="https://arxiv.org/abs/2510.15332">预印本</a>。</p>
+<p>[2] R. E. Jamison. <i>Covering finite fields with cosets of subspaces</i>. J. Combin. Theory A 22 (1977), 253–266. <a href="https://doi.org/10.1016/0097-3165(77)90001-2">原文</a>。</p>
+<p>[3] A. E. Brouwer, A. Schrijver. <i>The blocking number of an affine space</i>. J. Combin. Theory A 24 (1978), 251–253. <a href="https://ir.cwi.nl/pub/9858/9858D.pdf">原文</a>。</p>
+<p>[4] C. Zanella. <i>A condition for scattered linearized polynomials involving Dickson matrices</i>. J. Geom. 110, 50 (2019). <a href="https://arxiv.org/abs/1909.07802">原文</a>。</p>
+<p>[5] A. Bruen, J. C. Fisher. <i>Blocking sets and complete k-arcs</i>. Pacific J. Math. 53 (1974), 73–84. <a href="https://doi.org/10.2140/pjm.1974.53.73">原文</a>。</p>
+<p>[6] S. Li, A. Pott. <i>Intersection distribution, non-hitting index and Kakeya sets in affine planes</i> (2020). <a href="https://arxiv.org/abs/2003.06678">原文</a>。</p>
+<p>[7] P. Kurlberg, L. Rosenzweig. <i>Prime and Möbius correlations for very short intervals in 𝔽<sub>q</sub>[x]</i>，§7，定理 13、推论 14、16。<a href="https://preprint.press.jhu.edu/ajm/sites/default/files/AJM-kurl-rosen-FINAL.pdf">期刊定稿</a>。</p>
+<p>[8] D. Zywina. <i>Hilbert’s irreducibility theorem and the larger sieve</i>, §5.1，命题 5.1 的证明。<a href="https://davidzywina.github.io/papers/Quantitative-HIT.pdf">作者全文</a>。</p>
+<p>[9] W.-S. Chou, J. Gomez-Calderon, G. L. Mullen. <i>Value sets of Dickson polynomials over finite fields</i>, J. Number Theory 30 (1988), 334–344。<a href="https://doi.org/10.1016/0022-314X(88)90006-6">原文</a>。</p>
+<p>[10] P. Kurlberg. <i>Poisson spacing statistics for value sets of polynomials</i>, Int. J. Number Theory 5 (2009), 489–513，§2，命题 8。<a href="https://arxiv.org/abs/math/0602673">2006 年预印本</a> · <a href="https://kurlberg.github.io/eprints/crt2.pdf">作者全文</a>。</p>
+<p>[11] P. Pollack. <i>Simultaneous prime specializations of polynomials over finite fields</i>, Proc. Lond. Math. Soc. 97 (2008), 545–567，特别是引理 6–8、推论 15 与式 (4.4)。<a href="https://doi.org/10.1112/plms/pdn013">期刊版</a> · <a href="https://www.pollack-math.net/twinsl.pdf">作者全文</a>。</p>
+<p>[12] J. Bellaïche. <i>Théorème de Chebotarev et complexité de Littlewood</i>, Ann. Sci. Éc. Norm. Supér. (4) 49 (2016), 579–632，命题 6、10。<a href="https://doi.org/10.24033/asens.2291">期刊版</a> · <a href="https://www.numdam.org/item/10.24033/asens.2291.pdf#page=18">命题 10，第 594 页</a>。</p>
 <p>[13] E. Fadell, L. Neuwirth. <i>Configuration spaces</i>. Math. Scand. 10 (1962), 111–118. <a href="https://doi.org/10.7146/math.scand.a-10517">忘点纤维化</a>。</p>
 <p>[14] A. Grothendieck 等. <i>Revêtements étales et groupe fondamental</i> (SGA 1)，Exp. XIII，推论 2.9、§2.10。<a href="https://arxiv.org/pdf/math/0206203#page=304">驯专化与一阶基变换</a>。</p>
 <p>[15] P. Deligne, G. Lusztig. <i>Representations of reductive groups over finite fields</i>. Ann. of Math. 103 (1976), 103–161，定理 3.2。<a href="https://publications.ias.edu/sites/default/files/Number27.pdf">有限阶作用的交错迹</a>。</p>
@@ -243,11 +255,9 @@ for k in {4, 5}:
 <p>[18] L. Bary-Soroker, J. Stix. <i>Cubic twin prime polynomials are counted by a modular form</i>. Canad. J. Math. 71 (2019), 1323–1350，定理 1.4。<a href="https://doi.org/10.4153/CJM-2018-018-9">三次双平移精确计数</a>。</p>
 <p>[19] O. Gorodetsky, W. Sawin. <i>Correlation of arithmetic functions over 𝔽<sub>q</sub>[T]</i>. Math. Ann. 376 (2020), 1059–1106。<a href="https://doi.org/10.1007/s00208-019-01929-x">两因子相关</a>。</p>
 <p>[20] D. C. Cohen, A. Dimca, P. Orlik. <i>Nonresonance conditions for arrangements</i>. Ann. Inst. Fourier 53 (2003), 1883–1896，定理 1。<a href="https://www.numdam.org/article/AIF_2003__53_6_1883_0.pdf">原文</a>。</p>
-</div>
-<h3>一个可以逐线比较的实例</h3>
-<p>在 𝔽₄₇ 取 <i>S</i>={0,1,3,5}。开集有 43·42=1,806 个有序点对。程序用多项式模幂判别三轮换，得到 18 个同时不可约点对；换回原坐标并直接代入所有域元素，得到 9 条斜率形如 3<i>u</i>² 的遗漏直线，每条恰出现两次。对每对不同平移，另在全部斜率上得到 16·15=240 条遗漏直线。</p>
-<pre>python checks/cubic_pairs.py</pre>
-<p>程序还对 11、17、41 元域运行相同检验，并在全部四个域上遍历每个非零的双平移差。第 14 节的一阶维数估计及定理 7 的渐近量词由证明给出。</p></section>
-</body></html>
+<p>[21] D. C. Cohen, A. I. Suciu. <i>Homology of iterated semidirect products of free groups</i>，定理 2.11、6.10。<a href="https://arxiv.org/abs/alg-geom/9503002">作者全文</a>。</p>
+<p>[22] G. C. Denham, A. I. Suciu. <i>Local systems on complements of arrangements of smooth, complex algebraic hypersurfaces</i>. Forum Math. Sigma 6 (2018), e6，定理 1.2。<a href="https://doi.org/10.1017/fms.2018.5">期刊版</a>。</p>
+<p>[23] I. Benbenishty Shpilka. <i>Explicit error term in the Chebotarev density theorem for function fields</i>，定理 1.4、1.6。<a href="https://arxiv.org/abs/2611.28155">预印本</a>。</p>
+</div></section></body></html>
 
 

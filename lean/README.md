@@ -1,37 +1,31 @@
-# 有限域上单项式曲线的竖直平移与阻塞数
+# 手稿的 Lean 陈述与证明
 
-本工程对应配套中文手稿。主定理以射影直线与齐次曲线的原始方程为起点。最小值使用 Lean 的 `IsLeast`，同时断言存在达到该数的有限参数集，而且任一可行集都至少有这么多元素。
+工程使用 Lean 4.8.0，mathlib 固定在 `b5eba595428809e96f3ed113bc7ba776c5f801ac`。最小值使用 `IsLeast`，同时表达参数集的存在性和对所有参数集的下界。[手稿](../Manuscript.pdf) · [构建入口与公理清单](BlockingCurves.lean) · [锁文件](lake-manifest.json)
 
-## 复现
+## 从原问题到形式陈述
 
-需要 Git 和 Lean 版本管理器 elan。进入本文件所在目录后运行以下命令。首次运行时，Lake 会按锁文件获取 mathlib 及其依赖。
-
-```sh
-lake exe cache get
-lake build
-lake env lean BlockingCurves.lean
-```
-
-项目选择 Lean 4.8.0。mathlib 锁定为版本 v4.8.0，提交 `b5eba595428809e96f3ed113bc7ba776c5f801ac`。最后一条命令列出各项结果依赖的公理。构建已允许使用官方 mathlib 二进制缓存。全部交付的定理均从本包中的 Lean 源文件编译；八元域和四十一元域的有限计算证书使用内核归约。验证记录见 `verification.txt`。
-
-## 读代码
-
-| 手稿中的结果 | 代码入口 |
+| 审阅问题 | 独立可查的接口 |
 | --- | --- |
-| 三次临界值为 ±2u³−α；当特征大于 3、q ≡ 2 (mod 3) 且差集为真子集时存在避碰斜率 | [CubicSlope.lean](CubicSlope.lean)，`BlockingCurves.CubicSlope.critical_value_iff`、`exists_collision_free` |
-| 次数为 p 的幂时，完整射影问题的精确最小值 | `Paper.lean`，`BlockingCurves.projective_prime_power_minimum` |
-| 原始齐次曲线与逐线仿射判据等价，涵盖无穷远线 | `Projective.lean`，`projectiveBlocks_iff_graphHits` |
-| 任意有限域扩张上的迭代 Frobenius 及不动域次数 | `Frobenius.lean`，`iterated_frobenius_minimum` |
-| scattered 映射的充要刻画及其精确阻塞数 | `GeneralGeometry.lean`，`scattered_iff_forall_graphHits_iff`；`MainResult.lean`，`exact_scattered_minimum` |
-| 仿射超平面阻塞的经典上、下界 | `UpperBound.lean`，显式坐标轴构造；`LowerBound.lean`，有限域多项式求和 |
-| 四十一元域上的三次曲线族全局最小值 5 | `CubicGlobal.lean`，`BlockingCurves.Cubic41.projective_cubic_minimum` |
-| 所有五元素最优集、仿射轨道以及精确数量 328 | `CubicOrbit.lean`，`projective_cubic_orbit`、`orbit_card` |
-| 四十七元域三次曲线的最小值 5 | `Cubic47Global.lean`，`BlockingCurves.Cubic47.projective_cubic_minimum` |
-| 四十七元域最优集的单轨道分类、平凡稳定子和精确数量 2,162 | `Cubic47Orbit.lean`，`projective_cubic_orbit`、`stabilizer_exact`、`orbit_card` |
-| 固定含 0、1 后穷举四十七元域的 990 个四元集和 14,190 个五元集 | `Cubic47.lean`、`Cubic47Semantics.lean`、`Cubic47Symmetry.lean` |
-| 规范化、枚举的模型及其与模 41 方程的桥接 | `CubicSymmetry.lean`、`Cubic41.lean`、`Cubic41Semantics.lean`、`CubicGlobal.lean` |
-| 八元域的独立小例子，256 个参数集、56 个最优集 | `F8Example.lean`，只需 Lean 4.8.0 核心库 |
+| 是否表达原文的阻塞问题？ | [ProblemStatement](ProblemStatement.lean) 只导入 mathlib，写下原文 (5.3)–(5.4) 的值集相交条件。[StatementComparison](StatementComparison.lean) 证明它等价于 [Projective](Projective.lean) 的齐次射影条件，换元为两个参数同时取负。[AGY 原文，§5](https://arxiv.org/html/2510.15332v2) |
+| 曲线几何不可约吗？ | [GeometricIrreducibility](GeometricIrreducibility.lean) 在三个变量的多项式环中构造原式，核验总次数意义下的齐次性、求值为零的等价式、标量扩张到代数闭包后的不可约性。 |
+| 何时是非平凡阻塞集？ | [NontrivialPencil](NontrivialPencil.lean) 证明对所有次数至少 2 的曲线并，不含整条有理直线当且仅当参数集为真子集。在 Frobenius 情形给出可达的非平凡最小值和全域退化判据。 |
+| scattered 是否对应文献术语？ | [ScatteredComparison](ScatteredComparison.lean) 将非零向量的相同斜率条件与 [GeneralGeometry](GeneralGeometry.lean) 的核维数条件等同。[Zanella，§1](https://arxiv.org/abs/1909.07802) |
+| 不同有限域模型的结论如何互用？ | [FieldTransport](FieldTransport.lean) 经域同构搬运任意参数集的阻塞谓词及最小值。[PrimeFieldInstances](PrimeFieldInstances.lean) 在与定理 1 相同的 `GaloisField` 接口上陈述 41、47 两个结论。 |
 
-## 来源与研究范围
+这些比较来自同一工程。数学文献给出陈述的外部来源，等价证明、复现脚本和 CI 的维护责任均在本仓库。这里没有第三方维护的形式基准或人类同行评审认证。
 
-期刊版问题 5.4 问一般的有限域与次数。本文给出 Frobenius 次数子族和两个非 Frobenius 三次例子的精确答案。已有的仿射阻塞数定理归于 Jamison、Brouwer 和 Schrijver。首版检索日期为 2026 年 11 月 25 日，文献检索与优先权边界详见手稿。四十七元域的代表元与计算分类由 Dot 提出。[原问题](https://doi.org/10.1007/s10623-026-01958-z) · [经典阻塞数定理](https://ir.cwi.nl/pub/9858/9858D.pdf)
+## 定理入口
+
+| 手稿 | 从陈述追到证书 |
+| --- | --- |
+| 定理 1 与定理 3 | [Paper](Paper.lean) 的 `projective_prime_power_minimum` 经 [Frobenius](Frobenius.lean) 和 [MainResult](MainResult.lean) 化为仿射超平面阻塞数。[LowerBound](LowerBound.lean) 与 [UpperBound](UpperBound.lean) 证明上下界。[GeneralGeometry](GeneralGeometry.lean) 证明 scattered 的充要刻画。 |
+| 八元域 | [F8Example](F8Example.lean) 核验位运算与 256 个掩码。[F8Semantics](F8Semantics.lean) 将这些掩码与八元域全部参数集双射，逐集保基数和阻塞性。`projective_optimal_count` 在 `GaloisField 2 3` 上计得 56 个四元最优集。 |
+| 定理 2，模 41 | [位表](Cubic41.lean) → [逐线方程](Cubic41Semantics.lean) → [归一化](CubicSymmetry.lean) → [全局最小值](CubicGlobal.lean) 与 [328 个最优集](CubicOrbit.lean)。 |
+| 定理 4，模 47 | [位表](Cubic47.lean) → [逐线方程](Cubic47Semantics.lean) → [归一化](Cubic47Symmetry.lean) → [全局最小值](Cubic47Global.lean) 与 [轨道及稳定子](Cubic47Orbit.lean)。两锚点枚举覆盖 990 个四元和 14,190 个五元候选。 |
+| 第 7–10 节的三次避碰引理 | [CubicSlope](CubicSlope.lean) 核验有理临界值的方程及由差集条件选出无碰撞斜率。单值、迹估计和对数定理的证明见手稿。 |
+
+## 复现与验证记录
+
+在仓库根目录先进入 `lean/` 运行 `lake exe cache get`，然后回到根目录运行 `python checks/verify_lean.py`。脚本执行 `lake build`，重放入口的每条 `#print axioms`，检查所有源码模块均在入口导入闭包内，再以 Lean 自带的公理收集器递归追踪所有安全声明和带源码位置的不安全声明。编译器产生的无源码不安全辅助符号不单独用作根；从根出发的依赖闭包全量检查。允许的公理是 `Classical.choice`、`Quot.sound`、`propext`。
+
+[verification.txt](verification.txt) 记录逐定理结果以及所有 Lean 源码、工具链和锁文件的 SHA-256。输入规范为 LF 换行，Linux 与 Windows 可以对照同一记录。修改源码后运行 `python checks/verify_lean.py --write`，审阅新的哈希与公理差异并与源码一同提交。[验证程序](../checks/verify_lean.py)

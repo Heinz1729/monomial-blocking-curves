@@ -1,38 +1,69 @@
-Research manuscript verification / 形式验证记录
-2026-11-25, Asia/Shanghai
-Lean 4.8.0 (df668f00e6c0), mathlib b5eba595428809e96f3ed113bc7ba776c5f801ac
-Fresh project directory. Pinned library dependencies were available in a local cache. Project modules were compiled from source.
+Lean project verification
+leanprover/lean4:v4.8.0
+lake build: passed
+lake env lean BlockingCurves.lean: passed
+All safe declarations and source-located unsafe declarations in all project modules: passed
+Allowed axioms: Classical.choice, Quot.sound, propext
 
-$ lake build
-Build completed successfully. Exit code 0.
+Selected results
+BlockingCurves.projective_prime_power_minimum  [Classical.choice, Quot.sound, propext]
+BlockingCurves.scattered_iff_forall_graphHits_iff  [Classical.choice, Quot.sound, propext]
+BlockingCurves.exact_scattered_minimum  [Classical.choice, Quot.sound, propext]
+BlockingCurves.Cubic41.projective_cubic_minimum  [Classical.choice, Quot.sound, propext]
+BlockingCurves.Cubic41.projective_cubic_orbit  [Classical.choice, Quot.sound, propext]
+BlockingCurves.Cubic41.orbit_card  [Classical.choice, Quot.sound, propext]
+CubicPencil41.classify_normalized_five  [propext]
+CubicFieldExample.optimal_sets  [propext]
+CubicPencil47.classify_normalized_five  [propext]
+BlockingCurves.Cubic47.projective_cubic_minimum  [Classical.choice, Quot.sound, propext]
+BlockingCurves.Cubic47.projective_cubic_orbit  [Classical.choice, Quot.sound, propext]
+BlockingCurves.Cubic47.orbit_card  [Classical.choice, Quot.sound, propext]
+BlockingCurves.CubicSlope.critical_value_iff  [Classical.choice, Quot.sound, propext]
+BlockingCurves.CubicSlope.exists_collision_free  [Classical.choice, Quot.sound, propext]
+BlockingCurves.projectiveBlocks_iff_AGY  [Classical.choice, Quot.sound, propext]
+BlockingCurves.monomialCurveForm_isHomogeneous  [Classical.choice, Quot.sound, propext]
+BlockingCurves.monomialCurveForm_eval_eq_zero_iff  [Classical.choice, Quot.sound, propext]
+BlockingCurves.monomialCurveForm_geometrically_irreducible  [Classical.choice, Quot.sound, propext]
+BlockingCurves.scattered_iff_scatteredSlopes  [Classical.choice, Quot.sound, propext]
+BlockingCurves.noFullProjectiveLine_iff  [Classical.choice, Quot.sound, propext]
+BlockingCurves.frobenius_divisible_only_univ  [Classical.choice, Quot.sound, propext]
+BlockingCurves.nontrivial_projective_prime_power_minimum  [Classical.choice, Quot.sound, propext]
+CubicFieldExample.blocks_iff_galoisField  [Classical.choice, Quot.sound, propext]
+CubicFieldExample.decoded_card  [Quot.sound, propext]
+CubicFieldExample.projective_optimal_count  [Classical.choice, Quot.sound, propext]
+BlockingCurves.projectiveBlocks_image_iff  [Classical.choice, Quot.sound, propext]
+BlockingCurves.cubic41_galoisField_minimum  [Classical.choice, Quot.sound, propext]
+BlockingCurves.cubic47_galoisField_minimum  [Classical.choice, Quot.sound, propext]
 
-$ lake env lean BlockingCurves.lean
-Exit code 0.
-'BlockingCurves.projective_prime_power_minimum' depends on axioms: [propext, Quot.sound, Classical.choice]
-'BlockingCurves.scattered_iff_forall_graphHits_iff' depends on axioms: [propext, Quot.sound, Classical.choice]
-'BlockingCurves.exact_scattered_minimum' depends on axioms: [propext, Quot.sound, Classical.choice]
-'BlockingCurves.Cubic41.projective_cubic_minimum' depends on axioms: [propext, Quot.sound, Classical.choice]
-'BlockingCurves.Cubic41.projective_cubic_orbit' depends on axioms: [propext, Quot.sound, Classical.choice]
-'BlockingCurves.Cubic41.orbit_card' depends on axioms: [propext, Quot.sound, Classical.choice]
-'CubicPencil41.classify_normalized_five' depends on axioms: [propext]
-'CubicFieldExample.optimal_sets' depends on axioms: [propext]
-
-SHA-256 of packaged source files
-c3c27e9135bdb0a315d201703700e3058dbdce33e11ccedccc556c6fd9a6b5a5  BlockingCurves.lean
+SHA-256 (UTF-8 source bytes with LF line endings)
+615b367c887c663b3b182c316e2825094e716422551f1017e8fe2d1868d9fa86  BlockingCurves.lean
 626cd88a4e5c40b4602fe74c29b8c711b6d238f1b16e43c493f9621a75e5402f  Cubic41.lean
 da432c523306c0267c0dee96ff81242a672a60f1a971b246de0750d925d8597c  Cubic41Semantics.lean
-8006393b21f99e1b39f9a860b943cfef5000b34d50fbe01c3ba8c4b5e2f74ef6  CubicGlobal.lean
-df6478c718f046eab0dff5c9caafc5e263f73e3a17fe8db08a027cee4776c454  CubicOrbit.lean
-496d1a7dd9ef9fef9c59c424f44dcf0d538b31a50b31bcab7177e613077bae14  CubicSymmetry.lean
-dc7797646943fc50548a26498c460d1c426d05276f1a6856cea74a3be73a26ee  F8Example.lean
-a075529e6804f9e75c8576959e7450d2d580f79a80836bc30cf1e4ba30250b3f  Frobenius.lean
-ba7ce7fd80139fce6f2abbc59fa3d94dbcd42e2310cf1f7d391d8af59e0d8906  GeneralGeometry.lean
-5e05e61cae4f29d4daa7dfa66af2d2d492ac7462a52eca847bc42e42881021a8  lakefile.lean
-408c799b9d6175668789fe91d4112e1f18e74ec5c45baef4ec5223af147f4c1a  LowerBound.lean
-8646e90a3ac95cf27218f1bfb3893666d1f3a22b44dd11ff4c87e2e2a7e47086  MainResult.lean
-2e44c8136ddfb48b9d021825f5620952e74f6e0e2493924801c06adf700e978a  Paper.lean
-ed2993b4f66e5ec652e4788931ce46c923b8f58c4923e78fecbdfff639471e15  Projective.lean
+6df650dea42fe010b74594a035a081ca062a3a499a27d5b48ddd97266f856f34  Cubic47.lean
+854e00d07db64eb994d21cce2d602cf00e0d3404bb159e6b63c8ec094b200522  Cubic47Global.lean
+72703fe3838105917207b5a2383e1732ffb6605ef634e28ce1a02c70cd56877f  Cubic47Orbit.lean
+d1690cec73fb0eff4d6bad4d9d86f695b0e45717f020e44badf10b8769e9e7fb  Cubic47Semantics.lean
+232a6b83ec8aab206634ae84448b55f6d9424167931a06dedd8401d77976b20d  Cubic47Symmetry.lean
+068af0351a3d55a97d9bdb4fdc6e6af02416bffd138edaf8d63ae8787165cf4e  CubicGlobal.lean
+5672a2649eb1ead236f40f4b19596636bb4e46b008ed256544cc3e265c91bf51  CubicOrbit.lean
+3c4b9958346c304813e068972afc6611b626cce9105d091181d99c538753dc99  CubicSlope.lean
+90a36ec8cd113a8344fe9fee66796585de69a21abda376672cefc86d8c16aab9  CubicSymmetry.lean
+1f3f67c7f9683e73102c948d7b3d57e25933eda5a9218e4c8d53be00e6c99925  F8Example.lean
+2c61fc19c7debca20948e187a1ad64d97d90515d7660aca60dcbabfb301019d1  F8Semantics.lean
+b7f77d12eaa7d5c22355658cf6dde38e29ce788f27a948723574afbe1b054085  FieldTransport.lean
+0f563b0699cc18a502794883ec1da0b84a9c0a234718e9a14834eab7c256e2b8  Frobenius.lean
+144356f1d1eea85a33515744a37d4ee5136e2eb915e76273f8a26c9cec056e57  GeneralGeometry.lean
+8e78b721353ee30bd58ef9fc7472c8ab033bca90a17a7c20a3e788bfa79c2c62  GeometricIrreducibility.lean
+fbdcd87aebdaa352199770e7d94f3b6a21223995116f414a7baa0f0868c0c5d7  LowerBound.lean
+69dcf0420a7e6142a409acab637f06de581e51f4353fecb9d14c2c2ecfe912fd  MainResult.lean
+e5281bf1b549f55b241466e714cb82cbe67d5d0478517810a3d665df2bcb3a87  NontrivialPencil.lean
+2f3b5ea8e9251c3ef2875f56c089c67218d1d1cc7951cd13977a900dd132700c  Paper.lean
+ecc335c6f2ce2bf5118a152ce60c91c56131748d06fbcb674e2a059c48573706  PrimeFieldInstances.lean
+d7429ca4b9a89ea136354b4635370f2a6ec22192691eeebba9f8305af243f85f  ProblemStatement.lean
+1f3dc146e21342e2ce01c6dd82fc5cb6438d27796b2193c9781812d1af13a998  Projective.lean
+f001c181afd95cb55aa35d9fd26d9056333a06838b92164293615c99c81b3a99  ScatteredComparison.lean
+8b4269b8a654db20aba19c04468219bd506057cc65b08cfb660cd36364669f46  StatementComparison.lean
 2e906616c04bc8a2e91c101f9cfb8e3d62a458e84193beff13331ca68b594de4  UpperBound.lean
-153acda58c89be5482115fe67ee11493a8211764f5d83f5b760e4fcf59b6222a  lake-manifest.json
-0df6875bfd9a61fc67fb394183802c10d10d54e5d0b3ffcb4804055cb2e76bc3  lean-toolchain
-b0fde49185c0e7aa0ae900cfca50b93113c9615c11385390d48ecac76fb2fc6c  README.md
+8f40e354ba38181dc2e33e2617224aede6bfe51e2b6d48680ce69d29972d883f  lakefile.lean
+021b17d7609dca541fab5fc95f674618fb9dd8ace15871f8f35f7d1e53336996  lake-manifest.json
+61561b06f5587e027815fac8f59bf6ca160dfbf3f7372fc6297664acfd85b8c0  lean-toolchain

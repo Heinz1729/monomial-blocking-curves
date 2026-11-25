@@ -1,0 +1,24 @@
+name: Verify manuscript certificates
+on: [push, pull_request, workflow_dispatch]
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+      - uses: leanprover/lean-action@v1
+        with:
+          lake-package-directory: lean
+          auto-config: 'false'
+          use-github-cache: 'false'
+          use-mathlib-cache: 'true'
+          build: 'false'
+      - run: python3 checks/verify_lean.py
+      - name: Independent finite checks
+        run: |
+          python3 checks/cubic47.py
+          python3 checks/cubic_slope.py
+          python3 checks/cubic_pairs.py
+          python3 checks/cubic_cohomology.py

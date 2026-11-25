@@ -10,4 +10,6 @@ lean_lib BlockingCurves where
   roots := #[`BlockingCurves, `GeneralGeometry, `UpperBound, `LowerBound, `MainResult,
     `Projective, `Frobenius, `Paper, `F8Example, `Cubic41, `Cubic41Semantics,
     `CubicSymmetry, `CubicGlobal, `CubicOrbit, `Cubic47, `Cubic47Semantics,
-    `Cubic47Symmetry, `Cubic47Global, `Cubic47Orbit, `CubicSlope]
+    `Cubic47Symmetry, `Cubic47Global, `Cubic47Orbit, `CubicSlope, `ProblemStatement,
+    `StatementComparison, `GeometricIrreducibility, `ScatteredComparison, `NontrivialPencil,
+    `FieldTransport, `PrimeFieldInstances, `F8Semantics]
