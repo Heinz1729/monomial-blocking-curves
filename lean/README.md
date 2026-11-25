@@ -18,6 +18,7 @@ lake env lean BlockingCurves.lean
 
 | 手稿中的结果 | 代码入口 |
 | --- | --- |
+| 三次临界值为 ±2u³−α；当特征大于 3、q ≡ 2 (mod 3) 且差集为真子集时存在避碰斜率 | [CubicSlope.lean](CubicSlope.lean)，`BlockingCurves.CubicSlope.critical_value_iff`、`exists_collision_free` |
 | 次数为 p 的幂时，完整射影问题的精确最小值 | `Paper.lean`，`BlockingCurves.projective_prime_power_minimum` |
 | 原始齐次曲线与逐线仿射判据等价，涵盖无穷远线 | `Projective.lean`，`projectiveBlocks_iff_graphHits` |
 | 任意有限域扩张上的迭代 Frobenius 及不动域次数 | `Frobenius.lean`，`iterated_frobenius_minimum` |
