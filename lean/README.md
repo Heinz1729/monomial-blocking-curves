@@ -26,6 +26,8 @@
 
 ## 复现与验证记录
 
+Linux 上的核归约会遍历最多 47² 行。验证程序为主线程申请至多 128 MiB 栈，Lake 为 Lean 工作线程设置同样的栈大小。若直接在 shell 中单独运行 `lake build` 且默认栈很小，可先执行 `ulimit -s 131072`。
+
 在仓库根目录先进入 `lean/` 运行 `lake exe cache get`，然后回到根目录运行 `python checks/verify_lean.py`。脚本执行 `lake build`，重放入口的每条 `#print axioms`，检查所有源码模块均在入口导入闭包内，再以 Lean 自带的公理收集器递归追踪所有安全声明和带源码位置的不安全声明。编译器产生的无源码不安全辅助符号不单独用作根；从根出发的依赖闭包全量检查。允许的公理是 `Classical.choice`、`Quot.sound`、`propext`。
 
 [verification.txt](verification.txt) 记录逐定理结果以及所有 Lean 源码、工具链和锁文件的 SHA-256。输入规范为 LF 换行，Linux 与 Windows 可以对照同一记录。修改源码后运行 `python checks/verify_lean.py --write`，审阅新的哈希与公理差异并与源码一同提交。[验证程序](../checks/verify_lean.py)
