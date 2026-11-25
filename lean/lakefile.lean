@@ -9,4 +9,5 @@ require mathlib from git "https://github.com/leanprover-community/mathlib4.git" 
 lean_lib BlockingCurves where
   roots := #[`BlockingCurves, `GeneralGeometry, `UpperBound, `LowerBound, `MainResult,
     `Projective, `Frobenius, `Paper, `F8Example, `Cubic41, `Cubic41Semantics,
-    `CubicSymmetry, `CubicGlobal, `CubicOrbit]
+    `CubicSymmetry, `CubicGlobal, `CubicOrbit, `Cubic47, `Cubic47Semantics,
+    `Cubic47Symmetry, `Cubic47Global, `Cubic47Orbit]

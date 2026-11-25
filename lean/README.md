@@ -25,9 +25,12 @@ lake env lean BlockingCurves.lean
 | 仿射超平面阻塞的经典上、下界 | `UpperBound.lean`，显式坐标轴构造；`LowerBound.lean`，有限域多项式求和 |
 | 四十一元域上的三次曲线族全局最小值 5 | `CubicGlobal.lean`，`BlockingCurves.Cubic41.projective_cubic_minimum` |
 | 所有五元素最优集、仿射轨道以及精确数量 328 | `CubicOrbit.lean`，`projective_cubic_orbit`、`orbit_card` |
+| 四十七元域三次曲线的最小值 5 | `Cubic47Global.lean`，`BlockingCurves.Cubic47.projective_cubic_minimum` |
+| 四十七元域最优集的单轨道分类、平凡稳定子和精确数量 2,162 | `Cubic47Orbit.lean`，`projective_cubic_orbit`、`stabilizer_exact`、`orbit_card` |
+| 固定含 0、1 后穷举四十七元域的 990 个四元集和 14,190 个五元集 | `Cubic47.lean`、`Cubic47Semantics.lean`、`Cubic47Symmetry.lean` |
 | 规范化、枚举的模型及其与模 41 方程的桥接 | `CubicSymmetry.lean`、`Cubic41.lean`、`Cubic41Semantics.lean`、`CubicGlobal.lean` |
 | 八元域的独立小例子，256 个参数集、56 个最优集 | `F8Example.lean`，只需 Lean 4.8.0 核心库 |
 
 ## 来源与研究范围
 
-期刊版问题 5.4 问一般的有限域与次数。本文给出 Frobenius 次数子族和一个具体非 Frobenius 三次例子的精确答案。已有的仿射阻塞数定理归于 Jamison、Brouwer 和 Schrijver。检索日期为 2026 年 11 月 25 日，文献检索与优先权边界详见手稿。[原问题](https://doi.org/10.1007/s10623-026-01958-z) · [经典阻塞数定理](https://ir.cwi.nl/pub/9858/9858D.pdf)
+期刊版问题 5.4 问一般的有限域与次数。本文给出 Frobenius 次数子族和两个非 Frobenius 三次例子的精确答案。已有的仿射阻塞数定理归于 Jamison、Brouwer 和 Schrijver。首版检索日期为 2026 年 11 月 25 日，文献检索与优先权边界详见手稿。四十七元域的代表元与计算分类由 Dot 提出。[原问题](https://doi.org/10.1007/s10623-026-01958-z) · [经典阻塞数定理](https://ir.cwi.nl/pub/9858/9858D.pdf)

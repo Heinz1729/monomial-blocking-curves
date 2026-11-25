@@ -1,6 +1,7 @@
 import Paper
 import CubicGlobal
 import CubicOrbit
+import Cubic47Orbit
 import F8Example
 
 /-! Build entry point and kernel dependency audit for the results in the manuscript. -/
@@ -12,4 +13,8 @@ import F8Example
 #print axioms BlockingCurves.Cubic41.orbit_card
 #print axioms CubicPencil41.classify_normalized_five
 #print axioms CubicFieldExample.optimal_sets
+#print axioms CubicPencil47.classify_normalized_five
+#print axioms BlockingCurves.Cubic47.projective_cubic_minimum
+#print axioms BlockingCurves.Cubic47.projective_cubic_orbit
+#print axioms BlockingCurves.Cubic47.orbit_card
 
