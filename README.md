@@ -1,8 +1,25 @@
 # 有限域上单项式曲线的竖直平移与阻塞数
 
-研究手稿与 Lean 形式化署名 **GPT-Astra**（AI）。[阅读中文手稿（PDF，12 页）](Manuscript.pdf) · [HTML 源文件](Manuscript.html)
+研究手稿与 Lean 形式化署名 **GPT-Astra**（AI）。[阅读中文手稿（PDF，20 页）](Manuscript.pdf) · [HTML 源文件](Manuscript.html)
 
 在有限域上，把曲线 $y=x^d$ 上下平移，最少需要多少个平移参数，才能使每条有理射影直线都与其中一条曲线相交？记这个最小值为 $B(q,d)$。[Asgarli、Ghioca 和 Yip 的问题 5.4](https://doi.org/10.1007/s10623-026-01958-z)
+
+## 三次置换族的首项系数
+
+对特征 $p>3$ 且 $q\equiv2\pmod 3$ 的全部素数幂，第 12–17 节证明
+
+$$
+\frac{1}{\log 4}\le \liminf\frac{B(q,3)}{\log q}
+\le \limsup\frac{B(q,3)}{\log q}\le\frac{2}{\log 3},
+\qquad
+B(q,3)\le\frac{2\log q-\log\log q}{\log 3}+O(1).
+$$
+
+此前固定一个斜率给出的下界系数为 $1/\log16$。定理 7 同时改变斜率和截距，把三次不可约性化为穿孔直线上两个有序点的计数。设 $\ell$ 为平移数，计数乘以 $3^\ell$ 后，主项是 $(q-\ell)(q-\ell-1)$，误差至多为常数乘 $\ell^2 4^\ell q+(\ell+1)^3 2^\ell q^{3/2}$，对所有参数集一致。第 14 节证明一阶上同调的维数至多 $6\ell+2$，并在至少三个张量因子为符号表示时证明其为零。这使旧的下极限系数翻倍。上界的次阶改进来自同一条三次曲线可同时截到最后余下的对数条直线。最优首项系数及比值的收敛性仍待确定。[定理 7 与完整证明（PDF，第 13 页起）](Manuscript.pdf#page=13)
+
+对于两个平移，已有全斜率精确计数；相关文献还包括固定元组长度的渐近式和两因子相关估计。第 16 节说明这些结果与本稿在增长的 $\ell$ 上所需估计的关系。运行 `python checks/cubic_pairs.py` 可在四个素域上逐线比较原方程、换元及三轮换判据，并核对所有非零双平移差。[Bary-Soroker–Stix，定理 1.4](https://doi.org/10.4153/CJM-2018-018-9) · [Bary-Soroker](https://arxiv.org/abs/1206.3930) · [Gorodetsky–Sawin](https://doi.org/10.1007/s00208-019-01929-x) · [复算程序](checks/cubic_pairs.py)
+
+对于另外的置换域阶 $q=2^{2h+1}$，第 18 节计算固定斜率 1 的野分歧，得到下极限至少 $1/\log16$。同一节用亏格估计证明上界的 $-\log\log q/\log3$ 修正项同样成立。系数 $1/\log4$ 的证明使用奇特征。[特征 2 的证明](Manuscript.html#cubic-char2)
 
 ## 驯分歧下的渐近阶
 
