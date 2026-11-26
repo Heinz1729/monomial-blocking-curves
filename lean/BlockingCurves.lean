@@ -9,6 +9,11 @@ import ScatteredComparison
 import NontrivialPencil
 import F8Semantics
 import PrimeFieldInstances
+import CubicPairCount
+import CubicCocycles
+import CubicCovering
+import FrobeniusCoset
+import Sextic32Global
 
 /-! Build entry point and kernel dependency audit for the results in the manuscript. -/
 #print axioms BlockingCurves.projective_prime_power_minimum
@@ -39,4 +44,27 @@ import PrimeFieldInstances
 #print axioms BlockingCurves.projectiveBlocks_image_iff
 #print axioms BlockingCurves.cubic41_galoisField_minimum
 #print axioms BlockingCurves.cubic47_galoisField_minimum
+#print axioms BlockingCurves.AGY_admissible
+#print axioms BlockingCurves.AGY_incidence_mk
+#print axioms BlockingCurves.AGY_curve_mk
+#print axioms BlockingCurves.AGY_containsNoLine_iff
+#print axioms BlockingCurves.AGY_minimum_iff
+#print axioms BlockingCurves.CubicCocycles.signMap_injective
+#print axioms BlockingCurves.CubicCocycles.subsingleton_of_two_signs
+#print axioms BlockingCurves.CubicCocycles.subsingleton_of_three_signs
+#print axioms BlockingCurves.CubicCocycles.one_sign_finrank_le_two
+#print axioms BlockingCurves.CubicPairCount.escapeCount_eq_zero_of_blocks
+#print axioms BlockingCurves.CubicPairCount.blocking_card_lower_of_trace
+#print axioms BlockingCurves.CubicPairCount.fixed_blocking_card_lower_of_trace
+#print axioms BlockingCurves.CubicAsymptotics.twist_point_threshold
+#print axioms BlockingCurves.CubicCovering.exists_projective_cover
+#print axioms BlockingCurves.CubicCovering.cubic_upper_of_miss_bound
+#print axioms BlockingCurves.FrobeniusCoset.exists_derangement_of_two_transitive
+#print axioms Sextic32.multiplication_model
+#print axioms Sextic32.hits_iff_projective
+#print axioms Sextic32.no_normalized_six
+#print axioms Sextic32.rows_verified
+#print axioms Sextic32.witness_verified
+#print axioms Sextic32.projective_sextic_minimum
+#print axioms Sextic32.pencil_minimum
 

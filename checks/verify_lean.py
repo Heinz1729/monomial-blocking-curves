@@ -5,7 +5,6 @@ import json
 from pathlib import Path
 import re
 import subprocess
-import sys
 
 
 ALLOWED = {"propext", "Classical.choice", "Quot.sound"}
@@ -59,15 +58,6 @@ run_cmd do
 
 
 def record(project):
-    if sys.platform.startswith("linux"):
-        # The process stack also bounds reductions on Lean's main thread.
-        import resource
-        soft, hard = resource.getrlimit(resource.RLIMIT_STACK)
-        target = 128 * 1024 * 1024
-        if hard != resource.RLIM_INFINITY:
-            target = min(target, hard)
-        if soft != resource.RLIM_INFINITY and soft < target:
-            resource.setrlimit(resource.RLIMIT_STACK, (target, hard))
     lean(project, "build")
     entry = project / "BlockingCurves.lean"
     expected = re.findall(r"^#print axioms ([\w.]+)$", entry.read_text(encoding="utf-8"), re.M)

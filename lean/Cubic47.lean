@@ -1,4 +1,4 @@
-import Lean
+import CubicCertificate
 
 /-! Exhaustive certificate for the vertical translates of y=x³ over F₄₇.
 A natural number encodes a subset of the 47 residues by its membership bits.
@@ -75,7 +75,9 @@ def rowTable : List Nat :=
     127519619147260, 122719558672228, 126988467409788, 122981283164060, 127460065097708,
     138072409177500, 85708689011692]
 
-theorem rows_verified : difficultRows = rowTable := by decide
+theorem rows_verified : difficultRows = rowTable := by
+  rw [difficultRows, allRows, CubicCertificate.filter_bind]
+  decide
 
 /-- Test intersection with each row still requiring a witness after normalization. -/
 def hitsRows (mask : Nat) : Bool := rowTable.all fun r => (r &&& mask) != 0
@@ -94,9 +96,16 @@ def fourSolutions := pairs.filter fun p => hitsRows (maskOf [p.1,p.2])
 
 def fiveSolutions := triples.filter fun p => hitsRows (maskOf [p.1,p.2.1,p.2.2])
 
-theorem enumeration_sizes : pairs.length = 990 ∧ triples.length = 14190 := by decide
+theorem enumeration_sizes : pairs.length = 990 ∧ triples.length = 14190 := by
+  constructor
+  · rw [pairs, CubicCertificate.length_bind]
+    decide
+  · rw [triples, CubicCertificate.length_bind, pairs, CubicCertificate.count_bind]
+    decide
 
-theorem no_normalized_four : fourSolutions = [] := by decide
+theorem no_normalized_four : fourSolutions = [] := by
+  rw [fourSolutions, pairs, CubicCertificate.filter_bind]
+  decide
 
 def representativeTriples : List (Nat × Nat × Nat) :=
   [(3,15,33), (3,21,22), (5,11,16), (7,15,41), (7,16,23), (7,33,41), (9,10,27), (9,10,30),
@@ -104,7 +113,9 @@ def representativeTriples : List (Nat × Nat × Nat) :=
     (26,27,29), (26,27,45), (26,35,39), (32,37,43)]
 
 theorem classify_normalized_five :
-    fiveSolutions = representativeTriples := by decide
+    fiveSolutions = representativeTriples := by
+  rw [fiveSolutions, triples, CubicCertificate.filter_bind, pairs, CubicCertificate.bind_blocks]
+  decide
 
 #print axioms rows_verified
 #print axioms enumeration_sizes

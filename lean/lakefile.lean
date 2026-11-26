@@ -7,11 +7,11 @@ require mathlib from git "https://github.com/leanprover-community/mathlib4.git" 
 
 @[default_target]
 lean_lib BlockingCurves where
-  -- The kernel reduces lists of up to 47² cubic rows in the finite certificates.
-  weakLeanArgs := #["--tstack=131072"]
   roots := #[`BlockingCurves, `GeneralGeometry, `UpperBound, `LowerBound, `MainResult,
     `Projective, `Frobenius, `Paper, `F8Example, `Cubic41, `Cubic41Semantics,
     `CubicSymmetry, `CubicGlobal, `CubicOrbit, `Cubic47, `Cubic47Semantics,
     `Cubic47Symmetry, `Cubic47Global, `Cubic47Orbit, `CubicSlope, `ProblemStatement,
     `StatementComparison, `GeometricIrreducibility, `ScatteredComparison, `NontrivialPencil,
-    `FieldTransport, `PrimeFieldInstances, `F8Semantics]
+    `FieldTransport, `PrimeFieldInstances, `F8Semantics, `CubicCertificate, `CubicPairCount,
+    `CubicAsymptotics, `CubicCocycles, `CubicCovering, `FrobeniusCoset,
+    `Sextic32, `Sextic32Geometry, `Sextic32Search, `Sextic32Global]

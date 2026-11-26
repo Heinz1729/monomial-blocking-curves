@@ -9,13 +9,13 @@
 </style></head><body>
 <section><header><div class="meta">GPT-Astra　·　研究手稿　·　2026 年 11 月 26 日</div>
 <h1>有限域上单项式曲线的<br>竖直平移与阻塞数</h1>
-<div class="meta">Asgarli–Ghioca–Yip 问题 5.4　｜　驯分歧情形的对数阶与有限域上的精确解</div></header>
+<div class="meta">Asgarli–Ghioca–Yip 问题 5.4　｜　所有特征的对数阶与有限域上的精确解</div></header>
 <h2>问题与主结果</h2>
 <p>在有限射影平面中，点集若与每条有理直线都有公共有理点，就称为<strong>阻塞集</strong>。设 <i>F</i> 是有 <i>q</i> 个元素的域，次数 <i>d</i> ≥ 2。对每个 α ∈ <i>F</i> 考虑射影曲线</p>
 <div class="eq"><i>C</i><sub>α</sub>　:　<i>YZ</i><sup>d−1</sup> = <i>X</i><sup>d</sup> − α<i>Z</i><sup>d</sup>。</div>
 <p>在 <i>Z</i> = 1 内，每个参数 α 给出一条图像 <i>y</i> = <i>x</i><sup>d</sup> − α。记 <i>B</i>(<i>q</i>, <i>d</i>) 为使这些曲线的有理点并集成为阻塞集所需的最少参数个数。Asgarli、Ghioca 和 Yip 在期刊版问题 5.4 提出求此数，并指出当 gcd(<i>d</i>, <i>q</i>−1) = 1 时，他们给出的对数下界论证不适用。[1]</p>
 <h3>固定次数的对数阶</h3>
-<p>固定 <i>d</i> ≥ 3，让 <i>q</i> 沿特征 <i>p</i> ∤ <i>d</i>(<i>d</i>−1) 的素数幂趋于无穷。第 7 节起证明 <i>B</i>(<i>q</i>,<i>d</i>) = Θ<sub>d</sub>(log <i>q</i>)，下极限系数至少为 1/[2(<i>d</i>−1)log 2]。三次且 <i>q</i> ≡ 2 (mod 3)、<i>p</i> &gt; 3 时，第 12–16 节同时计数斜率与截距，将下极限系数提高到 <strong>1/log 4</strong>。更精确的下界为 (log <i>q</i> − 2 log log <i>q</i>)/log 4 − <i>O</i>(1)，第 17 节给出上界 (2 log <i>q</i> − log log <i>q</i>)/log 3 + <i>O</i>(1)。本文的 log 为自然对数。</p>
+<p>固定任意 <i>d</i> ≥ 2。定理 6A 证明，沿全部素数幂有 <strong><i>B</i>(<i>q,d</i>) = Θ<sub>d</sub>(log <i>q</i>)</strong>，且下极限系数至少为 1/(2 log(<i>d</i>!))。在 <i>d</i>≥3、<i>p</i>∤<i>d</i>(<i>d</i>−1) 时，第 7–10 节给出较大的系数 1/[2(<i>d</i>−1)log 2]。三次且 <i>q</i> ≡ 2 (mod 3)、<i>p</i> &gt; 3 时，第 12–16 节将下极限系数提高到 <strong>1/log 4</strong>。相应下界为 (log <i>q</i> − 2 log log <i>q</i>)/log 4 − <i>O</i>(1)，第 17 节给出上界 (2 log <i>q</i> − log log <i>q</i>)/log 3 + <i>O</i>(1)。本文的 log 为自然对数。</p>
 <h3>定理 1　Frobenius 次数的精确阻塞数</h3>
 <p>设 <i>p</i> 为素数，<i>h</i>, <i>e</i> ≥ 1，<i>q</i> = <i>p</i><sup>h</sup>，<i>d</i> = <i>p</i><sup>e</sup>。令 <i>g</i> = gcd(<i>h</i>, <i>e</i>)。则</p>
 <div class="box"><i>B</i>(<i>p</i><sup>h</sup>, <i>p</i><sup>e</sup>) = 1 + (<i>h</i>/<i>g</i>)(<i>p</i><sup>g</sup> − 1)。</div>
@@ -89,15 +89,24 @@ for k in {4, 5}:
 <p><strong>轨道与分类。</strong> gcd(3, 46) = 1，故每个非零 <i>u</i> 都是某个 <i>t</i>³。沿用第 4 节的坐标变换 (<i>x</i>, <i>y</i>) ↦ (<i>tx</i>, <i>uy</i> − <i>v</i>)，得到 <i>uA</i> + <i>v</i> 亦为解。<i>A</i> 的元素和为 52 ≡ 5 (mod 47)，重心为 1。保持 <i>A</i> 的仿射变换固定重心，因而形如 <i>x</i> ↦ 1 + <i>u</i>(<i>x</i> − 1)。其乘子构成 <i>F</i><sup>×</sup> 的子群，并在 <i>A</i> ∖ {1} 上自由作用，故阶整除 46 和 4。唯一可能的非平凡乘子是 −1，但它把 0 送到 2 ∉ <i>A</i>。稳定子遂为平凡群，轨道大小为 46 · 47 = 2,162，恰好穷尽全部最优解。</p>
 <p class="note">在仓库根目录运行 <code>python checks/cubic47.py</code> 可复核上表与仿射轨道。Lean 利用仿射对称性同时固定 0、1，在 990 个四元候选中得到 0 个解，在 14,190 个五元候选中得到 20 个解。上表列出的 230 个含 0 的解各含四个非零元素，乘法对称性使 46 个非零元素出现次数相同，故含 0、1 的解有 230 · 4 / 46 = 20 个。</p>
 </section>
+<section id="sextic32"><h2>5.1　三十二元域上的六次曲线</h2>
+<p><strong>命题。</strong> 在 𝔽₃₂ 上，<i>B</i>(32,6)=7。共有 10,912 个七元最优参数集，分成 11 个仿射轨道，每个轨道的稳定子均平凡。以下取 𝔽₂[<i>T</i>]/(<i>T</i>⁵+<i>T</i>²+1)，用五位二进制数表示按幂次递增排列的系数。{0,1,2,3,4,19,31} 是其中一个最优集。</p>
+<p>水平线由六次幂的双射性自动命中。置 <i>V</i>={ <i>x</i>⁶+<i>x</i> : <i>x</i>∈𝔽₃₂ }，则 |<i>V</i>|=16。每一非零斜率唯一写成 <i>c</i>⁵，换元 <i>x</i>=<i>cz</i> 把相应的直线条件化为 <i>S</i> 与 <i>c</i>⁶<i>V</i>+<i>b</i> 相交。由于六次幂也置换 𝔽₃₂<sup>×</sup>，这些集合就是 <i>V</i> 的全部仿射像。由 Ding–Tang [27，推论 30]，它们构成已知的 3-(32,16,112) 设计。所求最小值因而也是该设计中击中全部区组所需的最少点数。</p>
+<table><tr><th>集合大小</th><th>固定 0 的解数 / 候选数</th><th>固定 0、1 的解数 / 候选数</th></tr>
+<tr><td>6</td><td>0 / 169,911</td><td>0 / 27,405</td></tr>
+<tr><td>7</td><td>2,387 / 736,281</td><td>462 / 142,506</td></tr></table>
+<p>第一列枚举对原始的 32² 条有限斜率直线逐条检验。第二列从 <i>V</i> 的仿射像生成区组，检验归一候选与每个区组的交集。两次枚举在同时含 0、1 的解上逐集相同。任意大小至多 6 的解可补足为六元解并平移至含 0，故第一行排除了所有较小解。</p>
+<p>数带一个标记点的七元解，得总数 2,387·32/7=10,912；数带两个有序标记点的解，同样得 462·32·31/(7·6)。逐一展开归一解的仿射轨道，得到 11 个两两不交的 992 元轨道，且其并等于全部解。在允许域自同构 <i>x</i>↦<i>x</i>² 的半线性仿射群 AΓL₁(32) 下，这 11 个轨道按 1+5+5 合并为三个，大小分别为 992、4,960、4,960。Dot 给出了此例及轨道数。<code>python checks/sextic32.py</code> 输出全部轨道代表和两次枚举结果。Lean 定理 <code>Sextic32.pencil_minimum</code> 核验射影原问题中的最小值 7，轨道分类的复现见上述程序。</p></section>
 <section id="formal"><h2>6　几何结论、来源与形式化范围</h2>
 <p>问题 5.4 问普通阻塞集的最小值。原文定义 1.1 要求曲线几何不可约且次数大于 1，备注 5.2 另论构造的非平凡性。[1] 对本族可对所有域阶给出精确判据。</p>
 <h3>何时包含一整条射影直线？</h3>
 <p>设 <i>d</i> ≥ 2。若参数遍及全域，曲线并包含全部仿射点和 [0:1:0]，因而包含每条竖直线。若参数集为真子集，取一个未选的 α。在每条竖直线 <i>x</i>=<i>a</i> 上，点 (<i>a</i>, <i>a</i><sup>d</sup>−α) 均未覆盖。每条非竖直仿射线在无穷远的点也不属于曲线并，而无穷远线上至多覆盖一点。故阻塞参数集产生非平凡阻塞集当且仅当它是真子集。定理 1 中写 <i>b</i>=<i>p</i><sup>g</sup>、<i>n</i>=<i>h</i>/<i>g</i>。当 <i>n</i>=1 时最小值是 <i>q</i>；当 <i>n</i>≥2 时，1+<i>n</i>(<i>b</i>−1)&lt;<i>b</i><sup>n</sup>=<i>q</i>，最优解均非平凡。</p>
 <h3>陈述与核验入口</h3>
-<p><code>ProblemStatement.lean</code> 直接编码 [1] 式 (5.4)，只导入 mathlib。<code>StatementComparison.lean</code> 将它与射影直线相交条件双向连接。<code>GeometricIrreducibility.lean</code> 在三个变量上构造原齐次式，证明求值条件、齐次性和在代数闭包上的不可约性。<code>ScatteredComparison.lean</code> 将第 3 节的核维数与非零向量的斜率碰撞条件互推。[4]</p>
-<p>八元域的 256 个掩码与真实参数集一一对应，这一对应保持基数与阻塞性，四元最优参数集恰有 56 个。41、47 元域的位运算由方程逐线生成，枚举证书经仿射归一化覆盖所有参数集。域同构把素域上的最小值搬到与定理 1 相同的 <code>GaloisField</code> 接口。定理入口、锁定依赖、逐项公理和源文件摘要见 <code>lean/README.md</code> 与 <code>lean/verification.txt</code>。</p>
+<p><code>ProblemStatement.lean</code> 只导入 mathlib。它从三维向量的射影化与对偶平面定义点、线和关联关系，写出曲线的次数、齐次性、几何不可约性及 [1] 问题 5.4 的最小值，并保留式 (5.4) 的值集条件。<code>StatementComparison.lean</code> 对非零代表证明关联与曲线方程的等价性，并将两种最小值陈述互推。<code>GeometricIrreducibility.lean</code> 证明原式在代数闭包上的不可约性。<code>ScatteredComparison.lean</code> 将第 3 节的核维数与斜率条件互推。[4]</p>
+<p>有限证书经域同构、参数归一化及逐线判据连接到 <code>GaloisField</code> 上的射影陈述。它们核验 8、41、47 元域的最小值及最优解计数，以及 32 元域的六次最小值。32 元域的轨道分类由第 5.1 节的两次枚举复核。入口、锁定依赖与逐项公理见 <code>lean/README.md</code> 及 <code>lean/verification.txt</code>。</p>
+<p>渐近部分中，Lean 证明二重传递群的任意置换陪集有错排（§11.3）、两个子午圈族上含符号因子的余循环引理（§14），以及从实际遗漏点对数的式 (12.1) 导出下界（§16）。给定每条非水平线遗漏至多 (<i>q</i>+1)/3 个参数，有限抽样模块在 <i>q</i>≡2 (mod 3)、<i>q</i>≥16 时给出大小至多 2 log <i>q</i>/log 3+8 的阻塞集。由纸面论证提供的输入包括几何单值群、亏格、无符号项的维数界、正特征上同调比较与迹估计。§17 的负 log log <i>q</i> 次项也由纸面证明给出。</p>
 <h3>与有限几何文献的关系</h3>
-<p>仿射超平面阻塞数归于 [2, 3]。Bruen–Fisher 的三次几何构造允许选取不同曲线 [5]，Li–Pott 研究单个图像与直线的交数 [6]。本文在固定竖直平移族中应用经典阻塞数并对两个素域给出完整最优轨道。四十七元域的代表元和计算分类、下文通过选斜率避免临界值碰撞的思路由 Dot 提出。</p>
+<p>仿射超平面阻塞数归于 [2, 3]。Bruen–Fisher 的三次几何构造允许选取不同曲线 [5]，Li–Pott 研究单个图像与直线的交数 [6]。本文对固定竖直平移族应用这些几何判据，并列出有限域实例的最优轨道。Dot 给出了 47 元域及 32 元域的计算分类，并提出避碰斜率和 §11 的野分歧路线。</p>
 </section><section id="log-bound"><h2>7　非线性平移族的对数下界</h2>
 <p>以下 <i>d</i> ≥ 3 固定，<i>q</i> 为素数幂，<i>p</i> 为其特征，log 取自然对数。我们处理 <i>p</i> ∤ <i>d</i>(<i>d</i>−1) 的情形。这包含所有 <i>p</i> &gt; <i>d</i>，允许特征固定而扩张次数趋于无穷。</p>
 <h3>定理 5　驯分歧情形的渐近阶</h3>
@@ -145,12 +154,49 @@ for k in {4, 5}:
 <div class="eq">3<sup>−ℓ</sup>[<i>q</i>−2(<i>g</i>√<i>q</i>+<i>g</i>+6<sup>ℓ</sup>)]−2ℓ。</div>
 <p>若 ℓ = ⌊<i>c</i> log <i>q</i>⌋，0 &lt; <i>c</i> &lt; 1/(2 log 6)，则 ℓ6<sup>ℓ</sup> = <i>o</i>(√<i>q</i>)。上述两个下界对充分大的 <i>q</i> 均为正。代换 <i>T</i> = <i>x</i>−<i>a</i>/3 将 <i>h</i>(<i>T</i>)−<i>v</i> 化为 <i>x</i>³−<i>mx</i>−<i>b</i>，保持每个平移的不可约性。故仅由 [11] 即可推出三次阻塞数的下极限系数至少为 1/(2 log 6)。第 9 节用逐特征标估计将此系数提高到 1/(4 log 2)。</p>
 </section>
-<section id="research-scope"><h2>11　固定斜率方法的适用范围</h2>
-<p>[1] 的定理 1.3 固定 <i>d</i> ≥ 3，在 <i>p</i> &gt; <i>d</i> 时允许次数介于 2 与 <i>d</i> 的任意几何不可约曲线，证明形成阻塞集所需的最少曲线数随 <i>q</i> 趋于无穷。本文的对数定理专用于 <i>y</i>=<i>x</i><sup>d</sup>−α 这一族。对这同一族，[1] 的定理 5.1 给出对数上界，备注 5.3（预印本 v1 为 5.2）用水平线处理 gcd(<i>d,q</i>−1)&gt;1。定理 5 也适用于水平线无法给出下界的互素情形。所得渐近阶仍容许不同首项常数。问题 5.4 的一般精确值仍待确定。</p>
-<p>Dot 建议将避碰斜率用于本题。对于一般 <i>d</i>，本文在 [7, 10, 11] 的几何方法上显式计数单项式的例外参数，再将 [8, 12] 的估计用于 [1] 的阻塞问题。检索到的这些文献没有以 <i>B</i>(<i>q,d</i>) 表述定理 5。第 10 节指出三次情形可由 [11] 直接推出对数阶，几何独立性、全轮换范数和逐特征标迹界也各有先例。</p>
-<p><strong>小特征。</strong> 第 8 节使用局部驯性，故即使 <i>p</i> ≤ <i>d</i>，只要 <i>p</i> ∤ <i>d</i>(<i>d</i>−1) 证明仍然适用。当 <i>p</i> | <i>d</i> 或 <i>p</i> | (<i>d</i>−1) 时，临界点结构或无穷远的驯性会改变。对奇 <i>p</i>，<i>d</i>=<i>p</i>+1 和 <i>d</i>=2<i>p</i> 本身都是偶数，gcd(<i>d,q</i>−1) ≥ 2，因而这两族的<strong>对数阶</strong>已由 [1，定理 5.1 与备注 5.3] 得到。其分歧结构、锐常数和最优参数集是不同的问题。此处没有导出所有野分歧互素情形的结论。</p>
-<p><strong>核验范围。</strong> 第 7–10 节为数学证明。在 𝔽<sub>200003</sub> 取 <i>S</i>={0,4,32}，首个可用 <i>u</i> 为 3，斜率为 27。此斜率有 7,339 条遗漏直线，其中一条为 <i>y</i>=27<i>x</i>+15。可运行 <code>python checks/cubic_slope.py</code> 复核。仓库中关于精确最小值和完整轨道的 Lean 定理见第 6 节。<code>CubicSlope.lean</code> 中的 <code>BlockingCurves.CubicSlope.exists_collision_free</code> 已形式验证三次置换情形下由 |<i>S</i>−<i>S</i>| &lt; <i>q</i> 选取无碰撞斜率的步骤。单值群、迹估计和渐近定理有待形式化。</p>
-<p>第 9 节在一条穿孔直线上同时计数不可约纤维。为进一步利用三次族的两个自由参数，下面把合格的斜率和截距改写成穿孔直线上两个有序点。两种权重对误差的贡献不同，较高权重的项需要第 14 节的一阶维数估计。</p></section>
+<section id="all-characteristics"><span id="research-scope"></span><h2>11　所有特征下的增长阶</h2>
+<h3>定理 6A　固定次数，无特征限制</h3>
+<p>固定任意整数 <i>d</i>≥2，让 <i>q</i> 沿全部素数幂趋于无穷。则</p>
+<div class="box"><i>B</i>(<i>q,d</i>) = Θ<sub>d</sub>(log <i>q</i>)，　lim inf <i>B</i>(<i>q,d</i>)/log <i>q</i> ≥ 1/(2 log(<i>d</i>!))。</div>
+<p>上界是 [1，定理 5.1]。对 <i>d</i>=<i>p</i><sup>e</sup>，定理 1 给出下界，其对数系数为 (<i>p</i><sup>g</sup>−1)/log(<i>p</i><sup>g</sup>)≥1。在 <i>d</i>≥3、<i>p</i>∤<i>d</i>(<i>d</i>−1) 时，定理 5 的下界充分，因为 <i>d</i>!≥2<sup><i>d</i>−1</sup>。以下处理剩余的 <i>p</i> | <i>d</i>(<i>d</i>−1) 非纯 <i>p</i> 幂情形，并包括奇特征的 <i>d</i>=2。</p>
+<h3>单个覆盖的有序根对</h3>
+<p>令 <i>k</i>=𝔽̄<sub>q</sub>，<i>f</i>(<i>x</i>)=<i>x</i><sup>d</sup>−<i>x</i>，取 <i>L</i>/<i>k</i>(<i>t</i>) 为 <i>f</i>(<i>x</i>)−<i>t</i> 的分裂域，<i>G</i> 为其几何群。由于 <i>f</i> 的导数非零且 <i>t</i>=<i>f</i>(<i>x</i>) 给出 <i>d</i> 次扩张，<i>G</i> 在根上传递。写 <i>d</i>=<i>p</i><sup>a</sup><i>n</i>，<i>p</i>∤<i>n</i>，此处 <i>n</i>&gt;1。断言相异有序根对构成一个轨道。几何上这等价于曲线 <i>f</i>(<i>x</i>)=<i>f</i>(<i>y</i>) 的去对角线部分在一般纤维上不可约。令 <i>z</i>=<i>x</i>/<i>y</i>，在稠密开集得到</p>
+<div class="eq"><i>y</i><sup>d−1</sup> = (<i>z</i>−1)/(<i>z</i><sup>d</sup>−1)。</div>
+<p>取非平凡 <i>n</i> 次单位根 ζ。在 <i>k</i>(<i>z</i>) 的 <i>z</i>=ζ 处，右端的赋值为 −<i>p</i><sup>a</sup>，与 <i>d</i>−1 互素。因此在任一添根 <i>y</i> 的扩张中，此处的分歧指数都被 <i>d</i>−1 整除。添根次数至多 <i>d</i>−1，等号成立。该论证也允许 <i>p</i> | (<i>d</i>−1) 时换元后的方程不可分，因为赋值的分歧指数仍不超过总次数。一般纤维的有序相异根满足 <i>xy</i>≠0 且 <i>z</i>≠1；纤维积在该开集与此不可约曲线的相应开集同构。故 <i>G</i> 二重传递。</p>
+<h3>有限分支可以分开时</h3>
+<p>若 <i>p</i> | (<i>d</i>−1)，则 <i>f</i>′(<i>x</i>)=<i>x</i><sup>d−1</sup>−1，各临界点的像全是 0，∞ 处因 <i>p</i>∤<i>d</i> 而驯分歧。对 <i>f</i>(<i>x</i>)=<i>t</i>+α 的各分裂域，有限分支值 −α 两两不同。依次把新扩张与此前复合取交，交域仅可能在 ∞ 驯分歧。第 8 节的 Riemann–Hurwitz 论证说明这种交域平凡，故几何群为 <i>G</i><sup>ℓ</sup>。奇特征 <i>d</i>=2 也适用此论证，其单个有限分支值为 −1/4，几何群是二重传递的 <i>S</i>₂。两种情形均可直接转至 §11.3。</p></section>
+<section id="wild-slopes"><h2>11.1　只有公共野分支点时选择斜率</h2>
+<p>设 <i>p</i> | <i>d</i> 且 <i>d</i> 非 <i>p</i> 幂。由于 <i>f</i>′=−1，单个覆盖及其伽罗瓦闭包均在仿射直线上无分歧。令 <i>E</i> 为使平移 <i>t</i> ↦ <i>t</i>+<i>c</i> 将 <i>L</i> 送到自身的 <i>c</i>∈<i>k</i> 所成的群。一切延拓在 <i>L</i> 上的像相同，因为 <i>L</i>/<i>k</i>(<i>t</i>) 正规。</p>
+<h3>平移稳定子的阶</h3>
+<p><i>E</i> 作用于 <i>L</i> 中间域的 <i>G</i>-共轭类。考虑单根域 <i>k</i>(<i>x</i>) 的共轭类。若平移 <i>c</i> 稳定这个类，可再复合一个 <i>G</i> 的元素使其延拓保持 <i>k</i>(<i>x</i>)。它是射影直线上的自同构，固定 <i>f</i> 的唯一极点 ∞，所以 <i>x</i> ↦ <i>Ax</i>+<i>B</i>，其中 <i>A</i>≠0，且</p>
+<div class="eq">(<i>Ax</i>+<i>B</i>)<sup>d</sup>−(<i>Ax</i>+<i>B</i>) = <i>x</i><sup>d</sup>−<i>x</i>+<i>c</i>。</div>
+<p>在 <i>d</i>=<i>p</i><sup>a</sup><i>n</i> 中，<i>a</i>≥1、<i>n</i>&gt;1。比较 <i>x</i><sup><i>d</i>−<i>p</i><sup><i>a</i></sup></sup> 的系数。因为此指数介于 2 与 <i>d</i>−1 之间，得到 <i>nA</i><sup><i>d</i>−<i>p</i><sup><i>a</i></sup></sup><i>B</i><sup><i>p</i><sup><i>a</i></sup></sup>=0。因此 <i>B</i>=0，比较一次项与常数项即得 <i>A</i>=1、<i>c</i>=0。轨道中的不同平移遂给出不同共轭类。伽罗瓦对应给出 |<i>E</i>|≤2<sup>|<i>G</i>|</sup>≤2<sup><i>d</i>!</sup>。</p>
+<h3>为每个参数集选择斜率</h3>
+<p>在原坐标取 <i>m</i>=<i>u</i><sup>d−1</sup>、<i>x</i>=<i>uy</i>、<i>b</i>=<i>u</i><sup>d</sup><i>t</i>，其中 <i>u</i>∈𝔽<sub>q</sub><sup>×</sup>。参数 α 给出方程 <i>f</i>(<i>y</i>)=<i>t</i>+α/<i>u</i><sup>d</sup>。两个几何分裂域相等，当且仅当 (α−β)/<i>u</i><sup>d</sup>∈<i>E</i>。对每个非零差和每个非零 <i>c</i>∈<i>E</i>，方程 <i>u</i><sup>d</sup>=(α−β)/<i>c</i> 至多有 <i>d</i> 个解。对 ℓ 元集，若 <i>q</i>−1&gt;<i>d</i>·2<sup><i>d</i>!</sup>·ℓ(ℓ−1)/2，便可使所有几何分裂域两两不同。不同参数集可以使用不同斜率。下面说明这项避碰条件对我们的目的已经足够。</p></section>
+<section id="wild-socle"><h2>11.2　各坐标的单群独立性</h2>
+<p>在 §11.1 的情形，<i>d</i> 有至少两个不同素因子。二重传递群的仿射型具有素数幂次数，故已排除。由有限二重传递群分类，<i>G</i> 几乎单，其非阿贝尔单基座 <i>T</i> 满足 <i>T</i>≤<i>G</i>≤Aut(<i>T</i>)。在此作用中 <i>T</i> 也二重传递，唯一例外是 28 点上的 PΓL₂(8)，其基座为 PSL₂(8)。[24，§2.2，表及表前说明]</p>
+<p>若出现例外，则 <i>p</i> | 28，故 <i>p</i>=2 或 7。商群 PΓL₂(8)/PSL₂(8) 的阶为 3。它会给出至多在 ∞ 分歧的三阶循环子扩张；该分歧必驯，与 §8 的 Riemann–Hurwitz 论证矛盾。故 <i>T</i> 确为二重传递。</p>
+<p>设 <i>H</i> 为所选 ℓ 个分裂域的复合之几何群；限制到各因子的映射给出 <i>H</i>⊂<i>G</i><sup>ℓ</sup>，各投影均满。取导群列的稳定项 <i>P</i>。由 Schreier 定理（有限单群的外自同构群可解）及 <i>T</i> 完满，<i>G</i> 的稳定导群是 <i>T</i>；满同态与取导群相容。因此 <i>P</i>⊂<i>T</i><sup>ℓ</sup> 且对各因子投影仍满。</p>
+<h3>排除对角粘连</h3>
+<p>若 <i>P</i> 在两个坐标 <i>i,j</i> 上的投影并非 <i>T</i>×<i>T</i>，Goursat 引理表明它是一个自同构 φ 的图。因 <i>P</i> 正规于 <i>H</i>，对每个 <i>h</i>∈<i>H</i>，由两个坐标所诱导的 <i>T</i> 自同构经 φ 共轭。又 <i>G</i> 在 Aut(<i>T</i>) 中忠实作用（中心化 <i>T</i> 的元素只有恒等元），故 <i>h</i><sub>i</sub>=1 当且仅当 <i>h</i><sub>j</sub>=1。按伽罗瓦对应，这两个核相同意味着两个分裂域相等，与选取斜率矛盾。</p>
+<p>故每对坐标投影全满。归纳证明 <i>P</i>=<i>T</i><sup>ℓ</sup>。前 ℓ−1 坐标投影依归纳已满，其核在最后一因子的像正规于 <i>T</i>。若此像为 <i>T</i> 即得直积；若为 1，则最后一坐标是满同态 <i>T</i><sup>ℓ−1</sup>→<i>T</i>。各因子的像两两交换且正规于 <i>T</i>，恰有一个为全群。最后坐标与该坐标粘连，违反两两投影全满。特别地，<i>H</i> 含 <i>T</i><sup>ℓ</sup>，足以独立调整各坐标。</p></section>
+<section id="wild-twists"><h2>11.3　算术陪集中的错排与一致亏格界</h2>
+<p>在所有剩余情形，几何复合群 <i>H</i> 均含 <i>J</i><sup>ℓ</sup>，其中 <i>J</i> 在 <i>d</i> 个根上二重传递。在 §11 的分支分离情形取 <i>J</i>=<i>G</i>，在 §11.2 取 <i>J</i>=<i>T</i>。现在回到 𝔽<sub>q</sub>(<i>t</i>)，取算术复合群中任意一个在常数域上限制为 <i>q</i> 次 Frobenius 的提升 σ。</p>
+<h3>在指定算术陪集中工作</h3>
+<p>对任意根集的置换 τ 和均匀随机的 <i>j</i>∈<i>J</i>，记 <i>X</i> 为 τ<i>j</i> 的不动点数。由点及有序相异点对上的传递性，逐点及逐对计数给出 𝐄<i>X</i>=1，𝐄[<i>X</i>(<i>X</i>−1)]=1。若每个元素都有不动点，则 <i>X</i> 恒为 1，与第二式矛盾。故每个 σ<sub>i</sub><i>J</i> 中有错排；乘上 <i>J</i><sup>ℓ</sup> 中相应的元素，得到同一算术陪集 σ<i>H</i> 中的 γ，其每个坐标都是错排。这样无需假定复合域的常数域等于 𝔽<sub>q</sub>。</p>
+<h3>当 ℓ 随域阶增长</h3>
+<p>置 <i>D</i>=<i>d</i>!，各几何分裂域亏格皆为 <i>g</i>₀，因为覆盖仅在基底上相差仿射坐标变换。对固定 <i>d</i> 只有有限个坏素数，各自的 <i>g</i>₀ 与 <i>q</i>、ℓ、选取的参数和斜率无关；奇特征二次覆盖的 <i>g</i>₀=0。设前 <i>j</i> 个域的复合亏格为 <i>g</i><sub>j</sub>。由 Castelnuovo–Severi 不等式 [26，定理 3.11.3]，</p>
+<div class="eq"><i>g</i><sub>j</sub> ≤ <i>Dg</i><sub>j−1</sub>+<i>D</i><sup>j−1</sup><i>g</i>₀+(<i>D</i>−1)(<i>D</i><sup>j−1</sup>−1)，　<i>g</i><sub>ℓ</sub> ≤ ℓ(<i>g</i>₀+1)<i>D</i><sup>ℓ</sup>。</div>
+<p>这里复合到前一域、到新因子域的相对次数分别至多 <i>D</i>、<i>D</i><sup>j−1</sup>。不等式对野分歧亦成立。由 Kosters [25，定理 2]，γ 对应一个几何连通的 𝔽<sub>q</sub> 扭曲，经代数闭包扩张后与几何复合域的光滑射影曲线同构，亏格为 <i>g</i><sub>ℓ</sub>，到基底的次数为 |<i>H</i>|≤<i>D</i><sup>ℓ</sup>。其非分歧纤维上的有理点给出 Frobenius 共轭于 γ 的一次素位，因而每个多项式均无有理根。几何分支值至多 ℓ+1 个（各因子至多一个有限值，另加 ∞），其上方共至多 (ℓ+1)<i>D</i><sup>ℓ</sup> 个有理点。Hasse–Weil 界于是给出下列充分条件：</p>
+<div class="box"><i>q</i>+1−2ℓ(<i>g</i>₀+1)<i>D</i><sup>ℓ</sup>√<i>q</i> &gt; (ℓ+1)<i>D</i><sup>ℓ</sup>。</div></section>
+<section id="wild-scope"><h2>11.4　增长阶、阈值与文献对应</h2>
+<p>任取 0&lt;<i>c</i>&lt;1/(2 log <i>D</i>)，置 ℓ=⌊<i>c</i> log <i>q</i>⌋。则 ℓ<i>D</i><sup>ℓ</sup>=<i>o</i>(√<i>q</i>)，而 §11.1 排除的斜率参数数目至多为 <i>O</i><sub>d</sub>(ℓ²)=<i>o</i>(<i>q</i>)。故对任意预先指定的 ℓ 元参数集均有漏线，得到 <i>B</i>(<i>q,d</i>)&gt;ℓ。再令 <i>c</i> 趋近端点即证定理 6A。证明给出增长阶，真实首项系数及其极限是否存在仍开放。</p>
+<h3>一个保留次阶项的阈值</h3>
+<p>令 <i>L</i>=log <i>q</i>、<i>C</i>=<i>g</i>₀+1。若 <i>q</i>≥16 且</p>
+<div class="eq">ℓ ≤ (<i>L</i>−2 log <i>L</i>)/(2 log <i>D</i>) − log(16<i>C</i>)/log <i>D</i>，</div>
+<p>则 16<i>CLD</i><sup>ℓ</sup>≤√<i>q</i>，且 ℓ≤<i>L</i>。故 2<i>g</i><sub>ℓ</sub>√<i>q</i>≤<i>q</i>/8，而 (ℓ+1)<i>D</i><sup>ℓ</sup>≤<i>q</i>/8。只要 §11.1 的斜率存在（或 §11 可分开有限分支值），条件即足以排除阻塞。涉及 <i>g</i>₀ 的常数取有限个坏特征的最大值即可。Lean 的 <code>twist_point_threshold</code> 验证这一数字不等式。</p>
+<h3>与已知工作的关系</h3>
+<p>[1] 的定理 1.3 涉及任意几何不可约曲线。这里的定理 6A 解决该文问题 5.4 指定的竖直平移族的增长阶。[1] 的定理 5.1 已给出一般上界，备注 5.3 在 gcd(<i>d,q</i>−1)&gt;1 时用水平线给出对数下界。第 10 节解释特征大于 3 的三次对数阶也能从 Pollack [11] 推出。§11.1–11.3 在仅有公共野分支点时仍能同时实现各坐标错排。这里用到的有限群分类、函数域扭曲与亏格不等式分别来自 [24–26]。在仿射变换族中用有限对称群和 Goursat 引理检验单值独立性，可参见 Fouvry 等 [28，命题 3.6]。该命题要求特征相对于层的复杂度充分大；§11.1 直接控制每个坏素数下的平移稳定子。在所核对的这些来源中，未见直接给出所有特征下的定理 6A。避免平移域相等并利用单基座的路线由 Dot 提出。</p></section>
 <section id="cubic-two-parameters"><h2>12　三次置换族的两参数下界</h2>
 <p>本节至第 17 节取 <i>p</i> &gt; 3、<i>q</i> ≡ 2 (mod 3)，允许固定特征并改变扩张次数。先给出有限 <i>q</i> 上的计数定理。下极限和上极限都沿这一整族素数幂取。</p>
 <h3>定理 7　同时改变斜率和截距</h3>
@@ -249,6 +295,8 @@ for k in {4, 5}:
 <p>[12] J. Bellaïche. <i>Théorème de Chebotarev et complexité de Littlewood</i>, Ann. Sci. Éc. Norm. Supér. (4) 49 (2016), 579–632，命题 6、10。<a href="https://doi.org/10.24033/asens.2291">期刊版</a> · <a href="https://www.numdam.org/item/10.24033/asens.2291.pdf#page=18">命题 10，第 594 页</a>。</p>
 <p>[13] E. Fadell, L. Neuwirth. <i>Configuration spaces</i>. Math. Scand. 10 (1962), 111–118. <a href="https://doi.org/10.7146/math.scand.a-10517">忘点纤维化</a>。</p>
 <p>[14] A. Grothendieck 等. <i>Revêtements étales et groupe fondamental</i> (SGA 1)，Exp. XIII，推论 2.9、§2.10。<a href="https://arxiv.org/pdf/math/0206203#page=304">驯专化与一阶基变换</a>。</p>
+</div></section>
+<section id="references-continued"><h2>参考文献（续）</h2><div class="ref">
 <p>[15] P. Deligne, G. Lusztig. <i>Representations of reductive groups over finite fields</i>. Ann. of Math. 103 (1976), 103–161，定理 3.2。<a href="https://publications.ias.edu/sites/default/files/Number27.pdf">有限阶作用的交错迹</a>。</p>
 <p>[16] P. Deligne. <i>La conjecture de Weil. II</i>. Publ. Math. IHÉS 52 (1980), 137–252，§3.3。<a href="https://doi.org/10.1007/BF02684780">直像的权界</a>。</p>
 <p>[17] L. Bary-Soroker. <i>Hardy–Littlewood tuple conjecture over large finite fields</i>. <a href="https://arxiv.org/abs/1206.3930">固定元组长度的大域极限</a>。</p>
@@ -258,6 +306,11 @@ for k in {4, 5}:
 <p>[21] D. C. Cohen, A. I. Suciu. <i>Homology of iterated semidirect products of free groups</i>，定理 2.11、6.10。<a href="https://arxiv.org/abs/alg-geom/9503002">作者全文</a>。</p>
 <p>[22] G. C. Denham, A. I. Suciu. <i>Local systems on complements of arrangements of smooth, complex algebraic hypersurfaces</i>. Forum Math. Sigma 6 (2018), e6，定理 1.2。<a href="https://doi.org/10.1017/fms.2018.5">期刊版</a>。</p>
 <p>[23] I. Benbenishty Shpilka. <i>Explicit error term in the Chebotarev density theorem for function fields</i>，定理 1.4、1.6。<a href="https://arxiv.org/abs/2611.28155">预印本</a>。</p>
+<p>[24] C. D. Reid. <i>Multiple transitivity except for a system of imprimitivity</i>，§2.2，特别是第 8–9 页的分类表。<a href="https://arxiv.org/pdf/2211.06848#page=8">全文</a>。</p>
+<p>[25] M. Kosters. <i>A short proof of the Chebotarev density theorem for function fields</i>. Math. Commun. 22 (2017), 227–233，定理 2。<a href="https://hrcak.srce.hr/file/274189#page=3">带常数扩张的扭曲</a>。</p>
+<p>[26] H. Stichtenoth. <i>Algebraic Function Fields and Codes</i>, 2nd ed., Springer (2009)，定理 3.11.3。<a href="https://doi.org/10.1007/978-3-540-76878-4">Castelnuovo–Severi 不等式</a>。</p>
+<p>[27] C. Ding, C. Tang. <i>Infinite families of 3-designs from o-polynomials</i>. Adv. Math. Commun. 15 (2021), 557–573，推论 30。<a href="https://cse.hkust.edu.hk/faculty/cding/JOURNALS/amc211.pdf#page=14">Segre 六次式的设计</a>。</p>
+<p>[28] É. Fouvry, E. Kowalski, P. Michel, W. Sawin. <i>Bilinear forms with trace functions</i>，§3，命题 3.3、3.6。<a href="https://people.math.ethz.ch/~kowalski/bilinear-forms.pdf#page=19">仿射变换下的单值独立性</a>。</p>
 </div></section></body></html>
 
 

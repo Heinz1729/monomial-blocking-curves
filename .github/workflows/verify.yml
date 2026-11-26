@@ -22,3 +22,4 @@ jobs:
           python3 checks/cubic_slope.py
           python3 checks/cubic_pairs.py
           python3 checks/cubic_cohomology.py
+          python3 checks/sextic32.py
