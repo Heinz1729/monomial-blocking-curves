@@ -1,4 +1,4 @@
-"""Check the two-parameter cubic count over four prime fields (Python 3.8+)."""
+"""Check the cubic incidence counts for fixed lines and fixed translates (Python 3.8+)."""
 
 from collections import Counter
 
@@ -30,6 +30,25 @@ def three_cycle(m, c, p):
     x = (0, 1, 0)
     return (power_mod_cubic(p**3, m, c, p) == x
             and power_mod_cubic(p, m, c, p) != x)
+
+
+def check_fixed_lines():
+    p = 5
+    h = (p + 1) // 3
+    missing = {m: set(range(p)) - {(x**3 - m*x) % p for x in range(p)}
+               for m in range(1, p)}
+    for m, first in missing.items():
+        for n, second in missing.items():
+            intersections = [first & {(a-c) % p for a in second} for c in range(p)]
+            sizes = [len(shared) for shared in intersections]
+            if sum(sizes) != h*h:
+                raise ArithmeticError(f"Wrong two-line sum for slopes {m}, {n}")
+            if m == n and sum(sizes[1:]) != h*(h-1):
+                raise ArithmeticError(f"Wrong distinct-parallel-line sum for slope {m}")
+            if m == n == 1:
+                if first != {2, 3} or intersections[1] != {2} or intersections[2]:
+                    raise ArithmeticError("Wrong F_5 fixed-line intersections")
+    print("F_5, slope 1: common misses for intercepts (0,1) and (0,2) are {2} and empty")
 
 
 def check_field(p):
@@ -87,5 +106,6 @@ def check_field(p):
 
 
 if __name__ == "__main__":
+    check_fixed_lines()
     for prime in (11, 17, 41, 47):
         check_field(prime)

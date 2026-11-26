@@ -8,17 +8,17 @@ namespace BlockingCurves.CubicValueSet
 
 variable {F : Type*} [Field F] [Fintype F]
 
-private def normForm (x y : F) := x^2 + x*y + y^2
-private def cubic (m b x : F) := x^3 - m*x - b
+def normForm (x y : F) := x^2 + x*y + y^2
+def cubic (m b x : F) := x^3 - m*x - b
 
 noncomputable section
 open Classical
 local instance : DecidableEq F := Classical.decEq _
 
-private def conic (m : F) := (Finset.univ : Finset (F × F)).filter
+def conic (m : F) := (Finset.univ : Finset (F × F)).filter
   (fun p => normForm p.1 p.2 = m)
 
-private lemma unit_form_ne (hq : Fintype.card F % 3 = 2) (s : F) : 1+s+s^2 ≠ 0 := by
+lemma unit_form_ne (hq : Fintype.card F % 3 = 2) (s : F) : 1+s+s^2 ≠ 0 := by
   intro hs
   have hi : Function.Injective (fun x : F => x^3) :=
     Finite.injective_iff_surjective.mpr (CubicSlope.cube_surjective hq)
@@ -35,7 +35,7 @@ private lemma unit_form_ne (hq : Fintype.card F % 3 = 2) (s : F) : 1+s+s^2 ≠ 0
   omega
 
 /-- Draw all lines through one rational point; its tangent parametrizes the point itself. -/
-private lemma conic_card_le (m : F) (hq : Fintype.card F % 3 = 2) :
+lemma conic_card_le (m : F) (hq : Fintype.card F % 3 = 2) :
     (conic m).card ≤ Fintype.card F + 1 := by
   classical
   by_cases hC : (conic m).Nonempty
@@ -82,8 +82,8 @@ private lemma conic_card_le (m : F) (hq : Fintype.card F % 3 = 2) :
     exact (Finset.card_le_card hsub).trans (Finset.card_image_le.trans (by simp))
   · simp [Finset.not_nonempty_iff_eq_empty.mp hC]
 
-private def rootsAt (m b a : F) := Finset.univ.filter (fun x => cubic m b x = a)
-private def pairsAt (m b a : F) := (conic m).filter (fun p => cubic m b p.1 = a)
+def rootsAt (m b a : F) := Finset.univ.filter (fun x => cubic m b x = a)
+def pairsAt (m b a : F) := (conic m).filter (fun p => cubic m b p.1 = a)
 
 private lemma collision {m b x y : F} (hxy : x ≠ y) (he : cubic m b x = cubic m b y) :
     normForm x y = m := by
@@ -95,7 +95,7 @@ private lemma collision {m b x y : F} (hxy : x ≠ y) (he : cubic m b x = cubic 
 
 /-- A fibre of size two supplies the missing diagonal point of the conic:
 the third root, counted with multiplicity, equals one of its two rational roots. -/
-private lemma fibre_budget (m b a : F) :
+lemma fibre_budget (m b a : F) :
     3*(rootsAt m b a).card + (if (rootsAt m b a).card = 0 then 3 else 0)
       ≤ 3 + (pairsAt m b a).card := by
   classical

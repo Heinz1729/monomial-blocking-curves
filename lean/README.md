@@ -31,19 +31,22 @@
 | --- | --- | --- |
 | 第 11 节，存在错排 | [二重传递群的陪集](FrobeniusCoset.lean)一定含错排。[数值阈值](CubicAsymptotics.lean)由亏格界推出。 | 一般次数的单群直积、几何亏格估计及扭曲下降。 |
 | 三次上界，无条件 | [CubicValueSet](CubicValueSet.lean) 将同值的有序根对计入 $x^2+xy+y^2=m$。过一个有理点的割线和切线给出至多 $q+1$ 个点。二根纤维补入重根对应的对角点，逐纤维求和得 $3M\le q+1$。[cubic_minimum_upper](CubicCovering.lean) 在原射影陈述上证明 $B(q,3)\le2\log q/\log3+8$。 | 域阶条件 $q\equiv2\bmod3$，对数式另需 $q\ge16$。 |
+| 第 17 节，双线与双参数计数 | 非水平线恰遗漏 $h=(q+1)/3$ 个参数。固定两个非零斜率及第一条线的截距，双线共同遗漏数对第二个截距求和为 $h^2$；在不同平行线中求和为 $h(h-1)$。固定两个不同参数，全斜率下共同遗漏它们的线数恰为 $h(h-1)$。任意两线共同命中参数数目至少为 $(q-2)/3$。[CubicDoubleMiss](CubicDoubleMiss.lean) | 只需 $q\equiv2\bmod3$。$\mathbb F_5$ 中不同平行线对的共同遗漏数可为 0 或 1。[直接计数](../checks/cubic_pairs.py) |
+| 第 17 节，取样、分支与专化 | [CubicAlteration](CubicAlteration.lean) 双计数样本与遗漏线，证明补一个参数的结论。[CubicRepairChart](CubicRepairChart.lean) 用逐阶 Newton 提升构造常项为 1 的唯一形式级数根；[CubicRepairBranch](CubicRepairBranch.lean) 在 Laurent 级数域内构造实际分支并核验全常数域。[CubicRepairDegree](CubicRepairDegree.lean) 给出添根次数界 $3^t$；[CubicRepairPlaces](CubicRepairPlaces.lean) 证明单根子域有理，且在非极点有理位专化得到公共命中参数。 | 这些代数与有限组合步骤无条件。分支构造要求 $3\ne0$，由域阶条件自动满足。 |
+| 第 17–18 节，含负 $\log\log q$ 项的上界 | [CubicAlterationSize](CubicAlterationSize.lean) 证明取整、参数预算及严格点数阈值。[CubicLogLog](CubicLogLog.lean) 在独立射影最小值上证明 $B(q,3)\le(2\log q-\log\log q)/\log3+17$，包括特征 2。$\log q\le3^9$ 时，`minimum_upper_finite_range` 无条件成立。 | 任意 $q\equiv2\bmod3$ 的 `minimum_upper` 使用 `GeometryAt`。只需为至少三条线且通过严格点数阈值的残余线族提供输入；至多两条线可直接补齐（$q>2$）。对实际构造的分支，[CubicRepairGeometry.CurveLaws](CubicRepairGeometry.lean) 列明有理函数域亏格零、Castelnuovo–Severi 不等式、极点纤维的度数界、Hasse–Weil 界。 |
 | 两个开集及特征标，无条件 | [CubicUnramified](CubicUnramified.lean) 核验开集上的三次式可分；[CubicRationalRoots](CubicRationalRoots.lean) 把两种实际根数接到几何根的 Frobenius 不动点。[CubicCharacters](CubicCharacters.lean) 展开无根示性函数，非平凡张量总秩恰为 $4^\ell-1$。 | 只使用各定理列明的域和开集条件。 |
 | 满直积及顶维项 | [CubicMonodromy](CubicMonodromy.lean) 从逐因子传递性和各坐标中独立支撑的惯性对换证明满直积，再用实际 $S_3^\ell$ 上的特征标正交性得到非平凡张量的平均值为零。 | 将具体覆盖的几何群作用识别为满足这两条局部性质的作用；用对偶把顶维重数识别为不变量重数。 |
 | 第 14 节，群上同调 | [CubicCocycles](CubicCocycles.lean) 和 [CubicUnsigned](CubicUnsigned.lean) 直接对交叉余循环模余边界的 $H^1$ 作线性代数。非平凡无符号张量满足 $b_1\le4\ell+2$；有一个符号时至多 2，有两个符号且其余全平凡时至多 1，其余多符号情形消失。 | 子午圈生成元、异指标交换关系、各因子的局部矩阵作用。逐张量及总 Betti 数的上界均由 Lean 推出。 |
 | 第 12–16 节，曲面下界 | [trace_deviation_of_spectra](CubicSurfaceTrace.lean) 从逐项数据推出式 (12.1)，再对真实阻塞集推出 $(\log q-2\log\log q)/\log4-5$ 的严格下界。 | `SurfaceLaws` 列出迹公式、仿射消没、顶维对偶、驯 Euler 特征、正特征比较与对偶，以及二、三阶 Frobenius 特征值的权界；另需上述局部单值模型。 |
 | 第 18 节，固定斜率下界 | [fixed_deviation_of_curve_data](CubicCurveTrace.lean) 在每个字上用导子与权一估计，再求和得到固定斜率误差，推得分母 $\log16$ 的严格下界。库内还证出特征 2 的有限临界值与局部式 $Z^2(1+Z)$。 | `CurveLaws` 列出迹公式、Grothendieck–Ogg–Shafarevich 公式、顶维对偶、无穷远驯分歧、有限点的 Swan 导子等式及权一界；另需局部单值模型。 |
 
-两个下界接口都以复数特征值和维数表达经典定理的数值结论。将这些数据实现为具体覆盖的 étale 上同调，并验证各条几何输入，仍依赖手稿证明。第 17 节含 $-\log\log q/\log3$ 的上界来自手稿的补点论证。
+两个下界接口都以复数特征值和维数表达经典定理的数值结论。将这些数据实现为具体覆盖的 étale 上同调，并验证各条几何输入，仍依赖手稿证明。第 17 节上界使用单独的函数域接口，见上表。
 
 ## 复现与验证记录
 
 [CubicCertificate](CubicCertificate.lean) 逐块核验输入覆盖、输出拼接或计数之和。模 41、47 的行表和候选筛选每块取 4 个外层索引。32 元域的 1,024 行分 8 块，27,405 个归一化六元候选再按首个自由参数分 27 片。各片由内核 `decide` 核验，归纳引理将它们接回原始射影定理。
 
-在 Linux 上从空的本项目 `.lake/build` 复现时，可复用锁定的 mathlib 缓存。执行 `ulimit -s` 查看当前主线程栈限制，然后在仓库根目录运行 `python3 checks/verify_lean.py --serial`。本地 Debian 在默认 8192 KiB 软栈上限下也把硬上限设为 8192 KiB，依次通过 `--serial --write` 与 `--serial`。两轮各检查 899 个声明，生成的 76 条点名定理公理记录与 49 个文件哈希在 Linux 与 Windows 上逐字节一致。托管工作流会打印其默认栈限制。
+在 Linux 上从空的本项目 `.lake/build` 复现时，可复用锁定的 mathlib 缓存。执行 `ulimit -s` 查看当前主线程栈限制，然后在仓库根目录运行 `python3 checks/verify_lean.py --serial`。提交 `6d61b6d` 曾在本地 Debian 把默认 8192 KiB 的软栈上限同时设为硬上限，依次通过 `--serial --write` 与 `--serial`。该次 Linux 与 Windows 的验证记录逐字节一致。当前提交的点名定理与文件哈希见下方验证记录。托管工作流会打印其默认栈限制。
 
 [GitHub Actions 工作流](../.github/workflows/verify.yml) 在 Ubuntu 上执行同一条串行审计命令，再运行五个 Python 有限检查。首次安装依赖时，可在 `lean/` 运行 `lake exe cache get` 下载锁定的 mathlib 缓存。脚本执行 `lake build`，重放入口的每条 `#print axioms`，检查所有源码模块均在入口导入闭包内，再以 Lean 自带的公理收集器递归追踪所有安全声明和带源码位置的不安全声明。编译器产生的无源码不安全辅助符号不单独用作根。从根出发的依赖闭包全量检查。允许的公理是 `Classical.choice`、`Quot.sound`、`propext`。
 

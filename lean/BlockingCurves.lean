@@ -15,6 +15,8 @@ import CubicCovering
 import CubicSurfaceTrace
 import CubicCurveTrace
 import CubicUnramified
+import CubicDoubleMiss
+import CubicLogLog
 import FrobeniusCoset
 import Sextic32Global
 
@@ -65,7 +67,27 @@ import Sextic32Global
 #print axioms BlockingCurves.CubicCovering.line_miss_bound
 #print axioms BlockingCurves.CubicCovering.cubic_upper
 #print axioms BlockingCurves.CubicCovering.cubic_minimum_upper
-#print axioms BlockingCurves.CubicMonodromy.full_of_inertia
+#print axioms BlockingCurves.CubicAlteration.exists_sample
+#print axioms BlockingCurves.CubicAlteration.complete_sample
+#print axioms BlockingCurves.CubicAlteration.projective_cover_after_repair
+#print axioms BlockingCurves.CubicDoubleMiss.line_miss_exact
+#print axioms BlockingCurves.CubicDoubleMiss.common_hits_bound
+#print axioms BlockingCurves.CubicDoubleMiss.commonHit_two
+#print axioms BlockingCurves.CubicDoubleMiss.double_miss_sum
+#print axioms BlockingCurves.CubicDoubleMiss.parallel_double_miss_sum
+#print axioms BlockingCurves.CubicDoubleMiss.pair_miss_exact
+#print axioms BlockingCurves.CubicRepairChart.tangent_kernel
+#print axioms BlockingCurves.CubicRepairChart.exists_unique_branch
+#print axioms BlockingCurves.CubicRepairChart.simultaneous_roots_at_inverse_cube
+#print axioms BlockingCurves.CubicRepairBranch.exists_rational_branch
+#print axioms BlockingCurves.CubicRepairPlaces.single_root_rational
+#print axioms BlockingCurves.CubicRepairDegree.generated_degree
+#print axioms BlockingCurves.CubicRepairPlaces.hit_of_regular_place
+#print axioms BlockingCurves.CubicRepairGeometry.genus_bound
+#print axioms BlockingCurves.CubicRepairGeometry.common_of_laws
+#print axioms BlockingCurves.CubicAlterationSize.parameters
+#print axioms BlockingCurves.CubicLogLog.minimum_upper_finite_range
+#print axioms BlockingCurves.CubicLogLog.minimum_upper
 #print axioms BlockingCurves.CubicCharacters.centered_count
 #print axioms BlockingCurves.CubicCharacters.sum_nontrivial_ranks
 #print axioms BlockingCurves.CubicMonodromy.character_orthogonality

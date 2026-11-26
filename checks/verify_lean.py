@@ -62,6 +62,8 @@ def record(project):
     lean(project, "build")
     entry = project / "BlockingCurves.lean"
     expected = re.findall(r"^#print axioms ([\w.]+)$", entry.read_text(encoding="utf-8"), re.M)
+    if len(expected) != len(set(expected)):
+        raise SystemExit("Duplicate named theorem in the audit entry point.")
     output = lean(project, "env", "lean", entry.name)
     results = dict(AXIOMS.findall(output))
     if not expected or set(expected) != set(results):

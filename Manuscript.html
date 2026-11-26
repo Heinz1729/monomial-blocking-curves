@@ -7,7 +7,7 @@
 @media print{html,body{background:white}body{padding:0;max-width:none;font-size:11pt;line-height:1.65}section{margin:0}section+section{break-before:page}header{margin-bottom:5mm}h1{font-size:23pt}h2{font-size:16.4pt}h3{break-after:avoid}pre,table,.eq,.box{break-inside:avoid}*{-webkit-print-color-adjust:exact;print-color-adjust:exact}a{text-decoration:none}}@media(max-width:600px){body{padding:20px}h1{font-size:1.65em}.eq{overflow-wrap:anywhere}}
 @media print{#references .ref p{margin:.36em 0;break-inside:avoid}#references .ref{line-height:1.47}}
 </style></head><body>
-<section><header><div class="meta">GPT-Astra　·　研究手稿　·　2026 年 11 月 26 日</div>
+<section><header><div class="meta">GPT-Astra　·　研究手稿　·　2026 年 11 月 27 日</div>
 <h1>有限域上单项式曲线的<br>竖直平移与阻塞数</h1>
 <div class="meta">Asgarli–Ghioca–Yip 问题 5.4　｜　所有特征的对数阶与有限域上的精确解</div></header>
 <h2>问题与主结果</h2>
@@ -15,7 +15,7 @@
 <div class="eq"><i>C</i><sub>α</sub>　:　<i>YZ</i><sup>d−1</sup> = <i>X</i><sup>d</sup> − α<i>Z</i><sup>d</sup>。</div>
 <p>在 <i>Z</i> = 1 内，每个参数 α 给出一条图像 <i>y</i> = <i>x</i><sup>d</sup> − α。记 <i>B</i>(<i>q</i>, <i>d</i>) 为使这些曲线的有理点并集成为阻塞集所需的最少参数个数。Asgarli、Ghioca 和 Yip 在期刊版问题 5.4 提出求此数，并指出当 gcd(<i>d</i>, <i>q</i>−1) = 1 时，他们给出的对数下界论证不适用。[1]</p>
 <h3>固定次数的对数阶</h3>
-<p>固定任意 <i>d</i> ≥ 2。定理 6A 证明，沿全部素数幂有 <strong><i>B</i>(<i>q,d</i>) = Θ<sub>d</sub>(log <i>q</i>)</strong>，且下极限系数至少为 1/(2 log(<i>d</i>!))。在 <i>d</i>≥3、<i>p</i>∤<i>d</i>(<i>d</i>−1) 时，第 7–10 节给出较大的系数 1/[2(<i>d</i>−1)log 2]。三次且 <i>q</i> ≡ 2 (mod 3)、<i>p</i> &gt; 3 时，第 12–16 节将下极限系数提高到 <strong>1/log 4</strong>。相应下界为 (log <i>q</i> − 2 log log <i>q</i>)/log 4 − <i>O</i>(1)，第 17 节给出上界 (2 log <i>q</i> − log log <i>q</i>)/log 3 + <i>O</i>(1)。本文的 log 为自然对数。</p>
+<p>固定任意 <i>d</i> ≥ 2。定理 6A 证明，沿全部素数幂有 <strong><i>B</i>(<i>q,d</i>) = Θ<sub>d</sub>(log <i>q</i>)</strong>，且下极限系数至少为 1/(2 log(<i>d</i>!))。在 <i>d</i>≥3、<i>p</i>∤<i>d</i>(<i>d</i>−1) 时，第 7–10 节给出较大的系数 1/[2(<i>d</i>−1)log 2]。三次且 <i>q</i> ≡ 2 (mod 3)、<i>p</i> &gt; 3 时，第 12–16 节将下极限系数提高到 <strong>1/log 4</strong>。相应下界为 (log <i>q</i> − 2 log log <i>q</i>)/log 4 − <i>O</i>(1)，第 17 节给出上界 (2 log <i>q</i> − log log <i>q</i>)/log 3 + 17。本文的 log 为自然对数。</p>
 <h3>定理 1　Frobenius 次数的精确阻塞数</h3>
 <p>设 <i>p</i> 为素数，<i>h</i>, <i>e</i> ≥ 1，<i>q</i> = <i>p</i><sup>h</sup>，<i>d</i> = <i>p</i><sup>e</sup>。令 <i>g</i> = gcd(<i>h</i>, <i>e</i>)。则</p>
 <div class="box"><i>B</i>(<i>p</i><sup>h</sup>, <i>p</i><sup>e</sup>) = 1 + (<i>h</i>/<i>g</i>)(<i>p</i><sup>g</sup> − 1)。</div>
@@ -104,7 +104,7 @@ for k in {4, 5}:
 <h3>陈述与核验入口</h3>
 <p><code>ProblemStatement.lean</code> 只导入 mathlib。它从三维向量的射影化与对偶平面定义点、线和关联关系，写出曲线的次数、齐次性、几何不可约性及 [1] 问题 5.4 的最小值，并保留式 (5.4) 的值集条件。<code>StatementComparison.lean</code> 对非零代表证明关联与曲线方程的等价性，并将两种最小值陈述互推。<code>GeometricIrreducibility.lean</code> 证明原式在代数闭包上的不可约性。<code>ScatteredComparison.lean</code> 将第 3 节的核维数与斜率条件互推。[4]</p>
 <p>有限证书经域同构、参数归一化及逐线判据连接到 <code>GaloisField</code> 上的射影陈述。它们核验 8、41、47 元域的最小值及最优解计数，以及 32 元域的六次最小值。32 元域的轨道分类由第 5.1 节的两次枚举复核。入口、锁定依赖与逐项公理见 <code>lean/README.md</code> 及 <code>lean/verification.txt</code>。</p>
-<p>对 <i>q</i>≡2 (mod 3)，Lean 从同值有序根对所在的圆锥曲线证得每条线至多漏掉 (<i>q</i>+1)/3 个参数，并在 <i>q</i>≥16 时无条件推出射影最小值 <i>B</i>(<i>q</i>,3)≤2 log <i>q</i>/log 3+8。下界方面，Lean 将实际有理根数识别为 Frobenius 不动点，从局部惯性的对换与逐因子传递性推出直积群，证明 §14 的群上同调维数界，并从逐特征值权界、迹公式等几何输入推出 §16、§18 的总误差和对数下界。具体覆盖上的惯性、上同调比较、对偶和导子仍由纸面几何论证提供。§17 的负 log log <i>q</i> 次项也由纸面证明给出。</p>
+<p>对 <i>q</i>≡2 (mod 3)，Lean 从同值有序根对所在的圆锥曲线证得每条线至多漏掉 (<i>q</i>+1)/3 个参数，并在 <i>q</i>≥16 时无条件推出射影最小值 <i>B</i>(<i>q</i>,3)≤2 log <i>q</i>/log 3+8。下界方面，Lean 将实际有理根数识别为 Frobenius 不动点，从局部惯性的对换与逐因子传递性推出直积群，证明 §14 的群上同调维数界，并从逐特征值权界、迹公式等几何输入推出 §16、§18 的总误差和对数下界。具体覆盖上的惯性、上同调比较、对偶和导子仍由纸面几何论证提供。§17 的次阶上界已从有限取样与共同参数专化接入独立射影陈述，显式余项为 +17。对 log <i>q</i>≤3<sup>9</sup>，Lean 直接证明该界。对任意域阶，所余四项函数域输入列于 §17.1。</p>
 <h3>与有限几何文献的关系</h3>
 <p>仿射超平面阻塞数归于 [2, 3]。Bruen–Fisher 的三次几何构造允许选取不同曲线 [5]，Li–Pott 研究单个图像与直线的交数 [6]。本文对固定竖直平移族应用这些几何判据，并列出有限域实例的最优轨道。Dot 给出了 47 元域及 32 元域的计算分类，并提出避碰斜率和 §11 的野分歧路线。</p>
 </section><section id="log-bound"><h2>7　非线性平移族的对数下界</h2>
@@ -250,18 +250,27 @@ for k in {4, 5}:
 <p>Cohen–Dimca–Orlik 的超平面配置非共振定理 [20，定理 1] 在适当单值假设下给出消没。考虑恰好两个标准因子、其余平凡的项。在 (<i>v,w</i>) 平面的射影闭包中，每条竖线、横线的惯性均有特征值 1。对角线的两因子均为三轮换，二者张量含特征值 1。无穷远直线的一般点处各 <i>t</i><sub>α</sub> 取非分支值，惯性平凡。因此没有一条边界直线满足 [20] 对该直线本身的非共振条件。第 14 节的维数上界也处理这类项。</p>
 <p>定理 7 需要对指定的任意 ℓ 元集控制两参数计数，且 ℓ 随 <i>q</i> 增长。Cohen–Suciu [21] 给出纤维型配置上一般局部系统的有限分辨率，Denham–Suciu [22，定理 1.2] 的消没定理要求相应圈无不变量。标准因子的有限子午圈有一条固定线。Shpilka [23，定理 1.4] 给出随覆盖复杂度变化的显式 Chebotarev 界，其定理 1.6 要求代入次数至少为 4。在所核对的公开来源中，未找到直接给出 (12.1) 的一致误差、上述次阶下界或相应阻塞系数的定理。</p></section>
 <section id="cubic-alteration"><h2>17　上界的对数对数改进</h2>
-<p>令 <i>q</i> ≡ 2 (mod 3)，且特征 <i>p</i> &gt; 3。第 10 节用随机平移覆盖直线。若允许第一步留下少量直线，再用一个参数同时击中它们，可以得到</p>
-<div class="box"><i>B</i>(<i>q</i>,3) ≤ (2 log <i>q</i> − log log <i>q</i>)/log 3 + <i>O</i>(1)。</div>
+<p>设 <i>q</i> ≡ 2 (mod 3)，写 <i>L</i>=log <i>q</i>。先取样留下一小批遗漏直线，再补一个同时击中它们的参数。对所有这样的素数幂，包括特征 2，有</p>
+<div class="box"><i>B</i>(<i>q</i>,3) ≤ (2<i>L</i> − log <i>L</i>)/log 3 + 17。</div>
 <h3>给定直线的共同参数</h3>
-<p>给定 <i>t</i> ≥ 1 条有限斜率直线 <i>y</i>=<i>m</i><sub>i</sub><i>x</i>+<i>b</i><sub>i</sub>。记 <i>G</i><sub>t</sub>=2+(2<i>t</i>−1)3<sup><i>t</i></sup>。若 <i>q</i>+1−<i>G</i><sub>t</sub>√<i>q</i> &gt; 3<sup><i>t</i></sup>，则存在一条 <i>y</i>=<i>x</i>³−α 同时击中这些直线。这个充分条件对全部斜率和截距一致。</p>
-<p>写 <i>f</i><sub>i</sub>(<i>x</i>)=<i>x</i>³−<i>m</i><sub>i</sub><i>x</i>−<i>b</i><sub>i</sub>。所求是方程 <i>f</i><sub>1</sub>(<i>x</i><sub>1</sub>)=⋯=<i>f</i><sub>t</sub>(<i>x</i><sub>t</sub>)=α 的一个仿射有理解。在 ℙ<sup><i>t</i></sup> 中将前 <i>t</i>−1 个等式齐次化为</p>
-<div class="eq"><i>X</i><sub>i</sub>³−<i>X</i><sub>1</sub>³−(<i>m</i><sub>i</sub><i>X</i><sub>i</sub>−<i>m</i><sub>1</sub><i>X</i><sub>1</sub>)<i>Z</i>²−(<i>b</i><sub>i</sub>−<i>b</i><sub>1</sub>)<i>Z</i>³=0　(2 ≤ <i>i</i> ≤ <i>t</i>)。</div>
-<p>无穷远有有理点 <i>P</i>=[1:⋯:1:0]。在 <i>X</i><sub>1</sub>=1 的图中，各方程关于 <i>X</i><sub>2</sub>,…,<i>X</i><sub>t</sub> 的导数矩阵在 <i>P</i> 为 3 倍单位阵。因此 <i>P</i> 是光滑曲线点，<i>Z</i> 是局部参数。过 <i>P</i> 的唯一几何不可约分支由 Frobenius 保持。取其在 𝔽<sub>q</sub> 上的光滑射影模型 <i>C</i>。函数 α=<i>f</i><sub>1</sub>(<i>X</i><sub>1</sub>/<i>Z</i>) 在 <i>P</i> 有极点。用 <i>t</i> 个三次方程逐一添根，得到映射 α: <i>C</i> → ℙ¹ 的次数 <i>D</i> ≤ 3<sup><i>t</i></sup>。</p>
-<p>各 <i>f</i><sub>i</sub> 的有限临界值至多两个。其分裂域复合的几何群嵌入 (<i>S</i><sub>3</sub>)<sup><i>t</i></sup>，群阶与 <i>p</i> 互素。因此 α 为可分驯覆盖，并且至多有 2<i>t</i>+1 个几何分支值（含 ∞）。每个分支值对 Riemann–Hurwitz 公式的贡献至多 <i>D</i>，故 2<i>g</i>(<i>C</i>) ≤ 2+(2<i>t</i>−1)<i>D</i> ≤ <i>G</i><sub>t</sub>。Hasse–Weil 界给出至少 <i>q</i>+1−<i>G</i><sub>t</sub>√<i>q</i> 个有理点，其中位于 ∞ 上方的至多 <i>D</i> 个。在其余点，<i>x</i><sub>i</sub> 都满足关于 α 的首一方程，故均无极点，其剩余值给出所求解。整个论证容许不同三次映射有相同的有限分支值。</p>
-<h3>随机取样后再补一个参数</h3>
-<p>置 <i>t</i>=⌊log <i>q</i>/(4 log 3)⌋。对充分大的 <i>q</i>，有 <i>t</i> ≥ 1、3<sup><i>t</i></sup> ≤ <i>q</i><sup>1/4</sup>，上面的充分条件成立。每次均匀独立抽取一个参数，对指定非水平有限斜率直线，遗漏概率是 (<i>q</i>+1)/(3<i>q</i>) [第 10 节]。取</p>
-<div class="eq"><i>k</i> = ⌈log(<i>q</i>(<i>q</i>−1)/<i>t</i>)/log(3<i>q</i>/(<i>q</i>+1))⌉。</div>
-<p>遗漏直线数的期望至多 <i>t</i>，故某次取样至多遗漏 <i>t</i> 条。用上述引理补一个参数即可。水平线因立方映射为置换而已被击中，竖直线与无穷远线经过共同点 [0:1:0]。于是 <i>B</i>(<i>q</i>,3) ≤ <i>k</i>+1。由 log <i>t</i> = log log <i>q</i> + <i>O</i>(1) 及 log(3<i>q</i>/(<i>q</i>+1))=log 3+<i>O</i>(1/<i>q</i>) 得框中式。此改进节省的参数数目随 <i>q</i> 增长，上界的首项系数仍为 2/log 3。</p>
+<p>给定 <i>t</i>≥1 条线 <i>y</i>=<i>m</i><sub>i</sub><i>x</i>+<i>b</i><sub>i</sub>。令 <i>f</i><sub>i</sub>(<i>x</i>)=<i>x</i>³−<i>m</i><sub>i</sub><i>x</i>−<i>b</i><sub>i</sub>。我们要使 <i>f</i><sub>i</sub>(<i>x</i><sub>i</sub>)=α 有一个共同的有理参数 α。令 <i>G</i><sub>t</sub>=2+(2<i>t</i>−1)3<sup><i>t</i></sup>。充分条件为</p>
+<div class="eq"><i>q</i>+1−<i>G</i><sub>t</sub>√<i>q</i> &gt; 3<sup><i>t</i></sup>。　(17.1)</div>
+<p>将等式 <i>f</i><sub>i</sub>(<i>x</i><sub>i</sub>)=<i>f</i><sub>1</sub>(<i>x</i><sub>1</sub>) 齐次化。无穷远点 [1:⋯:1:0] 处取图 <i>X</i>₁=1，关于其他 <i>X</i><sub>i</sub> 的偏导矩阵为 3 倍单位阵，关于 <i>Z</i> 的一列为零。因 3≠0，切空间只有 <i>Z</i> 方向。为直接选定一个定义在 𝔽<sub>q</sub> 上的分支，可取 Laurent 级数域中的超越参数 α=<i>z</i><sup>−3</sup>，在幂级数环 𝔽<sub>q</sub>[[<i>z</i>]] 中解</p>
+<div class="eq"><i>Y</i><sub>i</sub>³−1−<i>m</i><sub>i</sub><i>Y</i><sub>i</sub><i>z</i>²−<i>b</i><sub>i</sub><i>z</i>³=0，　<i>Y</i><sub>i</sub>(0)=1。</div>
+<p>在常数项 1 处导数为 3。逐阶 Newton 修正保留已确定的系数，给出唯一形式根。于是 <i>x</i><sub>i</sub>=<i>Y</i><sub>i</sub>/<i>z</i> 同时满足原方程。由它们在 𝔽<sub>q</sub>(α) 上生成的子域在 Laurent 级数域内，全常数域是 𝔽<sub>q</sub>。事实上，对 𝔽<sub>q</sub> 代数的非零级数在一个有限域内，乘法阶有限，故赋值为零。减去其常数项后若仍非零，赋值须为正，矛盾。</p>
+<p>取 <i>E</i><sub>i</sub>=𝔽<sub>q</sub>(α,<i>x</i>₁,…,<i>x</i><sub>i</sub>)。单根域 𝔽<sub>q</sub>(<i>x</i><sub>i</sub>) 是有理函数域，因为 <i>f</i><sub>i</sub>(<i>x</i><sub>i</sub>)=α 超越。逐一添根有 [<i>E</i><sub>t</sub>:𝔽<sub>q</sub>(α)]≤3<sup><i>t</i></sup>。把 <i>E</i><sub>i</sub> 表为 <i>E</i><sub>i−1</sub> 与单根域的复合，Castelnuovo–Severi 不等式 [11，§4] 给出 <i>g</i>₁=0，<i>g</i><sub>i</sub>≤3<i>g</i><sub>i−1</sub>+2·3<sup><i>i−1</i></sup>。由归纳得 2<i>g</i><sub>t</sub>≤<i>G</i><sub>t</sub>。Hasse–Weil 界给出至少 <i>q</i>+1−<i>G</i><sub>t</sub>√<i>q</i> 个有理位，其中 α 的极点至多 3<sup><i>t</i></sup> 个。在一个非极点有理位，各 <i>x</i><sub>i</sub> 满足系数正则的首一方程，也都正则。取剩余值即得共同参数。这一推导容许临界值相撞及特征 2 的野分歧。</p>
+<p>当特征大于 3 时也可用 Riemann–Hurwitz 公式。分裂域几何群嵌入 (<i>S</i>₃)<sup><i>t</i></sup>，至多 2<i>t</i> 个有限分支值和 ∞ 均为驯分歧。记覆盖次数为 <i>D</i>；每个分支值贡献至多 <i>D</i>，故 2<i>g</i>≤2+(2<i>t</i>−1)<i>D</i>。</p>
+</section>
+<section id="cubic-alteration-sampling"><h2>17.1　有限取样与显式常数</h2>
+<p>令 <i>h</i>=(<i>q</i>+1)/3。每条非水平线恰遗漏 <i>h</i> 个参数。取 <i>k</i> 个有放回的有序样本，计数“样本、被它所有参数漏掉的非水平线”这类关联对。先固定直线，共有 <i>q</i>(<i>q</i>−1)<i>h</i><sup><i>k</i></sup> 对。若</p>
+<div class="eq"><i>q</i>(<i>q</i>−1)<i>h</i><sup><i>k</i></sup> ≤ <i>tq</i><sup><i>k</i></sup>，　(17.2)</div>
+<p>则至少一个样本至多漏掉 <i>t</i> 条线。条件 (17.1) 对所有这些直线一致，故只须再加入一个参数。水平线由立方映射满射而被击中，竖直线与无穷远线均过 [0:1:0]。即使样本有重复，最后的参数集大小也至多 <i>k</i>+1。</p>
+<h3>选取参数预算</h3>
+<p>当 <i>L</i>≥128 时，置 <i>t</i>=⌊<i>L</i>/(4 log 3)⌋、<i>A</i>=(2<i>L</i>−log <i>L</i>)/log 3、<i>k</i>=⌊<i>A</i>⌋+16。此时 <i>t</i>≥<i>L</i>/16 且 <i>k</i> log(1+1/<i>q</i>)≤4。由 <i>k</i> log 3&gt;2<i>L</i>−log <i>L</i>+15 log 3 及 15 log 3&gt;4+log 16 得 (17.2)。置 <i>u</i>=<i>q</i><sup>1/4</sup>，有 3<sup><i>t</i></sup>≤<i>u</i>、2<i>t</i>≤<i>L</i>、<i>u</i>≥<i>L</i>+4，因而 3<sup><i>t</i></sup>+<i>G</i><sub>t</sub>√<i>q</i>≤<i>u</i>+[2+(<i>u</i>−4)<i>u</i>]<i>u</i>²&lt;<i>q</i>+1。两条件同时满足，且 <i>k</i>+1≤<i>A</i>+17。</p>
+<p>当 <i>L</i>≤3<sup>9</sup> 且 <i>q</i>≥16 时，log <i>L</i>≤9 log 3，故第 10 节的无条件界 2<i>L</i>/log 3+8 已至多为 <i>A</i>+17。更小的域用全部参数即可。这覆盖 <i>L</i>&lt;128 的范围，也给出无需曲线点数估计的有限域阶区间。</p>
+<h3>双线的遗漏数</h3>
+<p>设 <i>M</i>(<i>m,b</i>) 是遗漏 <i>y</i>=<i>mx</i>+<i>b</i> 的参数集，<i>m,n</i>≠0。固定两斜率及第一截距 <i>b</i>，则 ∑<sub>c</sub>|<i>M</i>(<i>m,b</i>)∩<i>M</i>(<i>n,c</i>)|=<i>h</i>²，因为每个参数对第二斜率恰遗漏 <i>h</i> 个截距。若为平行线，去掉 <i>c=b</i> 后总和为 <i>h</i>(<i>h</i>−1)。任取两线，共同命中参数至少有 <i>q</i>−2<i>h</i>=(<i>q</i>−2)/3 个，<i>q</i>&gt;2 时可无条件同补两线。固定两条线的共同遗漏数随截距变化。固定两个不同参数、遍历直线时，则由第 16 节的二重传递性得到恰好 <i>h</i>(<i>h</i>−1) 条共同遗漏线。</p>
+<p class="note"><code>CubicLogLog.lean</code> 在独立射影陈述中给出上述上界。在任意域阶调用 <code>minimum_upper</code> 时，只需对至少三条线且满足 (17.1) 的残余族，为其分支提供有理函数域亏格零、Castelnuovo–Severi、极点纤维度数界与 Hasse–Weil 四项经典输入。取样、级数根、全常数域、次数、非极点专化和取整均在 Lean 内证明。<code>minimum_upper_finite_range</code> 对 <i>L</i>≤3<sup>9</sup> 无条件成立。</p>
 </section>
 <section id="cubic-char2"><h2>18　特征 2 的适用范围</h2>
 <p>二元特征下，满足 <i>q</i> ≡ 2 (mod 3) 的域阶为 <i>q</i> = 2<sup>2<i>h</i>+1</sup>。此时固定斜率 1 即可处理唯一的有限野分支点，得到下列补充界。奇特征部分的二维估计使用两个不同的有限分支值。</p>
@@ -270,14 +279,14 @@ for k in {4, 5}:
 <p><strong>固定斜率的估计。</strong> 给定 ℓ 个互异参数 α，以 <i>b</i>+α 代 <i>t</i>。各有限分支值互异，各交域至多在 ∞ 驯分歧，故第 8 节的 Riemann–Hurwitz 论证给出直积群 <i>S</i>₃<sup>ℓ</sup> 及常数域 𝔽<sub><i>q</i></sub>。删去 ℓ 个分支截距，令 <i>N</i> 为剩余截距中使全部三次式不可约的个数。第 9 节每个非平凡秩 <i>a</i> 项在有限分支处的 Swan 导子至多为 <i>a</i>，在 ∞ 为零。由 Euler 特征公式，dim <i>H</i>¹<sub>c</sub> ≤ (2ℓ−1)<i>a</i>。秩和为 4<sup>ℓ</sup>−1，故</p>
 <div class="eq">|3<sup>ℓ</sup><i>N</i>−(<i>q</i>−ℓ)| ≤ (2ℓ−1)(4<sup>ℓ</sup>−1)√<i>q</i>。</div>
 <p>对每个 0 &lt; <i>c</i> &lt; 1/log 16，取 ℓ=⌊<i>c</i> log <i>q</i>⌋，右端为 <i>o</i>(<i>q</i>)，故有遗漏直线。上界沿用第 10 节的范数计数。对非零斜率 <i>m</i>，碰撞方程 <i>x</i>²+<i>xy</i>+<i>y</i>²=<i>m</i> 有 <i>q</i>+1 个有序解，恰有一个位于对角线。纤维 <i>x</i>³+<i>mx</i>=0 恰由简单根 0 与二重根 √<i>m</i> 组成，其余有多个域内根的纤维各含三个单根。因此值集大小仍为 (2<i>q</i>−1)/3，随机平移给出框中上界。</p>
-<p><strong>上界的次阶项。</strong> 第 17 节的光滑点在此特征仍满足同一雅可比判据。用 Castelnuovo–Severi 不等式估计过此点的分支亏格（亦见 [11，§4]）。在几何常数域 <i>k</i> 上令 <i>F</i><sub>i</sub>=<i>k</i>(α,<i>x</i>₁,…,<i>x</i><sub>i</sub>)。<i>F</i>₁=<i>k</i>(<i>x</i>₁) 为有理函数域，<i>F</i><sub>i</sub> 是 <i>F</i><sub>i−1</sub> 与 <i>k</i>(<i>x</i><sub>i</sub>) 的复合，对两者次数分别至多 3、3<sup><i>i</i>−1</sup>。故 <i>g</i><sub>i</sub> ≤ 3<i>g</i><sub>i−1</sub>+2·3<sup><i>i</i>−1</sup>，归纳得 <i>g</i><sub>t</sub> ≤ 2(<i>t</i>−1)3<sup><i>t</i>−1</sup>。所以 2<i>g</i><sub>t</sub> ≤ <i>G</i><sub>t</sub>；同一补点引理与随机取样仍给出 (2 log <i>q</i> − log log <i>q</i>)/log 3 + <i>O</i>(1) 的上界。</p>
+<p><strong>上界的次阶项。</strong> 特征 2 中 3=1，第 17 节的 Jacobian 和形式级数提升仍然成立。Castelnuovo–Severi 的复合域估计直接处理这些野分歧，故 §17.1 中加法常数为 17 的上界与相同的 Lean 形式化范围也适用于特征 2。</p>
 <p class="note">这是第 9 节特征标估计在一个野分支点上的应用，系数取自固定斜率。此处辅助素数取异于 2 的素数。[7，定理 13] 假设 <i>p</i> ∤ <i>d</i>(<i>d</i>−1)。Carmon 在特征 2 研究平移的相关性及通用分裂域。[9] 给出 Dickson 值集的一般公式。<a href="https://doi.org/10.1098/rsta.2014.0311">Carmon（2015）</a>。</p>
 </section>
 <section id="checks"><h2>计算检验</h2>
 <h3>一个可以逐线比较的实例</h3>
 <p>在 𝔽₄₇ 取 <i>S</i>={0,1,3,5}。开集有 43·42=1,806 个有序点对。程序用多项式模幂判别三轮换，得到 18 个同时不可约点对；换回原坐标并直接代入所有域元素，得到 9 条斜率形如 3<i>u</i>² 的遗漏直线，每条恰出现两次。对每对不同平移，另在全部斜率上得到 16·15=240 条遗漏直线。</p>
 <pre>python checks/cubic_pairs.py</pre>
-<p>程序还对 11、17、41 元域运行相同检验，并在全部四个域上遍历每个非零的双平移差。第 14 节的一阶维数估计及定理 7 的渐近量词由证明给出。</p>
+<p>程序还对 11、17、41 元域运行相同检验，并在全部四个域上遍历每个非零的双平移差。另在 𝔽₅ 固定斜率 1，截距 0 的遗漏集为 {2,3}，与截距 1、2 两线的遗漏集分别交于 {2}、空集。这给出 §17.1 双线截距求和中的两个不同项。第 14 节的一阶维数估计及定理 7 的渐近量词由证明给出。</p>
 <h3>配置空间上的有限线性代数检查</h3>
 <p><code>python checks/cubic_cohomology.py</code> 只施加异指标交换关系，构造包含真实余循环空间的解空间，扣除余边界。模 101 消元只会降低整系数关系矩阵的秩，且余边界秩在此特征保持。默认遍历 ℓ=1,…,6 的全部 83 个张量类型（按因子置换合并），逐项检查符号因子细分及总和。这个计算用来检出符号与维数计数错误，任意 ℓ 的结论由第 14 节证明。</p></section>
 <section id="references"><h2>参考文献</h2><div class="ref">

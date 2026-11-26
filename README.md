@@ -21,7 +21,7 @@ $$
 
 $$
 \frac{L-2\log L}{\log 4}-5 < B(q,3)
-\le \frac{2L-\log L}{\log 3}+O(1).
+\le \frac{2L-\log L}{\log 3}+17.
 $$
 
 因此 $B(q,3)/\log q$ 的下极限至少为 $1/\log 4$，上极限至多为 $2/\log 3$。固定斜率给出的下极限是 $1/\log16$。真实首项系数、上下极限是否相同以及真实次项仍然开放。特征 2 的 $q=2^{2h+1}$ 由第 18 节单独处理，目前的下极限估计为 $1/\log16$。[两参数定理](Manuscript.html#cubic-two-parameters) · [特征 2](Manuscript.html#cubic-char2)
@@ -47,8 +47,9 @@ Lean 4.8.0 核验了表中的最小值，以及 $q=8,41,47$ 的最优解计数�
 | 渐近结论 | Lean 已核验的范围 |
 | --- | --- |
 | 三次上界，无条件 | 对任意 $q\equiv2\pmod3$，每条仿射直线漏掉的参数数目 $M$ 满足 $3M\le q+1$。对 $q\ge16$，独立射影陈述中的最小值满足 $B(q,3)\le2\log q/\log3+8$，包括特征 2。[像集计数](lean/CubicValueSet.lean) · [最小值定理](lean/CubicCovering.lean) |
+| 第 17 节，补一个参数 | 在取样预算满足式 (17.2) 时，有限双计数证明某个样本至多遗漏 $t$ 条线。若这些线有共同命中参数，加一个参数即可补齐。对 $q\equiv2\pmod3$，Lean 在 $\log q\le3^9$ 时无条件证明 $B(q,3)\le(2L-\log L)/\log3+17$。任意域阶的版本（包括特征 2）对满足点数阈值的至少三条残余直线，使用有理函数域亏格零、Castelnuovo–Severi 不等式、极点纤维的度数界与 Hasse–Weil 界。[射影最小值与条件](lean/CubicLogLog.lean) · [补点证明](lean/CubicAlteration.lean) |
 | 三次下界，依赖几何输入 | 从实际有理根数展开特征标，按张量类型证明维数界并求和。给定相应覆盖的局部惯性、迹公式、对偶及逐特征值权界等输入，Lean 推出奇特征的 $1/\log4$ 和特征 2 的 $1/\log16$。两式的总误差都在库内导出。[曲面](lean/CubicSurfaceTrace.lean) · [曲线](lean/CubicCurveTrace.lean) |
-| 纸面结果 | 全特征一般次数定理的几何证明与第 17 节上界的 $-\log\log q/\log3$ 修正见手稿。[逐项验证范围](lean/README.md) · [公理与源码记录](lean/verification.txt) |
+| 纸面结果 | 全特征一般次数定理中的几何群分类、亏格估计及扭曲下降见手稿。[逐项验证范围](lean/README.md) · [公理与源码记录](lean/verification.txt) |
 
 首次在仓库根目录复现时运行
 

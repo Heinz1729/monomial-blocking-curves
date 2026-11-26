@@ -16,5 +16,7 @@ lean_lib BlockingCurves where
     `CubicAsymptotics, `CubicCocycles, `CubicCovering, `CubicValueSet, `CubicCharacters,
     `CubicMonodromy, `CubicUnsigned, `CubicSurfaceTrace, `CubicCurveTrace,
     `CubicUnramified, `CubicRationalRoots,
+    `CubicAlteration, `CubicDoubleMiss, `CubicAlterationSize, `CubicRepairChart,
+    `CubicRepairDegree, `CubicRepairPlaces, `CubicRepairBranch, `CubicRepairGeometry, `CubicLogLog,
     `FrobeniusCoset,
     `Sextic32, `Sextic32Geometry, `Sextic32Search, `Sextic32Global]
