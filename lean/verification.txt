@@ -68,6 +68,33 @@ BlockingCurves.CubicRepairBranch.exists_rational_branch  [Classical.choice, Quot
 BlockingCurves.CubicRepairPlaces.single_root_rational  [Classical.choice, Quot.sound, propext]
 BlockingCurves.CubicRepairDegree.generated_degree  [Classical.choice, Quot.sound, propext]
 BlockingCurves.CubicRepairPlaces.hit_of_regular_place  [Classical.choice, Quot.sound, propext]
+BlockingCurves.CubicRationalGenus.chartForms_eq_range  [Classical.choice, Quot.sound, propext]
+BlockingCurves.CubicRationalGenus.regularForms_eq_bot  [Classical.choice, Quot.sound, propext]
+BlockingCurves.CubicRationalGenus.rational_genus_zero  [Classical.choice, Quot.sound, propext]
+BlockingCurves.CubicRationalGenus.regularFormsEquiv  [Classical.choice, Quot.sound, propext]
+BlockingCurves.CubicRepairGeometry.full_stage_genus  [Classical.choice, Quot.sound, propext]
+BlockingCurves.CubicZetaPoints.rational_point_estimate  [Classical.choice, Quot.sound, propext]
+BlockingCurves.CubicRepairGeometry.base_regularForms_eq_bot  [Classical.choice, Quot.sound, propext]
+BlockingCurves.CubicRepairGeometry.single_regularForms_eq_bot  [Classical.choice, Quot.sound, propext]
+BlockingCurves.CubicRepairGeometry.base_genus  [Classical.choice, Quot.sound, propext]
+BlockingCurves.CubicRepairGeometry.single_genus  [Classical.choice, Quot.sound, propext]
+BlockingCurves.CubicPoleFibre.selectors  [Classical.choice, Quot.sound, propext]
+BlockingCurves.CubicPoleScalars.normalize  [Classical.choice, Quot.sound, propext]
+BlockingCurves.CubicPoleDegree.card_le_degree_of_polar  [Classical.choice, Quot.sound, propext]
+BlockingCurves.CubicFiniteFibres.card_le_degree_of_value  [Classical.choice, Quot.sound, propext]
+BlockingCurves.CubicFiniteFibres.rational_places_bound  [Classical.choice, Quot.sound, propext]
+BlockingCurves.CubicRepairGeometry.stage_compositum_top  [Classical.choice, Quot.sound, propext]
+BlockingCurves.CubicRepairGeometry.stage_relative_finrank  [Classical.choice, Quot.sound, propext]
+BlockingCurves.CubicRepairGeometry.full_constants_stage  [Classical.choice, Quot.sound, propext]
+BlockingCurves.CubicCompositumRR.genus_bound  [Classical.choice, Quot.sound, propext]
+BlockingCurves.CubicRepairGeometry.stage_finite  [Classical.choice, Quot.sound, propext]
+BlockingCurves.CubicZetaPoints.degreeOneEquiv  [Classical.choice, Quot.sound, propext]
+BlockingCurves.CubicZetaPoints.eulerFactor_inverse  [Classical.choice, Quot.sound, propext]
+BlockingCurves.CubicZetaPoints.zeta_coefficient  [Classical.choice, Quot.sound, propext]
+BlockingCurves.CubicZetaPoints.degree_one_trace  [Classical.choice, Quot.sound, propext]
+BlockingCurves.CubicZetaPoints.point_lower  [Classical.choice, Quot.sound, propext]
+BlockingCurves.CubicRepairGeometry.CurveLaws.of_weil_roots  [Classical.choice, Quot.sound, propext]
+BlockingCurves.CubicLogLog.minimum_upper_of_weil_roots  [Classical.choice, Quot.sound, propext]
 BlockingCurves.CubicRepairGeometry.genus_bound  [Classical.choice, Quot.sound, propext]
 BlockingCurves.CubicRepairGeometry.common_of_laws  [Classical.choice, Quot.sound, propext]
 BlockingCurves.CubicAlterationSize.parameters  [Classical.choice, Quot.sound, propext]
@@ -104,7 +131,7 @@ Sextic32.projective_sextic_minimum  [Classical.choice, Quot.sound, propext]
 Sextic32.pencil_minimum  [Classical.choice, Quot.sound, propext]
 
 SHA-256 (UTF-8 source bytes with LF line endings)
-0791cfa638d494aee0cdf49e92e6cd2458811cbaa92a12bcb29d6bf21bc593a5  BlockingCurves.lean
+34e9f50643449506d7d3175e4da8bd1eb3adcca2ae24129823a51362f5b1c95a  BlockingCurves.lean
 e64549853052c3ee8e86744b6c365e553a1361ce482a3b0f051b36ead0ec4c2f  Cubic41.lean
 da432c523306c0267c0dee96ff81242a672a60f1a971b246de0750d925d8597c  Cubic41Semantics.lean
 f09a9868931d0cf1dd6828f0bc51be0bc5acecca4f095a07e6d44ee98f2b856e  Cubic47.lean
@@ -118,26 +145,35 @@ d2cfb6b6299536394b4bcb2f870db0c97654e867251f8d7d2dfbdc0beee42288  CubicAsymptoti
 2827abd540a3d575ff725ed5146b8d477304079c37f1499788fe22535a923344  CubicCertificate.lean
 80f3b7f07f97c8f8d57ca897b18a69d46afd6e57bf151f46c3bdda4cb2866cbf  CubicCharacters.lean
 be795b23b45dc73879a80dab9d8c0e366b523734a65c70d4086666a54092e496  CubicCocycles.lean
+a8d8e18fec77f0ac79250a2c8c063df9715415bf900336e32fcd6afbefb6ef78  CubicCompositumRR.lean
 c32fb23a023cfa99aa497b163ae2b1bf4bc43fe95f1cdf668ac7404a2559692f  CubicCovering.lean
 65026a6d839cadf5d3147a679b0c0cda4ba343593619e5423da8a552fa60ac33  CubicCurveTrace.lean
 3f9bbc92011c89a50f84e0f0048db3cd28e6b800214b74c5eaff3a77837e53de  CubicDoubleMiss.lean
+9b5bdbbd1e9087583981b24b08934a6edd5f8ea61c33cb9b025575949038aca0  CubicFiniteFibres.lean
+3f3dc41be1769ce723df0887dcc7736d80a3e437f451ee5ce481dcf01c88a778  CubicGenusTransport.lean
 068af0351a3d55a97d9bdb4fdc6e6af02416bffd138edaf8d63ae8787165cf4e  CubicGlobal.lean
-d189f2ea5210c871e0fa78046fcb61db578db7ff9b89638706e67ce436eff0ce  CubicLogLog.lean
+03a2e7241c61926e084d5d0c9a2df6972feb7b2670a36f7ee4230262e96ae3de  CubicLogLog.lean
 58f3ddb150662e561ea40b473d8e5d20447a7879c2f316e1db6f36b600f7a332  CubicMonodromy.lean
 5672a2649eb1ead236f40f4b19596636bb4e46b008ed256544cc3e265c91bf51  CubicOrbit.lean
 fb158dcdcc37d489edce302678c85ea7a69f451c4c89998292f5fff311cd3726  CubicPairCount.lean
+07ae73c64a5dfb55769271d842fa7154200d75172f1c867e226b4b44cca5bfda  CubicPoleDegree.lean
+9a69d9ad3c1a6af1096c125a1748dc1034808f5e41e18802e646a6ed812c0d18  CubicPoleFibre.lean
+4964a02b09b12a7458198386eb70bf7b023d979edf03b7dc8f2d21bc95865a1b  CubicPoleScalars.lean
+501d329256a4cdd2182b0fc75d47f9509a0b9e5170371085613ecf3df42de9bb  CubicRationalGenus.lean
 3e608fee256a3707bc82b3b04b98cf526c11dbc84ffbdc288245b13faf39be67  CubicRationalRoots.lean
 d5503629ab01d9919ea90e2e01656a2b141e91fe8ad1163c6c510a04fe980d15  CubicRepairBranch.lean
 97b82efc61fd05e0e994fb4a6367fb3f43eab4c67bf2fcb47b1b8778da4fa7bd  CubicRepairChart.lean
 0d37c21f1db2ac79f9a4c8bdb37ccd7a4bc654037672c16fb1dcb0bc1fed2b49  CubicRepairDegree.lean
-94938649293e8b3fbbd8f8408f65aff51a44a2950166a5beff2d5a828b786bfb  CubicRepairGeometry.lean
+0a06f3b096edb498652a4589e9dd5a7926b3e28106a4a83a2f44603e59f9f0d0  CubicRepairGeometry.lean
 6608874ac6135e187357b43f8c4741fb0d2247349a91269f0f472704a7c0e0da  CubicRepairPlaces.lean
 3c4b9958346c304813e068972afc6611b626cce9105d091181d99c538753dc99  CubicSlope.lean
+3f71cd88de19adbb22d3007c5567e0ba68185cfa6f5638c8b4352f23ec1fcfec  CubicStageFields.lean
 afc05577c4afc252e28e3b91ca53d86e54296f533dc0e680a61b9bd705c9b402  CubicSurfaceTrace.lean
 90a36ec8cd113a8344fe9fee66796585de69a21abda376672cefc86d8c16aab9  CubicSymmetry.lean
 627d44d7a91011f994d6d1917b224df800043fd08d5e3b38451bfc06cf234de8  CubicUnramified.lean
 197ab9a33e02f41cb221301873a9d00cddf084f050740fca3f40e8e958dee659  CubicUnsigned.lean
 dcb5edf91201f369fd1ab0181f25c45868c970f6666ee68ee246d5a749ab43d1  CubicValueSet.lean
+94c4342b93661564fb75e467bdea92109725f09af2277e16de7722e53541579e  CubicZetaPoints.lean
 1f3f67c7f9683e73102c948d7b3d57e25933eda5a9218e4c8d53be00e6c99925  F8Example.lean
 2c61fc19c7debca20948e187a1ad64d97d90515d7660aca60dcbabfb301019d1  F8Semantics.lean
 b7f77d12eaa7d5c22355658cf6dde38e29ce788f27a948723574afbe1b054085  FieldTransport.lean
@@ -159,6 +195,6 @@ c6e2cd3f92eb0bd834495bfe9cf29b85058b2e7bfc36f9bb389045d6745a12e7  Sextic32Geomet
 53c8cf3861a169b511720fd33d3e55eccbdffead57377b9e5258be1646457865  Sextic32Search.lean
 c7bdcc1960065ca0dd1a5a901cf3b07ad9c1544e39a792ac50304308d7a974a9  StatementComparison.lean
 2e906616c04bc8a2e91c101f9cfb8e3d62a458e84193beff13331ca68b594de4  UpperBound.lean
-2819ad10bc203074468f6421ffa54f28370bf3060ebc0ec185b05022e56093cf  lakefile.lean
+dde2e917bcd3281b6e18cd2b87ca6b3121c1b151b0ecb5976de8b174549b2e4a  lakefile.lean
 021b17d7609dca541fab5fc95f674618fb9dd8ace15871f8f35f7d1e53336996  lake-manifest.json
 61561b06f5587e027815fac8f59bf6ca160dfbf3f7372fc6297664acfd85b8c0  lean-toolchain

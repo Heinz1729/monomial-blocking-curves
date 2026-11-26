@@ -32,15 +32,30 @@
 | 第 11 节，存在错排 | [二重传递群的陪集](FrobeniusCoset.lean)一定含错排。[数值阈值](CubicAsymptotics.lean)由亏格界推出。 | 一般次数的单群直积、几何亏格估计及扭曲下降。 |
 | 三次上界，无条件 | [CubicValueSet](CubicValueSet.lean) 将同值的有序根对计入 $x^2+xy+y^2=m$。过一个有理点的割线和切线给出至多 $q+1$ 个点。二根纤维补入重根对应的对角点，逐纤维求和得 $3M\le q+1$。[cubic_minimum_upper](CubicCovering.lean) 在原射影陈述上证明 $B(q,3)\le2\log q/\log3+8$。 | 域阶条件 $q\equiv2\bmod3$，对数式另需 $q\ge16$。 |
 | 第 17 节，双线与双参数计数 | 非水平线恰遗漏 $h=(q+1)/3$ 个参数。固定两个非零斜率及第一条线的截距，双线共同遗漏数对第二个截距求和为 $h^2$；在不同平行线中求和为 $h(h-1)$。固定两个不同参数，全斜率下共同遗漏它们的线数恰为 $h(h-1)$。任意两线共同命中参数数目至少为 $(q-2)/3$。[CubicDoubleMiss](CubicDoubleMiss.lean) | 只需 $q\equiv2\bmod3$。$\mathbb F_5$ 中不同平行线对的共同遗漏数可为 0 或 1。[直接计数](../checks/cubic_pairs.py) |
-| 第 17 节，取样、分支与专化 | [CubicAlteration](CubicAlteration.lean) 双计数样本与遗漏线，证明补一个参数的结论。[CubicRepairChart](CubicRepairChart.lean) 用逐阶 Newton 提升构造常项为 1 的唯一形式级数根；[CubicRepairBranch](CubicRepairBranch.lean) 在 Laurent 级数域内构造实际分支并核验全常数域。[CubicRepairDegree](CubicRepairDegree.lean) 给出添根次数界 $3^t$；[CubicRepairPlaces](CubicRepairPlaces.lean) 证明单根子域有理，且在非极点有理位专化得到公共命中参数。 | 这些代数与有限组合步骤无条件。分支构造要求 $3\ne0$，由域阶条件自动满足。 |
-| 第 17–18 节，含负 $\log\log q$ 项的上界 | [CubicAlterationSize](CubicAlterationSize.lean) 证明取整、参数预算及严格点数阈值。[CubicLogLog](CubicLogLog.lean) 在独立射影最小值上证明 $B(q,3)\le(2\log q-\log\log q)/\log3+17$，包括特征 2。$\log q\le3^9$ 时，`minimum_upper_finite_range` 无条件成立。 | 任意 $q\equiv2\bmod3$ 的 `minimum_upper` 使用 `GeometryAt`。只需为至少三条线且通过严格点数阈值的残余线族提供输入；至多两条线可直接补齐（$q>2$）。对实际构造的分支，[CubicRepairGeometry.CurveLaws](CubicRepairGeometry.lean) 列明有理函数域亏格零、Castelnuovo–Severi 不等式、极点纤维的度数界、Hasse–Weil 界。 |
+| 第 17 节，取样、分支与专化 | 双计数给出遗漏线数的取样预算。逐阶 Newton 提升在 Laurent 级数域内构造同一分支，添入 $t$ 个根的次数至多为 $3^t$。在参数正则的有理位取剩余，便得到同时命中这些线的参数。[补点](CubicAlteration.lean) · [级数方程](CubicRepairChart.lean) · [实际分支](CubicRepairBranch.lean) · [次数](CubicRepairDegree.lean) · [专化](CubicRepairPlaces.lean) | 无条件。分支构造要求 $3\ne0$，由 $q\equiv2\bmod3$ 保证。 |
+| 第 17 节，亏格与纤维 | 空根集和单根的函数域都具有零维正则微分空间。参数的每个有理纤维（含极点纤维）均满足扩张次数界，故有理位总数有限。[亏格](CubicRationalGenus.lean) · [极点](CubicPoleDegree.lean) · [有限纤维](CubicFiniteFibres.lean) | 无条件。 |
+| 第 17–18 节，含负 $\log\log q$ 项的上界 | 令 $L=\log q$。对 $q\equiv2\bmod3$，包括特征 2，$L\le3^9$ 时，射影最小值满足 $B(q,3)\le(2L-\log L)/\log3+17$。任意域阶上也已证出由两项几何输入到同一不等式的蕴含。[取整与预算](CubicAlterationSize.lean) · [射影最小值](CubicLogLog.lean) | 有限范围无条件。全域的第 17 节结论使用下文的 Castelnuovo–Severi 与 Hasse–Weil 输入。两者只用于至少三条线且通过严格点数阈值的残余线族。 |
 | 两个开集及特征标，无条件 | [CubicUnramified](CubicUnramified.lean) 核验开集上的三次式可分；[CubicRationalRoots](CubicRationalRoots.lean) 把两种实际根数接到几何根的 Frobenius 不动点。[CubicCharacters](CubicCharacters.lean) 展开无根示性函数，非平凡张量总秩恰为 $4^\ell-1$。 | 只使用各定理列明的域和开集条件。 |
 | 满直积及顶维项 | [CubicMonodromy](CubicMonodromy.lean) 从逐因子传递性和各坐标中独立支撑的惯性对换证明满直积，再用实际 $S_3^\ell$ 上的特征标正交性得到非平凡张量的平均值为零。 | 将具体覆盖的几何群作用识别为满足这两条局部性质的作用；用对偶把顶维重数识别为不变量重数。 |
 | 第 14 节，群上同调 | [CubicCocycles](CubicCocycles.lean) 和 [CubicUnsigned](CubicUnsigned.lean) 直接对交叉余循环模余边界的 $H^1$ 作线性代数。非平凡无符号张量满足 $b_1\le4\ell+2$；有一个符号时至多 2，有两个符号且其余全平凡时至多 1，其余多符号情形消失。 | 子午圈生成元、异指标交换关系、各因子的局部矩阵作用。逐张量及总 Betti 数的上界均由 Lean 推出。 |
 | 第 12–16 节，曲面下界 | [trace_deviation_of_spectra](CubicSurfaceTrace.lean) 从逐项数据推出式 (12.1)，再对真实阻塞集推出 $(\log q-2\log\log q)/\log4-5$ 的严格下界。 | `SurfaceLaws` 列出迹公式、仿射消没、顶维对偶、驯 Euler 特征、正特征比较与对偶，以及二、三阶 Frobenius 特征值的权界；另需上述局部单值模型。 |
 | 第 18 节，固定斜率下界 | [fixed_deviation_of_curve_data](CubicCurveTrace.lean) 在每个字上用导子与权一估计，再求和得到固定斜率误差，推得分母 $\log16$ 的严格下界。库内还证出特征 2 的有限临界值与局部式 $Z^2(1+Z)$。 | `CurveLaws` 列出迹公式、Grothendieck–Ogg–Shafarevich 公式、顶维对偶、无穷远驯分歧、有限点的 Swan 导子等式及权一界；另需局部单值模型。 |
 
-两个下界接口都以复数特征值和维数表达经典定理的数值结论。将这些数据实现为具体覆盖的 étale 上同调，并验证各条几何输入，仍依赖手稿证明。第 17 节上界使用单独的函数域接口，见上表。
+两个下界接口都以复数特征值和维数表达经典定理的数值结论。将这些数据实现为具体覆盖的 étale 上同调，并验证各条几何输入，仍依赖手稿证明。
+
+## 第 17 节的函数域输入
+
+设 $F=\mathbb F_q$，$K/F(t)$ 为为每条残余线添入相应三次方程的一个根得到的 Laurent 分支，$K_S$ 为只添入 $S$ 中各根的子域。$K$ 及每个 $K_S$ 的全常数域均为 $F$。Lean 已识别 $K_{S\cup T}$ 内两个真实子域的合成以及两侧的相对次数。[Laurent 分支](CubicRepairBranch.lean) · [子域与相对次数](CubicStageFields.lean)
+
+**亏格。** 对函数域 $E$，取每个正规、有限型、分式域为 $E$ 的仿射 $F$-代数 $A$，在 $\Omega_{E/F}$ 内求各 $\Omega_{A/F}$ 像的交。`regularForms` 给出这个子空间。对 $E=F(x)$，在 $x$ 和 $1/x$ 两个多项式坐标上同时正则的微分只能为零。保持 $F$ 的同构将这一计算用于实际的 $K_\varnothing$ 和 $K_{\{i\}}$。`regularFormsEquiv` 沿 $F$-代数同构传输正则微分，`full_stage_genus` 据此识别末阶段和 $K$ 的亏格。对多根子域，`CompositumBound` 用基数意义的秩陈述 Castelnuovo–Severi。归纳先推出正则微分空间有限维，再用其自然数维数估计亏格。[正则微分](CubicRationalGenus.lean) · [同构传输](CubicGenusTransport.lean) · [分支亏格界](CubicRepairGeometry.lean)
+
+**有理位。** 有理位由赋值环及固定 $F$ 的剩余映射表示。对任意有限个不同的有理位，Lean 构造剩余值矩阵为单位阵的函数。在 $t=\infty$ 处，将关系除以次数最大的非零有理函数系数，所得系数同时正则。在 $t=a\in F$ 处，清分母后逐位取剩余可得所有多项式系数在 $a$ 消失，同时约去 $X-a$ 便降低任一非零系数的次数。线性无关性给出每个纤维的基数上界 $[K:F(t)]$，求和得到 $\#\mathrm{Place}(K)\le(q+1)[K:F(t)]$。这里每个有理位只计一次。[剩余值插值](CubicPoleFibre.lean) · [极点处的归一化](CubicPoleScalars.lean) · [线性无关与极点纤维](CubicPoleDegree.lean) · [有理位总数](CubicFiniteFibres.lean)
+
+锁定版 mathlib 的 `Ideal.sum_ramification_inertia` 在 Dedekind 域及其有限整闭包上计算素理想的 $\sum e_Pf_P$。要用这一定理计算函数的极点除子次数，须在 $1/t$ 坐标的整闭包中把相关素理想与极点对应，并识别分歧指数和剩余次数。[mathlib 4.8 的定理及假设](https://github.com/leanprover-community/mathlib4/blob/b5eba595428809e96f3ed113bc7ba776c5f801ac/Mathlib/NumberTheory/RamificationInertia.lean#L808)
+
+**Castelnuovo–Severi。** 对单根扩张 $E=B(x)$，令 $n_1=[E:B]$。Lean 用实际幂基证明了 $\bigoplus_{j<n_1}U\hookrightarrow V$，其中 $U\subset B$、$V\subset E$ 是 $F$-子空间，且 $x^jU\subset V$。将 $U,V$ 实现为大次数除子的 Riemann–Roch 空间，还须证明上述包含、拉回除子的次数公式和计入重数及剩余次数的极点除子次数。给定两条非特殊范围的 Riemann–Roch 维数等式和极点代价界，Lean 推出 $g_E\le n_1g_B+(n_1-1)(n_2-1)$，其中应用时 $n_2=[E:F(x)]$。Tau Ceti 已在 Lean 4.36.0-rc2 形式化完美常数域上的一般定理。用于本工程仍须将其函数域与亏格定义接到上述微分空间，并适配锁定的工具链。[幂基与维数比较](CubicCompositumRR.lean) · [Stichtenoth，第 3.11.3 定理](https://doi.org/10.1007/978-3-540-76878-4) · [Tau Ceti 定理源码](https://github.com/TauCetiProject/TauCeti/blob/04dc6d30e3935b9ea621d4ebb74d8ff2b0017a9b/TauCeti/FieldTheory/FunctionField/Consequences/Castelnuovo.lean)
+
+**Hasse–Weil。** `CurveLaws` 的点数项使用上述全部有理位的基数。另一路径 `minimum_upper_of_weil_roots` 用赋值环按剩余次数逐阶构造 Euler 乘积，证明一次项等于实际有理位数。若各个次数的闭位集有限，且 $(1-T)(1-qT)Z(T)=\prod_{j=1}^{2g}(1-\beta_jT)$、各倒根满足 $\lvert\beta_j\rvert\le\sqrt q$，取一次项并对倒根实部用三角不等式，得到双侧估计 $\lvert\#\mathrm{Place}(K)-(q+1)\rvert\le 2g\sqrt q$。补点只需其下界。一次闭位与有理位的等价已证。各高次闭位集有限及上述分解和权界由该路径显式传入。AxiomMath/Weil 在 Lean 4.34.0-rc2 给出了光滑固有几何不可约概形的 zeta 分解与权界。接入该结果还须为 $K$ 实现相应的曲线模型，将其闭点与赋值环对应，并证明一次上同调给出的分子次数等于这里的 $2g$。[Euler 乘积与一次项](CubicZetaPoints.lean) · [条件式上界](CubicLogLog.lean) · [AxiomMath/Weil 的定理接口](https://github.com/AxiomMath/Weil/tree/27cdb2049be6#3-riemann-hypothesis-delignes-theorem)
 
 ## 复现与验证记录
 

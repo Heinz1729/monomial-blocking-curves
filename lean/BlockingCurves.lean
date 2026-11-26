@@ -17,6 +17,7 @@ import CubicCurveTrace
 import CubicUnramified
 import CubicDoubleMiss
 import CubicLogLog
+import CubicCompositumRR
 import FrobeniusCoset
 import Sextic32Global
 
@@ -83,6 +84,33 @@ import Sextic32Global
 #print axioms BlockingCurves.CubicRepairPlaces.single_root_rational
 #print axioms BlockingCurves.CubicRepairDegree.generated_degree
 #print axioms BlockingCurves.CubicRepairPlaces.hit_of_regular_place
+#print axioms BlockingCurves.CubicRationalGenus.chartForms_eq_range
+#print axioms BlockingCurves.CubicRationalGenus.regularForms_eq_bot
+#print axioms BlockingCurves.CubicRationalGenus.rational_genus_zero
+#print axioms BlockingCurves.CubicRationalGenus.regularFormsEquiv
+#print axioms BlockingCurves.CubicRepairGeometry.full_stage_genus
+#print axioms BlockingCurves.CubicZetaPoints.rational_point_estimate
+#print axioms BlockingCurves.CubicRepairGeometry.base_regularForms_eq_bot
+#print axioms BlockingCurves.CubicRepairGeometry.single_regularForms_eq_bot
+#print axioms BlockingCurves.CubicRepairGeometry.base_genus
+#print axioms BlockingCurves.CubicRepairGeometry.single_genus
+#print axioms BlockingCurves.CubicPoleFibre.selectors
+#print axioms BlockingCurves.CubicPoleScalars.normalize
+#print axioms BlockingCurves.CubicPoleDegree.card_le_degree_of_polar
+#print axioms BlockingCurves.CubicFiniteFibres.card_le_degree_of_value
+#print axioms BlockingCurves.CubicFiniteFibres.rational_places_bound
+#print axioms BlockingCurves.CubicRepairGeometry.stage_compositum_top
+#print axioms BlockingCurves.CubicRepairGeometry.stage_relative_finrank
+#print axioms BlockingCurves.CubicRepairGeometry.full_constants_stage
+#print axioms BlockingCurves.CubicCompositumRR.genus_bound
+#print axioms BlockingCurves.CubicRepairGeometry.stage_finite
+#print axioms BlockingCurves.CubicZetaPoints.degreeOneEquiv
+#print axioms BlockingCurves.CubicZetaPoints.eulerFactor_inverse
+#print axioms BlockingCurves.CubicZetaPoints.zeta_coefficient
+#print axioms BlockingCurves.CubicZetaPoints.degree_one_trace
+#print axioms BlockingCurves.CubicZetaPoints.point_lower
+#print axioms BlockingCurves.CubicRepairGeometry.CurveLaws.of_weil_roots
+#print axioms BlockingCurves.CubicLogLog.minimum_upper_of_weil_roots
 #print axioms BlockingCurves.CubicRepairGeometry.genus_bound
 #print axioms BlockingCurves.CubicRepairGeometry.common_of_laws
 #print axioms BlockingCurves.CubicAlterationSize.parameters

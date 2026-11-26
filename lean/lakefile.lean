@@ -17,6 +17,8 @@ lean_lib BlockingCurves where
     `CubicMonodromy, `CubicUnsigned, `CubicSurfaceTrace, `CubicCurveTrace,
     `CubicUnramified, `CubicRationalRoots,
     `CubicAlteration, `CubicDoubleMiss, `CubicAlterationSize, `CubicRepairChart,
-    `CubicRepairDegree, `CubicRepairPlaces, `CubicRepairBranch, `CubicRepairGeometry, `CubicLogLog,
+    `CubicRepairDegree, `CubicRepairPlaces, `CubicRepairBranch, `CubicPoleFibre, `CubicPoleScalars,
+    `CubicPoleDegree, `CubicFiniteFibres, `CubicStageFields, `CubicCompositumRR, `CubicRationalGenus,
+    `CubicGenusTransport, `CubicZetaPoints, `CubicRepairGeometry, `CubicLogLog,
     `FrobeniusCoset,
     `Sextic32, `Sextic32Geometry, `Sextic32Search, `Sextic32Global]

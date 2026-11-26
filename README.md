@@ -47,7 +47,8 @@ Lean 4.8.0 核验了表中的最小值，以及 $q=8,41,47$ 的最优解计数�
 | 渐近结论 | Lean 已核验的范围 |
 | --- | --- |
 | 三次上界，无条件 | 对任意 $q\equiv2\pmod3$，每条仿射直线漏掉的参数数目 $M$ 满足 $3M\le q+1$。对 $q\ge16$，独立射影陈述中的最小值满足 $B(q,3)\le2\log q/\log3+8$，包括特征 2。[像集计数](lean/CubicValueSet.lean) · [最小值定理](lean/CubicCovering.lean) |
-| 第 17 节，补一个参数 | 在取样预算满足式 (17.2) 时，有限双计数证明某个样本至多遗漏 $t$ 条线。若这些线有共同命中参数，加一个参数即可补齐。对 $q\equiv2\pmod3$，Lean 在 $\log q\le3^9$ 时无条件证明 $B(q,3)\le(2L-\log L)/\log3+17$。任意域阶的版本（包括特征 2）对满足点数阈值的至少三条残余直线，使用有理函数域亏格零、Castelnuovo–Severi 不等式、极点纤维的度数界与 Hasse–Weil 界。[射影最小值与条件](lean/CubicLogLog.lean) · [补点证明](lean/CubicAlteration.lean) |
+| 第 17 节，亏格与有理位，无条件 | 对实际 Laurent 分支 $K/\mathbb F_q(t)$，基域和每个单根子域的全局正则微分空间均为零。在参数直线的每个有理点（含无穷远点）上，纤维中的有理位个数至多为 $[K:\mathbb F_q(t)]$。因此 $K$ 的全部有理位构成有限集，其基数至多为 $(q+1)[K:\mathbb F_q(t)]$。[有理域微分](lean/CubicRationalGenus.lean) · [极点纤维](lean/CubicPoleDegree.lean) · [全部有理位](lean/CubicFiniteFibres.lean) |
+| 第 17–18 节，含负 $\log\log q$ 项的上界 | 对 $q\equiv2\pmod3$（包括特征 2），$L=\log q\le3^9$ 时，Lean 无条件证明 $B(q,3)\le(2L-\log L)/\log3+17$。对任意大小的 $q$，Lean 已证明由 Castelnuovo–Severi 亏格界和 Hasse–Weil 有理点下界推出同一结论。两项几何输入只用于至少三条残余线且满足严格点数阈值的情形。[射影最小值](lean/CubicLogLog.lean) · [已证步骤与待接入的定理](lean/README.md#第-17-节的函数域输入) |
 | 三次下界，依赖几何输入 | 从实际有理根数展开特征标，按张量类型证明维数界并求和。给定相应覆盖的局部惯性、迹公式、对偶及逐特征值权界等输入，Lean 推出奇特征的 $1/\log4$ 和特征 2 的 $1/\log16$。两式的总误差都在库内导出。[曲面](lean/CubicSurfaceTrace.lean) · [曲线](lean/CubicCurveTrace.lean) |
 | 纸面结果 | 全特征一般次数定理中的几何群分类、亏格估计及扭曲下降见手稿。[逐项验证范围](lean/README.md) · [公理与源码记录](lean/verification.txt) |
 

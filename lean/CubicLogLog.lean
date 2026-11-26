@@ -29,7 +29,7 @@ theorem branch_expansion (R : Finset (Line F)) (hq : Fintype.card F % 3 = 2) :
 branches. The genus and rational places refer to the same generated field. -/
 def GeometryAt (F : Type u) [Field F] [Fintype F] (hq : Fintype.card F % 3 = 2) : Prop :=
   ∀ R : Finset (Line F), 3 ≤ R.card → repairCost (Fintype.card F) R.card < (Fintype.card F:ℝ)+1 →
-    ∃ g P, CurveLaws (branch R hq) g P
+    CurveLaws (branch R hq)
 
 private theorem minimum_of_cover {S : Finset F} (hS : ProjectiveBlocks 3 (S : Set F))
     {C : ℝ} (hsize : (S.card:ℝ) ≤ C) :
@@ -83,8 +83,7 @@ theorem minimum_upper (hq : Fintype.card F % 3 = 2) (geom : GeometryAt F hq) :
       intro R hR
       by_cases hn : 3 ≤ R.card
       · have hc := (repairCost_mono q hR).trans_lt hgeom
-        obtain ⟨g,P,H⟩ := geom R hn hc
-        exact common_of_laws _ H hc
+        exact common_of_laws _ (geom R hn hc) hc
       · have hq2 : 2 < Fintype.card F := by
           by_contra! hz
           have hq' : q ≤ 2 := by dsimp [q]; exact_mod_cast hz
@@ -108,5 +107,19 @@ theorem minimum_upper (hq : Fintype.card F % 3 = 2) (geom : GeometryAt F hq) :
   · apply minimum_upper_finite_range hq
     change log q ≤ (3:ℝ)^9
     exact (le_of_not_ge hL).trans (by norm_num)
+
+/-- All-field version with the function-field input stated through the Euler
+product on the constructed branch, its numerator degree and its weights. -/
+theorem minimum_upper_of_weil_roots (hq : Fintype.card F % 3 = 2)
+    (geometry : ∀ R : Finset (Line F), 3 ≤ R.card →
+      repairCost (Fintype.card F) R.card < (Fintype.card F:ℝ)+1 →
+      let D := branch R hq
+      CompositumBound D ∧ CubicZetaPoints.WeilLaws D (Fintype.card F) (branchGenus D)) :
+    ∃ n : ℕ, AsgarliGhiocaYip.isPencilMinimum F 3 n ∧
+      (n:ℝ) ≤ (2*log (Fintype.card F)-log (log (Fintype.card F)))/log 3+17 := by
+  apply minimum_upper hq
+  intro R hR hcost
+  obtain ⟨cs,W⟩ := geometry R hR hcost
+  exact CurveLaws.of_weil_roots _ cs W
 
 end BlockingCurves.CubicLogLog
