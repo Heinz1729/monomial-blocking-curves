@@ -1,5 +1,6 @@
 """Build the pinned Lean project and reproduce its cross-platform verification record."""
 import argparse
+from graphlib import TopologicalSorter
 import hashlib
 import json
 from pathlib import Path
@@ -83,11 +84,26 @@ def record(project):
     return "\n".join(lines) + "\n"
 
 
+def build_modules_serially(project):
+    """Keep only one local module's kernel reductions in memory on small runners."""
+    paths = {p.stem: p for p in project.glob("*.lean") if p.name != "lakefile.lean"}
+    dependencies = {}
+    for name, path in sorted(paths.items()):
+        imports = re.findall(r"^import\s+(\w+)(?:\s*$)", path.read_text(encoding="utf-8"), re.M)
+        dependencies[name] = set(imports) & paths.keys()
+    for name in TopologicalSorter(dependencies).static_order():
+        print(f"Building {name}", flush=True)
+        subprocess.run(["lake", "build", "+" + name], cwd=project, check=True)
+
+
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--project", type=Path, default=PROJECT)
     parser.add_argument("--write", action="store_true", help="refresh the verified record")
+    parser.add_argument("--serial", action="store_true", help="prebuild local modules one at a time")
     args = parser.parse_args()
+    if args.serial:
+        build_modules_serially(args.project.resolve())
     verified = record(args.project.resolve())
     target = args.project / "verification.txt"
     if args.write:

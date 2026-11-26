@@ -38,6 +38,8 @@
 
 [CubicCertificate](CubicCertificate.lean) 的分块归约让内核分别检查候选表各块，再合并筛选结果与计数。模 41、47 沿用原有的逐线语义定理。32 元域六次证书从两个固定参数开始，按其余参数的取舍递归验证六元集，最小值的证明只需一个七元见证。
 
+托管 Linux 上使用 `python checks/verify_lean.py --serial`，按导入顺序逐个预编译本库模块，再执行同一套完整构建和公理审计。工作流为主线程提供 128 MiB 栈空间，每个模块的构建结果直接显示在日志中。
+
 [GitHub Actions 工作流](../.github/workflows/verify.yml) 在 Ubuntu 上直接执行 `python3 checks/verify_lean.py`，再运行五个 Python 有限检查。本地复现时，在仓库根目录先进入 `lean/` 运行 `lake exe cache get`，然后回到根目录运行 `python checks/verify_lean.py`。脚本执行 `lake build`，重放入口的每条 `#print axioms`，检查所有源码模块均在入口导入闭包内，再以 Lean 自带的公理收集器递归追踪所有安全声明和带源码位置的不安全声明。编译器产生的无源码不安全辅助符号不单独用作根。从根出发的依赖闭包全量检查。允许的公理是 `Classical.choice`、`Quot.sound`、`propext`。
 
 [verification.txt](verification.txt) 记录逐定理结果以及所有 Lean 源码、工具链和锁文件的 SHA-256。输入规范为 LF 换行，Linux 与 Windows 可以对照同一记录。修改源码后运行 `python checks/verify_lean.py --write`，审阅新的哈希与公理差异并与源码一同提交。[验证程序](../checks/verify_lean.py)

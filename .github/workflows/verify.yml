@@ -15,7 +15,10 @@ jobs:
           use-github-cache: 'false'
           use-mathlib-cache: 'true'
           build: 'false'
-      - run: python3 checks/verify_lean.py
+      - name: Build and audit all Lean certificates
+        run: |
+          ulimit -s 131072
+          python3 checks/verify_lean.py --serial
       - name: Independent finite checks
         run: |
           python3 checks/cubic47.py
