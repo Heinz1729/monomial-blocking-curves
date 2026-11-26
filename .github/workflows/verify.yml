@@ -17,7 +17,8 @@ jobs:
           build: 'false'
       - name: Build and audit all Lean certificates
         run: |
-          ulimit -s 131072
+          printf 'Default main-thread stack (KiB): '
+          ulimit -s
           python3 checks/verify_lean.py --serial
       - name: Independent finite checks
         run: |

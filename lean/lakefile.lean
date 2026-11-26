@@ -13,5 +13,8 @@ lean_lib BlockingCurves where
     `Cubic47Symmetry, `Cubic47Global, `Cubic47Orbit, `CubicSlope, `ProblemStatement,
     `StatementComparison, `GeometricIrreducibility, `ScatteredComparison, `NontrivialPencil,
     `FieldTransport, `PrimeFieldInstances, `F8Semantics, `CubicCertificate, `CubicPairCount,
-    `CubicAsymptotics, `CubicCocycles, `CubicCovering, `FrobeniusCoset,
+    `CubicAsymptotics, `CubicCocycles, `CubicCovering, `CubicValueSet, `CubicCharacters,
+    `CubicMonodromy, `CubicUnsigned, `CubicSurfaceTrace, `CubicCurveTrace,
+    `CubicUnramified, `CubicRationalRoots,
+    `FrobeniusCoset,
     `Sextic32, `Sextic32Geometry, `Sextic32Search, `Sextic32Global]

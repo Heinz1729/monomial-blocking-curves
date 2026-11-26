@@ -6,7 +6,7 @@ Every decimal row below is compared with the original cubic expression in
 `rows_verified`. No native reduction or assumed row table is used. -/
 namespace CubicPencil47
 
-set_option maxRecDepth 100000
+set_option maxRecDepth 4096
 set_option maxHeartbeats 0
 
 def residues := List.range 47
@@ -77,7 +77,9 @@ def rowTable : List Nat :=
 
 theorem rows_verified : difficultRows = rowTable := by
   rw [difficultRows, allRows, CubicCertificate.filter_bind]
-  decide
+  apply CubicCertificate.bind_checked (parts := CubicCertificate.blocks 4 12 residues)
+    (outputs := CubicCertificate.splitSizes [18, 15, 15, 19, 27, 27, 13, 21, 19, 20, 29, 17] rowTable) (by decide) ?_ (by decide)
+  verify_bind_blocks
 
 /-- Test intersection with each row still requiring a witness after normalization. -/
 def hitsRows (mask : Nat) : Bool := rowTable.all fun r => (r &&& mask) != 0
@@ -99,13 +101,19 @@ def fiveSolutions := triples.filter fun p => hitsRows (maskOf [p.1,p.2.1,p.2.2])
 theorem enumeration_sizes : pairs.length = 990 ∧ triples.length = 14190 := by
   constructor
   · rw [pairs, CubicCertificate.length_bind]
-    decide
+    apply CubicCertificate.count_checked (parts := CubicCertificate.blocks 4 12 extra)
+      (totals := [170, 154, 138, 122, 106, 90, 74, 58, 42, 26, 10, 0]) (by decide) ?_ (by decide)
+    verify_count_blocks
   · rw [triples, CubicCertificate.length_bind, pairs, CubicCertificate.count_bind]
-    decide
+    apply CubicCertificate.count_checked (parts := CubicCertificate.blocks 4 12 extra)
+      (totals := [3530, 2890, 2314, 1802, 1354, 970, 650, 394, 202, 74, 10, 0]) (by decide) ?_ (by decide)
+    verify_count_blocks
 
 theorem no_normalized_four : fourSolutions = [] := by
   rw [fourSolutions, pairs, CubicCertificate.filter_bind]
-  decide
+  apply CubicCertificate.bind_checked (parts := CubicCertificate.blocks 4 12 extra)
+    (outputs := List.replicate 12 []) (by decide) ?_ (by decide)
+  verify_bind_blocks
 
 def representativeTriples : List (Nat × Nat × Nat) :=
   [(3,15,33), (3,21,22), (5,11,16), (7,15,41), (7,16,23), (7,33,41), (9,10,27), (9,10,30),
@@ -115,7 +123,9 @@ def representativeTriples : List (Nat × Nat × Nat) :=
 theorem classify_normalized_five :
     fiveSolutions = representativeTriples := by
   rw [fiveSolutions, triples, CubicCertificate.filter_bind, pairs, CubicCertificate.bind_blocks]
-  decide
+  apply CubicCertificate.bind_checked (parts := CubicCertificate.blocks 4 12 extra)
+    (outputs := CubicCertificate.splitSizes [3, 6, 1, 2, 3, 1, 3, 1, 0, 0, 0, 0] representativeTriples) (by decide) ?_ (by decide)
+  verify_bind_blocks
 
 #print axioms rows_verified
 #print axioms enumeration_sizes

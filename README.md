@@ -44,13 +44,17 @@ Dot 给出了 $q=32$ 的最小值与轨道数。这里每条非水平线对应�
 
 Lean 4.8.0 核验了表中的最小值，以及 $q=8,41,47$ 的最优解计数。对于 $q=32$，两套 Python 穷举分别从直线方程和参数值集重建七元解，并比较完整轨道。只导入 mathlib 的陈述文件直接定义射影点、射影直线、几何不可约曲线族和问题 5.4 的最小值，与主库谓词的等价性已形式化。[独立陈述](lean/ProblemStatement.lean) · [定理与证明索引](lean/README.md) · [32 元域分类](checks/sextic32.py)
 
-渐近部分已形式化有符号因子的群上同调引理、二重传递群陪集中的错排，以及从给定迹误差导出三次射影阻塞下界的推论。全特征定理的分裂域独立性与亏格估计、三次两参数族的正特征比较与迹估计，以及上界的次阶修正采用纸面证明。[形式化范围](lean/README.md) · [源码验证记录](lean/verification.txt)
+| 渐近结论 | Lean 已核验的范围 |
+| --- | --- |
+| 三次上界，无条件 | 对任意 $q\equiv2\pmod3$，每条仿射直线漏掉的参数数目 $M$ 满足 $3M\le q+1$。对 $q\ge16$，独立射影陈述中的最小值满足 $B(q,3)\le2\log q/\log3+8$，包括特征 2。[像集计数](lean/CubicValueSet.lean) · [最小值定理](lean/CubicCovering.lean) |
+| 三次下界，依赖几何输入 | 从实际有理根数展开特征标，按张量类型证明维数界并求和。给定相应覆盖的局部惯性、迹公式、对偶及逐特征值权界等输入，Lean 推出奇特征的 $1/\log4$ 和特征 2 的 $1/\log16$。两式的总误差都在库内导出。[曲面](lean/CubicSurfaceTrace.lean) · [曲线](lean/CubicCurveTrace.lean) |
+| 纸面结果 | 全特征一般次数定理的几何证明与第 17 节上界的 $-\log\log q/\log3$ 修正见手稿。[逐项验证范围](lean/README.md) · [公理与源码记录](lean/verification.txt) |
 
 首次在仓库根目录复现时运行
 
 ~~~sh
 (cd lean && lake exe cache get)
-python checks/verify_lean.py
+python3 checks/verify_lean.py --serial
 ~~~
 
 GitHub Actions 直接运行上述验证程序（其中包含 `lake build`），随后用 Python 标准库运行五项独立检查。模 47 的枚举固定一个参数，Lean 证书固定两个参数。两条路径分别给出 230 个含 0 的五元解和 20 个含 0、1 的五元解。矩阵程序检查 $\ell\le6$ 的全部 83 种张量类型。[验证工作流](.github/workflows/verify.yml) · [模 47 枚举](checks/cubic47.py) · [固定斜率](checks/cubic_slope.py) · [两参数与逐线计数](checks/cubic_pairs.py) · [上同调矩阵](checks/cubic_cohomology.py)

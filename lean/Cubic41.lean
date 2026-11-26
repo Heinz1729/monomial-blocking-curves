@@ -6,7 +6,7 @@ Every decimal row below is compared with the original cubic expression in
 `rows_verified`. No native reduction or assumed row table is used. -/
 namespace CubicPencil41
 
-set_option maxRecDepth 100000
+set_option maxRecDepth 4096
 set_option maxHeartbeats 0
 
 def residues := List.range 41
@@ -60,7 +60,9 @@ def rowTable : List Nat :=
 
 theorem rows_verified : difficultRows = rowTable := by
   rw [difficultRows, allRows, CubicCertificate.filter_bind]
-  decide
+  apply CubicCertificate.bind_checked (parts := CubicCertificate.blocks 4 11 residues)
+    (outputs := CubicCertificate.splitSizes [19, 24, 19, 20, 18, 17, 13, 14, 15, 19, 4] rowTable) (by decide) ?_ (by decide)
+  verify_bind_blocks
 
 /-- Test intersection with each row still requiring a witness after normalization. -/
 def hitsRows (mask : Nat) : Bool := rowTable.all fun r => (r &&& mask) != 0
@@ -82,18 +84,26 @@ def fiveSolutions := triples.filter fun p => hitsRows (maskOf [p.1,p.2.1,p.2.2])
 theorem enumeration_sizes : pairs.length = 741 ∧ triples.length = 9139 := by
   constructor
   · rw [pairs, CubicCertificate.length_bind]
-    decide
+    apply CubicCertificate.count_checked (parts := CubicCertificate.blocks 4 10 extra)
+      (totals := [146, 130, 114, 98, 82, 66, 50, 34, 18, 3]) (by decide) ?_ (by decide)
+    verify_count_blocks
   · rw [triples, CubicCertificate.length_bind, pairs, CubicCertificate.count_bind]
-    decide
+    apply CubicCertificate.count_checked (parts := CubicCertificate.blocks 4 10 extra)
+      (totals := [2594, 2050, 1570, 1154, 802, 514, 290, 130, 34, 1]) (by decide) ?_ (by decide)
+    verify_count_blocks
 
 theorem no_normalized_four : fourSolutions = [] := by
   rw [fourSolutions, pairs, CubicCertificate.filter_bind]
-  decide
+  apply CubicCertificate.bind_checked (parts := CubicCertificate.blocks 4 10 extra)
+    (outputs := List.replicate 10 []) (by decide) ?_ (by decide)
+  verify_bind_blocks
 
 theorem classify_normalized_five :
     fiveSolutions = [(4,11,29),(13,31,38),(15,19,25),(17,23,27)] := by
   rw [fiveSolutions, triples, CubicCertificate.filter_bind, pairs, CubicCertificate.bind_blocks]
-  decide
+  apply CubicCertificate.bind_checked (parts := CubicCertificate.blocks 4 10 extra)
+    (outputs := [[(4,11,29)], [], [(13,31,38)], [(15,19,25),(17,23,27)], [], [], [], [], [], []]) (by decide) ?_ (by decide)
+  verify_bind_blocks
 
 #print axioms rows_verified
 #print axioms enumeration_sizes

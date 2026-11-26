@@ -12,6 +12,9 @@ import PrimeFieldInstances
 import CubicPairCount
 import CubicCocycles
 import CubicCovering
+import CubicSurfaceTrace
+import CubicCurveTrace
+import CubicUnramified
 import FrobeniusCoset
 import Sextic32Global
 
@@ -59,6 +62,31 @@ import Sextic32Global
 #print axioms BlockingCurves.CubicAsymptotics.twist_point_threshold
 #print axioms BlockingCurves.CubicCovering.exists_projective_cover
 #print axioms BlockingCurves.CubicCovering.cubic_upper_of_miss_bound
+#print axioms BlockingCurves.CubicCovering.line_miss_bound
+#print axioms BlockingCurves.CubicCovering.cubic_upper
+#print axioms BlockingCurves.CubicCovering.cubic_minimum_upper
+#print axioms BlockingCurves.CubicMonodromy.full_of_inertia
+#print axioms BlockingCurves.CubicCharacters.centered_count
+#print axioms BlockingCurves.CubicCharacters.sum_nontrivial_ranks
+#print axioms BlockingCurves.CubicMonodromy.character_orthogonality
+#print axioms BlockingCurves.CubicMonodromy.full_of_inertia
+#print axioms BlockingCurves.CubicMonodromy.top_eq_zero
+#print axioms BlockingCurves.CubicSurfaceTrace.signed_meridian_bound
+#print axioms BlockingCurves.CubicUnsigned.finrank_le
+#print axioms BlockingCurves.CubicSurfaceTrace.meridian_bound
+#print axioms BlockingCurves.CubicSurfaceTrace.sum_bettiCap
+#print axioms BlockingCurves.CubicSurfaceTrace.trace_deviation_of_spectra
+#print axioms BlockingCurves.CubicSurfaceTrace.blocking_card_lower_of_spectra
+#print axioms BlockingCurves.CubicCurveTrace.wild_critical_iff
+#print axioms BlockingCurves.CubicCurveTrace.wild_local_equations
+#print axioms BlockingCurves.CubicCurveTrace.word_estimate
+#print axioms BlockingCurves.CubicCurveTrace.fixed_deviation_of_curve_data
+#print axioms BlockingCurves.CubicCurveTrace.fixed_lower_of_curve_data
+#print axioms BlockingCurves.CubicUnramified.surface_separable
+#print axioms BlockingCurves.CubicUnramified.fixed_separable
+#print axioms BlockingCurves.CubicRationalRoots.fixed_root_count
+#print axioms BlockingCurves.CubicUnramified.surface_frobenius_count
+#print axioms BlockingCurves.CubicUnramified.curve_frobenius_count
 #print axioms BlockingCurves.FrobeniusCoset.exists_derangement_of_two_transitive
 #print axioms Sextic32.multiplication_model
 #print axioms Sextic32.hits_iff_projective

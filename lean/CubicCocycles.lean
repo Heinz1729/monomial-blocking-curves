@@ -40,7 +40,7 @@ private theorem cocycle_one (f : crossed ρ) : f.1 1 = 0 := by
   have eqn := cocycle_mul f 1 1
   simpa using eqn
 
-private theorem commutation (f : crossed ρ) {g h : G} (c : Commute g h) :
+theorem commutation (f : crossed ρ) {g h : G} (c : Commute g h) :
     f.1 g - ρ h (f.1 g) = f.1 h - ρ g (f.1 h) := by
   have e : f.1 g + ρ g (f.1 h) = f.1 h + ρ h (f.1 g) := by
     rw [← cocycle_mul, c.eq, cocycle_mul]
@@ -60,7 +60,7 @@ variable (P : Meridians G I)
 def SignAt (ρ : G →* Module.End K V) (s : I) :=
   (∀ v, ρ (P.x s) v = -v) ∧ (∀ v, ρ (P.y s) v = -v)
 
-private theorem vanish_on_generators (f : crossed ρ)
+theorem vanish_on_generators (f : crossed ρ)
     (hx : ∀ i, f.1 (P.x i) = 0) (hy : ∀ i, f.1 (P.y i) = 0) : f = 0 := by
   apply Subtype.ext
   funext g

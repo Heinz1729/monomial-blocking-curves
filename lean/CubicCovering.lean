@@ -1,5 +1,6 @@
 import Projective
-import CubicSlope
+import CubicValueSet
+import StatementComparison
 import Mathlib.Data.Fintype.BigOperators
 import Mathlib.Algebra.Order.BigOperators.Group.Finset
 import Mathlib.Analysis.SpecialFunctions.Log.Basic
@@ -125,5 +126,35 @@ theorem cubic_upper_of_miss_bound (h : ℕ) (hq16 : 16 ≤ Fintype.card F)
   obtain ⟨S, hS, hb⟩ := exists_projective_cover h k hk hq hline
     ((Nat.mul_le_mul_right _ hsub).trans_lt hstrong)
   exact ⟨S, hb, (show (S.card:ℝ) ≤ k by exact_mod_cast hS).trans hka⟩
+
+/-- Each line misses at most a third of the parameters (with integer rounding). -/
+theorem line_miss_bound (m b : F) (hq : Fintype.card F % 3 = 2) :
+    3 * (missedParameters m b).card ≤ Fintype.card F + 1 := by
+  classical
+  simpa [missedParameters] using CubicValueSet.three_mul_missed_le m b hq
+
+/-- Unconditional upper bound, including characteristic two and all prime powers
+q ≥ 16 with q ≡ 2 mod 3. -/
+theorem cubic_upper (hq16 : 16 ≤ Fintype.card F) (hq : Fintype.card F % 3 = 2) :
+    ∃ S : Finset F, ProjectiveBlocks 3 (S : Set F) ∧
+      (S.card:ℝ) ≤ 2*log (Fintype.card F)/log 3 + 8 := by
+  apply cubic_upper_of_miss_bound ((Fintype.card F+1)/3) hq16 hq (by omega)
+  intro m b _
+  have := line_miss_bound m b hq
+  omega
+
+/-- On the independent projective-plane specification, the minimum itself
+obeys the same bound as the constructed cover. -/
+theorem cubic_minimum_upper (hq16 : 16 ≤ Fintype.card F) (hq : Fintype.card F % 3 = 2) :
+    ∃ n : ℕ, AsgarliGhiocaYip.isPencilMinimum F 3 n ∧
+      (n : ℝ) ≤ 2*log (Fintype.card F)/log 3 + 8 := by
+  classical
+  obtain ⟨S,hS,hbound⟩ := cubic_upper hq16 hq
+  let P := fun n : ℕ => ∃ T : Finset F, T.card = n ∧ ProjectiveBlocks 3 (T : Set F)
+  have hS' : P S.card := ⟨S,rfl,hS⟩
+  have hex : ∃ n, P n := ⟨_,hS'⟩
+  refine ⟨Nat.find hex, (AGY_minimum_iff (by decide : 2 ≤ 3) _).2
+    ⟨Nat.find_spec hex, fun _ hn => Nat.find_min' hex hn⟩, ?_⟩
+  exact (show (Nat.find hex : ℝ) ≤ S.card by exact_mod_cast Nat.find_min' hex hS').trans hbound
 
 end BlockingCurves.CubicCovering

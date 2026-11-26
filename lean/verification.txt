@@ -49,6 +49,31 @@ BlockingCurves.CubicPairCount.fixed_blocking_card_lower_of_trace  [Classical.cho
 BlockingCurves.CubicAsymptotics.twist_point_threshold  [Classical.choice, Quot.sound, propext]
 BlockingCurves.CubicCovering.exists_projective_cover  [Classical.choice, Quot.sound, propext]
 BlockingCurves.CubicCovering.cubic_upper_of_miss_bound  [Classical.choice, Quot.sound, propext]
+BlockingCurves.CubicCovering.line_miss_bound  [Classical.choice, Quot.sound, propext]
+BlockingCurves.CubicCovering.cubic_upper  [Classical.choice, Quot.sound, propext]
+BlockingCurves.CubicCovering.cubic_minimum_upper  [Classical.choice, Quot.sound, propext]
+BlockingCurves.CubicMonodromy.full_of_inertia  [Classical.choice, Quot.sound, propext]
+BlockingCurves.CubicCharacters.centered_count  [Classical.choice, Quot.sound, propext]
+BlockingCurves.CubicCharacters.sum_nontrivial_ranks  [Classical.choice, Quot.sound, propext]
+BlockingCurves.CubicMonodromy.character_orthogonality  [Classical.choice, Quot.sound, propext]
+BlockingCurves.CubicMonodromy.full_of_inertia  [Classical.choice, Quot.sound, propext]
+BlockingCurves.CubicMonodromy.top_eq_zero  [Classical.choice, Quot.sound, propext]
+BlockingCurves.CubicSurfaceTrace.signed_meridian_bound  [Classical.choice, Quot.sound, propext]
+BlockingCurves.CubicUnsigned.finrank_le  [Classical.choice, Quot.sound, propext]
+BlockingCurves.CubicSurfaceTrace.meridian_bound  [Classical.choice, Quot.sound, propext]
+BlockingCurves.CubicSurfaceTrace.sum_bettiCap  [Classical.choice, Quot.sound, propext]
+BlockingCurves.CubicSurfaceTrace.trace_deviation_of_spectra  [Classical.choice, Quot.sound, propext]
+BlockingCurves.CubicSurfaceTrace.blocking_card_lower_of_spectra  [Classical.choice, Quot.sound, propext]
+BlockingCurves.CubicCurveTrace.wild_critical_iff  [Classical.choice, Quot.sound, propext]
+BlockingCurves.CubicCurveTrace.wild_local_equations  [Classical.choice, Quot.sound, propext]
+BlockingCurves.CubicCurveTrace.word_estimate  [Classical.choice, Quot.sound, propext]
+BlockingCurves.CubicCurveTrace.fixed_deviation_of_curve_data  [Classical.choice, Quot.sound, propext]
+BlockingCurves.CubicCurveTrace.fixed_lower_of_curve_data  [Classical.choice, Quot.sound, propext]
+BlockingCurves.CubicUnramified.surface_separable  [Classical.choice, Quot.sound, propext]
+BlockingCurves.CubicUnramified.fixed_separable  [Classical.choice, Quot.sound, propext]
+BlockingCurves.CubicRationalRoots.fixed_root_count  [Classical.choice, Quot.sound, propext]
+BlockingCurves.CubicUnramified.surface_frobenius_count  [Classical.choice, Quot.sound, propext]
+BlockingCurves.CubicUnramified.curve_frobenius_count  [Classical.choice, Quot.sound, propext]
 BlockingCurves.FrobeniusCoset.exists_derangement_of_two_transitive  [Classical.choice, Quot.sound, propext]
 Sextic32.multiplication_model  [propext]
 Sextic32.hits_iff_projective  [Classical.choice, Quot.sound, propext]
@@ -59,23 +84,31 @@ Sextic32.projective_sextic_minimum  [Classical.choice, Quot.sound, propext]
 Sextic32.pencil_minimum  [Classical.choice, Quot.sound, propext]
 
 SHA-256 (UTF-8 source bytes with LF line endings)
-c188587db9ba48b04d8f6c18bab0a29c76a864c1e34afa97bd1d18ad3cc204dd  BlockingCurves.lean
-1b9916cd6fa644347ccb7aedb9b53de790fb0bf0667d97681fc42534883419a7  Cubic41.lean
+bf9b9de921d603f31fb55d066e16837bba9475fe97c8f91d913d779236a1f87a  BlockingCurves.lean
+e64549853052c3ee8e86744b6c365e553a1361ce482a3b0f051b36ead0ec4c2f  Cubic41.lean
 da432c523306c0267c0dee96ff81242a672a60f1a971b246de0750d925d8597c  Cubic41Semantics.lean
-9d8e44a4ca467398ae92499ae5920dc05fdfe8753af2490138ca11bceb2b3447  Cubic47.lean
+f09a9868931d0cf1dd6828f0bc51be0bc5acecca4f095a07e6d44ee98f2b856e  Cubic47.lean
 854e00d07db64eb994d21cce2d602cf00e0d3404bb159e6b63c8ec094b200522  Cubic47Global.lean
 72703fe3838105917207b5a2383e1732ffb6605ef634e28ce1a02c70cd56877f  Cubic47Orbit.lean
 d1690cec73fb0eff4d6bad4d9d86f695b0e45717f020e44badf10b8769e9e7fb  Cubic47Semantics.lean
 232a6b83ec8aab206634ae84448b55f6d9424167931a06dedd8401d77976b20d  Cubic47Symmetry.lean
 d2cfb6b6299536394b4bcb2f870db0c97654e867251f8d7d2dfbdc0beee42288  CubicAsymptotics.lean
-00605214092cdf1bcb4121f120ca83d9a0c28a1a6f395b0590f2f9d336e00520  CubicCertificate.lean
-051c69457fa426421f737fc72abc1f619dac318b911e40121e64c5666a5a21b7  CubicCocycles.lean
-7233d08a4153879b1137c288686daaf62fce33f4d3d2a2012a28b6ea6ce4ba27  CubicCovering.lean
+2827abd540a3d575ff725ed5146b8d477304079c37f1499788fe22535a923344  CubicCertificate.lean
+80f3b7f07f97c8f8d57ca897b18a69d46afd6e57bf151f46c3bdda4cb2866cbf  CubicCharacters.lean
+be795b23b45dc73879a80dab9d8c0e366b523734a65c70d4086666a54092e496  CubicCocycles.lean
+c32fb23a023cfa99aa497b163ae2b1bf4bc43fe95f1cdf668ac7404a2559692f  CubicCovering.lean
+65026a6d839cadf5d3147a679b0c0cda4ba343593619e5423da8a552fa60ac33  CubicCurveTrace.lean
 068af0351a3d55a97d9bdb4fdc6e6af02416bffd138edaf8d63ae8787165cf4e  CubicGlobal.lean
+58f3ddb150662e561ea40b473d8e5d20447a7879c2f316e1db6f36b600f7a332  CubicMonodromy.lean
 5672a2649eb1ead236f40f4b19596636bb4e46b008ed256544cc3e265c91bf51  CubicOrbit.lean
 fb158dcdcc37d489edce302678c85ea7a69f451c4c89998292f5fff311cd3726  CubicPairCount.lean
+3e608fee256a3707bc82b3b04b98cf526c11dbc84ffbdc288245b13faf39be67  CubicRationalRoots.lean
 3c4b9958346c304813e068972afc6611b626cce9105d091181d99c538753dc99  CubicSlope.lean
+afc05577c4afc252e28e3b91ca53d86e54296f533dc0e680a61b9bd705c9b402  CubicSurfaceTrace.lean
 90a36ec8cd113a8344fe9fee66796585de69a21abda376672cefc86d8c16aab9  CubicSymmetry.lean
+627d44d7a91011f994d6d1917b224df800043fd08d5e3b38451bfc06cf234de8  CubicUnramified.lean
+197ab9a33e02f41cb221301873a9d00cddf084f050740fca3f40e8e958dee659  CubicUnsigned.lean
+a854bc49518c5f237338684d386df47dd0c7f938c65312b5b5e19aa940d7db4e  CubicValueSet.lean
 1f3f67c7f9683e73102c948d7b3d57e25933eda5a9218e4c8d53be00e6c99925  F8Example.lean
 2c61fc19c7debca20948e187a1ad64d97d90515d7660aca60dcbabfb301019d1  F8Semantics.lean
 b7f77d12eaa7d5c22355658cf6dde38e29ce788f27a948723574afbe1b054085  FieldTransport.lean
@@ -91,12 +124,12 @@ ecc335c6f2ce2bf5118a152ce60c91c56131748d06fbcb674e2a059c48573706  PrimeFieldInst
 f2a3018bd2b09ca60392f8ef27c57ecea132ac82c353470a9aa2f625adc36b41  ProblemStatement.lean
 1f3dc146e21342e2ce01c6dd82fc5cb6438d27796b2193c9781812d1af13a998  Projective.lean
 f001c181afd95cb55aa35d9fd26d9056333a06838b92164293615c99c81b3a99  ScatteredComparison.lean
-2bad2a03ed70f4cc7672c490389c1fecd44ff579f6211185faa2c9e18ca472c3  Sextic32.lean
+1ae623160c1c4e7288f7d0bfdc23033e4cc4f1b6dfaf23577a0ad7ce6af0501a  Sextic32.lean
 c6e2cd3f92eb0bd834495bfe9cf29b85058b2e7bfc36f9bb389045d6745a12e7  Sextic32Geometry.lean
 7465b31fcc3b3eb0badbed6c8b5b6a1ca63d5c268f9e61b313ffae55509a402b  Sextic32Global.lean
 53c8cf3861a169b511720fd33d3e55eccbdffead57377b9e5258be1646457865  Sextic32Search.lean
 c7bdcc1960065ca0dd1a5a901cf3b07ad9c1544e39a792ac50304308d7a974a9  StatementComparison.lean
 2e906616c04bc8a2e91c101f9cfb8e3d62a458e84193beff13331ca68b594de4  UpperBound.lean
-a8f319e666484d8f05cd4022d8977a101cc7070fef7d9ef35a0dce1977cf75c3  lakefile.lean
+2ff012fce1ad17f70128d90b6c267738cc07551589e3acedb06021e4cbdeafaf  lakefile.lean
 021b17d7609dca541fab5fc95f674618fb9dd8ace15871f8f35f7d1e53336996  lake-manifest.json
 61561b06f5587e027815fac8f59bf6ca160dfbf3f7372fc6297664acfd85b8c0  lean-toolchain

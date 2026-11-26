@@ -27,19 +27,24 @@
 
 ## 渐近证明的形式化范围
 
-| 手稿步骤 | Lean 所证结论及其输入 |
-| --- | --- |
-| 第 11 节，同时无根 | [FrobeniusCoset](FrobeniusCoset.lean) 对任意有限二重传递作用，证明任意置换乘该群所得的陪集含错排。[CubicAsymptotics](CubicAsymptotics.lean) 的 `twist_point_threshold` 给出亏格与分歧纤维上界保证有理点余量为正的数值阈值。几何群包含单群直积、实际曲线的亏格界和扭曲下降见手稿。 |
-| 第 12、16、18 节，三次下界 | [CubicPairCount](CubicPairCount.lean) 定义实际的无根有序对数和固定斜率截距数，证明阻塞迫使相应计数为零。给定式 (12.1) 或第 18 节固定斜率的迹误差，[CubicAsymptotics](CubicAsymptotics.lean) 与此几何联系对 $q\ge16$ 推出相应基数下界，分母分别为 $\log 4$、$\log 16$。 |
-| 第 14–15 节，一阶上同调 | [CubicCocycles](CubicCocycles.lean) 用交叉同态模上余边界定义 $H^1$。给定手稿的生成元与交换关系，一个符号因子给出从 $H^1$ 到系数空间的单射。加入标准表示的矩阵条件得到维数至多 2。三个不同符号因子，或两个符号因子加一个无共同不动向量的因子，给出消失。无符号项的维数界、正特征比较及完整迹误差采用纸面证明。 |
-| 第 17 节，三次上界 | [CubicCovering](CubicCovering.lean) 对实际的 `ProjectiveBlocks` 形式化有限抽样。若每条非水平线遗漏至多 $(q+1)/3$ 个参数，$q\ge16$ 且 $q\equiv2\bmod3$，就有大小至多 $2\log q/\log3+8$ 的阻塞集。值集大小与手稿上界的 $-\log\log q/\log 3$ 修正见第 17 节。 |
+| 结论 | Lean 的证明 | 仍需提供的数学输入 |
+| --- | --- | --- |
+| 第 11 节，存在错排 | [二重传递群的陪集](FrobeniusCoset.lean)一定含错排。[数值阈值](CubicAsymptotics.lean)由亏格界推出。 | 一般次数的单群直积、几何亏格估计及扭曲下降。 |
+| 三次上界，无条件 | [CubicValueSet](CubicValueSet.lean) 将同值的有序根对计入 $x^2+xy+y^2=m$。过一个有理点的割线和切线给出至多 $q+1$ 个点。二根纤维补入重根对应的对角点，逐纤维求和得 $3M\le q+1$。[cubic_minimum_upper](CubicCovering.lean) 在原射影陈述上证明 $B(q,3)\le2\log q/\log3+8$。 | 域阶条件 $q\equiv2\bmod3$，对数式另需 $q\ge16$。 |
+| 两个开集及特征标，无条件 | [CubicUnramified](CubicUnramified.lean) 核验开集上的三次式可分；[CubicRationalRoots](CubicRationalRoots.lean) 把两种实际根数接到几何根的 Frobenius 不动点。[CubicCharacters](CubicCharacters.lean) 展开无根示性函数，非平凡张量总秩恰为 $4^\ell-1$。 | 只使用各定理列明的域和开集条件。 |
+| 满直积及顶维项 | [CubicMonodromy](CubicMonodromy.lean) 从逐因子传递性和各坐标中独立支撑的惯性对换证明满直积，再用实际 $S_3^\ell$ 上的特征标正交性得到非平凡张量的平均值为零。 | 将具体覆盖的几何群作用识别为满足这两条局部性质的作用；用对偶把顶维重数识别为不变量重数。 |
+| 第 14 节，群上同调 | [CubicCocycles](CubicCocycles.lean) 和 [CubicUnsigned](CubicUnsigned.lean) 直接对交叉余循环模余边界的 $H^1$ 作线性代数。非平凡无符号张量满足 $b_1\le4\ell+2$；有一个符号时至多 2，有两个符号且其余全平凡时至多 1，其余多符号情形消失。 | 子午圈生成元、异指标交换关系、各因子的局部矩阵作用。逐张量及总 Betti 数的上界均由 Lean 推出。 |
+| 第 12–16 节，曲面下界 | [trace_deviation_of_spectra](CubicSurfaceTrace.lean) 从逐项数据推出式 (12.1)，再对真实阻塞集推出 $(\log q-2\log\log q)/\log4-5$ 的严格下界。 | `SurfaceLaws` 列出迹公式、仿射消没、顶维对偶、驯 Euler 特征、正特征比较与对偶，以及二、三阶 Frobenius 特征值的权界；另需上述局部单值模型。 |
+| 第 18 节，固定斜率下界 | [fixed_deviation_of_curve_data](CubicCurveTrace.lean) 在每个字上用导子与权一估计，再求和得到固定斜率误差，推得分母 $\log16$ 的严格下界。库内还证出特征 2 的有限临界值与局部式 $Z^2(1+Z)$。 | `CurveLaws` 列出迹公式、Grothendieck–Ogg–Shafarevich 公式、顶维对偶、无穷远驯分歧、有限点的 Swan 导子等式及权一界；另需局部单值模型。 |
+
+两个下界接口都以复数特征值和维数表达经典定理的数值结论。将这些数据实现为具体覆盖的 étale 上同调，并验证各条几何输入，仍依赖手稿证明。第 17 节含 $-\log\log q/\log3$ 的上界来自手稿的补点论证。
 
 ## 复现与验证记录
 
-[CubicCertificate](CubicCertificate.lean) 的分块归约让内核分别检查候选表各块，再合并筛选结果与计数。模 41、47 沿用原有的逐线语义定理。32 元域六次证书从两个固定参数开始，按其余参数的取舍递归验证六元集，最小值的证明只需一个七元见证。
+[CubicCertificate](CubicCertificate.lean) 逐块核验输入覆盖、输出拼接或计数之和。模 41、47 的行表和候选筛选每块取 4 个外层索引。32 元域的 1,024 行分 8 块，27,405 个归一化六元候选再按首个自由参数分 27 片。各片由内核 `decide` 核验，归纳引理将它们接回原始射影定理。
 
-托管 Linux 上使用 `python checks/verify_lean.py --serial`，按导入顺序逐个预编译本库模块，再执行同一套完整构建和公理审计。工作流为主线程提供 128 MiB 栈空间，每个模块的构建结果直接显示在日志中。
+在 Linux 上从空的本项目 `.lake/build` 复现时，可复用锁定的 mathlib 缓存。执行 `ulimit -s` 查看当前主线程栈限制，然后在仓库根目录运行 `python3 checks/verify_lean.py --serial`。本地 Debian 在默认 8192 KiB 软栈上限下也把硬上限设为 8192 KiB，依次通过 `--serial --write` 与 `--serial`。两轮各检查 899 个声明，生成的 76 条点名定理公理记录与 49 个文件哈希在 Linux 与 Windows 上逐字节一致。托管工作流会打印其默认栈限制。
 
-[GitHub Actions 工作流](../.github/workflows/verify.yml) 在 Ubuntu 上直接执行 `python3 checks/verify_lean.py`，再运行五个 Python 有限检查。本地复现时，在仓库根目录先进入 `lean/` 运行 `lake exe cache get`，然后回到根目录运行 `python checks/verify_lean.py`。脚本执行 `lake build`，重放入口的每条 `#print axioms`，检查所有源码模块均在入口导入闭包内，再以 Lean 自带的公理收集器递归追踪所有安全声明和带源码位置的不安全声明。编译器产生的无源码不安全辅助符号不单独用作根。从根出发的依赖闭包全量检查。允许的公理是 `Classical.choice`、`Quot.sound`、`propext`。
+[GitHub Actions 工作流](../.github/workflows/verify.yml) 在 Ubuntu 上执行同一条串行审计命令，再运行五个 Python 有限检查。首次安装依赖时，可在 `lean/` 运行 `lake exe cache get` 下载锁定的 mathlib 缓存。脚本执行 `lake build`，重放入口的每条 `#print axioms`，检查所有源码模块均在入口导入闭包内，再以 Lean 自带的公理收集器递归追踪所有安全声明和带源码位置的不安全声明。编译器产生的无源码不安全辅助符号不单独用作根。从根出发的依赖闭包全量检查。允许的公理是 `Classical.choice`、`Quot.sound`、`propext`。
 
 [verification.txt](verification.txt) 记录逐定理结果以及所有 Lean 源码、工具链和锁文件的 SHA-256。输入规范为 LF 换行，Linux 与 Windows 可以对照同一记录。修改源码后运行 `python checks/verify_lean.py --write`，审阅新的哈希与公理差异并与源码一同提交。[验证程序](../checks/verify_lean.py)

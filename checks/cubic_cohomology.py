@@ -113,7 +113,7 @@ def check_type(trivial, sign, standard):
     upper = len(generators) * dimension - relations - inner
     ell = trivial + sign + standard
     if sign == 0:
-        bound = 6 * ell + 2
+        bound = 4 * ell + 2 if standard else 6 * ell + 2
     elif sign == 1:
         bound = 2
     elif sign == 2 and standard == 0:
@@ -146,7 +146,7 @@ def main():
                 else:
                     trivial_upper = upper
                 total += 1
-        sum_bound = (6 * ell + 2) * (2**ell - 1) + ell * 2**ell + comb(ell, 2)
+        sum_bound = (4 * ell + 2) * (2**ell - 1) + ell * 2**ell + comb(ell, 2)
         if weighted_sum > sum_bound:
             raise ArithmeticError(f"Summed H¹ bound failed for ell={ell}")
         print(f"ell={ell}: {len(nontrivial) + 1} types, trivial bound {trivial_upper}, "

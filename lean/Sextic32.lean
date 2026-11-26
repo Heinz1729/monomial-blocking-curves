@@ -23,7 +23,7 @@ private def timesTPow (x : E) : Nat → E
 def polynomialMul (x y : E) : E :=
   (List.range 5).foldl (fun s i => if y.val.testBit i then add s (timesTPow x i) else s) 0
 
-set_option maxRecDepth 100000
+set_option maxRecDepth 4096
 set_option maxHeartbeats 0
 
 theorem multiplication_model : ∀ x y : E, mul x y = polynomialMul x y := by decide
@@ -75,7 +75,9 @@ def difficult : List Nat := [
 
 theorem rows_verified : lineRows.filter (fun r => r &&& 3 == 0) = difficult := by
   rw [lineRows, CubicCertificate.filter_bind]
-  decide
+  apply CubicCertificate.bind_checked (parts := CubicCertificate.blocks 4 8 elems)
+    (outputs := CubicCertificate.splitSizes [24, 28, 36, 32, 32, 28, 28, 32] difficult) (by decide) ?_ (by decide)
+  verify_bind_blocks
 
 def hits (extra : List E) : Bool := difficult.all fun r => r &&& mask extra != 0
 def witness : List E := [2,3,4,19,31]
