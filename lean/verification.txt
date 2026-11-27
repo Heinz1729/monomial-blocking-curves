@@ -45,6 +45,13 @@ BlockingCurves.CubicCocycles.subsingleton_of_three_signs  [Classical.choice, Quo
 BlockingCurves.CubicCocycles.one_sign_finrank_le_two  [Classical.choice, Quot.sound, propext]
 BlockingCurves.CubicPairCount.escapeCount_eq_zero_of_blocks  [Classical.choice, Quot.sound, propext]
 BlockingCurves.CubicPairCount.blocking_card_lower_of_trace  [Classical.choice, Quot.sound, propext]
+BlockingCurves.Cuspidal.cusp_parametrization  [Classical.choice, Quot.sound, propext]
+BlockingCurves.Cuspidal.blocks_iff  [Classical.choice, Quot.sound, propext]
+BlockingCurves.Cuspidal.graph_blocks_implies_cusp  [Classical.choice, Quot.sound, propext]
+BlockingCurves.Cuspidal.missedLines_card  [Classical.choice, Quot.sound, propext]
+BlockingCurves.Cuspidal.lower_of_trace  [Classical.choice, Quot.sound, propext]
+BlockingCurves.Cuspidal.upper_finite_range  [Classical.choice, Quot.sound, propext]
+BlockingCurves.Cuspidal.trace_on_missed_lines  [Classical.choice, Quot.sound, propext]
 BlockingCurves.CubicPairCount.fixed_blocking_card_lower_of_trace  [Classical.choice, Quot.sound, propext]
 BlockingCurves.CubicAsymptotics.twist_point_threshold  [Classical.choice, Quot.sound, propext]
 BlockingCurves.CubicCovering.exists_projective_cover  [Classical.choice, Quot.sound, propext]
@@ -203,9 +210,16 @@ BlockingCurves.PhaseCharacter.not_power_of_coordinate_roots  [Classical.choice, 
 BlockingCurves.PhaseCharacter.character_count_full_main  [Classical.choice, Quot.sound, propext]
 BlockingCurves.PhaseCharacter.logarithmic_character_witness  [Classical.choice, Quot.sound, propext]
 BlockingCurves.PhaseCharacter.explicit_field_threshold  [Classical.choice, Quot.sound, propext]
+BlockingCurves.PiecewiseFrobenius.permutation_of_label_map  [Classical.choice, Quot.sound, propext]
+BlockingCurves.PiecewiseFrobenius.common_norm_lower  [Classical.choice, Quot.sound, propext]
+BlockingCurves.PiecewiseFrobenius.separated_norm_branch  [Classical.choice, Quot.sound, propext]
+BlockingCurves.PiecewiseFrobenius.separated_norm_hit_count  [Classical.choice, Quot.sound, propext]
+BlockingCurves.PiecewiseFrobenius.cyclotomic_table_upper  [Classical.choice, Quot.sound, propext]
+BlockingCurves.PiecewiseCandidates.coefficientPeriod_dvd_iff  [Classical.choice, Quot.sound, propext]
+BlockingCurves.PiecewiseCandidates.wrong_classes_miss  [Classical.choice, Quot.sound, propext]
 
 SHA-256 (UTF-8 source bytes with LF line endings)
-8132af64613592aecb1be626b667fd9e046368928f5b4773a27f543dc8273d23  BlockingCurves.lean
+377056e5265bd0b1891a654cc85f8102c74ba0149bf04d5c0cf37a311ff2e24b  BlockingCurves.lean
 e64549853052c3ee8e86744b6c365e553a1361ce482a3b0f051b36ead0ec4c2f  Cubic41.lean
 da432c523306c0267c0dee96ff81242a672a60f1a971b246de0750d925d8597c  Cubic41Semantics.lean
 f09a9868931d0cf1dd6828f0bc51be0bc5acecca4f095a07e6d44ee98f2b856e  Cubic47.lean
@@ -248,6 +262,7 @@ afc05577c4afc252e28e3b91ca53d86e54296f533dc0e680a61b9bd705c9b402  CubicSurfaceTr
 197ab9a33e02f41cb221301873a9d00cddf084f050740fca3f40e8e958dee659  CubicUnsigned.lean
 dcb5edf91201f369fd1ab0181f25c45868c970f6666ee68ee246d5a749ab43d1  CubicValueSet.lean
 2b1a39125f57d22848a228c69e6d975feee5946883d3afbb9d33065b8bc150c9  CubicZetaPoints.lean
+a9c7044a81d55ee6b12fb6511e05ec14c48871e8bd493f839a4b69487d30f2ea  CuspidalTransfer.lean
 1f3f67c7f9683e73102c948d7b3d57e25933eda5a9218e4c8d53be00e6c99925  F8Example.lean
 2c61fc19c7debca20948e187a1ad64d97d90515d7660aca60dcbabfb301019d1  F8Semantics.lean
 b7f77d12eaa7d5c22355658cf6dde38e29ce788f27a948723574afbe1b054085  FieldTransport.lean
@@ -302,6 +317,8 @@ d3594286eed503b9ead6f29b9c32ad7d79f2084204f12193037ca2781e7d1758  PhaseEigenFibr
 299f68bda6728aa9f8c59ae27705b4e5dc45b6d60afb299d1fad60d2f2aa5dec  PhaseQuadratic.lean
 6790b9a8f346215a9b1fe60adac2b69e686daaf620b0358719eeb2b92b39295f  PhaseRootMultiplicity.lean
 593cd2f8417d18085ebad6ca6e0e6e2d04975cfec21bd13be49ae9a0bcb96e0a  PhaseTraceLower.lean
+edbc3cfaf15fa39d3ea36e6edf96b2c008b26c597a7e2d259a776efd24202965  PiecewiseCandidates.lean
+17a99d08f3dffc5aa93f7883e7301153fbdd95b18562e1bc8d430b1cf7b9ef91  PiecewiseFrobenius.lean
 ecc335c6f2ce2bf5118a152ce60c91c56131748d06fbcb674e2a059c48573706  PrimeFieldInstances.lean
 f2a3018bd2b09ca60392f8ef27c57ecea132ac82c353470a9aa2f625adc36b41  ProblemStatement.lean
 1f3dc146e21342e2ce01c6dd82fc5cb6438d27796b2193c9781812d1af13a998  Projective.lean
@@ -312,6 +329,6 @@ c6e2cd3f92eb0bd834495bfe9cf29b85058b2e7bfc36f9bb389045d6745a12e7  Sextic32Geomet
 53c8cf3861a169b511720fd33d3e55eccbdffead57377b9e5258be1646457865  Sextic32Search.lean
 c7bdcc1960065ca0dd1a5a901cf3b07ad9c1544e39a792ac50304308d7a974a9  StatementComparison.lean
 2e906616c04bc8a2e91c101f9cfb8e3d62a458e84193beff13331ca68b594de4  UpperBound.lean
-a068e72f523d5e1b2946f4051eda26525d0c062f2d560f937e01f95553b31cae  lakefile.lean
+4b93871e4bb35be7b87547cbc2063bc13a58fc0d9b9370c91f498a7cfe19005e  lakefile.lean
 021b17d7609dca541fab5fc95f674618fb9dd8ace15871f8f35f7d1e53336996  lake-manifest.json
 61561b06f5587e027815fac8f59bf6ca160dfbf3f7372fc6297664acfd85b8c0  lean-toolchain

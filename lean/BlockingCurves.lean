@@ -10,6 +10,7 @@ import NontrivialPencil
 import F8Semantics
 import PrimeFieldInstances
 import CubicPairCount
+import CuspidalTransfer
 import CubicCocycles
 import CubicCovering
 import CubicSurfaceTrace
@@ -38,6 +39,8 @@ import PhasePointCover
 import PhaseQuadratic
 import PhaseRootMultiplicity
 import PhaseTraceLower
+import PiecewiseFrobenius
+import PiecewiseCandidates
 
 /-! Build entry point and kernel dependency audit for the results in the manuscript. -/
 #print axioms BlockingCurves.projective_prime_power_minimum
@@ -79,6 +82,13 @@ import PhaseTraceLower
 #print axioms BlockingCurves.CubicCocycles.one_sign_finrank_le_two
 #print axioms BlockingCurves.CubicPairCount.escapeCount_eq_zero_of_blocks
 #print axioms BlockingCurves.CubicPairCount.blocking_card_lower_of_trace
+#print axioms BlockingCurves.Cuspidal.cusp_parametrization
+#print axioms BlockingCurves.Cuspidal.blocks_iff
+#print axioms BlockingCurves.Cuspidal.graph_blocks_implies_cusp
+#print axioms BlockingCurves.Cuspidal.missedLines_card
+#print axioms BlockingCurves.Cuspidal.lower_of_trace
+#print axioms BlockingCurves.Cuspidal.upper_finite_range
+#print axioms BlockingCurves.Cuspidal.trace_on_missed_lines
 #print axioms BlockingCurves.CubicPairCount.fixed_blocking_card_lower_of_trace
 #print axioms BlockingCurves.CubicAsymptotics.twist_point_threshold
 #print axioms BlockingCurves.CubicCovering.exists_projective_cover
@@ -239,3 +249,10 @@ import PhaseTraceLower
 #print axioms BlockingCurves.PhaseCharacter.character_count_full_main
 #print axioms BlockingCurves.PhaseCharacter.logarithmic_character_witness
 #print axioms BlockingCurves.PhaseCharacter.explicit_field_threshold
+#print axioms BlockingCurves.PiecewiseFrobenius.permutation_of_label_map
+#print axioms BlockingCurves.PiecewiseFrobenius.common_norm_lower
+#print axioms BlockingCurves.PiecewiseFrobenius.separated_norm_branch
+#print axioms BlockingCurves.PiecewiseFrobenius.separated_norm_hit_count
+#print axioms BlockingCurves.PiecewiseFrobenius.cyclotomic_table_upper
+#print axioms BlockingCurves.PiecewiseCandidates.coefficientPeriod_dvd_iff
+#print axioms BlockingCurves.PiecewiseCandidates.wrong_classes_miss

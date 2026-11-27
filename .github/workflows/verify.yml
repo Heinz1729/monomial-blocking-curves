@@ -29,3 +29,4 @@ jobs:
           python3 checks/sextic32.py
           python3 checks/norm_quadratic.py
           python3 checks/phase_dichotomy.py
+          python3 checks/branch_extensions.py

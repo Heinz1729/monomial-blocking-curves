@@ -1,6 +1,7 @@
 """Check the cubic incidence counts for fixed lines and fixed translates (Python 3.8+)."""
 
 from collections import Counter
+from itertools import combinations
 
 
 def power_mod_cubic(exponent, m, c, p):
@@ -51,6 +52,42 @@ def check_fixed_lines():
     print("F_5, slope 1: common misses for intercepts (0,1) and (0,2) are {2} and empty")
 
 
+def check_cuspidal_lines(p, normalized_cycles):
+    """Compare the missed translates for each actual cusp line with its ordered pair."""
+    field = range(p)
+    points = [(x, y) for x in field for y in field if (y*y - x**3) % p == 0]
+    if {y for _, y in points} != set(field):
+        raise ArithmeticError("A horizontal line misses the cusp")
+    seen_pairs = set()
+    missed_blocks = []
+    for m in range(1, p):
+        u = m * pow(3, -1, p) % p
+        for b in field:
+            w, v = b, (b + 4*u**3) % p
+            seen_pairs.add((v, w))
+            hit = {(y - m*x - b) % p for x, y in points}
+            missing = set(field) - hit
+            inv = pow(v - w, -1, p)
+            predicted = {a for a in field if (v+a) % p and (w+a) % p
+                         and normalized_cycles[2*(v+w+2*a)*inv % p]}
+            if predicted != missing:
+                raise ArithmeticError(f"Cusp line and ordered pair disagree for {p}, {m}, {b}")
+            missed_blocks.append(missing)
+    if seen_pairs != {(v, w) for v in field for w in field if v != w}:
+        raise ArithmeticError("Cusp lines do not biject with ordered pairs")
+    print(f"F_{p}: cusp omission sets agree on all {len(seen_pairs)} ordered pairs")
+    if p == 11:
+        smooth_blocks = [set(field) - {(t**3 - m*t - b) % p for t in field}
+                         for m in field for b in field]
+        for blocks, witness in ((missed_blocks, {0, 1, 2}), (smooth_blocks, {0, 1, 2, 5})):
+            if any(witness <= block for block in blocks):
+                raise ArithmeticError(f"The F_11 witness {witness} misses a line")
+            for candidate in combinations(field, len(witness) - 1):
+                if not any(set(candidate) <= block for block in blocks):
+                    raise ArithmeticError(f"Unexpected smaller F_11 solution {candidate}")
+        print("F_11: cusp minimum 3; cubic graph minimum 4")
+
+
 def check_field(p):
     cuberoot = {x**3 % p: x for x in range(p)}
     square_slopes = {3*u*u % p for u in range(1, p)}
@@ -58,6 +95,7 @@ def check_field(p):
     quarter = pow(4, -1, p)
     images = [{(x**3 - m*x) % p for x in range(p)} for m in range(p)]
     normalized_cycles = [three_cycle(3, t, p) for t in range(p)]
+    check_cuspidal_lines(p, normalized_cycles)
 
     def misses(m, b, shifts):
         return all((b + s) % p not in images[m] for s in shifts)

@@ -19,6 +19,8 @@ $$
 
 奇特征的 $1/\log4$ 使用两参数曲面的迹估计。特征 2 的置换族由固定斜率的一维野导子估计给出 $1/\log16$。两条下界所需的几何输入不同。三次情形的真正首项常数仍待确定。[第一篇定理 3](Manuscript.html#cubic-two-parameters) · [特征 2](Manuscript.html#cubic-char2) · [固定次数的分斜率上界](Manuscript.html#split-upper)
 
+对有限尖点的三次族 $(Y+\alpha Z)^2 Z=X^3$，第一篇定理 4 将全部射影漏线与原曲面上的有序配置逐一对应。误差对 $\ell\le c\log q$、$c<1/\log4$ 保持一致。十一元域中，尖点族只需 3 个平移，原图像族需要 4 个。[尖点族与仿射图样](Manuscript.html#cuspidal-translates) · [Lean 计数恒等式](lean/CuspidalTransfer.lean)
+
 ## 次数随域阶增长
 
 设 $\tau_s(m)$ 为 $\mathbb F_s$ 中 $m$ 次幂值集的最少平移覆盖数。当 $q=s^n$、$n\ge2$、$D=(q-1)/(s-1)$ 时，有精确公式 $B(q,mD)=s^{n-1}\tau_s(m)$。特别地，$B(q,D)=s^{n-1}$。对于任意次数，第二篇还用 $h=\gcd(d-1,q-1)$ 控制从水平覆盖扩充到射影阻塞集所需的额外参数数目。[第二篇定理 3](VariableDegree.html#variable-degree) · [第二篇定理 4](VariableDegree.html#norm-family)
@@ -26,6 +28,10 @@ $$
 ## 扩张次数的整除二分律
 
 固定 $m\ge2$，设 $m\mid s-1$、$q=s^n$、$d=s+(q-1)/m$。当 $m\mid n$ 时 $B(q,d)=\Theta_m(ns)$，当 $m\nmid n$ 时 $B(q,d)=\Theta_m(\log q)$。在同一个 $q=t^6$ 上，对任一奇素数幂 $t$，指数 $(q-1)/2+t^3$ 的阻塞数恰为 $\sqrt q$，指数 $(q-1)/2+t^2$ 的阻塞数为对数阶，两者都是置换。非整除侧下界的完整字符和证明见正文。[第二篇定理 5](VariableDegree.html#extension-dichotomy) · [字符和与退化原像](VariableDegree.html#phase-weil) · [精确值与同域对照](VariableDegree.html#phase-exact)
+
+## 分段线性置换的系数判据
+
+第二篇定理 6 允许不同乘法陪集使用同一底域系数。在 $\mathbb F_{s^n}$ 的 $m$ 个非零标号陪集上分别取 $f(x)=c_jx^s$，设至少有两个不同的非零系数。令 $h$ 为全部系数比生成的子群阶。若 $h\mid n$，则 $B(f)=\Theta_m(ns)$；若 $h\nmid n$，则 $B(f)=\Theta_m(\log q)$。常数对系数表一致。仅用平方类和非平方类两个分支即可实现任意周期 $h\ge3$。当 $q=t^6$、$t\equiv1\bmod6$ 时，三阶系数产生阻塞数分别为 $\Theta(t^2)$ 与 $\Theta(\log q)$ 的两种非单项式置换。[系数周期与证明](VariableDegree.html#coefficient-period) · [重复标号与例子](VariableDegree.html#coefficient-escape)
 
 ## 证明审阅与复现
 
@@ -35,6 +41,8 @@ $$
 | 三次下界 $1/\log4$、$1/\log16$ | Lean 从实际计数与明确的几何前提推出数值下界。具体覆盖上的正特征比较、迹与权、野导子的实现见第一篇。 |
 | 三次上界 | $q\equiv2\bmod 3,\ q\ge16$ 时的 $2L/\log3+8$ 为无条件 Lean 结论。带 $-\log L$ 的上界在 $L\le3^9$ 时也已无条件形式化，全域版本接收所选根域的 Castelnuovo–Severi 与 Hasse–Weil 输入。 |
 | 范数幂与分圆 Frobenius 族 | 整个范数幂公式、整除侧双边界、非整除侧上界和二次精确值均有无条件 Lean 定理。非整除侧下界的逐项 Weil 界及其在两种具体多项式族中的完整应用仍为纸面证明。 |
+| 有限尖点三次族 | Lean 无条件证明漏线与有序对的计数恒等式。渐近下界沿用原曲面的几何输入。十一元域的两个最小值有独立穷举。 |
+| 一般分段 Frobenius 系数表 | Lean 已证周期整除条件、同步退化时的超平面下界、不同步时的对数上界，以及重复标号的原像排除。同步侧的匹配上界、不同步侧的字符和下界见第二篇 §7。 |
 
 审阅说明逐行对应了 71 行的三次计数模块，并列明有限分支、无穷远分支、常数域、扭曲和误差对 $\ell$ 依赖的检查位置。两篇稿件尚待独立人类专家审阅。[审阅说明](REVIEW.md) · [Lean 定理与前提索引](lean/README.md) · [公理与源码哈希](lean/verification.txt)
 
@@ -47,6 +55,6 @@ $$
 python3 checks/verify_lean.py --serial
 ~~~
 
-GitHub Actions 使用运行器默认栈执行串行构建和公理审计，再运行七项独立有限检查。允许的公理为 `Classical.choice`、`Quot.sound`、`propext`。[工作流](.github/workflows/verify.yml) · [验证器](checks/verify_lean.py) · [最近运行](https://github.com/Heinz1729/monomial-blocking-curves/actions/workflows/verify.yml)
+GitHub Actions 使用运行器默认栈执行串行构建和公理审计，再运行八项独立有限检查。允许的公理为 `Classical.choice`、`Quot.sound`、`propext`。[工作流](.github/workflows/verify.yml) · [验证器](checks/verify_lean.py) · [最近运行](https://github.com/Heinz1729/monomial-blocking-curves/actions/workflows/verify.yml)
 
 原合订稿的 §7–18、§21 对应第一篇 §2–13、§14，§19–20、§22 对应第二篇 §4–6。旧记录和讨论可按提交定位。[原合订稿](https://github.com/Heinz1729/monomial-blocking-curves/blob/75326b5091df2a99b4c9e0354d1e7292ee5d61bb/Manuscript.pdf) · [RMM 2026 中文答卷](bonus/RMM-2026-中文答卷.pdf)

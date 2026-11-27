@@ -14,7 +14,7 @@ lean_lib BlockingCurves where
     `StatementComparison, `GeometricIrreducibility, `ScatteredComparison, `NontrivialPencil,
     `FieldTransport, `PrimeFieldInstances, `F8Semantics, `CubicCertificate, `CubicPairCount,
     `CubicAsymptotics, `CubicCocycles, `CubicCovering, `CubicValueSet, `CubicCharacters,
-    `CubicMonodromy, `CubicUnsigned, `CubicSurfaceTrace, `CubicCurveTrace,
+    `CubicMonodromy, `CubicUnsigned, `CubicSurfaceTrace, `CubicCurveTrace, `CuspidalTransfer,
     `CubicUnramified, `CubicRationalRoots,
     `CubicAlteration, `CubicDoubleMiss, `CubicAlterationSize, `CubicRepairChart,
     `CubicRepairDegree, `CubicRepairPlaces, `CubicRepairBranch, `CubicPoleFibre, `CubicPoleScalars,
@@ -33,4 +33,5 @@ lean_lib BlockingCurves where
     `PhaseCharacterOrthogonality, `PhaseCommonVariable, `PhaseConjugateOperators,
     `PhaseDirectionSampling, `PhaseDividingMinimum, `PhaseDividingUpper,
     `PhaseEigenFibres, `PhaseNormSlice, `PhasePointCover,
-    `PhaseQuadratic, `PhaseRootMultiplicity, `PhaseTraceLower]
+    `PhaseQuadratic, `PhaseRootMultiplicity, `PhaseTraceLower, `PiecewiseFrobenius,
+    `PiecewiseCandidates]

@@ -83,12 +83,19 @@ Lean 源码注释沿用 [75326b5 合订稿节号](https://github.com/Heinz1729/m
 
 **Hasse–Weil。** `CurveLaws` 的点数项使用上述全部有理位的基数。另一路径 `minimum_upper_of_weil_roots` 用赋值环按剩余次数逐阶构造 Euler 乘积，证明一次项等于实际有理位数。若各个次数的闭位集有限，且 $(1-T)(1-qT)Z(T)=\prod_{j=1}^{2g}(1-\beta_jT)$、各倒根满足 $\lvert\beta_j\rvert\le\sqrt q$，取一次项并对倒根实部用三角不等式，得到双侧估计 $\lvert\#\mathrm{Place}(K)-(q+1)\rvert\le 2g\sqrt q$。补点只需其下界。一次闭位与有理位的等价已证。各高次闭位集有限及上述分解和权界由该路径显式传入。AxiomMath/Weil 在 Lean 4.34.0-rc2 给出了光滑固有几何不可约概形的 zeta 分解与权界。接入该结果还须为 $K$ 实现相应的曲线模型，将其闭点与赋值环对应，并证明一次上同调给出的分子次数等于这里的 $2g$。[Euler 乘积与一次项](CubicZetaPoints.lean) · [条件式上界](CubicLogLog.lean) · [AxiomMath/Weil 的定理接口](https://github.com/AxiomMath/Weil/tree/27cdb2049be6#3-riemann-hypothesis-delignes-theorem)
 
+## 尖点三次与一般系数表
+
+| 手稿 | Lean 已核验 | 纸面输入 |
+| --- | --- | --- |
+| 第一篇 §15 | 尖点曲线齐次射影阻塞与试根的等价、原族阻塞参数对新族的涵盖，以及非水平漏线与旧有序对的精确计数。$\log q\le3^9$ 时的次阶上界无条件。 | 实际漏线数的迹估计使用 §10 原有的逐项几何输入。十一元域的两个精确最小值由 Python 穷举。[曲线与计数](CuspidalTransfer.lean) · [有限检查](../checks/cubic_pairs.py) |
+| 第二篇 §7 | 系数周期整除等价式、从标号置换推出整体双射、共同范数时的超平面下界、不同范数时实际幂标号图像的对数上界，以及重复标号下从全部候选排除实际命中点。 | 对一般系数表的整除侧匹配上界和非整除侧完整字符和下界见正文。[下界与取样](PiecewiseFrobenius.lean) · [整除与候选](PiecewiseCandidates.lean) · [扩域复算](../checks/branch_extensions.py) |
+
 ## 复现与验证记录
 
 [CubicCertificate](CubicCertificate.lean) 逐块核验输入覆盖、输出拼接或计数之和。模 41、47 的行表和候选筛选每块取 4 个外层索引。32 元域的 1,024 行分 8 块，27,405 个归一化六元候选再按首个自由参数分 27 片。各片由内核 `decide` 核验，归纳引理将它们接回原始射影定理。
 
 在 Linux 上从空的本项目 `.lake/build` 复现时，可复用锁定的 mathlib 缓存。执行 `ulimit -s` 查看当前主线程栈限制，然后在仓库根目录运行 `python3 checks/verify_lean.py --serial`。提交 `6d61b6d` 曾在本地 Debian 把默认 8192 KiB 的软栈上限同时设为硬上限，依次通过 `--serial --write` 与 `--serial`。该次 Linux 与 Windows 的验证记录逐字节一致。当前提交的点名定理与文件哈希见下方验证记录。托管工作流会打印其默认栈限制。
 
-[GitHub Actions 工作流](../.github/workflows/verify.yml) 在 Ubuntu 上执行同一条串行审计命令，再运行七个 Python 有限检查。首次安装依赖时，可在 `lean/` 运行 `lake exe cache get` 下载锁定的 mathlib 缓存。脚本执行 `lake build`，重放入口的每条 `#print axioms`，检查所有源码模块均在入口导入闭包内，再以 Lean 自带的公理收集器递归追踪所有安全声明和带源码位置的不安全声明。编译器产生的无源码不安全辅助符号不单独用作根。从根出发的依赖闭包全量检查。允许的公理是 `Classical.choice`、`Quot.sound`、`propext`。
+[GitHub Actions 工作流](../.github/workflows/verify.yml) 在 Ubuntu 上执行同一条串行审计命令，再运行八个 Python 有限检查。首次安装依赖时，可在 `lean/` 运行 `lake exe cache get` 下载锁定的 mathlib 缓存。脚本执行 `lake build`，重放入口的每条 `#print axioms`，检查所有源码模块均在入口导入闭包内，再以 Lean 自带的公理收集器递归追踪所有安全声明和带源码位置的不安全声明。编译器产生的无源码不安全辅助符号不单独用作根。从根出发的依赖闭包全量检查。允许的公理是 `Classical.choice`、`Quot.sound`、`propext`。
 
 [verification.txt](verification.txt) 记录逐定理结果以及所有 Lean 源码、工具链和锁文件的 SHA-256。输入规范为 LF 换行，Linux 与 Windows 可以对照同一记录。修改源码后运行 `python checks/verify_lean.py --write`，审阅新的哈希与公理差异并与源码一同提交。[验证程序](../checks/verify_lean.py)
