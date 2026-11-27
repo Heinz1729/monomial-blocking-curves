@@ -69,7 +69,7 @@ open Polynomial
 variable {K E : Type*} [Field K] [Fintype K] [Field E] [Fintype E] [Algebra K E]
   [FiniteDimensional K E]
 
-private theorem power_apply_formula (σ : E ≃ₐ[K] E)
+theorem power_apply_formula (σ : E ≃ₐ[K] E)
     (hσ : ∀ x : E, σ x = x ^ Fintype.card K) (j : ℕ) (x : E) :
     (σ ^ j) x = x ^ Fintype.card K ^ j := by
   induction j with
@@ -79,7 +79,7 @@ private theorem power_apply_formula (σ : E ≃ₐ[K] E)
     change σ ((σ ^ j) x) = _
     rw [hσ, ih]
 
-private theorem relative_order (σ : E ≃ₐ[K] E)
+theorem relative_order (σ : E ≃ₐ[K] E)
     (hσ : ∀ x : E, σ x = x ^ Fintype.card K) :
     orderOf σ = FiniteDimensional.finrank K E := by
   classical

@@ -6,12 +6,12 @@ interpolation, without a weak approximation theorem. -/
 namespace BlockingCurves.CubicPoleFibre
 open CubicAlteration CubicRepairPlaces
 open BigOperators
-universe u
-variable {F : Type u} [Field F] {R : Finset (Line F)} {D : Branch F R}
-variable {p : Place D} {x y : D.K} {a b : F}
+universe u v
+variable {F : Type u} {K : Type v} [Field F] [Field K] [Algebra (RatFunc F) K]
+variable {p : RationalPlace F K} {x y : K} {a b : F}
 
 /-- The function is regular at the given place, with the specified residue. -/
-def Value (p : Place D) (x : D.K) (a : F) : Prop :=
+def Value (p : RationalPlace F K) (x : K) (a : F) : Prop :=
   ∃ h : x ∈ p.ring, p.residue ⟨x,h⟩ = a
 
 private theorem value_iff :
@@ -23,9 +23,9 @@ private theorem value_iff :
 theorem Value.unique (h : Value p x a) (h' : Value p x b) : a = b :=
   h.choose_spec.symm.trans h'.choose_spec
 
-theorem value_zero (p : Place D) : Value p 0 0 := value_iff.mpr ⟨0,map_zero _,map_zero _⟩
-theorem value_one (p : Place D) : Value p 1 1 := value_iff.mpr ⟨1,map_one _,map_one _⟩
-theorem value_const (p : Place D) (a : F) : Value p (constant D a) a :=
+theorem value_zero (p : RationalPlace F K) : Value p 0 0 := value_iff.mpr ⟨0,map_zero _,map_zero _⟩
+theorem value_one (p : RationalPlace F K) : Value p 1 1 := value_iff.mpr ⟨1,map_one _,map_one _⟩
+theorem value_const (p : RationalPlace F K) (a : F) : Value p (baseConstant F K a) a :=
   ⟨p.constants a,p.on_constants a⟩
 
 theorem Value.add (hx : Value p x a) (hy : Value p y b) : Value p (x+y) (a+b) := by
@@ -58,7 +58,7 @@ theorem Value.inv (hx : Value p x a) (ha : a ≠ 0) : Value p x⁻¹ a⁻¹ := b
   apply value_iff.mpr
   refine ⟨↑u⁻¹,?_,?_⟩ <;> simp
 
-theorem value_inv_of_pole (p : Place D) {x : D.K} (h : x ∉ p.ring) : Value p x⁻¹ 0 := by
+theorem value_inv_of_pole (p : RationalPlace F K) {x : K} (h : x ∉ p.ring) : Value p x⁻¹ 0 := by
   have hin := (p.ring.mem_or_inv_mem x).resolve_left h
   let c := p.residue ⟨x⁻¹,hin⟩
   have hc : Value p x⁻¹ c := ⟨hin,rfl⟩
@@ -69,7 +69,7 @@ theorem value_inv_of_pole (p : Place D) {x : D.K} (h : x ∉ p.ring) : Value p x
     exact (h hv.choose).elim
 
 
-theorem value_prod {I : Type*} (S : Finset I) (f : I → D.K) (c : I → F)
+theorem value_prod {I : Type*} (S : Finset I) (f : I → K) (c : I → F)
     (h : ∀ i ∈ S, Value p (f i) (c i)) :
     Value p (∏ i ∈ S, f i) (∏ i ∈ S, c i) := by
   classical
@@ -79,7 +79,7 @@ theorem value_prod {I : Type*} (S : Finset I) (f : I → D.K) (c : I → F)
     simp only [Finset.prod_insert hi]
     exact (h i (Finset.mem_insert_self _ _)).mul (ih fun j hj => h j (Finset.mem_insert_of_mem hj))
 
-theorem value_sum {I : Type*} (S : Finset I) (f : I → D.K) (c : I → F)
+theorem value_sum {I : Type*} (S : Finset I) (f : I → K) (c : I → F)
     (h : ∀ i ∈ S, Value p (f i) (c i)) :
     Value p (∑ i ∈ S, f i) (∑ i ∈ S, c i) := by
   classical
@@ -91,7 +91,7 @@ theorem value_sum {I : Type*} (S : Finset I) (f : I → D.K) (c : I → F)
 
 /-- The residue map fixing F is determined by the valuation ring: it is
 surjective and its kernel is the unique maximal ideal. -/
-theorem place_ext {p₁ p₂ : Place D} (e : p₁.ring = p₂.ring) : p₁ = p₂ := by
+theorem place_ext {p₁ p₂ : RationalPlace F K} (e : p₁.ring = p₂.ring) : p₁ = p₂ := by
   cases p₁ with
   | mk O hO v hv =>
     cases p₂ with
@@ -103,7 +103,7 @@ theorem place_ext {p₁ p₂ : Place D} (e : p₁.ring = p₂.ring) : p₁ = p�
           (LocalRing.ker_eq_maximalIdeal w (fun c => ⟨_,hw c⟩)).symm
       have he : v = w := by
         ext z
-        let c : O := ⟨constant D (v z), hO _⟩
+        let c : O := ⟨baseConstant F K (v z), hO _⟩
         have hz : z-c ∈ RingHom.ker v := by
           rw [RingHom.mem_ker, map_sub, show v c = v z from hv _ , sub_self]
         rw [hk, RingHom.mem_ker, map_sub, show w c = v z from hw _, sub_eq_zero] at hz
@@ -114,19 +114,19 @@ theorem place_ext {p₁ p₂ : Place D} (e : p₁.ring = p₂.ring) : p₁ = p�
 variable [Fintype F]
 
 /-- This rational function has residue one on regular inputs and zero at a pole. -/
-private noncomputable def cutoff (D : Branch F R) (x : D.K) : D.K :=
+private noncomputable def cutoff (F : Type u) [Field F] [Fintype F] (x : K) : K :=
   (1+x^(Fintype.card F)-x)⁻¹
 
-private theorem cutoff_regular (p : Place D) (x : D.K) (hx : x ∈ p.ring) :
-    Value p (cutoff D x) 1 := by
+private theorem cutoff_regular (p : RationalPlace F K) (x : K) (hx : x ∈ p.ring) :
+    Value p (cutoff F x) 1 := by
   let a := p.residue ⟨x,hx⟩
   have h : Value p x a := ⟨hx,rfl⟩
   have he := ((value_one p).add (h.pow (Fintype.card F))).sub h
   rw [FiniteField.pow_card, add_sub_cancel_right] at he
   simpa [cutoff] using he.inv one_ne_zero
 
-private theorem cutoff_pole (p : Place D) (x : D.K) (hx : x ∉ p.ring) :
-    Value p (cutoff D x) 0 := by
+private theorem cutoff_pole (p : RationalPlace F K) (x : K) (hx : x ∉ p.ring) :
+    Value p (cutoff F x) 0 := by
   obtain ⟨n,hn⟩ := Nat.exists_eq_succ_of_ne_zero (Fintype.card_pos (α := F)).ne'
   have hnpos : n ≠ 0 := by have hc := Fintype.one_lt_card (α := F); omega
   have hx0 : x ≠ 0 := fun hz => hx (hz ▸ p.ring.zero_mem)
@@ -145,33 +145,33 @@ private theorem cutoff_pole (p : Place D) (x : D.K) (hx : x ∉ p.ring) :
     rw [← c, mul_inv_rev, ← mul_assoc, mul_inv_cancel (pow_ne_zero _ (inv_ne_zero hx0)), one_mul]
   exact eq.symm ▸ u
 
-private theorem cutoff_values (p : Place D) (x : D.K) :
-    ∃ a : F, Value p (cutoff D x) a := by
+private theorem cutoff_values (p : RationalPlace F K) (x : K) :
+    ∃ a : F, Value p (cutoff F x) a := by
   by_cases h : x ∈ p.ring
   · exact ⟨1,cutoff_regular p x h⟩
   · exact ⟨0,cutoff_pole p x h⟩
 
-private theorem separate (p q : Place D) (h : p ≠ q) :
-    ∃ x : D.K, Value p x 1 ∧ Value q x 0 ∧ ∀ r : Place D, ∃ a : F, Value r x a := by
+private theorem separate (p q : RationalPlace F K) (h : p ≠ q) :
+    ∃ x : K, Value p x 1 ∧ Value q x 0 ∧ ∀ r : RationalPlace F K, ∃ a : F, Value r x a := by
   by_cases hpq : p.ring ≤ q.ring
   · have hqp : ¬ q.ring ≤ p.ring := fun h' => h (place_ext (le_antisymm hpq h'))
     obtain ⟨y,hyq,hyp⟩ := SetLike.not_le_iff_exists.mp hqp
-    refine ⟨1-cutoff D y,?_,?_,?_⟩
+    refine ⟨1-cutoff F y,?_,?_,?_⟩
     · simpa only [sub_zero] using (value_one p).sub (cutoff_pole p y hyp)
     · simpa only [sub_self] using (value_one q).sub (cutoff_regular q y hyq)
     · intro r
       obtain ⟨c,hc⟩ := cutoff_values r y
       exact ⟨1-c,(value_one r).sub hc⟩
   · obtain ⟨y,hyp,hyq⟩ := SetLike.not_le_iff_exists.mp hpq
-    exact ⟨cutoff D y,cutoff_regular p y hyp,cutoff_pole q y hyq,fun r => cutoff_values r y⟩
+    exact ⟨cutoff F y,cutoff_regular p y hyp,cutoff_pole q y hyq,fun r => cutoff_values r y⟩
 
 /-- Simultaneous rational residue interpolation, with no restriction on the
 number of prescribed places. Each basis function takes value one at its own
 place and zero at every other listed place. -/
-theorem selectors (P : Finset (Place D)) : ∃ s : P → D.K, ∀ i j : P, by
+theorem selectors_field (P : Finset (RationalPlace F K)) : ∃ s : P → K, ∀ i j : P, by
     classical exact Value j.val (s i) (if i = j then 1 else 0) := by
   classical
-  have pair (i j : P) : ∃ x : D.K, Value i.val x 1 ∧ (i ≠ j → Value j.val x 0) ∧
+  have pair (i j : P) : ∃ x : K, Value i.val x 1 ∧ (i ≠ j → Value j.val x 0) ∧
       ∀ r : P, ∃ a : F, Value r.val x a := by
     by_cases he : i = j
     · exact ⟨1,value_one _,by simp [he],fun r => ⟨1,value_one _⟩⟩
@@ -190,5 +190,10 @@ theorem selectors (P : Finset (Place D)) : ∃ s : P → D.K, ∀ i j : P, by
     have hz : ∏ k, c i k j = 0 :=
       Finset.prod_eq_zero (Finset.mem_univ j) ((val i j j).unique (zero i j hij))
     rwa [hz] at hv
+
+/-- Rational-place interpolation for a cubic branch. -/
+theorem selectors {R : Finset (Line F)} {D : Branch F R} (P : Finset (Place D)) :
+    ∃ s : P → D.K, ∀ i j : P, by classical exact Value j.val (s i) (if i = j then 1 else 0) :=
+  selectors_field P
 
 end BlockingCurves.CubicPoleFibre

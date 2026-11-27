@@ -20,6 +20,9 @@ import CubicLogLog
 import CubicCompositumRR
 import FrobeniusCoset
 import Sextic32Global
+import NormPowerMinimum
+import PencilBoundedIndices
+import PencilPaperBounds
 
 /-! Build entry point and kernel dependency audit for the results in the manuscript. -/
 #print axioms BlockingCurves.projective_prime_power_minimum
@@ -145,4 +148,42 @@ import Sextic32Global
 #print axioms Sextic32.witness_verified
 #print axioms Sextic32.projective_sextic_minimum
 #print axioms Sextic32.pencil_minimum
+
+#print axioms BlockingCurves.PencilCollisionCover.nonzero_slope_image_bound
+#print axioms BlockingCurves.PencilCollisionCover.extend_horizontal_cover
+#print axioms BlockingCurves.PencilCollisionCover.variable_degree_minimum_gap
+#print axioms BlockingCurves.PencilCollisionCover.relative_surplus_of_horizontal_lower
+#print axioms BlockingCurves.PencilCollisionCover.variable_ratio_tendsto
+#print axioms BlockingCurves.PencilCollisionCover.bounded_indices_log_bounds
+#print axioms BlockingCurves.NormPencil.norm_horizontal_minimum
+#print axioms BlockingCurves.NormPencil.exists_trace_zero_norm
+#print axioms BlockingCurves.NormPencil.high_rank_norm_minimum
+#print axioms BlockingCurves.NormPencil.large_quadratic_norm_minimum
+#print axioms BlockingCurves.NormPencil.small_odd_scalar_witness
+#print axioms BlockingCurves.NormPencil.norm_power_minimum
+#print axioms BlockingCurves.NormPencil.norm_minimum
+#print axioms BlockingCurves.NormPencil.norm_power_optimal_nontrivial
+#print axioms BlockingCurves.NormQuadraticCollision.quadratic_value_density
+#print axioms BlockingCurves.PencilSampling.horizontal_miss_exact
+#print axioms BlockingCurves.PencilSampling.residual_sum
+#print axioms BlockingCurves.PencilSampling.projective_split_collision_upper
+#print axioms BlockingCurves.PencilSampling.derangement_coefficient_limit
+#print axioms BlockingCurves.PencilSampling.frobenius_derangement_iff
+#print axioms BlockingCurves.PencilSampling.line_miss_of_chebotarev
+#print axioms BlockingCurves.PencilSampling.chebotarevUpper_of_classes
+#print axioms BlockingCurves.PencilSampling.projective_upper_of_chebotarev
+#print axioms BlockingCurves.PencilSampling.tame_repaired_upper
+#print axioms BlockingCurves.PencilSampling.kummer_repaired_upper
+#print axioms BlockingCurves.PencilCharacterCollisions.difference_simple
+#print axioms BlockingCurves.PencilCharacterCollisions.collision_kummer_count
+#print axioms BlockingCurves.PencilCharacterCollisions.doubled_frobenius_collisions
+#print axioms BlockingCurves.PencilCharacterCollisions.missed_fraction_of_kummer
+#print axioms BlockingCurves.PencilCharacterCollisions.projective_upper_of_kummer
+#print axioms BlockingCurves.PencilRepairBranch.model_exists
+#print axioms BlockingCurves.PencilRepairBranch.full_constants
+#print axioms BlockingCurves.PencilRepairBranch.single_rational
+#print axioms BlockingCurves.PencilRepairBranch.stage_genus_bound
+#print axioms BlockingCurves.PencilRepairBranch.pole_fibre_bound
+#print axioms BlockingCurves.PencilRepairBranch.commonHit_of_classical_bounds
+#print axioms BlockingCurves.PencilRepairSize.point_budget
 

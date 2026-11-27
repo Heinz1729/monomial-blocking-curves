@@ -45,7 +45,7 @@ def degreeOneEmbedding (D : Branch F R) : ClosedPoint D 0 ↪ Place D where
     intro v w h
     apply Subtype.ext
     apply Subtype.ext
-    exact congrArg Place.ring h
+    exact congrArg RationalPlace.ring h
 
 /-- The chosen residue identification in a rational place is forced by its
 values on F. It is equivalent to having residue degree one. -/

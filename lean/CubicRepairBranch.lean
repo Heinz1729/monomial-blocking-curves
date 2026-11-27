@@ -183,35 +183,42 @@ private def seriesResidue : seriesRing F →+* F where
       (a : LaurentSeries F).coeff 0 * (b : LaurentSeries F).coeff 0
     rw [←hp,←hq,←map_mul,coeff_zero,coeff_zero,coeff_zero,map_mul]
 
-/-- Pulling back regular power series along the branch expansion gives a
-rational place. The rational parameter has a pole of order three in the
-ambient Laurent series. -/
-theorem infinity_place {R : Finset (Line F)} {D : Branch F R} (e : Expansion D) :
-    ∃ v : Place D, parameter D ∉ v.ring := by
-  let V := (seriesRing F).comap e.embed
-  have hc (a : F) : constant D a ∈ V := by
-    change e.embed (constant D a) ∈ (HahnSeries.ofPowerSeries ℤ F).range
-    rw [e.onConstant]
+/-- The valuation ring of regular Laurent series gives a rational pole above
+infinity for any embedded function field whose parameter is z⁻ᵈ. -/
+theorem rational_pole_of_embedding {K : Type*} [Field K] [Algebra (RatFunc F) K]
+    {d : ℕ} (hd : 0 < d) (φ : K →+* LaurentSeries F)
+    (hC : ∀ a : F, φ (baseConstant F K a) = algebraMap F (LaurentSeries F) a)
+    (hT : φ (algebraMap (RatFunc F) K RatFunc.X) = ((uniformizer F)^d)⁻¹) :
+    ∃ v : RationalPlace F K, algebraMap (RatFunc F) K RatFunc.X ∉ v.ring := by
+  let V := (seriesRing F).comap φ
+  have hc (a : F) : baseConstant F K a ∈ V := by
+    change φ (baseConstant F K a) ∈ (HahnSeries.ofPowerSeries ℤ F).range
+    rw [hC]
     exact ⟨PowerSeries.C F a, by simp [constant_eq,HahnSeries.C_apply]⟩
   let g : V →+* seriesRing F :=
-    { toFun := fun x => ⟨e.embed x.val,x.property⟩
+    { toFun := fun x => ⟨φ x.val,x.property⟩
       map_one' := Subtype.ext (map_one _)
       map_zero' := Subtype.ext (map_zero _)
       map_add' := fun x y => Subtype.ext (map_add _ _ _)
       map_mul' := fun x y => Subtype.ext (map_mul _ _ _) }
-  let v : Place D :=
+  let v : RationalPlace F K :=
     { ring := V
       constants := hc
       residue := seriesResidue.comp g
       on_constants := fun a => by
-        change (e.embed (constant D a)).coeff 0 = a
-        rw [e.onConstant, constant_eq]; simp }
+        change (φ (baseConstant F K a)).coeff 0 = a
+        rw [hC, constant_eq]; simp }
   refine ⟨v,?_⟩
-  change e.embed (parameter D) ∉ (HahnSeries.ofPowerSeries ℤ F).range
-  rw [e.onParameter, powerSeries_range_iff]
+  change φ (algebraMap (RatFunc F) K RatFunc.X) ∉ (HahnSeries.ofPowerSeries ℤ F).range
+  rw [hT, powerSeries_range_iff]
   have hz : uniformizer F ≠ 0 := HahnSeries.single_ne_zero one_ne_zero
   rw [inverse_order _ (pow_ne_zero _ hz), HahnSeries.order_pow]
-  simp [uniformizer, HahnSeries.order_single one_ne_zero]
+  simp [uniformizer, HahnSeries.order_single one_ne_zero, hd.ne']
+
+/-- The cubic Laurent expansion has a rational pole above infinity. -/
+theorem infinity_place {R : Finset (Line F)} {D : Branch F R} (e : Expansion D) :
+    ∃ v : Place D, parameter D ∉ v.ring :=
+  rational_pole_of_embedding (by decide : 0 < 3) e.embed e.onConstant e.onParameter
 
 /-- The coefficient field of the branch contains all its algebraic constants. -/
 def FullConstants {R : Finset (Line F)} (D : Branch F R) : Prop :=

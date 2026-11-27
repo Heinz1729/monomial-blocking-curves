@@ -21,4 +21,11 @@ lean_lib BlockingCurves where
     `CubicPoleDegree, `CubicFiniteFibres, `CubicStageFields, `CubicCompositumRR, `CubicRationalGenus,
     `CubicGenusTransport, `CubicZetaPoints, `CubicRepairGeometry, `CubicLogLog,
     `FrobeniusCoset,
-    `Sextic32, `Sextic32Geometry, `Sextic32Search, `Sextic32Global]
+    `Sextic32, `Sextic32Geometry, `Sextic32Search, `Sextic32Global,
+    `NormCosetCover, `NormCubicMinimum, `NormCubicTrace, `NormFibreSampling,
+    `NormPencil, `NormPencilField, `NormPencilQuadratic, `NormPencilTrace,
+    `NormPowerMinimum, `NormQuadraticCollision, `NormSamplingMinimum, `NormSamplingSize,
+    `NormSmall, `NormSmallMinimum, `NormSmallOdd, `PencilAsymptotic,
+    `PencilCharacterCollisions, `PencilCollisionCover, `PencilFrobeniusCount, `PencilHorizontal,
+    `PencilPaperBounds, `PencilRepairBranch, `PencilRepairBranchField, `PencilRepairBranchGeometry,
+    `PencilRepairSize, `PencilSampling, `PencilVariableGrowth, `PencilBoundedIndices]

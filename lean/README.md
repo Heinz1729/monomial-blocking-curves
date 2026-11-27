@@ -43,6 +43,18 @@
 
 两个下界接口都以复数特征值和维数表达经典定理的数值结论。将这些数据实现为具体覆盖的 étale 上同调，并验证各条几何输入，仍依赖手稿证明。
 
+## 变次数和分斜率上界
+
+| 手稿结论 | Lean 核验范围 | 证明入口 |
+| --- | --- | --- |
+| §19，$\tau_q(d)$ 与 $B(q,d)$ 的差 | **无条件。** 有序碰撞中的每个比值至多对应 $h=\gcd(d-1,q-1)$ 个差值。任意水平覆盖可扩充，且新增参数至多为 $\lceil2\log q/\log(1+1/h)\rceil$。分两类斜率同时取样还给出一个取两项最大值的无条件界。 | [碰撞与射影最小值](PencilCollisionCover.lean) · [两类斜率](PencilHorizontal.lean) |
+| §19，$B/\tau\to1$ | 幂值集按指数 $r=\gcd(d,q-1)$ 归约已证。代入 Zhou–Wu 命题 4.1 的水平下界后，Lean 给出相对误差及序列极限。 | [相对界与极限](PencilVariableGrowth.lean) · [有界指标的对数双边界](PencilBoundedIndices.lean) |
+| §20，对任意 $n\ge2,m\ge1$，$B(s^n,mD)=s^{n-1}\tau_s(m)$ | **无条件。** 入口采用原来的商指数、射影最小值与非平凡性定义。$n\ge4$ 使用独立陪集平移。$n=3$ 以无根三次式实现零迹和任意范数。$n=2$ 由标量伸缩、范数碰撞密度与九个小奇数域的内核证书覆盖。 | [总定理](NormPowerMinimum.lean) · [独立平移](NormSamplingMinimum.lean) · [三次扩张](NormCubicMinimum.lean) · [二次小域](NormSmallOdd.lean) |
+| §21，驯情形的 $2/\log(1/\delta_d)$ | 真实分裂域的 Frobenius 有不动点当且仅当纤维有有理根。水平遗漏数、例外纤维的上界和系数趋于 2 都无条件。非水平主项以逐共轭类有效 Chebotarev 估计为输入。 | [真实 Frobenius 作用](PencilFrobeniusCount.lean) · [有限取样预算](PencilAsymptotic.lean) |
+| §21.1，坏特征的非水平遗漏与负 $\log\log q$ 项 | 离对角碰撞数等于实际仿射 Kummer 曲线点数，其差分多项式的次数与几何单根已证。$1/2+O_d(q^{-1/2})$ 使用该曲线的经典点数估计。一般 $p\nmid d$ 的共同补点使用实际函数域上的 Castelnuovo–Severi 与 Hasse–Weil。 | [Kummer 碰撞](PencilCharacterCollisions.lean) · [Laurent 分支与亏格](PencilRepairBranchGeometry.lean) · [完整取样与补点推导](PencilPaperBounds.lean) |
+
+小奇数域证书枚举底域判别式，并将九个具体域模型的结果传输到任意同阶域。Python 独立程序直接枚举二次扩域的坐标，检查 26,960 组指数与非零斜率。[内核判据](NormSmall.lean) · [射影语义](NormSmallMinimum.lean) · [独立枚举](../checks/norm_quadratic.py)
+
 ## 第 17 节的函数域输入
 
 设 $F=\mathbb F_q$，$K/F(t)$ 为为每条残余线添入相应三次方程的一个根得到的 Laurent 分支，$K_S$ 为只添入 $S$ 中各根的子域。$K$ 及每个 $K_S$ 的全常数域均为 $F$。Lean 已识别 $K_{S\cup T}$ 内两个真实子域的合成以及两侧的相对次数。[Laurent 分支](CubicRepairBranch.lean) · [子域与相对次数](CubicStageFields.lean)
