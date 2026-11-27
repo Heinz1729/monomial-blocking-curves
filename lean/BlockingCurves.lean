@@ -41,6 +41,7 @@ import PhaseRootMultiplicity
 import PhaseTraceLower
 import PiecewiseFrobenius
 import PiecewiseCandidates
+import PiecewiseMinimum
 
 /-! Build entry point and kernel dependency audit for the results in the manuscript. -/
 #print axioms BlockingCurves.projective_prime_power_minimum
@@ -256,3 +257,19 @@ import PiecewiseCandidates
 #print axioms BlockingCurves.PiecewiseFrobenius.cyclotomic_table_upper
 #print axioms BlockingCurves.PiecewiseCandidates.coefficientPeriod_dvd_iff
 #print axioms BlockingCurves.PiecewiseCandidates.wrong_classes_miss
+#print axioms BlockingCurves.PiecewiseCharacter.exists_power_label_character
+#print axioms BlockingCurves.PiecewiseFibres.good_slope
+#print axioms BlockingCurves.PiecewiseFibres.rational_candidate_budget
+#print axioms BlockingCurves.PiecewiseLargeEscape.candidate_separable
+#print axioms BlockingCurves.PiecewiseGeometric.exists_geometric_chart
+#print axioms BlockingCurves.PiecewiseWeil.geometric_roots_le
+#print axioms BlockingCurves.PiecewiseWeil.logarithmic_polynomial_witness
+#print axioms BlockingCurves.PiecewiseNormSlice.separated_inverse_slice
+#print axioms BlockingCurves.PiecewiseNormSlice.norm_polynomial
+#print axioms BlockingCurves.PiecewiseLargeEscape.large_table_escape
+#print axioms BlockingCurves.PiecewiseBoundedEscape.bounded_table_escape
+#print axioms BlockingCurves.PiecewiseGroundEscape.ground_table_finite_lower
+#print axioms BlockingCurves.PiecewiseGroundEscape.half_log_of_finite_lower
+#print axioms BlockingCurves.PiecewiseFrobenius.cyclotomic_table_uniform_upper
+#print axioms BlockingCurves.PiecewiseFrobenius.synchronous_table_minimum
+#print axioms BlockingCurves.PiecewiseFrobenius.nonsynchronous_table_minimum

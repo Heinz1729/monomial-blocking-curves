@@ -52,7 +52,7 @@
 
 范数幂族的精确公式、分圆 Frobenius 族 $m\mid n$ 的两侧界、$m\nmid n$ 的上界及 $m=n=2$ 的精确值均有无条件射影最小值定理。
 
-对 $m\nmid n$ 的下界，手稿按 $n\ge4m$、$2\le n<4m$ 及 $n=1$ 处理。在大扩张次数中，至多一个退化分支的全部 $0$ 或 $s$ 个有理原像必须计入。总候选数仍 $M\le2m\ell$。乘法特征正交展开的系数绝对值之和为 1，所以单个完整和的 Weil 误差不会再乘 $m^M$。Lean 已覆盖逐项完整和估计到正计数的蕴含及对数范围内的一致预算。实际一元 Weil 定理和两种多项式族与该接口的完整衔接仍由手稿给出。[基线 336–389 行](https://github.com/Heinz1729/monomial-blocking-curves/blob/75326b5091df2a99b4c9e0354d1e7292ee5d61bb/Manuscript.html#L336-L389) · [变次数稿 §6](VariableDegree.html#extension-dichotomy) · [Lean 逐项覆盖表](lean/README.md#扩张次数的整除二分律) · [Lidl–Niederreiter，定理 5.41](https://doi.org/10.1017/CBO9780511525926)
+对 $m\nmid n$ 的下界，手稿按 $n\ge4m$、$2\le n<4m$ 及 $n=1$ 处理。在大扩张次数中，至多一个退化分支的全部 $0$ 或 $s$ 个有理原像必须计入。总候选数仍 $M\le2m\ell$。乘法特征正交展开的系数绝对值之和为 1，所以单个完整和的 Weil 误差不会再乘 $m^M$。Lean 已覆盖逐项完整和估计到正计数的蕴含及对数范围内的一致预算。该基线版本的逐项 Weil 输入和两种多项式族的组装见手稿。现版定理 6 已在 Lean 中完成两种多项式族的组装，详见下文。[基线 336–389 行](https://github.com/Heinz1729/monomial-blocking-curves/blob/75326b5091df2a99b4c9e0354d1e7292ee5d61bb/Manuscript.html#L336-L389) · [变次数稿 §6](VariableDegree.html#extension-dichotomy) · [Lean 逐项覆盖表](lean/README.md#扩张次数的整除二分律) · [Lidl–Niederreiter，定理 5.41](https://doi.org/10.1017/CBO9780511525926)
 
 
 ## 两篇手稿的推广
@@ -60,3 +60,5 @@
 第一篇 §15 可独立检查 $(m,b)\mapsto (b+4(m/3)^3,b)$ 的次数、逆映射及两种分歧纤维的有理根。与原图像族的线计数相比，尖点族的有序对重数恰为一；原曲面的迹公式和权界在同一开集上使用。分析计数仿射像时须区分群元素数与像集数。[尖点证明](Manuscript.html#cuspidal-translates) · [实际齐次方程](lean/CuspidalTransfer.lean)
 
 第二篇 §7 宜分别检查系数比子群、共同范数的迹法向量及非共同范数的字符指定。重复系数必须先合并，再给每个原像指定其整个标号原像集之外的值。二次扩张须同时避开 $c^n$ 和两个系数的乘积 $ce$。大扩张中若不能避开所有退化分支，则 $s=m+1$，全部系数的范数值互异；保留唯一退化分支的全部原像后仍有 $M\le2m\ell$。[重复系数证明](VariableDegree.html#coefficient-escape) · [具体形式化范围](lean/README.md)
+
+定理 6 现已在两种情形中接到最优集本身。整除侧没有外部前提。非整除侧可重点对照 `tableWeilInput` 与经典一元定理的适用条件，包括字符的精确阶、代数闭包上的非幂条件、不同根的数目以及求和域。由这一输入到三个扩张次数范围、统一阈值以及实际漏线的推导已有 Lean 证明。底域上的更强不等式也可单独核查。[统一定理](lean/PiecewiseMinimum.lean) · [逐范围索引](lean/README.md#定理-6-的证明路径) · [Weil 界的经典表述](https://doi.org/10.1017/CBO9780511525926)

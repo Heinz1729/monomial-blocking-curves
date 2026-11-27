@@ -10,7 +10,7 @@ open Finset PhaseDirection
 
 variable {F E : Type*} [Field F] [Fintype F] [Field E] [Fintype E] [Algebra F E]
 
-private theorem empty_le_of_translate (G V : Finset E) (b : E)
+theorem empty_le_of_translate (G V : Finset E) (b : E)
     (sub : ∀ x ∈ G, x-b ∈ V) :
     emptyCount (fun p : E × E => hits F V p.1 p.2) ≤
       emptyCount (fun p : E × E => hits F G p.1 p.2) := by
@@ -32,7 +32,7 @@ private theorem empty_le_of_translate (G V : Finset E) (b : E)
   have h := Fintype.card_le_of_injective move hi
   simpa only [Fintype.card_coe] using h
 
-private theorem actual_branch_group {m n : ℕ} (d : m ∣ Fintype.card F-1)
+theorem actual_branch_group {m n : ℕ} (d : m ∣ Fintype.card F-1)
     (size : Fintype.card E = Fintype.card F^n) :
     ∃ H : Subgroup Eˣ, H.index = m ∧
       m * (carrier H).card + 1 = Fintype.card E ∧
@@ -62,7 +62,7 @@ private theorem actual_branch_group {m n : ℕ} (d : m ∣ Fintype.card F-1)
     have hu : u^k = 1 := hc ▸ pow_card_eq_one
     exact congrArg (fun z:H => ((z.val:Eˣ):E)) hu
 
-private theorem rate {s q m c : ℕ} (hs : 0 < s) (hq : 1 < q) (hm : 0 < m)
+theorem rate {s q m c : ℕ} (hs : 0 < s) (hq : 1 < q) (hm : 0 < m)
     (hc : m*c+1=q) :
     1/(s:ℝ)+(m:ℝ)/(s*(c/(q:ℝ))) ≤ (1+2*(m:ℝ)^2)/s := by
   have hs' : (0:ℝ) < s := by exact_mod_cast hs

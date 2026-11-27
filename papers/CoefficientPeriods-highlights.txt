@@ -1,0 +1,3 @@
+- The coefficient period determines the blocking order of these Frobenius graphs.
+- The character-sum error is uniform for logarithmically many translates.
+- Two permutations on the same field can have different blocking orders.

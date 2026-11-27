@@ -40,16 +40,16 @@ private theorem block_budget {s q A p : ℝ} {n:ℕ} (hs:1<s) (hq:q=s^n)
 
 /-- Each draw is a uniform (direction, base point) in E². The union bound
 covers every actual slope and intercept with at most (4n+1)s parameters. -/
-theorem projective_block_sampling {n d:ℕ} (hd:2≤d)
+theorem graph_block_sampling (f : E → E) {n : ℕ}
     (size:Fintype.card E=Fintype.card F^n) {A:ℝ} (hA:1≤A) (large:A^2≤Fintype.card F)
-    (hline:∀ a b:E, (emptyCount (fun p:E×E => hits F (valueSet d a b) p.1 p.2):ℝ)/
+    (hline:∀ a b:E, (emptyCount (fun p:E×E => hits F (Finset.univ.image (fun x : E => f x-a*x-b)) p.1 p.2):ℝ)/
       (Fintype.card E:ℝ)^2 ≤ A/(Fintype.card F:ℝ)) :
-    ∃ S:Finset E, ProjectiveBlocks d (S:Set E) ∧ S.card≤(4*n+1)*Fintype.card F := by
+    ∃ S:Finset E, GraphHits f (S:Set E) ∧ S.card≤(4*n+1)*Fintype.card F := by
   classical
   let q := Fintype.card E
   let k := 4*n+1
   let miss (l:E×E) := (univ : Finset (E×E)).filter
-    (fun p:E×E => hits F (valueSet d l.1 l.2) p.1 p.2=0)
+    (fun p:E×E => hits F (Finset.univ.image (fun x : E => f x-l.1*x-l.2)) p.1 p.2=0)
   obtain ⟨lmax,_,hmax⟩ := exists_max_image (univ : Finset (E×E)) (fun l => (miss l).card) univ_nonempty
   let H := (miss lmax).card
   let bad (l:E×E) : Finset (Fin k → E×E) := Fintype.piFinset (fun _ => miss l)
@@ -69,25 +69,34 @@ theorem projective_block_sampling {n d:ℕ} (hd:2≤d)
     have h := card_biUnion_le_card_mul (univ : Finset (E×E)) bad (H^k) (fun l _ => hbad l)
     simp only [card_univ,Fintype.card_prod,←sq] at h
     simpa [q,←sq] using h.trans_lt hstrict
-  obtain ⟨f,hf⟩ : ∃ f:Fin k→E×E, f ∉ U := by
+  obtain ⟨sample,hf⟩ : ∃ f:Fin k→E×E, f ∉ U := by
     by_contra! all
     rw [eq_univ_of_forall all,card_univ] at hsmall
     exact lt_irrefl _ hsmall
-  let S := univ.image (fun it:Fin k × F => point it.2 (f it.1))
-  refine ⟨S,(projectiveBlocks_iff_graphHits hd _).2 ?_,?_⟩
+  let S := univ.image (fun it:Fin k × F => point it.2 (sample it.1))
+  refine ⟨S,?_,?_⟩
   · intro a b
-    have hnot : f ∉ bad (a,b) := fun he => hf (mem_biUnion.mpr ⟨(a,b),mem_univ _,he⟩)
-    change f ∉ Fintype.piFinset (fun _ : Fin k => miss (a,b)) at hnot
+    have hnot : sample ∉ bad (a,b) := fun he => hf (mem_biUnion.mpr ⟨(a,b),mem_univ _,he⟩)
+    change sample ∉ Fintype.piFinset (fun _ : Fin k => miss (a,b)) at hnot
     rw [Fintype.mem_piFinset] at hnot
     push_neg at hnot
     obtain ⟨i,hi⟩ := hnot
-    have hz : hits F (valueSet d a b) (f i).1 (f i).2 ≠ 0 := by simpa [miss] using hi
-    have notEmpty := mt (hits_eq_zero_iff (F := F) (valueSet d a b) (f i).1 (f i).2).2 hz
+    have hz : hits F (Finset.univ.image (fun x : E => f x-a*x-b)) (sample i).1 (sample i).2 ≠ 0 := by simpa [miss] using hi
+    have notEmpty := mt (hits_eq_zero_iff (F := F) (Finset.univ.image (fun x : E => f x-a*x-b)) (sample i).1 (sample i).2).2 hz
     push_neg at notEmpty
     obtain ⟨t,ht⟩ := notEmpty
     obtain ⟨x,_,hx⟩ := mem_image.mp ht
     exact ⟨x, hx ▸ mem_image.mpr ⟨(i,t),mem_univ _,rfl⟩⟩
   · simpa [S,k] using card_image_le (s := (univ : Finset (Fin k × F)))
-      (f := fun it:Fin k × F => point it.2 (f it.1))
+      (f := fun it:Fin k × F => point it.2 (sample it.1))
+
+/-- The graph sampler specialized to the projective monomial pencil. -/
+theorem projective_block_sampling {n d:ℕ} (hd:2≤d)
+    (size:Fintype.card E=Fintype.card F^n) {A:ℝ} (hA:1≤A) (large:A^2≤Fintype.card F)
+    (hline:∀ a b:E, (emptyCount (fun p:E×E => hits F (valueSet d a b) p.1 p.2):ℝ)/
+      (Fintype.card E:ℝ)^2 ≤ A/(Fintype.card F:ℝ)) :
+    ∃ S:Finset E, ProjectiveBlocks d (S:Set E) ∧ S.card≤(4*n+1)*Fintype.card F := by
+  obtain ⟨S,hs,hcard⟩ := graph_block_sampling (fun x : E => x^d) size hA large hline
+  exact ⟨S,(projectiveBlocks_iff_graphHits hd _).2 hs,hcard⟩
 
 end BlockingCurves.PhaseDividing

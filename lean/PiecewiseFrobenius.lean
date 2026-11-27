@@ -136,27 +136,28 @@ theorem separated_norm_hit_count {n e : ℕ} (size : Fintype.card E = Fintype.ca
   · exact (Nat.add_le_add_right hz 1).trans h
   · exact (Nat.add_le_add_right hw 1).trans h
 
-/-- With an injective branch of density at least 1/m (including zero),
-independent shifts give an actual cover of the translated graph. -/
-theorem separated_norm_upper {n e m : ℕ} (hm : 0 < m)
-    (size : Fintype.card E = Fintype.card F ^ n) (share : Fintype.card E ≤ m*(e+1))
-    (β : E → F) (z w : F) (sep : z^n ≠ w^n)
-    (hz : e ≤ (labelFibre β z).card) (hw : e ≤ (labelFibre β w).card) :
-    ∃ S : Finset E, GraphHits (branchMap β) (S : Set E) ∧
+/-- Independent point samples cover any graph when every line receives a
+fraction at least 1/m of the parameters. -/
+theorem graph_upper_of_share {m : ℕ} (hm : 0 < m) (f : E → E)
+    (share : ∀ a b : E, Fintype.card E ≤ m*(hitRow f a b).card) :
+    ∃ S : Finset E, GraphHits f (S : Set E) ∧
       (S.card:ℝ) ≤ 2*m*Real.log (2*Fintype.card E)+1 := by
   classical
   let q := Fintype.card E
   let k := ⌈2*(m:ℝ)*Real.log (2*q)⌉₊
-  let N := q-(e+1)
-  let row (l : E×E) := hitRow (branchMap β) l.1 l.2
-  have hit (l : E×E) : e+1 ≤ (row l).card := separated_norm_hit_count size β z w sep hz hw _ _
-  have eq : N+(e+1)=q := Nat.sub_add_cancel ((hit (0,0)).trans (card_le_univ _))
+  let row (l : E×E) := hitRow f l.1 l.2
+  obtain ⟨lmin,_,minimal⟩ := exists_min_image (univ : Finset (E×E))
+    (fun l => (row l).card) univ_nonempty
+  let H := (row lmin).card
+  let N := q-H
+  have hit (l : E×E) : H ≤ (row l).card := minimal l (mem_univ _)
+  have eq : N+H=q := Nat.sub_add_cancel (card_le_univ _)
   have qpos : (0:ℝ) < q := Nat.cast_pos.mpr Fintype.card_pos
   have mpos : (0:ℝ) < m := Nat.cast_pos.mpr hm
-  have ee : (N:ℝ)+((e:ℝ)+1)=q := by exact_mod_cast eq
-  have sh : (q:ℝ) ≤ m*((e:ℝ)+1) := by exact_mod_cast share
+  have ee : (N:ℝ)+(H:ℝ)=q := by exact_mod_cast eq
+  have sh : (q:ℝ) ≤ m*(H:ℝ) := by exact_mod_cast share lmin.1 lmin.2
   have nohit : (N:ℝ) ≤ q*Real.exp (-(1/(m:ℝ))) := by
-    have frac : (q:ℝ)/m ≤ (e:ℝ)+1 := (div_le_iff mpos).2 (by linarith only [sh,mul_comm (m:ℝ) ((e:ℝ)+1) |>.le])
+    have frac : (q:ℝ)/m ≤ (H:ℝ) := (div_le_iff mpos).2 (by linarith only [sh,mul_comm (m:ℝ) (H:ℝ) |>.le])
     calc (N:ℝ) ≤ q*(1-1/(m:ℝ)) := by rw [mul_sub,mul_one,mul_one_div]; linarith
          _ ≤ _ := mul_le_mul_of_nonneg_left (by linarith only [Real.add_one_le_exp (-(1/(m:ℝ)))]) qpos.le
   have qtwo : (2:ℝ) ≤ q := by exact_mod_cast (show 2 ≤ Fintype.card E from Fintype.one_lt_card)
@@ -197,6 +198,18 @@ theorem separated_norm_upper {n e m : ℕ} (hm : 0 < m)
   · have card : (univ.image sample).card ≤ k := card_image_le.trans_eq (by simp)
     exact (show ((univ.image sample).card:ℝ) ≤ k by exact_mod_cast card).trans
       (Nat.ceil_lt_add_one (mul_nonneg (by positivity) log2q)).le
+
+/-- With an injective branch of density at least 1/m (including zero),
+independent shifts give an actual cover of the translated graph. -/
+theorem separated_norm_upper {n e m : ℕ} (hm : 0 < m)
+    (size : Fintype.card E = Fintype.card F ^ n) (share : Fintype.card E ≤ m*(e+1))
+    (β : E → F) (z w : F) (sep : z^n ≠ w^n)
+    (hz : e ≤ (labelFibre β z).card) (hw : e ≤ (labelFibre β w).card) :
+    ∃ S : Finset E, GraphHits (branchMap β) (S : Set E) ∧
+      (S.card:ℝ) ≤ 2*m*Real.log (2*Fintype.card E)+1 := by
+  apply graph_upper_of_share hm
+  intro a b
+  exact share.trans (Nat.mul_le_mul_left m (separated_norm_hit_count size β z w sep hz hw a b))
 
 /-- Relabelling can merge whole cosets. Each coefficient assigned to a
 realized label still occurs on at least (q−1)/m nonzero inputs. -/

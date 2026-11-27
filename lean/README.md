@@ -67,7 +67,7 @@ Lean 源码注释沿用 [75326b5 合订稿节号](https://github.com/Heinz1729/m
 | 整除侧完整的 $\Theta_m(ns)$ | **无条件。** 对仿射取样得到固定方向的空交概率和奇异分支的横截计数。令 $A=1+2m^2$，当 $s\ge A^2$ 时 $4n+1$ 个区组足够；较小的底域由次数 $sm$ 的多项式给出单点下界。定理 `divisible_pencil_minimum_bounds` 在独立的射影最小值上合并两侧，显式上界为 $[2m(1+A^2)+1]ns$。[方向二阶矩](PhaseDirectionSampling.lean) · [奇异分支](PhaseDividingUpper.lean) · [区组取样](PhaseBlockCover.lean) · [单点补界](PhasePointCover.lean) · [双边主定理](PhaseDividingMinimum.lean) |
 | 大 $n$ 的共同换元与退化分支 | 已证明存在同一斜率，使全部分支可逆或只剩唯一退化分支。实际候选清单的总数至多为 $2m\ell$。所有有理原像的等价式、奇异纤维的 $0$ 或 $s$ 个原像、错配特征值给出真实漏线、乘积核的内直和、候选零点的单坐标条件均已证。实际候选多项式的可分性和用根重数排除 $m$ 次幂的判据单列。[实际纤维与漏线](PhaseCommonVariable.lean) · [本征空间](PhaseEigenFibres.lean) · [多项式与重数](PhaseRootMultiplicity.lean) |
 | 有界 $n$ 的切片 | **无条件的代数步骤。** 对所选范数，Lean 证明不同的 Frobenius 共轭逆算子不成比例，包含 $n=2$ 的特殊比较。对不同的归一化仿射映射，沿任意给定非零方向可同时分开全部根，其条件为指标数的平方小于 $s$。[算子刚性](PhaseConjugateOperators.lean) · [固定方向避碰](PhaseNormSlice.lean) |
-| $\ell$ 随 $\log q$ 增长的非整除侧下界 | **从逐项字符和估计到正计数的条件式定理。** 对真实乘法特征的 $M$ 个指定值，若每个非平凡完整和至多为 $W$，删去 $Z$ 个异常参数，计数与 $Q/m^M$ 的差至多为 $W+2Z$。两段参数预算直接给出正则见证。逐项一元 Weil 界及两种具体多项式族与该完整计数定理的全套拼接仍由手稿给出；整个非整除侧下界尚无端到端 Lean 定理。显式域阶阈值 $\log q\ge16384m^5$ 同时保证切片有足够空间及主项超过误差。[字符正交展开](PhaseCharacterOrthogonality.lean) · [一致数值阈值](PhaseCharacterBudget.lean) |
+| $\ell$ 随 $\log q$ 增长的非整除侧下界 | **从逐项字符和估计到正计数的条件式定理。** 对真实乘法特征的 $M$ 个指定值，若每个非平凡完整和至多为 $W$，删去 $Z$ 个异常参数，计数与 $Q/m^M$ 的差至多为 $W+2Z$。两段参数预算直接给出正则见证。该行记录 §6 的通用计数引理。§7 的系数表定理已构造两类具体多项式，并从一元乘法字符 Weil 界推导出实际最小值下界，详见下表。显式域阶阈值 $\log q\ge16384m^5$ 同时保证切片有足够空间及主项超过误差。[字符正交展开](PhaseCharacterOrthogonality.lean) · [一致数值阈值](PhaseCharacterBudget.lean) |
 
 ## 第一篇 §12 的函数域输入
 
@@ -88,7 +88,17 @@ Lean 源码注释沿用 [75326b5 合订稿节号](https://github.com/Heinz1729/m
 | 手稿 | Lean 已核验 | 纸面输入 |
 | --- | --- | --- |
 | 第一篇 §15 | 尖点曲线齐次射影阻塞与试根的等价、原族阻塞参数对新族的涵盖，以及非水平漏线与旧有序对的精确计数。$\log q\le3^9$ 时的次阶上界无条件。 | 实际漏线数的迹估计使用 §10 原有的逐项几何输入。十一元域的两个精确最小值由 Python 穷举。[曲线与计数](CuspidalTransfer.lean) · [有限检查](../checks/cubic_pairs.py) |
-| 第二篇 §7 | 系数周期整除等价式、从标号置换推出整体双射、共同范数时的超平面下界、不同范数时实际幂标号图像的对数上界，以及重复标号下从全部候选排除实际命中点。 | 对一般系数表的整除侧匹配上界和非整除侧完整字符和下界见正文。[下界与取样](PiecewiseFrobenius.lean) · [整除与候选](PiecewiseCandidates.lean) · [扩域复算](../checks/branch_extensions.py) |
+| 第二篇 §7 | 整除侧的实际最优集与匹配上下界，非整除侧对数上界。精确阶字符、重复标签、全体有理原像、两种多项式族的几何非幂与随参数数目增长的一致预算均有 Lean 证明。 | 非整除侧完整下界只依赖所选求和域上的一元乘法字符 Weil 界。[最小值定理](PiecewiseMinimum.lean) · [经典输入的精确签名](PiecewiseWeil.lean) |
+
+### 定理 6 的证明路径
+
+| 参数范围 | 已验证的结论与接口 |
+| --- | --- |
+| $h\mid n$ | 令 $A_m=1+2m^2$。两端由同一个最优参数集实现，$1+n(s-1)\le rB(f)$ 且 $B(f)\le [2m(1+A_m^2)+1]ns$。取样上界对全部系数表成立。[同步侧最小值](PiecewiseSyncUpper.lean) |
+| $n\ge4m$ | 合并重复系数，给实际幂标号选择错误系数，计入唯一奇异分支的全部 $0$ 或 $s$ 个原像。实际候选数 $M\le2m\lvert S\rvert$。几何纤维逐坐标的根重数排除所有非平凡指数向量，包括合数 $m$。[纤维与斜率](PiecewiseFibres.lean) · [几何坐标](PiecewiseGeometric.lean) · [实际漏线](PiecewiseLargeEscape.lean) |
+| $2\le n<4m$ | 构造同一斜率和同一底域直线用于所有平移。用实际逆算子构造次数 $n$ 的底域范数多项式并分开全部共轭根；由其私有单根得到几何非幂性。二次扩张的共轭互换也已排除。[斜率与根](PiecewiseNormSlice.lean) · [范数多项式](PiecewiseNormPolynomial.lean) · [底域上的漏线](PiecewiseBoundedEscape.lean) |
+| $n=1$ | 分支系数给出遗漏的乘法陪集。对阻塞集大小 $\ell$，经典 Weil 输入推出 $q/m^\ell\le\ell(\sqrt q+2)$ 和半对数主项。[显式有限界](PiecewiseGroundEscape.lean) |
+| $h\nmid n$ | $\log q\ge16384m^5$ 时，$\log q/(32m^2\log m)<B(f)\le2m\log(2q)+1$。[统一最小值](PiecewiseMinimum.lean) 按扩张次数选取唯一的外部数学输入。幂标号与精确阶复值字符的纤维对应，以及从逐个多项式的完整和界到整组指定字符值的推导均已形式化。[字符构造](PiecewiseCharacter.lean) · [误差与阈值](PiecewiseWeil.lean) |
 
 ## 复现与验证记录
 

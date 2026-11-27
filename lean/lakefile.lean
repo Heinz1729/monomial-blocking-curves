@@ -34,4 +34,7 @@ lean_lib BlockingCurves where
     `PhaseDirectionSampling, `PhaseDividingMinimum, `PhaseDividingUpper,
     `PhaseEigenFibres, `PhaseNormSlice, `PhasePointCover,
     `PhaseQuadratic, `PhaseRootMultiplicity, `PhaseTraceLower, `PiecewiseFrobenius,
-    `PiecewiseCandidates]
+    `PiecewiseCandidates, `PiecewiseFibres, `PiecewiseCharacter, `PiecewiseWeil,
+    `PiecewisePolynomials, `PiecewiseGeometric, `PiecewiseLargeEscape, `PiecewiseNormSlice,
+    `PiecewiseNormPolynomial, `PiecewiseBoundedEscape, `PiecewiseGroundEscape,
+    `PiecewiseSyncUpper, `PiecewiseMinimum]
