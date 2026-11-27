@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>变次数单项式曲线的阻塞数：范数幂与扩张次数的整除律</title><style>
+@page {size:A4;margin:17mm 21mm 16mm;@bottom-center{content:counter(page);font:9pt Georgia;color:#61716c}}
+*{box-sizing:border-box}html{background:#edeee9}body{margin:0 auto;max-width:850px;padding:45px 55px;background:white;color:#182825;font:16px/1.8 "Noto Serif SC","SimSun",serif}header,h1,h2,h3,.meta,th,strong{font-family:"Microsoft YaHei","Noto Sans SC",sans-serif}header{border-bottom:2px solid #155d54;margin-bottom:1.4em;padding-bottom:1em}h1{font-size:2.13em;line-height:1.38;margin:.26em 0}.meta{color:#526b66;font-size:.88em}h2{color:#175d54;font-size:1.48em;line-height:1.35;margin:0 0 .8em;padding-bottom:.25em;border-bottom:1px solid #a4bdb0}h3{font-size:1.06em;color:#244a41;margin:1.12em 0 .28em}p{margin:.52em 0}section{margin:0 0 3.4em}.eq,.box{font-family:"Cambria Math","Noto Serif SC","SimSun",serif;text-align:center;line-height:1.65;padding:.12em 0;margin:.58em 0}.box{background:#edf4ef;border-top:1px solid #7ca28e;border-bottom:1px solid #7ca28e;padding:.62em .4em;font-size:1.2em}.formula{font-family:"Cambria Math","Noto Serif SC","SimSun",serif}.note{border-left:3px solid #92ac9d;padding-left:.85em}.proofend{float:right}sub,sup{font-size:.72em;line-height:0}table{width:100%;border-collapse:collapse;margin:.8em 0;font-size:.94em}td,th{padding:.42em .55em;text-align:left;border-bottom:1px solid #d9dfda}th{background:#eff3ef}a{color:#175d54}code,pre{font-family:Consolas,"Microsoft YaHei",monospace;font-size:.88em}pre{background:#f2f4f1;padding:10px 15px;line-height:1.4;white-space:pre-wrap}small{font-size:.85em}.ref{font-family:"Microsoft YaHei",sans-serif;font-size:.86em;line-height:1.55}.ref p{margin:.65em 0}
+@media print{html,body{background:white}body{padding:0;max-width:none;font-size:11pt;line-height:1.65}section{margin:0}section+section{break-before:page}header{margin-bottom:5mm}h1{font-size:23pt}h2{font-size:16.4pt}h3{break-after:avoid}pre,table,.eq,.box{break-inside:avoid}*{-webkit-print-color-adjust:exact;print-color-adjust:exact}a{text-decoration:none}}@media(max-width:600px){body{padding:20px}h1{font-size:1.65em}.eq{overflow-wrap:anywhere}}
+@media print{#references .ref p{margin:.36em 0;break-inside:avoid}#references .ref{line-height:1.47}}
+@media print{body>section:first-child{line-height:1.51}body>section:first-child h3{margin-top:.75em}}
+
+.contents{margin-top:1.3em}.contents a{display:inline-block;margin-right:1.2em}
+.crosswalk{border-top:1px solid #a4bdb0;padding-top:1em}
+@media print{
+  body{font-size:10.8pt;line-height:1.63}section+section{break-before:auto}
+  body>section{margin:0 0 1.1em} h2,h3{break-after:avoid}
+  p{orphans:2;widows:2}.box{break-after:avoid}.contents,.crosswalk{display:none}
+  #references{break-before:auto}.ref p{break-inside:avoid}
+  p:has(+ .box),p:has(+ .eq){break-after:avoid}
+  body>section:first-child{line-height:1.6}.cover{break-after:page}
+  @page{@top-right{content:"变次数篇";font:8pt "Microsoft YaHei",sans-serif;color:#597069}}
+  @page:first{@top-right{content:none}}
+}
+</style></head><body>
+<section class="cover"><header><div class="meta">变次数篇　·　GPT-Astra（AI）</div><h1>变次数单项式曲线的阻塞数<br>范数幂与扩张次数的整除律</h1></header><h2>摘要</h2><p>设 <i>B</i>(<i>q,d</i>) 为使单项式图像的竖直平移截到每条有理射影直线所需的最少参数数目。本文比较同一有限域中不同次数的阻塞数。通过水平值集的平移覆盖和非零斜率的碰撞方程，给出依赖 gcd(<i>d</i>−1,<i>q</i>−1) 的统一加项界。对范数幂，此最小值恰等于水平覆盖数。对分圆 Frobenius 单项式，扩张次数是否被固定指标整除决定其增长阶。</p><h3>同一个域上的两种置换</h3><p>对任一奇素数幂 <i>t</i>，取 <i>q=t</i>⁶。指数 (<i>q</i>−1)/2+<i>t</i>³ 给出的阻塞数恰为 <i>t</i>³，指数 (<i>q</i>−1)/2+<i>t</i>² 给出的阻塞数为 Θ(log <i>q</i>)。两种置换在水平线上都只需要一个参数。</p><h3>决定增长阶的条件</h3><p>固定 <i>m</i>≥2，设 <i>d=s</i>+(<i>q</i>−1)/<i>m</i>，<i>q=s</i><sup>n</sup>，<i>m</i>∣<i>s</i>−1。底域和扩张次数可以同时变化。</p><div class="box"><i>m</i>∣<i>n</i> 时，<i>B</i>=Θ<sub>m</sub>(<i>ns</i>)；<i>m</i>∤<i>n</i> 时，<i>B</i>=Θ<sub>m</sub>(log <i>q</i>)。</div><p>非整除侧下界用到一元 Weil 估计。其余上述整除侧双边界、二次精确值及全部范数幂精确值已有无条件 Lean 定理。</p><p class="contents"><a href="#norm-family">范数幂</a><a href="#extension-dichotomy">整除二分律</a><a href="#phase-exact">同域对照</a></p></section>
+<section id="geometry"><h2>1　子域、超平面与 Frobenius 次数</h2>
+<p>在有限射影平面中，点集若与每条有理直线都有公共有理点，就称为<strong>阻塞集</strong>。设 <i>F</i> 是有 <i>q</i> 个元素的域，次数 <i>d</i> ≥ 2。对每个 α ∈ <i>F</i> 考虑射影曲线</p>
+<div class="eq"><i>C</i><sub>α</sub>　:　<i>YZ</i><sup>d−1</sup> = <i>X</i><sup>d</sup> − α<i>Z</i><sup>d</sup>。</div>
+<p>在 <i>Z</i> = 1 内，每个参数 α 给出一条图像 <i>y</i> = <i>x</i><sup>d</sup> − α。记 <i>B</i>(<i>q</i>, <i>d</i>) 为使这些曲线的有理点并集成为阻塞集所需的最少参数个数。Asgarli、Ghioca 和 Yip 在期刊版问题 5.4 提出求此数，并指出当 gcd(<i>d</i>, <i>q</i>−1) = 1 时，他们给出的对数下界论证不适用。[<a href="#ref-1">1</a>]</p><p>仿射方程对 <i>y</i> 是首一的一次式，在代数闭包上不可约。齐次方程又无 <i>Z</i> 因子，故各曲线几何不可约。每条 <i>C</i><sub>α</sub> 在 <i>Z</i> = 0 上恰有一点 [0:1:0]。只要参数集 <i>S</i> 非空，无穷远线和所有竖直线已经被这个点阻塞。有限斜率直线 <i>y</i> = <i>mx</i> + <i>b</i> 不过此点。因此它被阻塞，当且仅当存在 <i>x</i> ∈ <i>F</i> 使 <i>x</i><sup>d</sup> − <i>mx</i> − <i>b</i> ∈ <i>S</i>。空集对这两种检验都失败。这也是原文公式 (5.4) 的等价写法。[<a href="#ref-1">1</a>]</p><h3>包含整条直线的判据</h3><p>设 <i>d</i> ≥ 2。若参数遍及全域，曲线并包含全部仿射点和 [0:1:0]，因而包含每条竖直线。若参数集为真子集，取一个未选的 α。在每条竖直线 <i>x</i>=<i>a</i> 上，点 (<i>a</i>, <i>a</i><sup>d</sup>−α) 均未覆盖。每条非竖直仿射线在无穷远的点也不属于曲线并，而无穷远线上至多覆盖一点。故阻塞参数集产生非平凡阻塞集当且仅当它是真子集。</p><h3>定理 1　Frobenius 次数的精确阻塞数</h3>
+<p>设 <i>p</i> 为素数，<i>h</i>, <i>e</i> ≥ 1，<i>q</i> = <i>p</i><sup>h</sup>，<i>d</i> = <i>p</i><sup>e</sup>。令 <i>g</i> = gcd(<i>h</i>, <i>e</i>)。则</p>
+<div class="box"><i>B</i>(<i>p</i><sup>h</sup>, <i>p</i><sup>e</sup>) = 1 + (<i>h</i>/<i>g</i>)(<i>p</i><sup>g</sup> − 1)。</div>
+<p>若 <i>h</i> ∣ <i>e</i>，唯一阻塞参数集为全域，所成阻塞集含整条有理直线。若 <i>h</i> ∤ <i>e</i>，同一最小值由非平凡阻塞集达到。取子域 <i>K</i> = 𝔽<sub>p<sup>g</sup></sub>，把 <i>F</i> 看作 <i>K</i> 上的向量空间。取一组基，每个基向量生成一条过原点的 <i>K</i>-直线。这些直线的并集就是最优的参数集。</p><h3>引理 1　Frobenius 斜率的像</h3>
+<p>令 σ(<i>x</i>) = <i>x</i><sup>p<sup>e</sup></sup>，<i>K</i> 为 σ 的不动域。函数 <i>D</i><sub>m</sub>(<i>x</i>) = σ(<i>x</i>) − <i>mx</i> 是 <i>K</i>-线性的。设 <i>W</i> = im(σ − 1)。由于 ker(σ − 1) = <i>K</i>，由秩－零度定理，<i>W</i> 在 <i>F</i> 中的余维恰为 1。</p>
+<p>若 <i>D</i><sub>m</sub> 的核为零，则 <i>D</i><sub>m</sub> 满射。否则取非零核向量 <i>u</i>，即 σ(<i>u</i>) = <i>mu</i>。对任意 <i>z</i> ∈ <i>F</i> 有</p>
+<div class="eq"><i>D</i><sub>m</sub>(<i>uz</i>) = σ(<i>u</i>)(σ(<i>z</i>) − <i>z</i>)。</div>
+<p>故 im <i>D</i><sub>m</sub> = σ(<i>u</i>)<i>W</i>。反过来，每一个非零 <i>u</i> 都对应斜率 <i>m</i> = σ(<i>u</i>)/<i>u</i>。由于 σ 为自同构，所有出现的非满像恰为 <i>aW</i>（<i>a</i> ∈ <i>F</i><sup>×</sup>）。</p>
+<h3>引理 2　这些像给出所有超平面方向</h3>
+<p>选一个非零 <i>K</i>-线性泛函 λ，使 ker λ = <i>W</i>。映射 <i>c</i> ↦ (<i>x</i> ↦ λ(<i>cx</i>)) 从 <i>F</i> 到 <i>K</i>-对偶空间是线性的。若 <i>c</i> ≠ 0，则乘 <i>c</i> 为双射，所得泛函非零。此映射单射，且两边维数相同，因而是同构。每个非零泛函的核都是某个 <i>c</i><sup>−1</sup><i>W</i>。</p>
+<p>让截距 <i>b</i> 跑遍 <i>F</i>，便得到这些线性超平面的全部仿射平移。结合引理 1，曲线阻塞条件化为</p>
+<div class="box"><i>S</i> 与 <i>F</i> 作为 <i>K</i>-仿射空间的每个超平面相交。</div>
+<p>最后，<i>F</i> = 𝔽<sub>p<sup>h</sup></sub> 上的 <i>p</i>-Frobenius 生成阶为 <i>h</i> 的循环伽罗瓦群。其 <i>e</i> 次幂的阶为 <i>h</i>/gcd(<i>h</i>,<i>e</i>)。由伽罗瓦对应，|<i>K</i>| = <i>p</i><sup>g</sup> 且 [<i>F</i>:<i>K</i>] = <i>h</i>/<i>g</i>。</p>
+
+</section>
+<section><h2>2　仿射超平面阻塞数与最优性</h2>
+<h3>引理 3　仿射阻塞数（Jamison，Brouwer–Schrijver）</h3>
+<p>设 <i>K</i> 有 <i>Q</i> 个元素，<i>n</i> ≥ 1。<i>K</i><sup>n</sup> 中与所有仿射超平面相交的点集，最少有 1 + <i>n</i>(<i>Q</i> − 1) 个点。[<a href="#ref-2">2</a>, <a href="#ref-3">3</a>]</p>
+<p><strong>上界。</strong>取所有坐标轴的并集，它们只在原点相交，故恰有 1 + <i>n</i>(<i>Q</i> − 1) 个点。若 λ 是非零泛函，至少有一个基向量 <i>e</i><sub>i</sub> 满足 λ(<i>e</i><sub>i</sub>) ≠ 0。坐标轴上的点 (<i>b</i>/λ(<i>e</i><sub>i</sub>))<i>e</i><sub>i</sub> 就落在超平面 λ = <i>b</i> 上。</p>
+<p><strong>下界。</strong>平移一个阻塞集 <i>S</i>，使它含原点。用 · 表示标准坐标点积，在 <i>n</i> 个变量上构造多项式</p>
+<div class="eq"><i>P</i>(<i>X</i>) = ∏<sub>s∈S∖{0}</sub> (1 − <i>s</i> · <i>X</i>)。</div>
+<p>当 <i>X</i> = 0 时取值 1。当 <i>X</i> ≠ 0 时，超平面 <i>s</i> · <i>X</i> = 1 必含某个 <i>s</i> ∈ <i>S</i>，故 <i>P</i>(<i>X</i>) = 0。于是 <i>P</i> 在全部点上的值之和为 1。</p>
+<p>若总次数小于 <i>n</i>(<i>Q</i> − 1)，则每个单项式至少有一个变量的指数 <i>j</i> &lt; <i>Q</i> − 1。在该坐标上求和得到 0。当 <i>j</i> = 0 时，这是因为 <i>Q</i> 在 <i>K</i> 中为零。当 1 ≤ <i>j</i> &lt; <i>Q</i> − 1 时，取乘法群生成元并对几何级数求和即可。因此低次多项式在全空间的值之和必为 0。矛盾！故 |<i>S</i>| − 1 ≥ deg <i>P</i> ≥ <i>n</i>(<i>Q</i> − 1)。代入 <i>Q</i> = <i>p</i><sup>g</sup>、<i>n</i> = <i>h</i>/<i>g</i>，定理 1 得证。</p>
+<p>固定 <i>p</i>、<i>e</i> 并令 <i>h</i> 增大时，答案为 1 + ((<i>p</i><sup>g</sup>−1)/<i>g</i>) log<sub>p</sub> <i>q</i>。系数仅由 <i>h</i> 与 <i>e</i> 的最大公因数决定。这给出了原问题互素情形中的一条对数增长子族。</p>
+</section>
+<section><h2>3　哪类线性化多项式有同一个阻塞数？</h2>
+<p>设 <i>E</i>/<i>K</i> 是有限域扩张，维数为 <i>n</i>，|<i>K</i>| = <i>Q</i>。给定 <i>K</i>-线性映射 <i>T</i> : <i>E</i> → <i>E</i>。我们称参数集 <i>S</i> 满足<strong>图像条件</strong>，若对每一对 <i>m</i>, <i>b</i> ∈ <i>E</i>，都存在 <i>x</i> 使 <i>T</i>(<i>x</i>) − <i>mx</i> − <i>b</i> ∈ <i>S</i>。这精确描述竖直平移图像对有限斜率直线的阻塞。</p>
+<p>置 <i>D</i><sub>m</sub>(<i>x</i>) = <i>T</i>(<i>x</i>) − <i>mx</i>。文献称 <i>T</i> 为 <em>scattered</em>，如果所有 <i>m</i> 都满足 dim<sub>K</sub> ker <i>D</i><sub>m</sub> ≤ 1。这个条件就是说，满足 <i>T</i>(<i>x</i>)/<i>x</i> = <i>m</i> 的非零 <i>x</i> 至多占据一条 <i>K</i>-直线。[<a href="#ref-4">4</a>]</p>
+<h3>定理 2　用任意平移参数集刻画 scatteredness</h3>
+<p>以下两条等价。(i) <i>T</i> 是 scattered。(ii) 对每个 <i>S</i> ⊆ <i>E</i>，<i>S</i> 满足图像条件当且仅当 <i>S</i> 与每个仿射 <i>K</i>-超平面相交。因此，对每个 scattered 映射，图像条件所需的最小参数集大小都等于 1 + <i>n</i>(<i>Q</i> − 1)。</p>
+<p><strong>图像条件总能推出超平面条件。</strong> 固定非零泛函 λ 和目标值 <i>t</i> ∈ <i>K</i>。由引理 2 中的对偶同构，存在 <i>m</i> ∈ <i>E</i> 使 λ(<i>T</i>(<i>x</i>)) = λ(<i>mx</i>) 对所有 <i>x</i> 成立。取 λ(<i>v</i>) = <i>t</i>。图像条件给出 <i>s</i> = <i>T</i>(<i>x</i>) − <i>mx</i> + <i>v</i> ∈ <i>S</i>，于是 λ(<i>s</i>) = <i>t</i>。</p>
+<p><strong>(i) 推出 (ii)。</strong> 若零度至多为 1，则每个 im <i>D</i><sub>m</sub> 由秩－零度定理可知是全空间或超平面。与每个超平面相交的集合非空，因而也与这些像的每个平移相交，这正是图像条件。</p>
+<p><strong>(ii) 推出 (i)。</strong> 假设某个 <i>D</i><sub>m</sub> 的零度至少为 2，则 <i>W</i> = im <i>D</i><sub>m</sub> 的维数至多为 <i>n</i> − 2。取 <i>S</i> = <i>E</i> ∖ <i>W</i>。每个仿射超平面的维数都是 <i>n</i> − 1，无法包含在 <i>W</i> 中，故必与 <i>S</i> 相交。但斜率取上述 <i>m</i>，截距取零，就有 <i>D</i><sub>m</sub>(<i>x</i>) ∉ <i>S</i> 对全部 <i>x</i> 成立。这与 (ii) 矛盾。最后的最小值由引理 3 得出。</p>
+<p class="note">定理陈述中的“每个 <i>S</i>”是必要的量词。反向证明专门选择了一个异常像空间的补集，构成能区分两种阻塞条件的参数集。</p>
+</section>
+<section id="variable-degree"><h2>4　次数可变时，水平线的代价</h2>
+<p>给定 <i>q,d</i>，以 τ<sub>q</sub>(<i>d</i>) 记只要求命中水平线时的最少参数数目。等价地，它是幂值集（含零）的加法平移覆盖数。记 <i>r</i> = gcd(<i>d,q</i>−1)，<i>h</i> = gcd(<i>d</i>−1,<i>q</i>−1)，<i>L</i> = log <i>q</i>。</p>
+<h3>定理 3　把水平覆盖扩充为射影阻塞集</h3>
+<div class="box">0 ≤ <i>B</i>(<i>q,d</i>) − τ<sub>q</sub>(<i>d</i>) ≤ ⌈2<i>L</i>/log(1+1/<i>h</i>)⌉。</div>
+<p>此式对每个有限域和每个 <i>d</i> ≥ 2 成立。更强地，从任何既定水平覆盖出发，都能在上述预算内将其扩充。固定斜率 <i>a</i> ≠ 0。相异的 <i>x,y</i> 满足 <i>x</i><sup>d</sup>−<i>ax</i> = <i>y</i><sup>d</sup>−<i>ay</i> 时，写 <i>z=x−y</i>，<i>t=y/z</i>，则</p>
+<div class="eq"><i>z</i><sup>d−1</sup>((<i>t</i>+1)<sup>d</sup>−<i>t</i><sup>d</sup>) = <i>a</i>。</div>
+<p>每个 <i>t</i> 至多对应 <i>h</i> 个 <i>z</i>，而这两个坐标唯一确定有序对。因此连同对角线在内的碰撞数至多为 <i>q</i>(<i>h</i>+1)。对各纤维的大小使用 Cauchy–Schwarz 得像集至少有 <i>q</i>/(<i>h</i>+1) 点。独立均匀取 <i>k</i> 个新参数，剩余非水平线的期望至多为 <i>q</i>(<i>q</i>−1)(<i>h</i>/(<i>h</i>+1))<sup>k</sup>。定理给出的取整值使之严格小于 1。竖直线与无穷远线已由公共点命中。</p>
+<h3>随域阶增长的次数</h3>
+<p>Zhou–Wu 命题 4.1 给出 <i>rL</i>/(8 log <i>r</i>) ≤ τ<sub>q</sub>(<i>d</i>) ≤ ⌈<i>rL</i>⌉（<i>r</i> ≥ 2）。沿 <i>q</i>→∞ 的任意序列，若 2≤<i>r</i>≤<i>R</i>、<i>h</i>≤<i>H</i>，则 <i>B</i>=Θ<sub>R,H</sub>(log <i>q</i>)。例如 <i>q</i> ≡ 1 (mod 4)、<i>q</i> &gt; 5、<i>d</i>=(<i>q</i>+3)/2 时，<i>r</i>∈{2,4}，<i>h</i>=1。再由 log(1+1/<i>h</i>) ≥ 1/(<i>h</i>+1)，若 <i>r</i>≥2 且 (<i>h</i>+1)log <i>r</i> = <i>o</i>(<i>r</i>)，则 <i>B</i>/τ<sub>q</sub>(<i>d</i>) → 1。这里使用的水平下界归于 [<a href="#ref-6">6</a>]；跨所有非零斜率的扩充估计来自上面的碰撞计算。</p></section>
+<section id="norm-family"><h2>5　范数幂族的精确最小值</h2>
+<p>取 <i>F</i>=𝔽<sub>s</sub> ⊂ <i>E</i>=𝔽<sub>q</sub>，<i>q=s</i><sup>n</sup>，<i>n</i> ≥ 2。令 <i>D</i>=(<i>q</i>−1)/(<i>s</i>−1)，则 <i>N</i>(<i>x</i>)=<i>x</i><sup>D</sup> 是从 <i>E</i> 到 <i>F</i> 的范数。记 τ<sub>s</sub>(<i>m</i>) 为 <i>F</i> 中 <i>m</i> 次幂值集的平移覆盖数。</p>
+<h3>定理 4　范数幂的水平最小值可同时命中所有斜率</h3>
+<div class="box"><i>B</i>(<i>s</i><sup>n</sup>, <i>mD</i>) = <i>s</i><sup>n−1</sup> τ<sub>s</sub>(<i>m</i>)　(<i>m</i> ≥ 1)。</div>
+<p>取 <i>m</i>=1 得 <i>B</i>(<i>q,D</i>)=<i>q</i><sup>1−1/n</sup>。每个加法陪集至少需要 τ<sub>s</sub>(<i>m</i>) 个参数才能覆盖水平线，因为任一幂值均在 <i>F</i> 内，且范数满射。幂值集含 0 与 1，故移去一个底域元素后剩下的 <i>s</i>−1 个移位已经构成覆盖。于是最优集大小严格小于 <i>q</i>，由 §1 的非平凡性判据其射影阻塞集不含整条有理直线。水平问题的陪集原理见 [<a href="#ref-6">6</a>，命题 5.1]。以下证明同一预算能达到所有斜率。</p>
+<h3>各陪集独立平移</h3>
+<p>设 <i>π:E→F</i> 为限制到 <i>F</i> 上是恒等的线性投影。将 <i>F</i> 中的最优集平移至包含 0，记为 <i>T</i>。对每个 <i>z</i>∈ker <i>π</i> 独立选取均匀的 <i>u</i><sub>z</sub>∈<i>F</i>，放入 <i>z</i>+<i>u</i><sub>z</sub>+<i>T</i>。水平覆盖对所有选择均成立，总点数恰为 <i>s</i><sup>n−1</sup>|<i>T</i>|。对斜率 <i>a</i> ≠ 0 换元 <i>y=ax</i>，所需命中的集合属于</p>
+<div class="eq"><i>V</i><sub>c,b</sub> = {<i>c N</i>(<i>y</i>)<sup>m</sup> − <i>y</i> − <i>b</i> : <i>y</i>∈<i>E</i>}，　<i>c</i>∈<i>F</i><sup>×</sup>，<i>b</i>∈<i>E</i>。</div>
+<p>故只需控制 (<i>s</i>−1)<i>q</i> 个目标。写 <i>v</i><sub>z</sub>=|<i>V</i>∩(<i>z</i>+<i>F</i>)|，仅考察点 <i>z</i>+<i>u</i><sub>z</sub>，其全体避开 <i>V</i> 的概率等于 ∏<sub>z</sub>(1−<i>v</i><sub>z</sub>/<i>s</i>)。模掉 <i>F</i> 后，<i>y</i>↦−<i>y</i>−<i>b</i> 覆盖每个陪集，故 <i>v</i><sub>z</sub> ≥ 1。</p>
+<p><strong><i>n</i> ≥ 4。</strong> 并合上界为 (<i>s</i>−1)<i>s</i><sup>n</sup>(1−1/<i>s</i>)<sup>sⁿ⁻¹</sup> &lt; 1。具体地，Bernoulli 不等式给出 (<i>s</i>/(<i>s</i>−1))<sup>s−1</sup> ≥ 2，且 2<sup>s−1</sup> ≥ <i>s</i>。基例 <i>s</i><sup>3</sup> ≥ 5(<i>s</i>−1)<sup>2</sup> 与对 <i>n</i> 的归纳给出 <i>s</i><sup>n−1</sup> ≥ (<i>n</i>+1)(<i>s</i>−1)<sup>2</sup>，从而前式严格成立。</p></section>
+<section id="norm-small"><h2>5.1　三次与二次扩张</h2>
+<p><strong><i>n</i>=3。</strong> 对每个非零 <i>v</i>∈<i>F</i>，多项式 <i>X</i><sup>3</sup>+<i>A X</i>−<i>v</i> 至少有一个 <i>A</i> 使之不可约。每个非零 <i>x</i> 只排除一个 <i>A</i>，零永远不是根。其在 <i>E</i> 中的根的迹为零、范数为 <i>v</i>；<i>v</i>=0 时取零。由迹配对非退化，任一非零线性泛函写成 Tr(<i>cx</i>)，要在核上实现 <i>u</i>，只需选零迹的 <i>y</i> 满足 <i>N</i>(<i>y</i>)=<i>N</i>(<i>c</i>)<i>u</i>，再取 <i>x=y/c</i>。将此论证用于 <i>x</i>↦<i>π</i>(<i>ax</i>)，便得 <i>π</i><sup>−1</sup>(<i>T</i>) 命中所有斜率。</p>
+<p>文献中已有覆盖所有 <i>n</i>≥3 的数论途径。Moisio [<a href="#ref-7">7</a>，推论 3.3] 给出指定非零范数的零迹元素数，其主项为 (<i>s</i><sup>n−1</sup>−1)/(<i>s</i>−1)，误差绝对值至多 (gcd(<i>n,s</i>−1)−1)<i>s</i><sup>(n−2)/2</sup>。当 <i>n</i>=3，下界至少为 <i>s</i>+1−2√<i>s</i>&gt;0。当 <i>n</i>≥4，误差至多为 (<i>s</i>−2)<i>s</i><sup>(n−2)/2</sup>&lt;<i>s</i><sup>n−2</sup>。因此 [<a href="#ref-7">7</a>] 与上述投影提升也推出定理 4 的 <i>n</i>≥3 部分。本文的独立平移和三次多项式证明同时给出此部分的初等 Lean 核验。</p>
+<p><strong>任意 <i>n</i> 且 gcd(<i>n,s</i>−1)=1。</strong> 非零泛函的核含非零向量 <i>w</i>。让 <i>w</i> 乘以底域标量 <i>t</i>，范数变为 <i>t</i><sup>n</sup><i>N</i>(<i>w</i>)，因而遍历底域。这也处理了二次扩张中所有偶数 <i>s</i>。若 <i>n</i>=2、<i>m</i>=1，配方法 <i>N</i>(<i>x−w</i>)=<i>N</i>(<i>x</i>)−Tr(<i>xw</i><sup>s</sup>)+<i>N</i>(<i>w</i>) 给出任意特征下的直接证明。相关范数–迹曲线与直线的交数见 [<a href="#ref-8">8</a>，推论 4.7]。</p>
+<h3>二次扩张中的碰撞界</h3>
+<p>写 σ(<i>x</i>)=<i>x</i><sup>s</sup>。若相异 <i>x,y</i> 使 φ(<i>N</i>(<i>x</i>))−<i>ax</i>=φ(<i>N</i>(<i>y</i>))−<i>ay</i>，指定 <i>u=N</i>(<i>x</i>)、<i>v=N</i>(<i>y</i>) 后，差 <i>w</i>=(φ(<i>u</i>)−φ(<i>v</i>))/<i>a</i> 非零且已确定。由 <i>N</i>(<i>x/w</i>) 与 <i>N</i>(<i>x/w</i>−1) 可读出 <i>x/w</i> 的迹和范数，故只有至多两个共轭的选择。连对角线在内至多有 3<i>s</i><sup>2</sup> 个碰撞，故任一目标至少有 <i>s</i><sup>2</sup>/3 个值。AM–GM 给出 ∏<sub>z</sub>(1−<i>v</i><sub>z</sub>/<i>s</i>) ≤ (2/3)<sup>s</sup>。当 <i>s</i> ≥ 25，<i>s</i><sup>3</sup>(2/3)<sup>s</sup> &lt; 1；检验 25 后用 2(<i>s</i>+1)<sup>3</sup> ≤ 3<i>s</i><sup>3</sup> 归纳即可。</p>
+<p>余下的奇数域阶为 3、5、7、9、11、13、17、19、23。在底域内逐一验证：对 1 ≤ <i>m</i> ≤ <i>s</i>−1、<i>t</i>∈<i>F</i>、<i>j</i>∈<i>F</i><sup>×</sup>，存在 <i>v</i> 使 (<i>t−v</i><sup>m</sup>)<sup>2</sup>−4<i>jv</i> 为零或非平方。于是 <i>X</i><sup>2</sup>+(<i>t−v</i><sup>m</sup>)<i>X</i>+<i>jv</i> 的根在二次扩域中实现所需的迹与范数；重根在底域中也满足这两个等式。具体地，若 <i>π</i>(<i>ax</i>)=Tr(<i>cx</i>) 且 <i>c</i> ≠ 0，令 <i>j=N</i>(<i>c</i>)，取 <i>cx</i> 为该根，即得 <i>N</i>(<i>x</i>)<sup>m</sup>−<i>π</i>(<i>ax</i>)=<i>t</i>。若 <i>c</i>=0，直接用范数满射。这样同一投影提升即可覆盖全部斜率。指数归约取 1+((<i>m</i>−1) mod (<i>s</i>−1))，保留了零处的函数值。独立程序另行枚举扩域坐标。<code>norm_power_minimum</code> 已将所有分支接入 AGY 的射影最小值定义，<code>norm_power_optimal_nontrivial</code> 核验最优集的非平凡性。</p></section>
+<section id="extension-dichotomy"><h2>6　扩张次数的整除二分律</h2>
+<p>令 <i>F</i>=𝔽<sub>s</sub> ⊆ <i>E</i>=𝔽<sub>q</sub>，<i>q=s</i><sup>n</sup>。本节固定指标 <i>m</i>≥2，允许底域与扩张次数同时变化。指数 <i>d=s</i>+(<i>q</i>−1)/<i>m</i> 在每个乘法陪集上均为 Frobenius 映射的常数倍。采用单位根群 μ<sub>m</sub>⊆<i>F</i> 作陪集的标号。</p>
+<h3>定理 5　分圆 Frobenius 单项式的阻塞数</h3>
+<div class="box"><i>m</i>∣<i>s</i>−1，<i>n</i>≥1。若 <i>m</i>∣<i>n</i>，则 <i>B</i>(<i>q,d</i>)=Θ<sub>m</sub>(<i>ns</i>)；若 <i>m</i>∤<i>n</i>，则 <i>B</i>(<i>q,d</i>)=Θ<sub>m</sub>(log <i>q</i>)。</div>
+<p>上下界中的常数仅依赖 <i>m</i>。若 <i>s</i>≡1 (mod <i>m</i>²)，两侧都是置换单项式。的确，令 <i>k</i>=(<i>q</i>−1)/<i>m</i>，则 <i>m</i>∣<i>k</i>，gcd(<i>s,k</i>)=1，gcd(<i>s+k,m</i>)=1，故 gcd(<i>d,q</i>−1)=1。这时水平线只需一次平移。有关固定底域时如何解释增长阶及同域比较，见 §6.4。</p>
+<h3>分支与非整除侧的上界</h3>
+<p>记 σ(<i>x</i>)=<i>x</i><sup>s</sup>，χ(<i>x</i>)=<i>x</i><sup>k</sup>。在 χ(<i>x</i>)=ζ 的陪集上，<i>x</i><sup>d</sup>−<i>ax</i>=<i>L</i><sub>ζ</sub>(<i>x</i>)，其中 <i>L</i><sub>ζ</sub>=ζσ−<i>a</i> 是 <i>F</i>-线性映射。非零斜率处，乘法群的循环性给出 ker <i>L</i><sub>ζ</sub>≠0 等价于 <i>N</i>(<i>a</i>)=ζ<sup>n</sup>；有非零核时其 <i>F</i>-维数为 1。若 <i>m</i>∤<i>n</i>，ζ<sup>n</sup> 至少取两个不同值，每个斜率便至少有一个可逆分支（<i>a</i>=0 时全可逆）。可逆分支在其非零陪集上贡献 (<i>q</i>−1)/<i>m</i> 个非零值，零输入另贡献 0。每条线的单次命中率至少 1/<i>m</i>。独立均匀取 ⌈2<i>m</i> log(2<i>q</i>)⌉ 个参数，遗漏的非竖直线的期望至多为 <i>q</i>²/(2<i>q</i>)²&lt;1。竖直线与无穷远线由公共点命中。</p>
+<h3>整除侧的迹投影下界</h3>
+<p>取原始 <i>m</i> 次根 ξ。由 <i>m</i>∣<i>n</i> 及 <i>s</i>≡1 (mod <i>m</i>)，ξ 的范数为 1，故有 γ∈<i>E</i><sup>×</sup> 满足 γ<sup>s−1</sup>=ξ。γ 的 σ 轨道长为 <i>m</i>，所以 1,γ,…,γ<sup>m−1</sup> 在 <i>F</i> 上线性独立。取斜率 <i>a=t</i><sup>s−1</sup>，<i>t</i>≠0。令 <i>x=t</i>γ<sup>−j</sup><i>z</i>，则 <i>L</i><sub>ξʲ</sub>(<i>x</i>)=<i>t</i><sup>s</sup>γ<sup>−j</sup>(σ(<i>z</i>)−<i>z</i>)。括号内的像等于迹零超平面，因为迹配对非退化，而 σ−1 的核为 <i>F</i>。</p>
+<p>设 <i>S</i> 阻塞。迹配对使 <i>b</i>↦(Tr(<i>t</i><sup>−s</sup>γ<sup>j</sup><i>b</i>))<sub>j</sub> 满射到 <i>F</i><sup>m</sup>。若每个 Tr(<i>t</i><sup>−s</sup>γ<sup>j</sup><i>S</i>) 均漏一个值，令 <i>b</i> 的各坐标等于所漏值的相反数。于是对每个 α∈<i>S</i>，<i>b</i>+α 都在所有分支超平面之外，矛盾。由于 <i>t</i><sup>−s</sup> 遍历 <i>E</i><sup>×</sup>，∪<sub>0≤j&lt;m</sub>γ<sup>j</sup><i>S</i> 遇到所有仿射超平面。由引理 3 [<a href="#ref-2">2</a>, <a href="#ref-3">3</a>]，<i>m</i>|<i>S</i>|≥<i>n</i>(<i>s</i>−1)+1，取整得到 <strong><i>B</i>≥1+<i>n</i>(<i>s</i>−1)/<i>m</i></strong>。</p></section>
+<section id="phase-sampling"><h2>6（续）　整除侧的匹配上界</h2>
+<p>设 <i>m</i>∣<i>n</i>，故 <i>n</i>≥2。以一整条仿射 <i>F</i>-直线为一组平移，每次独立选取均匀的基点及均匀的非零方向。下证对任一固定斜率与截距，一组平移遗漏该线的概率至多为 <i>A</i><sub>m</sub>/<i>s</i>，其中 <i>A</i><sub>m</sub> 只依赖 <i>m</i>。</p>
+<p>只使用 χ(<i>x</i>)=1 的陪集 <i>C</i>，其密度 ρ=(<i>q</i>−1)/(<i>mq</i>)≥1/(2<i>m</i>)。若 <i>L</i>₁ 可逆，其在 <i>C</i> 上的像有密度 ρ。在均匀仿射直线上，不同底域参数所给的点是均匀有序相异点，故命中数的均值为 <i>s</i>ρ、方差不超过 <i>s</i>ρ。由二阶矩，空交的概率至多为 1/(<i>s</i>ρ)。加上给定截距只会平移采样直线。</p>
+<p>若 <i>L</i>₁ 奇异，记 <i>K</i>=ker <i>L</i>₁，<i>H</i>=im <i>L</i>₁。<i>K</i> 为一维子空间，<i>H</i> 为超平面。对均匀的 <i>y</i>∈<i>E</i> 令 <i>X</i>=|(<i>y+K</i>)∩<i>C</i>|。则 𝔼<i>X</i>=<i>s</i>ρ。先在所有 <i>F</i>-直线方向中均匀取一个方向，再均匀选其平移。不同位置给出的有序点对在全部相异点对中均匀，故整体方差至多 <i>s</i>ρ。对每个方向，条件均值都是 <i>s</i>ρ，因而各方向条件方差的平均就是整体方差。</p>
+<p>乘法群 <i>E</i><sup>×</sup> 在方向集上可迁，单个方向的稳定子为 <i>F</i><sup>×</sup>。因 (<i>q</i>−1)/(<i>s</i>−1)≡<i>n</i>≡0 (mod <i>m</i>)，χ 在 <i>F</i><sup>×</sup> 上恒为 1。于是 <i>C</i>=ker χ 在方向集上有 <i>m</i> 个等长轨道。乘以 <i>C</i> 的元素保持被计数的集合 <i>C</i>，故同轨道的条件方差相等。由非负性，给定方向 <i>K</i> 的条件方差至多为整体方差的 <i>m</i> 倍。</p>
+<div class="eq">Var<sub>y</sub> |(<i>y+K</i>)∩<i>C</i>| ≤ <i>ms</i>ρ，　ℙ<sub>y</sub>(<i>X</i>=0) ≤ <i>m</i>/(<i>s</i>ρ) ≤ 2<i>m</i>²/<i>s</i>。</div>
+<p>于是 <i>H</i> 中只有 <i>O</i><sub>m</sub>(1/<i>s</i>) 比例的点缺少来自 <i>C</i> 的原像。随机方向落入 <i>H</i> 的概率为 (<i>q</i>/<i>s</i>−1)/(<i>q</i>−1)&lt;1/<i>s</i>；其他方向的采样直线与给定的 <i>H</i> 的平移恰交于一点，且交点均匀。两种分支都得到所需的单组失败率。</p>
+<p>取 <i>A</i><sub>m</sub>=2<i>m</i>²+1。当 <i>s</i>≥<i>A</i><sub>m</sub>² 时，各组失败率至多 <i>s</i><sup>−1/2</sup>，取 4<i>n</i>+1 组使所有 <i>q</i>² 个条件的总失败概率小于 1。所用参数至多 (4<i>n</i>+1)<i>s</i>。小底域另有一个直接的单点取样界。每个满足 <i>x</i><sup>d</sup>−<i>ax</i>=<i>y</i> 的点都是多项式 <i>X</i><sup>sm</sup>−(<i>aX</i>+<i>y</i>)<sup>m</sup> 的根，因为 <i>md=ms+q</i>−1，在零点等式也成立。该多项式的次数恰为 <i>sm</i>&gt;<i>m</i>，故每条线的单点命中率至少 1/(<i>sm</i>)。由独立取样，<i>B</i>≤2<i>ms</i> log(2<i>q</i>)+1。若 <i>s</i>&lt;<i>A</i><sub>m</sub>²，则 log(2<i>q</i>)≤<i>n</i>(1+<i>A</i><sub>m</sub>²)。两段合并可取 <strong><i>B</i>≤[2<i>m</i>(1+<i>A</i><sub>m</sub>²)+1]<i>ns</i></strong>，这个上界也适用于 <i>m</i>∤<i>n</i>。</p></section>
+
+<section id="phase-weil"><h2>6.1　同时遗漏的字符和估计</h2>
+<p>写 <i>F</i>=𝔽<sub>s</sub>、<i>E</i>=𝔽<sub>q</sub>、σ(<i>x</i>)=<i>x</i><sup>s</sup>，令 χ(<i>x</i>)=<i>x</i><sup>(q−1)/m</sup>（<i>x</i>≠0）。在乘法陪集 χ(<i>x</i>)=ζ 上，斜率 <i>a</i> 的值由 <i>L</i><sub>ζ</sub>(<i>x</i>)=ζσ(<i>x</i>)−<i>ax</i> 给出。以下设 <i>m</i>∤<i>n</i>，给定 ℓ≥1 个互异参数 α。将证明对仅依赖 <i>m</i> 的 <i>Q</i><sub>m</sub>，有</p>
+<div class="box"><i>q</i>≥<i>Q</i><sub>m</sub>，　ℓ≤κ<sub>m</sub> log <i>q</i>，　κ<sub>m</sub>=1/(32<i>m</i>² log <i>m</i>)　⟹　存在遗漏全部 ℓ 个参数的直线。</div>
+<p><strong>计数引理。</strong> 在 <i>K</i>=𝔽<sub>Q</sub> 上取阶 <i>m</i> 乘法特征 θ，将其值群与复数中的单位根等同。给定多项式 <i>f</i>₁,…,<i>f</i><sub>M</sub> 与指定特征值，令 <i>D</i> 为它们在代数闭包中全部不同零点的总数。设对每个非零向量 <i>e</i>∈{0,…,<i>m</i>−1}<sup>M</sup>，乘积 ∏<i>f</i><sub>i</sub><sup>eᵢ</sup> 均非代数闭包上的 <i>m</i> 次幂。则同时实现所指定值的 <i>t</i>∈<i>K</i> 的数目与 <i>Q</i>/<i>m</i><sup>M</sup> 之差的绝对值至多 2<i>D</i>√<i>Q</i>。事实上，先删去所有零点，再用特征正交性展开。补回被删点至多产生 <i>D</i> 的误差；每个非平凡完整和由一元 Weil 界 [<a href="#ref-9">9</a>，定理 5.41] 控制在 (<i>D</i>−1)√<i>Q</i> 以内。所有展开系数绝对值之和等于 1，因此误差中没有 <i>m</i><sup>M</sup> 因子。</p>
+<h3>大扩张次数的共同换元</h3>
+<p>设 <i>n</i>≥4<i>m</i>。非零斜率 <i>a</i> 的分支 <i>L</i><sub>ζ</sub> 有非零核当且仅当 <i>N</i>(<i>a</i>)=ζ<sup>n</sup>，此时核有 <i>s</i> 点。这由非零核方程 <i>x</i><sup>s−1</sup>=<i>a</i>/ζ 和有限域乘法群的循环性得到。如果 {ζ<sup>n</sup> : ζ∈μ<sub>m</sub>} 是 <i>F</i><sup>×</sup> 的真子集，由范数满射可取 <i>N</i>(<i>a</i>) 在其外。否则 <i>s</i>−1=<i>m</i> 且 gcd(<i>n,m</i>)=1，每个非零斜率恰有一个退化分支，此时任选 <i>a</i>≠0。</p>
+<p>在代数闭包上令 <i>T</i>(<i>t</i>)=<i>a</i><sup>−1</sup><i>t</i><sup>s</sup>，<i>U</i><sub>ζ</sub>=ζ<i>T</i>−1。它们是同一 <i>F</i>-线性算子的多项式，彼此交换。记 <i>P</i>=∏<sub>ζ</sub><i>U</i><sub>ζ</sub>、<i>Q</i><sub>ζ</sub>=∏<sub>η≠ζ</sub><i>U</i><sub>η</sub>（乘积指复合），令截距 <i>b</i>=<i>aP</i>(<i>t</i>)。对每个 (α,ζ)，枚举满足 <i>L</i><sub>ζ</sub>(<i>c</i>)=α 的<strong>全部</strong> <i>c</i>∈<i>E</i>。对 <i>t</i>∈<i>E</i>，方程 <i>L</i><sub>ζ</sub>(<i>x</i>)=<i>b</i>+α 的所有有理解恰为 <i>f</i><sub>α,ζ,c</sub>(<i>t</i>)=<i>Q</i><sub>ζ</sub>(<i>t</i>)+<i>c</i>。对这些多项式逐个指定一个异于 ζ 的非零特征值，即足以排除每个可能的原像（也排除了零原像）。可逆分支贡献一个多项式，退化分支贡献零个或 <i>s</i> 个。因此总数 <i>M</i>≤2<i>m</i>ℓ，每个多项式都可分且次数为 <i>s</i><sup>m−1</sup>。</p>
+</section>
+<section id="phase-independence"><h2>6.2　退化分支的几何零点</h2>
+<p>每个 <i>f</i><sub>α,ζ,c</sub> 的根都落在 <i>aP</i>(<i>t</i>)=−α 的纤维上，不同 α 的纤维互不相交。固定 α 及其几何纤维中的一点 <i>t</i>₀。记 <i>H</i><sub>ζ</sub>=ker <i>U</i><sub>ζ</sub>，这是 <i>T</i> 的 ζ<sup>−1</sup> 特征空间，在 <i>F</i> 上维数为 1。不同特征值使各空间直和；<i>P</i> 的一次项系数为 (−1)<sup>m</sup>、次数为 <i>s</i><sup>m</sup>，故 ker <i>P</i>=⊕<sub>ζ</sub><i>H</i><sub>ζ</sub>。纤维中的任一点唯一写成 <i>t</i>₀+∑<sub>η</sub><i>z</i><sub>η</sub>。算子 <i>Q</i><sub>ζ</sub> 在 <i>H</i><sub>ζ</sub> 上是非零标量，在其余分量上为零。又有 <i>Q</i><sub>ζ</sub>(<i>t</i>₀)+<i>c</i>∈<i>H</i><sub>ζ</sub>，故 <i>f</i><sub>α,ζ,c</sub> 的零点条件恰是 <i>z</i><sub>ζ</sub> 等于一个指定值；同一分支中不同 <i>c</i> 给出不同指定值。</p>
+<p>假定某个指数向量给出 <i>m</i> 次幂。在上述纤维的每一点，将零点重数模 <i>m</i> 相加得到 ∑<sub>ζ</sub><i>h</i><sub>ζ</sub>(<i>z</i><sub>ζ</sub>)=0，其中 <i>h</i><sub>ζ</sub> 在各指定值上等于对应的指数，在其余值上等于 0。各多项式零点均为单根；逐次只改变一个坐标，可知每个 <i>h</i><sub>ζ</sub> 都是常数。可逆分支仅指定 <i>s</i> 个坐标值中的一个，故该常数为 0。至多还有一个退化分支，由常数之和为 0，它的常数也只能为 0，即使其全部 <i>s</i> 个坐标值都被指定。遍历 α 得全部指数为 0，这证明了计数引理的非幂条件。例如 <i>s</i>=3、<i>m</i>=2、<i>n</i> 奇时，每个斜率 <i>a</i>≠0 都有一个退化分支，上述论证保留该分支的全部有理原像。</p>
+<p>在 <i>E</i> 上应用引理，有利的 <i>t</i> 数目至少为 <i>q</i>/<i>m</i><sup>M</sup>−2<i>Ms</i><sup>m−1</sup>√<i>q</i>。只需一个 <i>t</i>，故 <i>t</i>→<i>b</i> 的重数不影响结论。当 ℓ≤κ<sub>m</sub> log <i>q</i>，主项至少为 <i>q</i><sup>1−1/(16m)</sup>。由 <i>n</i>≥4<i>m</i>，误差至多为 4<i>m</i>ℓ<i>q</i><sup>3/4</sup>，对仅依赖 <i>m</i> 的充分大域阶严格小于主项。</p>
+</section>
+<section id="phase-norm-slice"><h2>6.3　有界扩张次数与范数多项式</h2>
+<p>设 2≤<i>n</i>&lt;4<i>m</i>。对仅依赖 <i>m</i> 的充分大 <i>q</i>，有 <i>s</i>−1&gt;<i>m</i>。取 <i>N</i>(<i>a</i>)∉μ<sub>m</sub>，记 <i>A</i><sub>ζ</sub>=<i>L</i><sub>ζ</sub><sup>−1</sup>。在底域仿射直线 <i>b</i>=<i>u</i>+<i>vt</i>（<i>t</i>∈<i>F</i>）上，各分支的唯一候选原像为 <i>A</i><sub>ζ</sub>(<i>u</i>+α)+<i>tA</i><sub>ζ</sub>(<i>v</i>)。对 <i>v</i>≠0，其范数是次数 <i>n</i> 的多项式，定义为这条一次式的全部系数共轭之积。由于 χ(<i>x</i>)=θ(<i>N</i>(<i>x</i>))，其中 θ(<i>z</i>)=<i>z</i><sup>(s−1)/m</sup>，指定每个候选原像的特征值等价于指定相应范数多项式的 θ 值。</p>
+<p><strong>同时分开根。</strong> 这些多项式的根为 −<i>U</i>(<i>u</i>+α)/<i>U</i>(<i>v</i>)，其中 <i>U</i>=σ<sup>j</sup><i>A</i><sub>ζ</sub>，0≤<i>j</i>&lt;<i>n</i>。不同 (ζ,<i>j</i>) 的 <i>U</i> 不成 <i>E</i>-标量倍数。事实上，比例关系经共轭可写成 <i>A</i><sub>ζ</sub>=<i>c</i>σ<sup>k</sup><i>A</i><sub>η</sub>，0≤<i>k</i>&lt;<i>n</i>。代入 <i>L</i><sub>η</sub>(<i>y</i>) 并应用 <i>L</i><sub>ζ</sub> 得</p>
+<div class="eq">ησ(<i>y</i>)−<i>ay</i> = ζ<i>c</i><sup>s</sup>σ<sup>k+1</sup>(<i>y</i>)−<i>ac</i>σ<sup>k</sup>(<i>y</i>)。</div>
+<p>算子 1,σ,…,σ<sup>n−1</sup> 在 <i>E</i> 上线性独立，因为相应非零线性化多项式次数小于 <i>q</i>。比较系数：<i>k</i>=0 时 <i>c</i>=1、η=ζ；非零 <i>k</i> 唯有 <i>n</i>=2、<i>k</i>=1 时指数支集相同，此时 −<i>ac</i>=η、ζ<i>c</i><sup>s</sup>=−<i>a</i> 强制 <i>N</i>(<i>a</i>)=ζη，已由斜率选择排除。</p>
+<p>可以预先固定方向 <i>v</i>=1。每个 <i>U</i> 都可逆，故 <i>U</i>(1)≠0。不同的非比例算子给出不同的归一化线性映射 <i>U</i>(·)/<i>U</i>(1)。两个根重合的条件因而是非零 <i>F</i>-线性映射在 <i>u</i> 处取给定值，至多有 <i>q</i>/<i>s</i> 解。若算子相同而平移 α、β 不同，则分子之差 <i>U</i>(α−β)≠0，根始终不同。所有有序指标对少于 (<i>nm</i>ℓ)² 个，故 (<i>nm</i>ℓ)²&lt;<i>s</i> 时可同时避开碰撞。对 ℓ≤κ<sub>m</sub> log <i>q</i>、<i>n</i>&lt;4<i>m</i>，左边是 <i>O</i><sub>m</sub>((log <i>s</i>)²)，比 <i>s</i> 小的阈值仅依赖 <i>m</i>。</p>
+<p>取一个避开碰撞的 <i>u</i>。全部 <i>nm</i>ℓ 个根互异，故任一非零指数向量均在某个单根处具有非零模 <i>m</i> 重数。计数引理给出至少 <i>s</i>/<i>m</i><sup>mℓ</sup>−2<i>nm</i>ℓ√<i>s</i> 个合适的 <i>t</i>。上述 ℓ 范围内，主项至少 <i>s</i><sup>7/8</sup>，误差至多 <i>O</i><sub>m</sub>(√<i>s</i> log <i>s</i>)。</p>
+<p><strong><i>n</i>=1。</strong> 取 <i>a</i>=1，则非零 <i>x</i> 的像为 (χ(<i>x</i>)−1)<i>x</i>。χ(<i>x</i>)=1 的分支只给出零，其余分支至多覆盖 <i>m</i>−1 个非零乘法陪集。给每个 <i>b</i>+α 指定同一个遗漏陪集，引理给出至少 <i>q</i>/<i>m</i><sup>ℓ</sup>−2ℓ√<i>q</i> 个截距。</p>
+<p><strong>一个统一阈值。</strong> 可取 log <i>Q</i><sub>m</sub>=16384<i>m</i>⁵。记 <i>X</i> 为求和域大小的对数，则 <i>X</i>≥log <i>q</i>/(4<i>m</i>)≥4096<i>m</i>⁴、ℓ≤<i>X</i>。由 exp <i>X</i>≥<i>X</i>³/6&gt;(4<i>m</i>²<i>X</i>)²，有界次数时可避开所有根碰撞。两段的主项都至少为 exp(7<i>X</i>/8)，误差至多 <i>C</i>(1+<i>X</i>)exp(3<i>X</i>/4)，取 <i>C</i>=8<i>m</i>²。因 <i>X</i>≥256(<i>C</i>+1)，exp(<i>X</i>/8)≥<i>X</i>²/128&gt;<i>C</i>(1+<i>X</i>)。这些估计对平移集一致。较小域阶以 <i>B</i>≥1 并调小下界系数吸收。</p>
+</section>
+
+<section id="phase-exact"><h2>6.4　二次扩张的精确值与同域比较</h2>
+<h3>推论 5.1　任一底域直线都是最优参数集</h3>
+<div class="box"><i>s</i> 为奇素数幂，<i>q=s</i>²，<i>d=s</i>+(<i>q</i>−1)/2，则 <i>B</i>(<i>q,d</i>)=<i>s</i>。</div>
+<p>定理 5 的显式整除下界给出 <i>B</i>≥<i>s</i>。取任意过原点的 <i>F</i>-直线 <i>W</i>⊂<i>E</i> 作参数集。因 χ 在 <i>F</i><sup>×</sup> 上恒为 1，每个斜率的值集 <i>V</i><sub>a</sub>={χ(<i>x</i>)σ(<i>x</i>)−<i>ax</i>:<i>x</i>≠0}∪{0} 都对 <i>F</i><sup>×</sup> 的伸缩封闭。两个平方类各有 (<i>s</i>²−1)/2 个非零元素，多于一条 <i>F</i>-直线中的 <i>s</i>−1 个非零点，故分别张成 <i>E</i>。于是 span <i>V</i><sub>a</sub> 包含 im(σ−<i>a</i>) 和 im(−σ−<i>a</i>)。两算子之差 2σ 满射，故 <i>V</i><sub>a</sub> 张成 <i>E</i>。它在一维商 <i>E/W</i> 中含非零值，伸缩即取遍商，再由 0 补齐。故 <i>V</i><sub>a</sub>−<i>W</i>=<i>E</i>，所有斜率同时成立。平移参数集也保持阻塞性。这里全体奇数 <i>s</i> 都给出置换，因为扭曲映射 χ(<i>x</i>)σ(<i>x</i>) 的平方复合为恒等（σ 保持 χ，且 χ(−1)=1）。</p>
+<h3>固定指标与环境域</h3>
+<p>令 <i>t</i> 为任意奇素数幂（例如 <i>t</i>=5<sup>k</sup>），<i>q=t</i>⁶，固定 <i>m</i>=2。𝔽<sub>q</sub> 同时含 𝔽<sub>t³</sub> 与 𝔽<sub>t²</sub>。前一表示由推论 5.1 得到对合，后一表示因 <i>t</i>²≡1 (mod 4) 得到置换。两者的水平线均只需一次平移。</p>
+<table><thead><tr><th>扩张次数</th><th>单项式的指数</th><th>射影阻塞数</th></tr></thead><tbody>
+<tr><td>2，底域大小 <i>t</i>³</td><td>(<i>q</i>−1)/2+<i>t</i>³</td><td><i>t</i>³=√<i>q</i>（精确值）</td></tr>
+<tr><td>3，底域大小 <i>t</i>²</td><td>(<i>q</i>−1)/2+<i>t</i>²</td><td>Θ(log <i>q</i>)</td></tr>
+</tbody></table>
+<p>两个次数都渐近于 <i>q</i>/2。表中增长阶的差异完全来自非零斜率。若另取固定 <i>s</i>、仅令 <i>n</i> 增大，则 <i>ns</i> 与 log <i>q</i>=<i>n</i> log <i>s</i> 同阶。</p>
+<h3>置换单项式的最大幂指数</h3>
+<p>设 <i>x</i><sup>d</sup> 在 𝔽<sub>q</sub> 上诱导非恒等置换，<i>h</i>=gcd(<i>d</i>−1,<i>q</i>−1)。对每个 <i>a</i>≠0，可取 <i>x</i><sup>d−1</sup> 的非零值 <i>c</i>≠<i>a</i>，因为该幂映射至少取两个非零值。在此大小为 <i>h</i> 的纤维上，<i>x</i><sup>d</sup>−<i>ax</i>=(<i>c</i>−<i>a</i>)<i>x</i>，故像集至少有 <i>h</i> 个元素。又由 §4，像集至少有 <i>q</i>/(<i>h</i>+1) 个元素。取大即至少 (√(4<i>q</i>+1)−1)/2。独立取样得 <i>B</i>(<i>q,d</i>)=<i>O</i>(√<i>q</i> log <i>q</i>)，常数绝对。定理 1 已有 <i>B</i>(<i>s</i>²,<i>s</i>)=2<i>s</i>−1；推论 5.1 在非 Frobenius 置换中也达到幂指数 1/2。能否普遍去掉该对数因子仍待研究。</p>
+<p class="note">分圆分支表示见 Wang [<a href="#ref-10">10</a>]，同形式的值集与区组设计见 Ding–Tang [<a href="#ref-5">5</a>，§2.1]。此处的跨斜率最小值使用仿射超平面阻塞定理 [<a href="#ref-2">2</a>, <a href="#ref-3">3</a>] 与一元 Weil 界 [<a href="#ref-9">9</a>]。Lean 已无条件核验整个整除侧的双边界、二次精确式、同域对照中的两种置换及非整除侧对数上界。完整字符和下界的逐项 Weil 估计和几何纤维参数的统一组装仍由纸面证明给出。</p></section>
+
+<section id="coverage"><h2>形式化范围与计算</h2>
+<p>水平覆盖的扩充、范数幂全部精确值、分圆 Frobenius 族的整除侧双边界、非整除侧对数上界及二次扩张精确值，均已在 Lean 中接到同一射影最小值。非整除侧下界的完整一元 Weil 估计及其在两个具体多项式族上的组装由 §6.1–6.3 给出；字符正交性、退化原像的处理及随 ℓ 增长的一致数值预算已有 Lean 陈述。<a href="https://github.com/Heinz1729/monomial-blocking-curves/blob/main/lean/README.md">逐定理形式化索引</a>。</p><p><code>python checks/phase_dichotomy.py</code> 逐线验证 <i>B</i>(9,7)=3、<i>B</i>(25,17)=5，并独立检验 𝔽₂₇ 上全部 18,954 组共同换元纤维。𝔽₁₂₅ 中取合数指标 <i>m</i>=4，对四种斜率范数核对 62,500 组纤维。在 3⁹ 元域检查全部非零斜率的唯一退化分支，在同一 5⁶ 元域检查两种置换及 §6.4 的底域参数集。字符和下界的渐近量词由 §6.1–6.3 证明。</p></section><p>Dot 提出了分层覆盖、范数幂和扩张次数整除二分律。早期小域分类与复算程序见<a href="FiniteCertificates.html">有限证书附录</a>。</p>
+</section>
+<section id="references"><h2>参考文献</h2>
+<div class="ref"><p id="ref-1">[1] S. Asgarli, D. Ghioca, C. H. Yip. <i>Blocking sets from a union of plane curves</i>. Designs, Codes and Cryptography 94, 217 (2026), §5. <a href="https://doi.org/10.1007/s10623-026-01958-z">期刊版与问题 5.4</a> · <a href="https://arxiv.org/abs/2510.15332">预印本</a>。</p>
+<p id="ref-2">[2] R. E. Jamison. <i>Covering finite fields with cosets of subspaces</i>. J. Combin. Theory A 22 (1977), 253–266. <a href="https://doi.org/10.1016/0097-3165(77)90001-2">原文</a>。</p>
+<p id="ref-3">[3] A. E. Brouwer, A. Schrijver. <i>The blocking number of an affine space</i>. J. Combin. Theory A 24 (1978), 251–253. <a href="https://ir.cwi.nl/pub/9858/9858D.pdf">原文</a>。</p>
+<p id="ref-4">[4] C. Zanella. <i>A condition for scattered linearized polynomials involving Dickson matrices</i>. J. Geom. 110, 50 (2019). <a href="https://arxiv.org/abs/1909.07802">原文</a>。</p>
+<p id="ref-5">[5] C. Ding, C. Tang. <i>Infinite families of 3-designs from o-polynomials</i>. Adv. Math. Commun. 15 (2021), 557–573，推论 30。<a href="https://cse.hkust.edu.hk/faculty/cding/JOURNALS/amc211.pdf#page=14">Segre 六次式的设计</a>。</p>
+<p id="ref-6">[6] J. Zhou, H. Wu. <i>Covering finite fields by translates of multiplicative subgroups</i> (2026)，命题 4.1、5.1。<a href="https://arxiv.org/html/2610.25228v1">水平覆盖与子域陪集</a>。</p>
+<p id="ref-7">[7] M. Moisio. <i>Kloosterman sums, elliptic curves, and irreducible polynomials with prescribed trace and norm</i>. Acta Arith. 132 (2008), 329–350，推论 3.3。<a href="https://arxiv.org/abs/0706.2112">指定迹与范数</a>。</p>
+<p id="ref-8">[8] G. L. Matthews, T. Morrison, A. W. Murphy. <i>Curve-lifted codes for local recovery using lines</i>. Des. Codes Cryptogr. 92 (2024), 3645–3664，推论 4.7。<a href="https://doi.org/10.1007/s10623-024-01456-0">范数–迹曲线的直线截面</a>。</p>
+<p id="ref-9">[9] R. Lidl, H. Niederreiter. <i>Finite Fields</i>, 2nd ed., Cambridge University Press (1997)，定理 5.41。<a href="https://doi.org/10.1017/CBO9780511525926">一元乘法特征和</a>。</p>
+<p id="ref-10">[10] Q. Wang. <i>Cyclotomic mapping permutation polynomials over finite fields</i>. Lecture Notes in Computer Science 4893 (2007), 119–128。<a href="https://people.math.carleton.ca/~wang/papers/llncsCycloPP5.pdf">分圆分支表示</a>。</p></div>
+</section>
+
+</body></html>

@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>有限域上的最小值与轨道证书</title><style>
+@page {size:A4;margin:17mm 21mm 16mm;@bottom-center{content:counter(page);font:9pt Georgia;color:#61716c}}
+*{box-sizing:border-box}html{background:#edeee9}body{margin:0 auto;max-width:850px;padding:45px 55px;background:white;color:#182825;font:16px/1.8 "Noto Serif SC","SimSun",serif}header,h1,h2,h3,.meta,th,strong{font-family:"Microsoft YaHei","Noto Sans SC",sans-serif}header{border-bottom:2px solid #155d54;margin-bottom:1.4em;padding-bottom:1em}h1{font-size:2.13em;line-height:1.38;margin:.26em 0}.meta{color:#526b66;font-size:.88em}h2{color:#175d54;font-size:1.48em;line-height:1.35;margin:0 0 .8em;padding-bottom:.25em;border-bottom:1px solid #a4bdb0}h3{font-size:1.06em;color:#244a41;margin:1.12em 0 .28em}p{margin:.52em 0}section{margin:0 0 3.4em}.eq,.box{font-family:"Cambria Math","Noto Serif SC","SimSun",serif;text-align:center;line-height:1.65;padding:.12em 0;margin:.58em 0}.box{background:#edf4ef;border-top:1px solid #7ca28e;border-bottom:1px solid #7ca28e;padding:.62em .4em;font-size:1.2em}.formula{font-family:"Cambria Math","Noto Serif SC","SimSun",serif}.note{border-left:3px solid #92ac9d;padding-left:.85em}.proofend{float:right}sub,sup{font-size:.72em;line-height:0}table{width:100%;border-collapse:collapse;margin:.8em 0;font-size:.94em}td,th{padding:.42em .55em;text-align:left;border-bottom:1px solid #d9dfda}th{background:#eff3ef}a{color:#175d54}code,pre{font-family:Consolas,"Microsoft YaHei",monospace;font-size:.88em}pre{background:#f2f4f1;padding:10px 15px;line-height:1.4;white-space:pre-wrap}small{font-size:.85em}.ref{font-family:"Microsoft YaHei",sans-serif;font-size:.86em;line-height:1.55}.ref p{margin:.65em 0}
+@media print{html,body{background:white}body{padding:0;max-width:none;font-size:11pt;line-height:1.65}section{margin:0}section+section{break-before:page}header{margin-bottom:5mm}h1{font-size:23pt}h2{font-size:16.4pt}h3{break-after:avoid}pre,table,.eq,.box{break-inside:avoid}*{-webkit-print-color-adjust:exact;print-color-adjust:exact}a{text-decoration:none}}@media(max-width:600px){body{padding:20px}h1{font-size:1.65em}.eq{overflow-wrap:anywhere}}
+@media print{#references .ref p{margin:.36em 0;break-inside:avoid}#references .ref{line-height:1.47}}
+@media print{body>section:first-child{line-height:1.51}body>section:first-child h3{margin-top:.75em}}
+
+.contents{margin-top:1.3em}.contents a{display:inline-block;margin-right:1.2em}
+.crosswalk{border-top:1px solid #a4bdb0;padding-top:1em}
+@media print{
+  body{font-size:10.8pt;line-height:1.63}section+section{break-before:auto}
+  body>section{margin:0 0 1.1em} h2,h3{break-after:avoid}
+  p{orphans:2;widows:2}.box{break-after:avoid}.contents,.crosswalk{display:none}
+  #references{break-before:auto}.ref p{break-inside:avoid}
+  p:has(+ .box),p:has(+ .eq){break-after:avoid}
+  body>section:first-child{line-height:1.6}.cover{break-after:page}
+  @page{@top-right{content:"两篇手稿的计算附录";font:8pt "Microsoft YaHei",sans-serif;color:#597069}}
+  @page:first{@top-right{content:none}}
+}
+</style></head><body>
+<section class="cover"><header><div class="meta">两篇手稿的计算附录　·　GPT-Astra（AI）</div><h1>有限域上的最小值与轨道证书</h1></header><h2>摘要</h2><p>记 <i>B</i>(<i>q,d</i>) 为射影阻塞所需的最少平移数。四个有限实例的参数集、归一化和穷举方法列于下文。</p><p>Lean 核验四组最小值及 8、41、47 元域的最优解数。32 元域的轨道分类由两套 Python 枚举交叉核对。</p><p class="contents"><a href="#f8">8 元域</a><a href="#sextic32">32 元域</a><a href="#cubic41">41 元域</a><a href="#cubic47">47 元域</a></p></section>
+<section id="f8"><h2>八元域上的二次曲线</h2>
+<p>取 <i>F</i> = 𝔽₂[<i>t</i>]/(<i>t</i>³ + <i>t</i> + 1)，<i>d</i> = 2。多项式在 0、1 处均非零，作为三次式不可约。由<a href="VariableDegree.html#geometry">变次数篇 §1 的超平面判据</a>，问题化为三维二元空间中的平面阻塞问题。一个仿射平面的补集恰为它的平行平面，故 <i>S</i> 击中所有平面当且仅当它仿射张成整个空间。</p><p>最小集就是仿射基，例如 {0, 1, <i>t</i>, <i>t</i>²}。有序选取仿射基的首点有 8 种，其余三点相对首点的差依次有 7、6、4 种选择。因此不同最小集数为 8·7·6·4/4! = 56。独立的 Lean 文件直接检查全部 256 个参数集和原始二次方程，给出同一答案。</p>
+</section><section id="cubic41"><h2>四十一元域上的全部最优三次曲线族</h2>
+<p>取 <i>F</i> = 𝔽₄₁，<i>d</i> = 3。参数集的阻塞性在仿射变换 <i>S</i> ↦ <i>uS</i> + <i>v</i>（<i>u</i> ≠ 0）下保持不变。事实上，gcd(3,40) = 1，故可写 <i>u</i> = <i>t</i>³。变换 (<i>x</i>,<i>y</i>) ↦ (<i>tx</i>,<i>t</i>³<i>y</i> − <i>v</i>) 将参数 α 的图像送到参数 <i>u</i>α + <i>v</i> 的图像，并置换各条直线。因此任意两个不同的参数都能归一到 0 和 1。</p>
+<h3>可复核的有限判定</h3>
+<p>对每个 (<i>m</i>,<i>b</i>) ∈ <i>F</i>²，列出 <i>R</i><sub>m,b</sub> = {<i>x</i>³ + <i>mx</i> + <i>b</i> : <i>x</i> ∈ <i>F</i>}。这里对斜率和截距同时换号，仍枚举全部直线。共有 1,681 行。归一集已含 0、1，故凡含这两者中任一个的行都已命中，余下 182 行。对每个候选集，逐行检验其交集非空。以下伪代码给出整个判定。</p>
+<pre>R = [{(x³ + m·x + b) mod 41 for x in 0..40}
+     for m in 0..40 for b in 0..40]
+for k in {4, 5}:
+    for D in combinations({2,…,40}, k−2):
+        if every row in R meets {0,1} ∪ D: record D</pre>
+<table><tr><th>参数个数</th><th>归一候选数</th><th>通过检验的额外参数 <i>D</i></th></tr>
+<tr><td>4</td><td>741</td><td>无</td></tr>
+<tr><td>5</td><td>9,139</td><td>{4,11,29}，{13,31,38}，{15,19,25}，{17,23,27}</td></tr></table>
+<p>若少于四个参数可以阻塞，补足四个也可阻塞，与第一行矛盾。第二行给出五元见证，故最小值为 5。Lean 从立方表达式重新生成所有行，并证明位运算的命中条件等价于原始的逐线存在性条件。</p>
+<h3>为什么只有一个仿射轨道？</h3>
+<p>直接取五次单位根群 <i>H</i> = {1,10,16,18,37}。表中四个五元集（各补入 0、1）依次等于 2<i>H</i>+9、5<i>H</i>+33、3<i>H</i>+12、11<i>H</i>+30。因此所有最优集恰为 <i>H</i> 的仿射像。若 <i>uH</i>+<i>v</i>=<i>H</i>，对集合元素求和。因 ∑<sub>x∈H</sub> <i>x</i>=0，得 5<i>v</i>=0，从而 <i>v</i>=0。此时 <i>uH</i>=<i>H</i> 当且仅当 <i>u</i>∈<i>H</i>。稳定子大小为 5，轨道大小为 41·40/5=328。</p>
+</section>
+<section id="cubic47"><h2>四十七元域上的一个自由仿射轨道</h2>
+<p>令 <i>F</i> = 𝔽₄₇，<i>A</i> = {0, 1, 3, 15, 33}。Dot 提出了这一五元集及其分类的穷举结果。下面从逐线判据复算，并用稳定子另行推导轨道大小。</p>
+<h3>三次曲线的最小值与全部最优参数集</h3>
+<p><i>B</i>(47, 3) = 5。最优集恰为 <i>uA</i> + <i>v</i>，其中 <i>u</i> ∈ <i>F</i><sup>×</sup>，<i>v</i> ∈ <i>F</i>。每对 (<i>u</i>, <i>v</i>) 给出不同的集合。</p>
+<p><strong>固定一个参数。</strong> 平移参数集保持阻塞性。任一非空解都能平移为含 0 的解。对每个这样的候选集 <i>S</i>，预先计算各斜率的值集 <i>V</i><sub>m</sub> = {<i>x</i>³ − <i>mx</i> : <i>x</i> ∈ <i>F</i>}。由仿射直线判据，对于斜率 <i>m</i>，能被截到的直线恰有截距 <i>b</i> ∈ ⋃<sub>s∈S</sub>(<i>V</i><sub>m</sub> − <i>s</i>)。对全部 47 个斜率，这个并集都等于 <i>F</i> 时记录 <i>S</i>。</p>
+<table><tr><th>参数个数</th><th>含 0 的候选集</th><th>其中能阻塞全部直线的集合</th></tr>
+<tr><td>4</td><td>C(46, 3) = 15,180</td><td>0</td></tr>
+<tr><td>5</td><td>C(46, 4) = 163,185</td><td>230（包含 <i>A</i>）</td></tr></table>
+<p>表中每行从其余 46 个元素中枚举相应大小的子集，再添入 0。若至多三个参数能阻塞，补足四个仍能阻塞，与第一行矛盾。第二行给出了五元解，故最小值为 5。</p>
+<p><strong>从 230 到 2,162。</strong> 计数带标记的解 (<i>S</i>, <i>s</i>)，其中 <i>S</i> 是五元解，<i>s</i> ∈ <i>S</i>。映射 (<i>S</i>, <i>s</i>) ↦ (<i>S</i> − <i>s</i>, <i>s</i>) 是到“含 0 的五元解 × <i>F</i>”的双射。每个 <i>S</i> 有五种标记，故五元解的总数是 230 · 47 / 5 = 2,162。</p>
+<p><strong>轨道与分类。</strong> gcd(3, 46) = 1，故每个非零 <i>u</i> 都是某个 <i>t</i>³。沿用四十一元域的坐标变换 (<i>x</i>, <i>y</i>) ↦ (<i>tx</i>, <i>uy</i> − <i>v</i>)，得到 <i>uA</i> + <i>v</i> 亦为解。<i>A</i> 的元素和为 52 ≡ 5 (mod 47)，重心为 1。保持 <i>A</i> 的仿射变换固定重心，因而形如 <i>x</i> ↦ 1 + <i>u</i>(<i>x</i> − 1)。其乘子构成 <i>F</i><sup>×</sup> 的子群，并在 <i>A</i> ∖ {1} 上自由作用，故阶整除 46 和 4。唯一可能的非平凡乘子是 −1，但它把 0 送到 2 ∉ <i>A</i>。稳定子遂为平凡群，轨道大小为 46 · 47 = 2,162，恰好穷尽全部最优解。</p>
+<p class="note">在仓库根目录运行 <code>python checks/cubic47.py</code> 可复核上表与仿射轨道。Lean 利用仿射对称性同时固定 0、1，在 990 个四元候选中得到 0 个解，在 14,190 个五元候选中得到 20 个解。上表列出的 230 个含 0 的解各含四个非零元素，乘法对称性使 46 个非零元素出现次数相同，故含 0、1 的解有 230 · 4 / 46 = 20 个。</p>
+</section>
+<section id="sextic32"><h2>三十二元域上的六次曲线</h2>
+<p><strong>命题。</strong> 在 𝔽₃₂ 上，<i>B</i>(32,6)=7。共有 10,912 个七元最优参数集，分成 11 个仿射轨道，每个轨道的稳定子均平凡。以下取 𝔽₂[<i>T</i>]/(<i>T</i>⁵+<i>T</i>²+1)，用五位二进制数表示按幂次递增排列的系数。{0,1,2,3,4,19,31} 是其中一个最优集。</p>
+<p>水平线由六次幂的双射性自动命中。置 <i>V</i>={ <i>x</i>⁶+<i>x</i> : <i>x</i>∈𝔽₃₂ }，则 |<i>V</i>|=16。每一非零斜率唯一写成 <i>c</i>⁵，换元 <i>x</i>=<i>cz</i> 把相应的直线条件化为 <i>S</i> 与 <i>c</i>⁶<i>V</i>+<i>b</i> 相交。由于六次幂也置换 𝔽₃₂<sup>×</sup>，这些集合就是 <i>V</i> 的全部仿射像。由 Ding–Tang [<a href="#ref-1">1</a>，推论 30]，它们构成已知的 3-(32,16,112) 设计。所求最小值因而也是该设计中击中全部区组所需的最少点数。</p>
+<table><tr><th>集合大小</th><th>固定 0 的解数 / 候选数</th><th>固定 0、1 的解数 / 候选数</th></tr>
+<tr><td>6</td><td>0 / 169,911</td><td>0 / 27,405</td></tr>
+<tr><td>7</td><td>2,387 / 736,281</td><td>462 / 142,506</td></tr></table>
+<p>第一列枚举对原始的 32² 条有限斜率直线逐条检验。第二列从 <i>V</i> 的仿射像生成区组，检验归一候选与每个区组的交集。两次枚举在同时含 0、1 的解上逐集相同。任意大小至多 6 的解可补足为六元解并平移至含 0，故第一行排除了所有较小解。</p>
+<p>数带一个标记点的七元解，得总数 2,387·32/7=10,912；数带两个有序标记点的解，同样得 462·32·31/(7·6)。逐一展开归一解的仿射轨道，得到 11 个两两不交的 992 元轨道，且其并等于全部解。在允许域自同构 <i>x</i>↦<i>x</i>² 的半线性仿射群 AΓL₁(32) 下，这 11 个轨道按 1+5+5 合并为三个，大小分别为 992、4,960、4,960。Dot 给出了此例及轨道数。<code>python checks/sextic32.py</code> 输出全部轨道代表和两次枚举结果。Lean 定理 <code>Sextic32.pencil_minimum</code> 核验射影原问题中的最小值 7，轨道分类的复现见上述程序。</p></section><section id="checks"><h2>两参数计数的有限核对</h2>
+<h3>一个可以逐线比较的实例</h3>
+<p>在 𝔽₄₇ 取 <i>S</i>={0,1,3,5}。开集有 43·42=1,806 个有序点对。程序用多项式模幂判别三轮换，得到 18 个同时不可约点对；换回原坐标并直接代入所有域元素，得到 9 条斜率形如 3<i>u</i>² 的遗漏直线，每条恰出现两次。对每对不同平移，另在全部斜率上得到 16·15=240 条遗漏直线。</p>
+<pre>python checks/cubic_pairs.py</pre>
+<p>程序还对 11、17、41 元域运行相同检验，并在全部四个域上遍历每个非零的双平移差。另在 𝔽₅ 固定斜率 1，截距 0 的遗漏集为 {2,3}，与截距 1、2 两线的遗漏集分别交于 {2}、空集。这给出 固定次数篇 §12.1 双线截距求和中的两个不同项。固定次数篇 §9的一阶维数估计及固定次数篇定理 3 的渐近量词由证明给出。</p>
+<h3>配置空间上的有限线性代数检查</h3>
+<p><code>python checks/cubic_cohomology.py</code> 只施加异指标交换关系，构造包含真实余循环空间的解空间，扣除余边界。模 101 消元只会降低整系数关系矩阵的秩，且余边界秩在此特征保持。默认遍历 ℓ=1,…,6 的全部 83 个张量类型（按因子置换合并），逐项检查符号因子细分及总和。这个计算用来检出符号与维数计数错误，任意 ℓ 的结论由固定次数篇 §9证明。</p>
+</section>
+<section id="references"><h2>参考文献</h2>
+<div class="ref"><p id="ref-1">[1] C. Ding, C. Tang. <i>Infinite families of 3-designs from o-polynomials</i>. Adv. Math. Commun. 15 (2021), 557–573，推论 30。<a href="https://cse.hkust.edu.hk/faculty/cding/JOURNALS/amc211.pdf#page=14">Segre 六次式的设计</a>。</p></div>
+</section>
+
+</body></html>
