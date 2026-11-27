@@ -27,6 +27,12 @@ $$
 
 例如 $q=81=3^4$，$D=40$。在 $\mathbb F_3$ 中一次幂满射，二次幂的值集为 $\{0,1\}$，需要两个平移。因此 $B(81,40)=27$，$B(81,80)=54$。
 
+## 扩张次数的整除二分律
+
+固定 $m\ge2$，设 $m\mid s-1$、$q=s^n$、$n\ge1$，取 $d=s+(q-1)/m$。定理 10 给出 $m\mid n$ 时 $B(q,d)=\Theta_m(ns)$，$m\nmid n$ 时 $B(q,d)=\Theta_m(\log q)$。常数对底域和扩张次数一致。整除侧有显式下界 $1+n(s-1)/m$。非整除侧对每组至多 $\log q/(32m^2\log m)$ 个参数都能找到遗漏直线，一个统一的充分条件为 $\log q\ge16384m^5$。[定理与迹投影](Manuscript.html#extension-dichotomy) · [共同换元与字符和](Manuscript.html#phase-weil) · [退化分支](Manuscript.html#phase-independence)
+
+取任意奇素数幂 $t$（例如 $5^k$）、$q=t^6$、$m=2$。在同一有限域上，指数 $(q-1)/2+t^3$ 与 $(q-1)/2+t^2$ 都给出置换，前者的阻塞数恰为 $\sqrt q$，后者为 $\Theta(\log q)$。两者的水平线均只需一次平移。对任意奇素数幂 $s$，二次公式 $B(s^2,s+(s^2-1)/2)=s$ 已由 Lean 无条件验证。整除侧的整条 $\Theta_m(ns)$ 双边界和非整除侧的对数上界也已无条件形式化。非整除侧对数下界中的逐项 Weil 界及其完整应用仍见手稿。[同域对照](Manuscript.html#phase-exact) · [二次射影最小值](lean/PhaseQuadratic.lean) · [形式化范围](lean/README.md#扩张次数的整除二分律)
+
 ## 固定次数的上界系数
 
 令 $L=\log q$、$r=\gcd(d,q-1)$。当 $p\nmid d(d-1)$ 时，令 $\delta_d$ 为 $S_d$ 中错排的比例，$\lambda=\log(1/\delta_d)$。若 $r>1$，再令 $\mu=\log(r/(r-1))$。分斜率取样配合一次共同补点给出
@@ -79,7 +85,9 @@ Lean 4.8.0 核验了表中的最小值，以及 $q=8,41,47$ 的最优解计数�
 python3 checks/verify_lean.py --serial
 ~~~
 
-GitHub Actions 直接运行上述验证程序（其中包含 `lake build`），随后用 Python 标准库运行六项独立检查。模 47 的枚举固定一个参数，Lean 证书固定两个参数。两条路径分别给出 230 个含 0 的五元解和 20 个含 0、1 的五元解。矩阵程序检查 $\ell\le6$ 的全部 83 种张量类型。[验证工作流](.github/workflows/verify.yml) · [模 47 枚举](checks/cubic47.py) · [固定斜率](checks/cubic_slope.py) · [两参数与逐线计数](checks/cubic_pairs.py) · [上同调矩阵](checks/cubic_cohomology.py) · [二次范数的 26,960 组交叉核对](checks/norm_quadratic.py)
+GitHub Actions 直接运行上述验证程序（其中包含 `lake build`），随后用 Python 标准库运行七项独立检查。模 47 的枚举固定一个参数，Lean 证书固定两个参数。两条路径分别给出 230 个含 0 的五元解和 20 个含 0、1 的五元解。矩阵程序检查 $\ell\le6$ 的全部 83 种张量类型。[验证工作流](.github/workflows/verify.yml) · [模 47 枚举](checks/cubic47.py) · [固定斜率](checks/cubic_slope.py) · [两参数与逐线计数](checks/cubic_pairs.py) · [上同调矩阵](checks/cubic_cohomology.py) · [二次范数的 26,960 组交叉核对](checks/norm_quadratic.py)
+
+第 22 节的独立程序重建有限域与直线方程。在 27 元域遍历全部非零斜率、平移与换元参数，核对 18,954 组候选原像。125 元域的合数指标 $m=4$ 给出另 62,500 组纤维检查，覆盖全部四个斜率范数。在同一 15,625 元域，直接检查二次构造覆盖全部斜率，并检查三次扩张中每个非零斜率轨道的像集。[二分律的有限核对](checks/phase_dichotomy.py)
 
 ## 彩蛋
 

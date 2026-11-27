@@ -28,4 +28,9 @@ lean_lib BlockingCurves where
     `NormSmall, `NormSmallMinimum, `NormSmallOdd, `PencilAsymptotic,
     `PencilCharacterCollisions, `PencilCollisionCover, `PencilFrobeniusCount, `PencilHorizontal,
     `PencilPaperBounds, `PencilRepairBranch, `PencilRepairBranchField, `PencilRepairBranchGeometry,
-    `PencilRepairSize, `PencilSampling, `PencilVariableGrowth, `PencilBoundedIndices]
+    `PencilRepairSize, `PencilSampling, `PencilVariableGrowth, `PencilBoundedIndices,
+    `PhaseBlockCover, `PhaseBranches, `PhaseCharacterBudget,
+    `PhaseCharacterOrthogonality, `PhaseCommonVariable, `PhaseConjugateOperators,
+    `PhaseDirectionSampling, `PhaseDividingMinimum, `PhaseDividingUpper,
+    `PhaseEigenFibres, `PhaseNormSlice, `PhasePointCover,
+    `PhaseQuadratic, `PhaseRootMultiplicity, `PhaseTraceLower]

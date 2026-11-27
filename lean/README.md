@@ -55,6 +55,18 @@
 
 小奇数域证书枚举底域判别式，并将九个具体域模型的结果传输到任意同阶域。Python 独立程序直接枚举二次扩域的坐标，检查 26,960 组指数与非零斜率。[内核判据](NormSmall.lean) · [射影语义](NormSmallMinimum.lean) · [独立枚举](../checks/norm_quadratic.py)
 
+## 扩张次数的整除二分律
+
+定理 10 取 $q=s^n$、$m\mid s-1$、$d=s+(q-1)/m$。下表中的“无条件”只保留相应数学陈述里的域阶和整除条件。[手稿第 22 节](../Manuscript.html#extension-dichotomy)
+
+| 结论 | Lean 核验范围与入口 |
+| --- | --- |
+| 二次精确值，非整除侧上界，整除侧下界 | **无条件。** 全部奇数 $s$ 的二次射影最小值为 $s$，且幂映射是对合。所有 $m\nmid n$ 有 $B\le2m\log(2q)+1$，所有 $m\mid n$ 有 $B\ge 1+n(s-1)/m$。另已证 $m^2\mid s-1$ 时为置换。[二次最小值](PhaseQuadratic.lean) · [可逆分支与取样](PhaseBranches.lean) · [迹投影下界](PhaseTraceLower.lean) |
+| 整除侧完整的 $\Theta_m(ns)$ | **无条件。** 对仿射取样得到固定方向的空交概率和奇异分支的横截计数。令 $A=1+2m^2$，当 $s\ge A^2$ 时 $4n+1$ 个区组足够；较小的底域由次数 $sm$ 的多项式给出单点下界。定理 `divisible_pencil_minimum_bounds` 在独立的射影最小值上合并两侧，显式上界为 $[2m(1+A^2)+1]ns$。[方向二阶矩](PhaseDirectionSampling.lean) · [奇异分支](PhaseDividingUpper.lean) · [区组取样](PhaseBlockCover.lean) · [单点补界](PhasePointCover.lean) · [双边主定理](PhaseDividingMinimum.lean) |
+| 大 $n$ 的共同换元与退化分支 | 已证明存在同一斜率，使全部分支可逆或只剩唯一退化分支。实际候选清单的总数至多为 $2m\ell$。所有有理原像的等价式、奇异纤维的 $0$ 或 $s$ 个原像、错配特征值给出真实漏线、乘积核的内直和、候选零点的单坐标条件均已证。实际候选多项式的可分性和用根重数排除 $m$ 次幂的判据单列。[实际纤维与漏线](PhaseCommonVariable.lean) · [本征空间](PhaseEigenFibres.lean) · [多项式与重数](PhaseRootMultiplicity.lean) |
+| 有界 $n$ 的切片 | **无条件的代数步骤。** 对所选范数，Lean 证明不同的 Frobenius 共轭逆算子不成比例，包含 $n=2$ 的特殊比较。对不同的归一化仿射映射，沿任意给定非零方向可同时分开全部根，其条件为指标数的平方小于 $s$。[算子刚性](PhaseConjugateOperators.lean) · [固定方向避碰](PhaseNormSlice.lean) |
+| $\ell$ 随 $\log q$ 增长的非整除侧下界 | **从逐项字符和估计到正计数的条件式定理。** 对真实乘法特征的 $M$ 个指定值，若每个非平凡完整和至多为 $W$，删去 $Z$ 个异常参数，计数与 $Q/m^M$ 的差至多为 $W+2Z$。两段参数预算直接给出正则见证。逐项一元 Weil 界及两种具体多项式族与该完整计数定理的全套拼接仍由手稿给出；整个非整除侧下界尚无端到端 Lean 定理。显式域阶阈值 $\log q\ge16384m^5$ 同时保证切片有足够空间及主项超过误差。[字符正交展开](PhaseCharacterOrthogonality.lean) · [一致数值阈值](PhaseCharacterBudget.lean) |
+
 ## 第 17 节的函数域输入
 
 设 $F=\mathbb F_q$，$K/F(t)$ 为为每条残余线添入相应三次方程的一个根得到的 Laurent 分支，$K_S$ 为只添入 $S$ 中各根的子域。$K$ 及每个 $K_S$ 的全常数域均为 $F$。Lean 已识别 $K_{S\cup T}$ 内两个真实子域的合成以及两侧的相对次数。[Laurent 分支](CubicRepairBranch.lean) · [子域与相对次数](CubicStageFields.lean)

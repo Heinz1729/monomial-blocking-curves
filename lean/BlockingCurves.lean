@@ -23,6 +23,21 @@ import Sextic32Global
 import NormPowerMinimum
 import PencilBoundedIndices
 import PencilPaperBounds
+import PhaseBlockCover
+import PhaseBranches
+import PhaseCharacterBudget
+import PhaseCharacterOrthogonality
+import PhaseCommonVariable
+import PhaseConjugateOperators
+import PhaseDirectionSampling
+import PhaseDividingMinimum
+import PhaseDividingUpper
+import PhaseEigenFibres
+import PhaseNormSlice
+import PhasePointCover
+import PhaseQuadratic
+import PhaseRootMultiplicity
+import PhaseTraceLower
 
 /-! Build entry point and kernel dependency audit for the results in the manuscript. -/
 #print axioms BlockingCurves.projective_prime_power_minimum
@@ -187,3 +202,40 @@ import PencilPaperBounds
 #print axioms BlockingCurves.PencilRepairBranch.commonHit_of_classical_bounds
 #print axioms BlockingCurves.PencilRepairSize.point_budget
 
+#print axioms BlockingCurves.ExtensionPhase.branch_injective_iff_norm_ne
+#print axioms BlockingCurves.ExtensionPhase.singular_fibre_card
+#print axioms BlockingCurves.ExtensionPhase.primitive_norm_slope
+#print axioms BlockingCurves.ExtensionPhase.twist_permutation_of_square_dvd
+#print axioms BlockingCurves.ExtensionPhase.nondividing_projective_upper
+#print axioms BlockingCurves.ExtensionPhase.frobenius_inverse_conjugates
+#print axioms BlockingCurves.PhaseTraceLower.divisible_projective_lower_rounded
+#print axioms BlockingCurves.PhaseDirection.affine_variance
+#print axioms BlockingCurves.PhaseDirection.fixed_empty_fraction
+#print axioms BlockingCurves.PhaseDividing.singular_empty_fraction
+#print axioms BlockingCurves.PhaseDividing.frobenius_block_bound
+#print axioms BlockingCurves.PhaseDividing.projective_block_sampling
+#print axioms BlockingCurves.PhaseDividing.cyclotomic_block_bound
+#print axioms BlockingCurves.PhaseDividing.large_ground_projective_upper
+#print axioms BlockingCurves.PhaseDividing.uniform_projective_upper
+#print axioms BlockingCurves.PhaseDividing.divisible_pencil_minimum_bounds
+#print axioms BlockingCurves.PhasePointCover.point_upper
+#print axioms BlockingCurves.PhasePointCover.small_base_upper
+#print axioms BlockingCurves.PhaseQuadratic.power_involutive
+#print axioms BlockingCurves.PhaseQuadratic.projection_blocks
+#print axioms BlockingCurves.PhaseQuadratic.minimum
+#print axioms BlockingCurves.PhaseQuadratic.same_field_comparison
+#print axioms BlockingCurves.PhaseNormSlice.conjugate_roots_separate
+#print axioms BlockingCurves.PhaseCommonVariable.simultaneous_actual_fibres
+#print axioms BlockingCurves.PhaseCommonVariable.root_determines_shift
+#print axioms BlockingCurves.PhaseCommonVariable.wrong_classes_miss
+#print axioms BlockingCurves.PhaseCommonVariable.rational_candidate_budget
+#print axioms BlockingCurves.PhaseCommonVariable.ker_productEnd_iff
+#print axioms BlockingCurves.PhaseCommonVariable.eigen_coordinates_unique
+#print axioms BlockingCurves.PhaseCommonVariable.candidate_on_eigen_box
+#print axioms BlockingCurves.PhaseCommonVariable.candidatePolynomial_separable
+#print axioms BlockingCurves.PhaseCommonVariable.candidatePolynomial_root_on_box
+#print axioms BlockingCurves.PhaseCharacter.weights_vanish_with_one_full_branch
+#print axioms BlockingCurves.PhaseCharacter.not_power_of_coordinate_roots
+#print axioms BlockingCurves.PhaseCharacter.character_count_full_main
+#print axioms BlockingCurves.PhaseCharacter.logarithmic_character_witness
+#print axioms BlockingCurves.PhaseCharacter.explicit_field_threshold
