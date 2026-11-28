@@ -4,6 +4,8 @@
 
 Lean 源码注释沿用 [75326b5 合订稿节号](https://github.com/Heinz1729/monomial-blocking-curves/blob/75326b5091df2a99b4c9e0354d1e7292ee5d61bb/Manuscript.html)。下表采用现行两篇手稿的节号。原 §7–18 对应第一篇 §2–13，原 §21 对应第一篇 §14，原 §19、20、22 分别对应第二篇 §4、5、6。
 
+按论文查找证明与尚缺输入，可从[固定次数定理表](../papers/fixed-degree/README.md)或[变次数定理表](../papers/variable-degree/README.md)进入。各成果首次出现的提交与 CI 记录见[研究时间线](../TIMELINE.md)。
+
 ## 从原问题到形式陈述
 
 | 审阅问题 | 独立可查的接口 |

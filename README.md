@@ -1,70 +1,52 @@
 # 有限域上单项式曲线的竖直平移与阻塞数
 
-在 $`\mathbb{F}_q`$ 上，$`B(q,d)`$ 是使曲线 $`YZ^{d-1}=X^d-\alpha Z^d`$ 的有理点并集遇到每条有理射影直线所需的最少参数数目。两篇手稿分别研究固定次数和随域阶变化的次数，共用一套射影问题陈述与可执行证书。署名 GPT-Astra（AI）。[AGY 问题 5.4](https://arxiv.org/html/2510.15332v2#S5) · [独立形式陈述](lean/ProblemStatement.lean)
+在有限射影平面中，至少需要多少条曲线的竖直平移，才能使每条有理直线都与其中一条曲线相交？第一篇固定曲线次数，研究阻塞数随域阶的增长；第二篇让次数也变化，研究哪些曲线族有精确最小值，以及扩张次数如何改变增长阶。[AGY 问题 5.4](https://arxiv.org/html/2510.15332v2#S5) · [独立射影陈述](lean/ProblemStatement.lean)
 
-[成果与核验状态](STATUS.md) 按具体定理列出 **Solved**（Lean 已证）、**Conditional**（含明示的数学输入）和 **Open**（尚缺的形式化步骤或未决的数学问题）。
+**证明冻结于 [768cfbb](https://github.com/Heinz1729/monomial-blocking-curves/commit/768cfbb8db344f3e7749e5061370a7493321cca6)。** [完整研究时间线](TIMELINE.md) 按北京时间列出从首稿到冻结版的 21 次提交，逐次链接当时的手稿、证明或审计记录。[成果状态总览](STATUS.md) 汇集两篇的分类索引及共享有限证书。
 
-| 手稿 | 主要问题 | 全文 |
-| --- | --- | --- |
-| **I　单项式曲线竖直平移的阻塞数：固定次数的对数界** | 固定 $`d`$、令 $`q`$ 增长时的对数阶，以及三次置换族的上下界 | [排版 PDF](Manuscript.pdf) · [HTML 源码](Manuscript.html) |
-| **II　变次数单项式曲线的阻塞数：范数幂与扩张次数的整除律** | 同一有限域上哪些次数有可精确计算的最小值，何时出现不同增长阶 | [排版 PDF](VariableDegree.pdf) · [HTML 源码](VariableDegree.html) |
+| 状态 | 含义 |
+| --- | --- |
+| **Solved** | Lean 在列明的域、次数等假设下证明了这项结论。 |
+| **Conditional** | Lean 证明了从所列数学输入到结论的推导。 |
+| **Open** | 分别注明尚缺的 Lean 形式化步骤，以及手稿仍未解决的数学问题。 |
 
-可在 GitHub 直接阅读排版 PDF。下文的章节链接指向 HTML 源码，下载对应文件并用浏览器打开即可阅读公式和使用文内目录。
+<a name="一般次数与精确值"></a>
 
-第一篇英文预印本以图像族和尖点族为主线，给出固定次数的全特征对数阶、三次置换的 $`1/\log 4`$ 下界，以及同域同次数下 $`3`$ 对 $`2s-1`$、$`4`$ 对 $`3s-2`$ 的精确比较。英文署名为 GPT-6.2 Astra（AI）。[英文论文](papers/FixedDegreePencils.pdf) · [LaTeX 源码](papers/FixedDegreePencils.tex) · [投稿要点](papers/FixedDegreePencils-highlights.txt)
+## 第一篇 · 固定次数与尖点族
 
-定理 6 的英文独立稿集中讨论分段 Frobenius 图像的系数周期、同步斜率和随平移数增长的误差。可直接阅读 PDF，或由同目录的单文件 LaTeX 源码复现。中文第二篇保留范数幂等完整结果。[英文论文](papers/CoefficientPeriods.pdf) · [LaTeX 源码](papers/CoefficientPeriods.tex) · [投稿用研究要点](papers/CoefficientPeriods-highlights.txt)
+[第一篇目录与全部定理](papers/fixed-degree/README.md) · [中文 PDF](Manuscript.pdf) · [英文 PDF](papers/fixed-degree/FixedDegreePencils.pdf) · [LaTeX 源码](papers/fixed-degree/FixedDegreePencils.tex)
 
-## 一般次数与精确值
+| 状态 | 代表性结果 | 手稿 | Lean 证明或已有步骤 |
+| --- | --- | --- | --- |
+| [Solved](papers/fixed-degree/README.md#solved) | 在同一域取相同次数 $`d=s`$。二次扩张上，尖点族和图像族分别需要 3 和 $`2s-1`$ 条；三次扩张且 $`s\ge4`$ 时分别需要 4 和 $`3s-2`$ 条。 | [定理 6](Manuscript.html#L261) | [二次比较](lean/CuspidalNormMinimum.lean#L129) · [三次比较](lean/CuspidalNormMinimum.lean#L140) |
+| [Conditional](papers/fixed-degree/README.md#conditional) | $`p\gt3`$、$`q\equiv2\bmod3`$ 时，三次置换图像族下界的首项系数为 $`1/\log4`$。形式证明使用正特征曲面上的单值、迹公式与权界。 | [定理 3](Manuscript.html#L122) | [几何输入及下界](lean/CubicSurfaceTrace.lean#L395) |
+| [Conditional](papers/fixed-degree/README.md#conditional) | 一般尖点族的全特征下界已归约到 Castelnuovo–Severi 与 Hasse–Weil 两项曲线不等式；下降与逐坐标特化已证。 | [定理 5](Manuscript.html#L244) | [实际有理位置的特化](lean/CuspidalRationalSpecialization.lean#L107) · [条件式下界](lean/CuspidalDescendedLower.lean#L61) |
+| [Open](papers/fixed-degree/README.md#open) | **形式化。** 固定次数图像族的全特征下界已有纸面证明，实际野覆盖到下界的完整 Lean 推导仍缺。**数学问题。** 三次置换族的最优首项常数仍未知。 | [全特征定理](Manuscript.html#L78) · [首项常数](Manuscript.html#L167) | [陪集错排](lean/FrobeniusCoset.lean#L33) · [误差窗口](lean/FixedDegreeBudget.lean#L12) · [三次上界](lean/CubicCovering.lean#L148) |
 
-第一篇给出固定 $`d\ge2`$ 时所有特征上的 $`B(q,d)=\Theta_d(\log q)`$。AGY 已证明一般上界。下界的难点出现在只有一个公共野分支点时。此时在几何群中构造单群基座的直积，在指定的算术 Frobenius 陪集中同时实现错排，再用扭曲的有理点得到漏线。修订后的逐根亏格估计为 $`2g_\ell\le\ell(d-1)\lvert H\rvert`$，其中 $`H`$ 为几何复合群。得出的下极限系数至少为 $`1/(2\log(d!))`$。这部分的实际覆盖、亏格及扭曲属于纸面证明。[第一篇定理 2](Manuscript.html#all-characteristics) · [证明复核记录](REVIEW.md)
+<a name="次数随域阶增长"></a>
+<a name="扩张次数的整除二分律"></a>
+<a name="分段线性置换的系数判据"></a>
 
-令 $`L=\log q`$。在 $`p\gt 3`$、$`q\equiv2\pmod{3}`$ 的三次置换族，第一篇给出的充分大域阶上的界为
+## 第二篇 · 变次数、范数幂与系数周期
 
-```math
-\frac{L-2\log L}{\log 4}-5\lt B(q,3)\le\frac{2L-\log L}{\log 3}+17.
-```
+[第二篇目录与全部定理](papers/variable-degree/README.md) · [中文 PDF](VariableDegree.pdf) · [英文 PDF](papers/variable-degree/CoefficientPeriods.pdf) · [LaTeX 源码](papers/variable-degree/CoefficientPeriods.tex)。中文稿包含定理 1–6，英文独立稿集中讨论定理 6 的系数周期及其应用。
 
-奇特征的 $`1/\log 4`$ 使用两参数曲面的迹估计。特征 2 的置换族由固定斜率的一维野导子估计给出 $`1/\log 16`$。两条下界所需的几何输入不同。三次情形的真正首项常数仍待确定。[第一篇定理 3](Manuscript.html#cubic-two-parameters) · [特征 2](Manuscript.html#cubic-char2) · [固定次数的分斜率上界](Manuscript.html#split-upper)
-
-对有限尖点的三次族 $`(Y+\alpha Z)^2 Z=X^3`$，第一篇定理 4 将全部射影漏线与原曲面上的有序配置逐一对应。误差对 $`\ell\le c\log q`$、$`c\lt 1/\log 4`$ 保持一致。十一元域中，尖点族只需 3 个平移，原图像族需要 4 个。[尖点族与仿射图样](Manuscript.html#cuspidal-translates) · [Lean 计数恒等式](lean/CuspidalTransfer.lean)
-
-尖点族的全特征对数下界仍是 **Conditional**。Lean 已在实际复合分裂域上构造 Frobenius 扭曲的不动域，证明扩常数恢复原覆盖、覆盖次数及几何亏格相等，并在每个好有理位置证明两种根置换逐坐标共轭，从而把同时错排接到漏线判据。剩余的两项输入是逐根塔上的 Castelnuovo–Severi 不等式和该扭曲上的 Hasse–Weil 有理点下界。给定这两项，Lean 得出对所有 $`\ell\le c\log q`$ 一致的阈值，适用于 $`0\lt c\lt 1/(2\log(d!))`$。[扭曲下降](lean/CuspidalTwistDescent.lean) · [逐位置特化](lean/CuspidalRationalSpecialization.lean) · [下界定理](lean/CuspidalDescendedLower.lean)
-
-## 次数随域阶增长
-
-设 $`\tau_s(m)`$ 为 $`\mathbb{F}_s`$ 中 $`m`$ 次幂值集的最少平移覆盖数。当 $`q=s^n`$、$`n\ge2`$、$`D=(q-1)/(s-1)`$ 时，有精确公式 $`B(q,mD)=s^{n-1}\tau_s(m)`$。特别地，$`B(q,D)=s^{n-1}`$。对于任意次数，第二篇还用 $`h=\gcd(d-1,q-1)`$ 控制从水平覆盖扩充到射影阻塞集所需的额外参数数目。[第二篇定理 3](VariableDegree.html#variable-degree) · [第二篇定理 4](VariableDegree.html#norm-family)
-
-## 扩张次数的整除二分律
-
-固定 $`m\ge2`$，设 $`m\mid s-1`$、$`q=s^n`$、$`d=s+(q-1)/m`$。当 $`m\mid n`$ 时 $`B(q,d)=\Theta_m(ns)`$，当 $`m\nmid n`$ 时 $`B(q,d)=\Theta_m(\log q)`$。在同一个 $`q=t^6`$ 上，对任一奇素数幂 $`t`$，指数 $`(q-1)/2+t^3`$ 的阻塞数恰为 $`\sqrt q`$，指数 $`(q-1)/2+t^2`$ 的阻塞数为对数阶，两者都是置换。非整除侧下界的完整字符和证明见正文。[第二篇定理 5](VariableDegree.html#extension-dichotomy) · [字符和与退化原像](VariableDegree.html#phase-weil) · [精确值与同域对照](VariableDegree.html#phase-exact)
-
-## 分段线性置换的系数判据
-
-第二篇定理 6 允许不同乘法陪集使用同一底域系数。在 $`\mathbb{F}_{s^n}`$ 的 $`m`$ 个非零标号陪集上分别取 $`f(x)=c_jx^s`$，设至少有两个不同的非零系数。令 $`h`$ 为全部系数比生成的子群阶。若 $`h\mid n`$，则 $`B(f)=\Theta_m(ns)`$；若 $`h\nmid n`$，则 $`B(f)=\Theta_m(\log q)`$。常数对系数表一致。仅用平方类和非平方类两个分支即可实现任意周期 $`h\ge3`$。当 $`q=t^6`$、$`t\equiv1\bmod 6`$ 时，三阶系数产生阻塞数分别为 $`\Theta(t^2)`$ 与 $`\Theta(\log q)`$ 的两种非单项式置换。[系数周期与证明](VariableDegree.html#coefficient-period) · [重复标号与例子](VariableDegree.html#coefficient-escape)
+| 状态 | 代表性结果 | 手稿 | Lean 证明或已有步骤 |
+| --- | --- | --- | --- |
+| [Solved](papers/variable-degree/README.md#solved) | 对 $`q=s^n`$、$`n\ge2`$、$`m\ge1`$，取 $`D=(q-1)/(s-1)`$，则 $`B(q,mD)=s^{n-1}\tau_s(m)`$，其中 $`\tau_s(m)`$ 是底域中幂值集的最少平移覆盖数。 | [定理 4](VariableDegree.html#L73) | [范数幂最小值](lean/NormPowerMinimum.lean#L46) |
+| [Solved](papers/variable-degree/README.md#solved) | 分段 Frobenius 图像的系数周期整除扩张次数时，有匹配的上下界；非整除侧的对数上界也已证明。 | [定理 6](VariableDegree.html#L147) | [整除侧](lean/PiecewiseSyncUpper.lean#L165) · [非整除侧上界](lean/PiecewiseFrobenius.lean#L255) |
+| [Conditional](papers/variable-degree/README.md#conditional) | 非整除侧取得匹配的对数下界还使用一元乘法特征 Weil 界。重复系数、退化分支的全部原像及随平移数增长的误差已纳入 Lean 推导。 | [字符和下界](VariableDegree.html#L157) | [精确输入](lean/PiecewiseMinimum.lean#L48) · [最小值](lean/PiecewiseMinimum.lean#L56) |
+| [Open](papers/variable-degree/README.md#open) | **数学问题。** 所有非恒等置换单项式的统一上界能否从 $`O(\sqrt q\log q)`$ 降为 $`O(\sqrt q)`$？二次精确族已经达到平方根阶。 | [上界与问题](VariableDegree.html#L142) | [像集估计](lean/PencilCollisionCover.lean#L140) · [二次精确值](lean/PhaseQuadratic.lean#L206) |
 
 ## 证明审阅与复现
 
-| 结论 | 当前可核验的范围 |
-| --- | --- |
-| 全特征对数下界 | 纸面证明。Lean 已证抽象二重传递陪集的错排存在性和数值阈值。 |
-| 三次下界 $`1/\log 4`$、$`1/\log 16`$ | Lean 从实际计数与明确的几何前提推出数值下界。具体覆盖上的正特征比较、迹与权、野导子的实现见第一篇。 |
-| 三次上界 | $`q\equiv2\bmod 3,\ q\ge16`$ 时的 $`2L/\log 3+8`$ 为无条件 Lean 结论。带 $`-\log L`$ 的上界在 $`L\le3^9`$ 时也已无条件形式化，全域版本接收所选根域的 Castelnuovo–Severi 与 Hasse–Weil 输入。 |
-| 范数幂与分圆 Frobenius 族 | 整个范数幂公式、整除侧双边界、非整除侧上界和二次精确值均有无条件 Lean 定理。单项式的非整除侧下界见正文 §6。§7 的系数表形式化在一元乘法字符 Weil 界下证得一般分段图的最小值下界。 |
-| 有限尖点三次族 | Lean 无条件证明漏线与有序对的计数恒等式。渐近下界沿用原曲面的几何输入。十一元域的两个最小值有独立穷举。 |
-| 一般分段 Frobenius 系数表 | 整除侧匹配上下界和非整除侧上界均已无条件接到实际最小值。非整除侧下界的唯一外部数学输入是一元乘法字符 Weil 界。重复系数、奇异分支的全部原像、几何非幂性、范数切片和一致对数误差已由内核核验。[定理 6 的形式陈述](lean/PiecewiseMinimum.lean) |
+[四个有限域的最小值和轨道证书](STATUS.md#有限域证书) · [原始计算附录](FiniteCertificates.pdf) · [纸面证明审阅记录](REVIEW.md) · [Lean 声明与依赖索引](lean/README.md) · [全仓公理及哈希记录](lean/verification.txt)
 
-审阅说明逐行对应了 71 行的三次计数模块，并列明有限分支、无穷远分支、常数域、扭曲和误差对 $`\ell`$ 依赖的检查位置。两篇稿件尚待独立人类专家审阅。[审阅说明](REVIEW.md) · [Lean 定理与前提索引](lean/README.md) · [公理与源码哈希](lean/verification.txt)
-
-四组小域证书集中在计算附录。Lean 证明 $`B(8,2)=4`$、$`B(32,6)=7`$、$`B(41,3)=B(47,3)=5`$，并给出 8、41、47 元域上的最优解数 56、328、2,162。32 元域的 10,912 个最优解与 11 个仿射轨道由两套 Python 穷举交叉核对。[有限证书与复算（PDF 阅读）](FiniteCertificates.pdf) · [HTML 源码](FiniteCertificates.html) · [32 元域程序](checks/sextic32.py)
-
-在仓库根目录运行
+在仓库根目录执行以下命令，可用锁定的 Lean 4.8.0 和 mathlib 复验全部声明。白名单为 `Classical.choice`、`Quot.sound`、`propext`。
 
 ~~~sh
 (cd lean && lake exe cache get)
 python3 checks/verify_lean.py --serial
 ~~~
 
-GitHub Actions 使用运行器默认栈执行串行构建和公理审计，再运行八项独立有限检查。允许的公理为 `Classical.choice`、`Quot.sound`、`propext`。[工作流](.github/workflows/verify.yml) · [验证器](checks/verify_lean.py) · [最近运行](https://github.com/Heinz1729/monomial-blocking-curves/actions/workflows/verify.yml)
-
-原合订稿的 §7–18、§21 对应第一篇 §2–13、§14，§19–20、§22 对应第二篇 §4–6。旧记录和讨论可按提交定位。[原合订稿](https://github.com/Heinz1729/monomial-blocking-curves/blob/75326b5091df2a99b4c9e0354d1e7292ee5d61bb/Manuscript.pdf) · [RMM 2026 中文答卷](bonus/RMM-2026-中文答卷.pdf)
+[默认栈工作流](.github/workflows/verify.yml) · [冻结证明的成功运行](https://github.com/Heinz1729/monomial-blocking-curves/actions/runs/46117024003) · [独立有限计算](checks/) · [RMM 答卷（附录外）](bonus/RMM-2026-中文答卷.pdf)
