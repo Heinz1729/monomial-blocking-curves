@@ -105,7 +105,9 @@ Lean 源码注释沿用 [75326b5 合订稿节号](https://github.com/Heinz1729/m
 | 结论 | 无条件 Lean 核验 | 纸面几何输入 |
 | --- | --- | --- |
 | 尖点固定次数上界 | 齐次射影定义、几何不可约性、每个斜率的纤维界及所有域阶的对数上界。[几何](CuspidalGeometry.lean) · [上界](CuspidalGeneralUpper.lean) | 无 |
-| 一般尖点下界 | 斜率避碰、有限群中的单坐标惯性与错排、随平移数增长的正性预算。[分支](CuspidalGeneralBranch.lean) · [惯性与陪集](CuspidalGeneralInertia.lean) · [统一误差](FixedDegreeBudget.lean) | 实际分裂域中惯性的实现、复合曲线亏格、扭曲和 Hasse–Weil 点数。 |
+| 尖点族的零纤维 | 实际复合分裂域的赋值惯性群逐点固定其余坐标及其生成域。约化到斜率的根唯一，约化到零的根计重有 $`d-1`$ 个。[分支赋值](CuspidalFinitePlace.lean) · [惯性](CuspidalRootInertia.lean) · [全部根的约化](CuspidalZeroCluster.lean) | 无特征限制。 |
+| 尖点族的几何置换 | 选定坐标的剩余因子在 Laurent 域上 Eisenstein 不可约且可分，其他坐标的单根提升到幂级数环。将局部自同构限制到同一个全局分裂域，得到几何错排所需的单坐标置换。[局部因子](CuspidalLocalFactor.lean) · [Hensel 提升](CuspidalLiftedSheets.lean) · [全局作用](CuspidalSheetAction.lean) | 此限制构造直接证明全局置换的作用。把限制像等同于某个预先指定赋值的整个惯性群，是单独的局部域识别。 |
+| 一般尖点下界与统一误差 | 从逐根次数和逐层亏格不等式推出几何次数及亏格预算。给定 $`c\log(d!)\lt 1/2`$、$`c\gt 0`$，同一阈值涵盖所有 $`\ell\le c\log q`$ 的平移集、斜率避碰及分支删点。[根塔与窗口](CuspidalTowerBudget.lean) · [下界接口](CuspidalGeometricLower.lean) | 将实际函数域的根塔次数与亏格接入逐步 Castelnuovo–Severi；算术扭曲的构造、Hasse–Weil 界、有理纤维次数和 Frobenius 特化。 |
 | 图像族全特征下界与三次 $`1/\log4`$ | 图像漏线归约、抽象余循环的维数及给定几何输入后的迹与常数推导。[三次曲面](CubicSurfaceTrace.lean) | 野分支的单群分类与几何实现；三次情形的具体单值、正特征比较和迹权界。 |
 | 两组精确比较 | 范数球面漏线判据、三次扩张任意三点共球、达到最小值的参数集、同一域上图像族的精确最小值及非平凡性。[球面](CuspidalNorm.lean) · [三点](CuspidalCubicSphere.lean) · [精确值](CuspidalNormMinimum.lean) · [非平凡性](CuspidalNontrivial.lean) | 无 |
 

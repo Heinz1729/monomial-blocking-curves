@@ -21,6 +21,27 @@ BlockingCurves.CuspidalGeneral.exists_separating_slope  [Classical.choice, Quot.
 BlockingCurves.CuspidalGeneral.independent_inertia_derangements  [Classical.choice, Quot.sound, propext]
 BlockingCurves.CuspidalGeneral.rational_root_fixed  [Classical.choice, Quot.sound, propext]
 BlockingCurves.CuspidalGeneral.lower_of_inertia_twists  [Classical.choice, Quot.sound, propext]
+BlockingCurves.CuspidalGeneral.cuspCoordinate_irreducible  [Classical.choice, Quot.sound, propext]
+BlockingCurves.CuspidalGeneral.cuspCoordinate_separable  [Classical.choice, Quot.sound, propext]
+BlockingCurves.CuspidalGeneral.compositum_coordinate_transitive  [Classical.choice, Quot.sound, propext]
+BlockingCurves.CuspidalGeneral.compositum_inertia_support  [Classical.choice, Quot.sound, propext]
+BlockingCurves.CuspidalGeneral.inertia_fixes_other_coordinate_field  [Classical.choice, Quot.sound, propext]
+BlockingCurves.CuspidalGeneral.zero_place_cluster_counts  [Classical.choice, Quot.sound, propext]
+BlockingCurves.CuspidalGeneral.compositum_inertia_simple_sheet  [Classical.choice, Quot.sound, propext]
+BlockingCurves.CuspidalGeneral.exists_compositum_place  [Classical.choice, Quot.sound, propext]
+BlockingCurves.CuspidalGeneral.exists_geometric_supported_inertia  [Classical.choice, Quot.sound, propext]
+BlockingCurves.CuspidalLocal.complement_irreducible  [Classical.choice, Quot.sound, propext]
+BlockingCurves.CuspidalLocal.complement_separable  [Classical.choice, Quot.sound, propext]
+BlockingCurves.CuspidalLocal.lift_simple_sheet  [Classical.choice, Quot.sound, propext]
+BlockingCurves.CuspidalLocal.separated_local_coordinate_splits  [Classical.choice, Quot.sound, propext]
+BlockingCurves.CuspidalLocal.descend_local_action  [Classical.choice, Quot.sound, propext]
+BlockingCurves.CuspidalLocal.supported_global_transport  [Classical.choice, Quot.sound, propext]
+BlockingCurves.CuspidalTower.remaining_root_degree  [Classical.choice, Quot.sound, propext]
+BlockingCurves.CuspidalTower.genus_budget  [Classical.choice, Quot.sound, propext]
+BlockingCurves.CuspidalTower.degree_budget  [Classical.choice, Quot.sound, propext]
+BlockingCurves.CuspidalTower.uniform_point_budget  [Classical.choice, Quot.sound, propext]
+BlockingCurves.CuspidalGeneral.lower_of_geometric_root_tower  [Classical.choice, Quot.sound, propext]
+BlockingCurves.CuspidalGeneral.lower_of_twist_geometry  [Classical.choice, Quot.sound, propext]
 BlockingCurves.CuspidalNorm.hits_iff_no_sphere  [Classical.choice, Quot.sound, propext]
 BlockingCurves.CuspidalNorm.blocks_iff_no_sphere  [Classical.choice, Quot.sound, propext]
 BlockingCurves.CuspidalNorm.ground_line_blocks  [Classical.choice, Quot.sound, propext]
@@ -259,7 +280,7 @@ BlockingCurves.PiecewiseFrobenius.synchronous_table_minimum  [Classical.choice, 
 BlockingCurves.PiecewiseFrobenius.nonsynchronous_table_minimum  [Classical.choice, Quot.sound, propext]
 
 SHA-256 (UTF-8 source bytes with LF line endings)
-576134847e9092a27154aa0307bdc39906bfb5ef297b976e58146b46ec60ac28  BlockingCurves.lean
+3a9428fe4d718b548578b70e0dad0784bef8c57b45678896021a164effce4451  BlockingCurves.lean
 e64549853052c3ee8e86744b6c365e553a1361ce482a3b0f051b36ead0ec4c2f  Cubic41.lean
 da432c523306c0267c0dee96ff81242a672a60f1a971b246de0750d925d8597c  Cubic41Semantics.lean
 f09a9868931d0cf1dd6828f0bc51be0bc5acecca4f095a07e6d44ee98f2b856e  Cubic47.lean
@@ -303,16 +324,27 @@ afc05577c4afc252e28e3b91ca53d86e54296f533dc0e680a61b9bd705c9b402  CubicSurfaceTr
 dcb5edf91201f369fd1ab0181f25c45868c970f6666ee68ee246d5a749ab43d1  CubicValueSet.lean
 2b1a39125f57d22848a228c69e6d975feee5946883d3afbb9d33065b8bc150c9  CubicZetaPoints.lean
 89dd1e236e8672105e743ee7d5af2b6cdc2f180f433ab0a8da8eea690fa09f7b  CuspidalCubicSphere.lean
+e20307062fbfadb903dd53308065b829e38045e3ea14a7d0f51722037a7f16f3  CuspidalFinitePlace.lean
 feebb55f8badf198eb6ffef95abad33d8a1546726fd329b1a60360dde422d022  CuspidalGeneral.lean
 1c38aafd34c4a6f48a8e615c0d342478fb0753fb028e901882c6acb41f29eacf  CuspidalGeneralBranch.lean
 20ab4aca3528c34c56ef30e8fa0e6106832635bdc8c1c3b6ea05c09bbb0c65b8  CuspidalGeneralInertia.lean
-76e519f96476009afe88f4a71e027988cd18045f1c475444a412836c2fe8d6a2  CuspidalGeneralLower.lean
+ac495268cf17a306959d328e2bbed60f20597fafb75ae805b1c54870caf9c3e6  CuspidalGeneralLower.lean
 fae98186fc93b2cd06672abdb000f23b27810e8b9f5829f57da9b27ce034f1dd  CuspidalGeneralUpper.lean
+c35d554afc6cb8660453635303f29ebe27fbfdbeefc4a86881de5cc422e0143c  CuspidalGenericAction.lean
+17a38b065b340338c8228ed7cafd92811209ea9e095c8ad5de8a73f591b4dba1  CuspidalGeometricLower.lean
 ac2549ca21627c362bd134d36fe6c1211dc40232d9eb0061c5b3f037cb65234a  CuspidalGeometry.lean
+f226919b8fa37de3dd3b3aa6cb15356354bd7e9a72c4487729cbd8a8c06157af  CuspidalGlobalChart.lean
+f88d8fd122748d4c609beda6f34d14cf061608d037dd93ba3dd57307fc1baa4b  CuspidalLiftedSheets.lean
+6f580b7b2b2a21ddeda485771acccee099ba96d4f21dd26833572522f650f3f5  CuspidalLocalFactor.lean
 d1af1a52112e67272df16c335d79bc963463ea5c76a27002dcde277813a416b5  CuspidalNontrivial.lean
 2ad22835543bda2850a7c339a227103a208560c8ce20b58ced680beffb4f116f  CuspidalNorm.lean
 37d9da744e07f9f7c547fc7f25072134509610ddac7f8b57a5bf10d8ca6cdbd3  CuspidalNormMinimum.lean
+1801b8d6a5a9c5fa67099e1d17dfc99325f897fcc671c19757ea8bcce4882758  CuspidalRootInertia.lean
+5b8c568ccecd23ac42191fba324a3720661bcc8b88e5a7b3e31f5f1967743c47  CuspidalSheetAction.lean
+14c0023d57139c3329b94eef8c907009b983086b72fd457edd7fad1828c25e4d  CuspidalSimpleLift.lean
+9cf1cbab81c28652cca88229e6c3d47e22caeb0ca3e4eb624da0bb58e48c1727  CuspidalTowerBudget.lean
 a9c7044a81d55ee6b12fb6511e05ec14c48871e8bd493f839a4b69487d30f2ea  CuspidalTransfer.lean
+265c3d1a14310e43a123e641af13b3e836e8eb1c07d3e3ae9d155074592e9a74  CuspidalZeroCluster.lean
 1f3f67c7f9683e73102c948d7b3d57e25933eda5a9218e4c8d53be00e6c99925  F8Example.lean
 2c61fc19c7debca20948e187a1ad64d97d90515d7660aca60dcbabfb301019d1  F8Semantics.lean
 b7f77d12eaa7d5c22355658cf6dde38e29ce788f27a948723574afbe1b054085  FieldTransport.lean
@@ -392,6 +424,6 @@ c6e2cd3f92eb0bd834495bfe9cf29b85058b2e7bfc36f9bb389045d6745a12e7  Sextic32Geomet
 53c8cf3861a169b511720fd33d3e55eccbdffead57377b9e5258be1646457865  Sextic32Search.lean
 c7bdcc1960065ca0dd1a5a901cf3b07ad9c1544e39a792ac50304308d7a974a9  StatementComparison.lean
 2e906616c04bc8a2e91c101f9cfb8e3d62a458e84193beff13331ca68b594de4  UpperBound.lean
-93589f3b43aa0302dff32051efdad41116d19873032bdac5b42b4124cc1c4554  lakefile.lean
+882a4af7c033e5c67e449ae43fad22f3590abddef73788a196548db6a9eddec7  lakefile.lean
 021b17d7609dca541fab5fc95f674618fb9dd8ace15871f8f35f7d1e53336996  lake-manifest.json
 61561b06f5587e027815fac8f59bf6ca160dfbf3f7372fc6297664acfd85b8c0  lean-toolchain

@@ -20,6 +20,10 @@
 
 $`d=2`$ 时尖点族等于图像二次族。$`d\ge3`$ 时，分开有限分支值后，零纤维惯性的两个轨道大小为 $`1,d-1`$，野分歧也成立。正规闭包在单一坐标上二重传递，因而可在同一算术 Frobenius 陪集中逐坐标安排错排。根塔给出 $`2g\le\ell(d-1)\lvert H\rvert`$，删点至多 $`(2\ell+1)\lvert H\rvert`$，其中 $`\lvert H\rvert\le(d!)^\ell`$。任意固定 $`c\lt 1/(2\log(d!))`$ 时，取 $`\ell\le c\log q`$ 对每个平移集仍有正计数。[详细证明](Manuscript.html#cuspidal-general)
 
+这次复核把惯性的两种用途分别落实到了原方程的根上。在复合分裂域的零分支上方，其他坐标均有可分约化；模极大理想作用平凡即推出这些坐标逐根固定。取局部参数后，指定坐标除一条简单截面外是一个可分 Eisenstein 因子，其他坐标则经 Hensel 提升完全分裂。由局部到全局的限制给出单独移动指定坐标的自同构。此构造足以推出错排，形式证明无需将它的像识别为预先固定的某个赋值的全部惯性。[零纤维](lean/CuspidalZeroCluster.lean) · [实际全局作用](lean/CuspidalSheetAction.lean) · [Stacks，惯性群](https://stacks.math.columbia.edu/tag/09EC)
+
+逐根塔中以 $`(g-1)/N`$ 归一化，保留相消项后得 $`2g+2H\le\ell(d-1)H+2`$，其中 $`H`$ 为几何覆盖次数。无穷远同有限分支一起删除，扣除上界为 $`(2\ell+1)H`$。这些估计对所有 $`\ell\le c\log q`$ 使用同一阈值。几何定理接入实际曲线、扭曲和 Frobenius 特化的边界见形式化说明。[逐层估计](lean/CuspidalTowerBudget.lean) · [形式化范围](lean/README.md)
+
 相对次数三的共球引理可由 Bayer 等人的范数图计数直接推出，包括小域。英文稿给出适合 Lean 的独立初等证明，并以遗漏直线的共同换元推得阻塞数。已复核球面判据的逆向需要小集合假设，而底域直线上的上界无需该假设。三次扩张的精确比较覆盖 $`s=4`$。[范数图原文](https://doi.org/10.1017/fms.2026.10245) · [两个精确值](Manuscript.html#cuspidal-spheres)
 
 ## 三次的迹估计

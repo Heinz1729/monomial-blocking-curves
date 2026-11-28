@@ -12,6 +12,8 @@ import PrimeFieldInstances
 import CubicPairCount
 import CuspidalTransfer
 import CuspidalGeneralLower
+import CuspidalGeometricLower
+import CuspidalFinitePlace
 import CuspidalGeneralUpper
 import CuspidalGeometry
 import CuspidalNormMinimum
@@ -64,6 +66,27 @@ import PiecewiseMinimum
 #print axioms BlockingCurves.CuspidalGeneral.independent_inertia_derangements
 #print axioms BlockingCurves.CuspidalGeneral.rational_root_fixed
 #print axioms BlockingCurves.CuspidalGeneral.lower_of_inertia_twists
+#print axioms BlockingCurves.CuspidalGeneral.cuspCoordinate_irreducible
+#print axioms BlockingCurves.CuspidalGeneral.cuspCoordinate_separable
+#print axioms BlockingCurves.CuspidalGeneral.compositum_coordinate_transitive
+#print axioms BlockingCurves.CuspidalGeneral.compositum_inertia_support
+#print axioms BlockingCurves.CuspidalGeneral.inertia_fixes_other_coordinate_field
+#print axioms BlockingCurves.CuspidalGeneral.zero_place_cluster_counts
+#print axioms BlockingCurves.CuspidalGeneral.compositum_inertia_simple_sheet
+#print axioms BlockingCurves.CuspidalGeneral.exists_compositum_place
+#print axioms BlockingCurves.CuspidalGeneral.exists_geometric_supported_inertia
+#print axioms BlockingCurves.CuspidalLocal.complement_irreducible
+#print axioms BlockingCurves.CuspidalLocal.complement_separable
+#print axioms BlockingCurves.CuspidalLocal.lift_simple_sheet
+#print axioms BlockingCurves.CuspidalLocal.separated_local_coordinate_splits
+#print axioms BlockingCurves.CuspidalLocal.descend_local_action
+#print axioms BlockingCurves.CuspidalLocal.supported_global_transport
+#print axioms BlockingCurves.CuspidalTower.remaining_root_degree
+#print axioms BlockingCurves.CuspidalTower.genus_budget
+#print axioms BlockingCurves.CuspidalTower.degree_budget
+#print axioms BlockingCurves.CuspidalTower.uniform_point_budget
+#print axioms BlockingCurves.CuspidalGeneral.lower_of_geometric_root_tower
+#print axioms BlockingCurves.CuspidalGeneral.lower_of_twist_geometry
 #print axioms BlockingCurves.CuspidalNorm.hits_iff_no_sphere
 #print axioms BlockingCurves.CuspidalNorm.blocks_iff_no_sphere
 #print axioms BlockingCurves.CuspidalNorm.ground_line_blocks

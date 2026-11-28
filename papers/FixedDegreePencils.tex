@@ -102,12 +102,17 @@ let $K'=Kk(x)$, $e=[K':K]$ and $N'=eN$. Then
 $[K':k(x)]=N'/d$. The Castelnuovo--Severi inequality
 \cite[Thm.~3.11.3]{Stichtenoth} gives
 \[
- \frac{g(K')}{N'}\le\frac{g(K)}N+
-       \frac{(e-1)(N'/d-1)}{N'}\le \frac{g(K)}N+\frac{e-1}{d}.
+ \frac{g(K')-1}{N'}\le\frac{g(K)-1}{N}+\frac{e-1}{d}.
 \]
 The $j$th root of one polynomial costs $e\le d-j+1$, including
-steps of degree one. Summing gives $2g\le\ell(d-1)|H|$ for the
-geometric splitting field. This bound also allows wild ramification.
+steps of degree one. Indeed, the $j-1$ previously adjoined
+distinct roots leave a polynomial of degree $d-j+1$.
+With $N=1$ and $g=0$ at the start, the sum telescopes to
+\[
+        2g+2|H|\le\ell(d-1)|H|+2 .
+\]
+Dropping $2(|H|-1)$ gives the bound in \eqref{eq:twist-budget}.
+The argument counts the full genus, including any wild ramification at infinity.
 
 Write $F'$ for the constants of $M$ and $a$ for the order of
 $\gamma$. Then $F'\subseteq\mathbb F_{q^a}$. On $M\mathbb F_{q^a}$
@@ -359,12 +364,35 @@ Work first over $\overline{\mathbb F}_q(b)$. Let $H$ be the Galois
 group of the compositum of the splitting fields of
 $f_a(T)-b-\alpha$ and $G_\alpha$ its projection on the roots of one
 factor. This action is transitive, since the rational map $f_a$ is
-separable of degree $d$. Inertia over $-\alpha$ acts trivially in
-every other factor and surjects onto inertia in the chosen factor.
-The two orbits there have sizes $1,d-1$: over algebraically closed
-constants the inertia orbits at a fibre have precisely its
-ramification indices as sizes, including at wild places.
-Consequently the normal closure of this inertia in $H$ is supported
+separable of degree $d$. Fix a place above $b=-\alpha$ in the joint
+splitting field. Its inertia acts trivially on the residue field
+\cite[Tag 09EC]{Stacks}. All roots are integral. In every other
+coordinate their residues are distinct by branch separation, so
+inertia fixes each root. In the chosen coordinate a single root
+reduces to $a$ and the other $d-1$ reduce to zero.
+
+Here is a local construction of the required permutations on the latter
+roots. Put $m=d-1$, $h=a+u$ and $b+\alpha=u h^m$. This is a uniformizing
+parameter in $k[[u]]$, since $a\ne0$. The chosen polynomial factors as
+\[
+  T^m(T-a)-uh^m=(T-h)Q_m(T),\qquad
+  Q_0=1,\quad Q_{j+1}=TQ_j+uh^j .
+\]
+The reduction of $Q_m$ is $T^m$ and its constant coefficient
+$uh^{m-1}$ has order one. Hence $Q_m$ is Eisenstein over $k[[u]]$.
+Its linear coefficient $uh^{m-2}$ is nonzero for $m\ge2$, so the
+irreducible factor is separable over $k((u))$, also when $p\mid m$.
+Every other coordinate splits over $k((u))$ by Hensel lifting of
+its distinct residue roots over $k$. A local automorphism can
+therefore carry any root of $Q_m$ to any other while fixing $h$
+and every other coordinate. Restrict this automorphism to the normal
+global splitting field embedded in the same local algebraic closure.
+In the usual decomposition-group description the local Galois group
+is inertia because the constants are algebraically closed. The
+restriction construction itself already gives the required global
+permutations.
+
+Consequently the normal closure of the local image in $H$ is supported
 in coordinate $\alpha$. Its projection $N_\alpha$ is normal in
 $G_\alpha$ and doubly transitive. Indeed, conjugation carries the
 inertia to a subgroup fixing any specified letter and transitive
@@ -784,11 +812,17 @@ geometric irreducibility over the algebraic closure for both pencils. The
 general cuspidal parametrization, the equivalence with the slope test,
 and the cuspidal logarithmic upper bound are also unconditional.
 
-For the fixed-degree lower bounds the kernel checks numerical
-positivity and the finite permutation argument used to obtain
-derangements. Identification of the geometric groups and inertia
-in the actual splitting fields, the root-tower genus estimate, and
-rational-point descent on a Frobenius twist are proved in the text.
+For the cuspidal lower bound the kernel checks off-coordinate
+fixedness for the inertia subgroup of the actual product splitting
+field, the local Eisenstein factor, Hensel lifting of the other
+sheets, and restriction of the resulting permutations to that field.
+The proof of the uniform count uses one threshold for all shift sets
+in the logarithmic range. Lean derives the degree and genus budgets
+from the individual root steps. Applying Castelnuovo--Severi to the
+actual function fields, constructing the arithmetic twist, and
+applying Hasse--Weil and Frobenius specialization remain geometric
+inputs. The wild graph argument also uses the geometric group
+identifications of Section~\ref{sec:fixed-graph}.
 For the cubic surface estimate, Lean checks the actual pair-count
 reduction, the linear algebra of crossed cocycles under the stated
 meridian relations, and the passage from the cohomological input to
@@ -857,6 +891,9 @@ second edition, Graduate Texts in Mathematics 254, Springer, 2009.
 \bibitem{Kosters} M. Kosters, A short proof of the Chebotarev density
 theorem for function fields, Math. Commun. 22 (2017), 227--233.
 \href{https://hrcak.srce.hr/file/274189}{Journal article}.
+\bibitem{Stacks} The Stacks Project Authors, Galois extensions and
+ramification, \href{https://stacks.math.columbia.edu/tag/09E3}{Tag 09E3}
+and \href{https://stacks.math.columbia.edu/tag/09EC}{Tag 09EC}.
 \bibitem{Bellaiche} J. Bella\"iche, Th\'eor\`eme de Chebotarev et
 complexit\'e de Littlewood, Ann. Sci. \'Ec. Norm. Sup\'er. (4) 49
 (2016), 579--632.

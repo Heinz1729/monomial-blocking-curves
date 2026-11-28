@@ -27,6 +27,8 @@
 
 对有限尖点的三次族 $`(Y+\alpha Z)^2 Z=X^3`$，第一篇定理 4 将全部射影漏线与原曲面上的有序配置逐一对应。误差对 $`\ell\le c\log q`$、$`c\lt 1/\log 4`$ 保持一致。十一元域中，尖点族只需 3 个平移，原图像族需要 4 个。[尖点族与仿射图样](Manuscript.html#cuspidal-translates) · [Lean 计数恒等式](lean/CuspidalTransfer.lean)
 
+一般尖点族的下界现已把单坐标置换落实到实际复合分裂域。在零分支上方，整个惯性群逐点固定其他坐标；本坐标剩下的根构成可分 Eisenstein 因子，包含特征整除分歧指数的情形。逐根亏格估计和删点估计对所有允许的平移集使用同一个域阶阈值。实际曲线的 Castelnuovo–Severi、扭曲、Hasse–Weil 和特化仍是形式定理的几何输入。[单坐标作用](lean/CuspidalSheetAction.lean) · [增长窗口](lean/CuspidalTowerBudget.lean) · [核验范围](lean/README.md)
+
 ## 次数随域阶增长
 
 设 $`\tau_s(m)`$ 为 $`\mathbb{F}_s`$ 中 $`m`$ 次幂值集的最少平移覆盖数。当 $`q=s^n`$、$`n\ge2`$、$`D=(q-1)/(s-1)`$ 时，有精确公式 $`B(q,mD)=s^{n-1}\tau_s(m)`$。特别地，$`B(q,D)=s^{n-1}`$。对于任意次数，第二篇还用 $`h=\gcd(d-1,q-1)`$ 控制从水平覆盖扩充到射影阻塞集所需的额外参数数目。[第二篇定理 3](VariableDegree.html#variable-degree) · [第二篇定理 4](VariableDegree.html#norm-family)

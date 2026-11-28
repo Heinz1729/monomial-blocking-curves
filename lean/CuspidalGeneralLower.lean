@@ -1,5 +1,6 @@
 import CuspidalGeneralBranch
 import CuspidalGeneralInertia
+import CuspidalTowerBudget
 import PencilFrobeniusCount
 
 /-! The lower bound from geometric inertia and ordinary rational-point data
@@ -49,7 +50,7 @@ theorem rational_root_fixed {d : ℕ} (hd : 2 ≤ d) (a v t : F)
 Its fibre actions are on actual splitting fields and use the field-size
 Frobenius, as prescribed by 'PencilSampling.FibreAction'. The geometric
 degree, genus, point-count and specialization facts are recorded separately. -/
-structure TwistPoints [DecidableEq F] (d : ℕ) (a : F) (S : Finset F)
+structure TwistPointData [DecidableEq F] (d : ℕ) (a : F) (S : Finset F)
     (γ : S → Equiv.Perm (Fin d)) where
   points : ℕ
   genus : ℕ
@@ -58,12 +59,30 @@ structure TwistPoints [DecidableEq F] (d : ℕ) (a : F) (S : Finset F)
   branch : Finset (Option F)
   infinity : none ∈ branch
   branch_size : branch.card ≤ 2*S.card+1
-  degree_bound : degree ≤ d.factorial ^ S.card
-  genus_bound : 2*genus ≤ S.card*(d-1)*degree
   hasse_weil : (Fintype.card F:ℝ)+1-2*genus*Real.sqrt (Fintype.card F) ≤ points
   fibre_degree : ∀ b, (univ.filter fun p => projection p=b).card ≤ degree
   specialization : ∀ p b, projection p=some b → some b ∉ branch → ∀ α : S,
     ∃ A : FibreAction (lineFibre d a (b+α.val)) d, A.perm=γ α
+
+/-- Rational points on a twist with the global estimates needed by the
+finite threshold. A root tower supplies both estimates. -/
+structure TwistPoints [DecidableEq F] (d : ℕ) (a : F) (S : Finset F)
+    (γ : S → Equiv.Perm (Fin d)) extends TwistPointData d a S γ where
+  degree_bound : degree ≤ d.factorial ^ S.card
+  genus_bound : 2*genus ≤ S.card*(d-1)*degree
+
+def TwistPointData.ofRootTower [DecidableEq F] {d : ℕ} (hd : 0<d) {a : F}
+    {S : Finset F} {γ : S → Equiv.Perm (Fin d)} (P : TwistPointData d a S γ)
+    (T : CuspidalTower.RootTower d S.card)
+    (genus : P.genus=T.genus S.card 0) (degree : P.degree=T.degree S.card 0) :
+    TwistPoints d a S γ where
+  toTwistPointData := P
+  degree_bound := degree ▸ CuspidalTower.degree_budget T
+  genus_bound := by
+    rw [genus,degree]
+    have := CuspidalTower.genus_budget hd T
+    have := T.positive S.card le_rfl 0 (Nat.zero_le _)
+    omega
 
 /-- From the local inertia orbit data and geometric twists to the sharp
 factorial-base finite threshold for an actual set blocking the cusp pencil. -/
@@ -117,5 +136,25 @@ theorem lower_of_inertia_twists [DecidableEq F] {d : ℕ} (hd : 3 ≤ d)
     obtain ⟨i,fixed⟩ := rational_root_fixed (by omega : 2≤d) _ _ _ A root
     rw [hA] at fixed
     exact (der α i) fixed
+
+/-- Every Frobenius twist recovers the same geometric splitting field after
+extension of constants. Identifying its degree and genus with the terminal
+stage suffices: the numerical global degree and genus estimates are derived
+once from the root tower. -/
+theorem lower_of_inertia_root_tower [DecidableEq F] {d : ℕ} (hd : 3 ≤ d)
+    (S : Finset F) (a : F) (H : Subgroup (S → Equiv.Perm (Fin d)))
+    (trans : ∀ i x u, ∃ h : H, h.val i x=u)
+    (inertia : ∀ i, ∃ x₀ : Fin d, ∀ y z : Fin d, y≠x₀ → z≠x₀ →
+      ∃ h : H, (∀ j, j≠i → h.val j=1) ∧ h.val i x₀=x₀ ∧ h.val i y=z)
+    (σ : S → Equiv.Perm (Fin d)) (T : CuspidalTower.RootTower d S.card)
+    (twist : ∀ h : H, ∃ P : TwistPointData d a S (σ*h.val),
+      P.genus=T.genus S.card 0 ∧ P.degree=T.degree S.card 0)
+    (hq : 16 ≤ (Fintype.card F:ℝ)) (blocks : Blocks d (S:Set F)) :
+    (Real.log (Fintype.card F)-2*Real.log (Real.log (Fintype.card F))) /
+      (2*Real.log (d.factorial:ℝ)) - Real.log (16*(d:ℝ))/Real.log (d.factorial:ℝ) < S.card := by
+  apply lower_of_inertia_twists hd S a H trans inertia σ _ hq blocks
+  intro h
+  obtain ⟨P,hg,hn⟩ := twist h
+  exact ⟨P.ofRootTower (by omega) T hg hn⟩
 
 end BlockingCurves.CuspidalGeneral
