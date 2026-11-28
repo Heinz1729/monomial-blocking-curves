@@ -11,6 +11,11 @@ import F8Semantics
 import PrimeFieldInstances
 import CubicPairCount
 import CuspidalTransfer
+import CuspidalGeneralLower
+import CuspidalGeneralUpper
+import CuspidalGeometry
+import CuspidalNormMinimum
+import FixedDegreeBudget
 import CubicCocycles
 import CubicCovering
 import CubicSurfaceTrace
@@ -44,6 +49,30 @@ import PiecewiseCandidates
 import PiecewiseMinimum
 
 /-! Build entry point and kernel dependency audit for the results in the manuscript. -/
+#print axioms BlockingCurves.FixedDegreeBudget.growing_window
+#print axioms BlockingCurves.CuspidalGeneral.blocks_iff
+#print axioms BlockingCurves.CuspidalGeneral.degree_two_iff_graph
+#print axioms BlockingCurves.CuspidalGeneral.cuspForm_geometrically_irreducible
+#print axioms BlockingCurves.CuspidalGeneral.cuspForm_admissible
+#print axioms BlockingCurves.CuspidalGeneral.cusp_family_iff
+#print axioms BlockingCurves.CuspidalGeneral.cusp_containsNoLine_iff
+#print axioms BlockingCurves.CuspidalGeneral.logarithmic_upper
+#print axioms BlockingCurves.CuspidalGeneral.zero_fibre_roots
+#print axioms BlockingCurves.CuspidalGeneral.critical_point_iff
+#print axioms BlockingCurves.CuspidalGeneral.critical_value_cases
+#print axioms BlockingCurves.CuspidalGeneral.exists_separating_slope
+#print axioms BlockingCurves.CuspidalGeneral.independent_inertia_derangements
+#print axioms BlockingCurves.CuspidalGeneral.rational_root_fixed
+#print axioms BlockingCurves.CuspidalGeneral.lower_of_inertia_twists
+#print axioms BlockingCurves.CuspidalNorm.hits_iff_no_sphere
+#print axioms BlockingCurves.CuspidalNorm.blocks_iff_no_sphere
+#print axioms BlockingCurves.CuspidalNorm.ground_line_blocks
+#print axioms BlockingCurves.CuspidalCubicSphere.norm_pair_avoiding
+#print axioms BlockingCurves.CuspidalCubicSphere.sphere_through_three
+#print axioms BlockingCurves.CuspidalNorm.quadratic_comparison
+#print axioms BlockingCurves.CuspidalNorm.cubic_comparison
+#print axioms BlockingCurves.CuspidalGeneral.quadratic_three_nontrivial
+#print axioms BlockingCurves.CuspidalGeneral.cubic_four_nontrivial
 #print axioms BlockingCurves.projective_prime_power_minimum
 #print axioms BlockingCurves.scattered_iff_forall_graphHits_iff
 #print axioms BlockingCurves.exact_scattered_minimum

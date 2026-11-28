@@ -136,16 +136,15 @@ theorem separated_norm_hit_count {n e : ℕ} (size : Fintype.card E = Fintype.ca
   · exact (Nat.add_le_add_right hz 1).trans h
   · exact (Nat.add_le_add_right hw 1).trans h
 
-/-- Independent point samples cover any graph when every line receives a
-fraction at least 1/m of the parameters. -/
-theorem graph_upper_of_share {m : ℕ} (hm : 0 < m) (f : E → E)
-    (share : ∀ a b : E, Fintype.card E ≤ m*(hitRow f a b).card) :
-    ∃ S : Finset E, GraphHits f (S : Set E) ∧
+/-- Independent samples meet every slope/intercept row if each contains
+at least a fraction 1/m of the parameters. -/
+theorem rows_upper_of_share {m : ℕ} (hm : 0 < m) (row : E×E → Finset E)
+    (share : ∀ l, Fintype.card E ≤ m*(row l).card) :
+    ∃ S : Finset E, (∀ l, ∃ a ∈ S, a ∈ row l) ∧
       (S.card:ℝ) ≤ 2*m*Real.log (2*Fintype.card E)+1 := by
   classical
   let q := Fintype.card E
   let k := ⌈2*(m:ℝ)*Real.log (2*q)⌉₊
-  let row (l : E×E) := hitRow f l.1 l.2
   obtain ⟨lmin,_,minimal⟩ := exists_min_image (univ : Finset (E×E))
     (fun l => (row l).card) univ_nonempty
   let H := (row lmin).card
@@ -155,7 +154,7 @@ theorem graph_upper_of_share {m : ℕ} (hm : 0 < m) (f : E → E)
   have qpos : (0:ℝ) < q := Nat.cast_pos.mpr Fintype.card_pos
   have mpos : (0:ℝ) < m := Nat.cast_pos.mpr hm
   have ee : (N:ℝ)+(H:ℝ)=q := by exact_mod_cast eq
-  have sh : (q:ℝ) ≤ m*(H:ℝ) := by exact_mod_cast share lmin.1 lmin.2
+  have sh : (q:ℝ) ≤ m*(H:ℝ) := by exact_mod_cast share lmin
   have nohit : (N:ℝ) ≤ q*Real.exp (-(1/(m:ℝ))) := by
     have frac : (q:ℝ)/m ≤ (H:ℝ) := (div_le_iff mpos).2 (by linarith only [sh,mul_comm (m:ℝ) (H:ℝ) |>.le])
     calc (N:ℝ) ≤ q*(1-1/(m:ℝ)) := by rw [mul_sub,mul_one,mul_one_div]; linarith
@@ -191,13 +190,27 @@ theorem graph_upper_of_share {m : ℕ} (hm : 0 < m) (f : E → E)
          _ < _ := by simpa [q,pow_two,Fintype.card_prod] using budget
   obtain ⟨sample,all⟩ := NormFibreSampling.exists_transversal (fun l (_ : Fin k) => row l) total
   refine ⟨univ.image sample, ?_, ?_⟩
-  · intro a b
-    obtain ⟨i,hi⟩ := all (a,b)
-    obtain ⟨x,_,hx⟩ := mem_image.mp hi
-    exact ⟨x,mem_image.mpr ⟨i,mem_univ _,hx.symm⟩⟩
+  · intro l
+    obtain ⟨i,hi⟩ := all l
+    exact ⟨sample i,mem_image.mpr ⟨i,mem_univ _,rfl⟩,hi⟩
   · have card : (univ.image sample).card ≤ k := card_image_le.trans_eq (by simp)
     exact (show ((univ.image sample).card:ℝ) ≤ k by exact_mod_cast card).trans
       (Nat.ceil_lt_add_one (mul_nonneg (by positivity) log2q)).le
+
+/-- Independent point samples cover any graph when every line receives a
+fraction at least 1/m of the parameters. -/
+theorem graph_upper_of_share {m : ℕ} (hm : 0 < m) (f : E → E)
+    (share : ∀ a b : E, Fintype.card E ≤ m*(hitRow f a b).card) :
+    ∃ S : Finset E, GraphHits f (S : Set E) ∧
+      (S.card:ℝ) ≤ 2*m*Real.log (2*Fintype.card E)+1 := by
+  classical
+  obtain ⟨S,hit,card⟩ := rows_upper_of_share hm (fun l : E×E => hitRow f l.1 l.2)
+    (fun l => share l.1 l.2)
+  refine ⟨S,?_,card⟩
+  intro a b
+  obtain ⟨y,hy,hrow⟩ := hit (a,b)
+  obtain ⟨x,_,hx⟩ := mem_image.mp hrow
+  exact ⟨x,hx ▸ hy⟩
 
 /-- With an injective branch of density at least 1/m (including zero),
 independent shifts give an actual cover of the translated graph. -/

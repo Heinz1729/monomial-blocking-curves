@@ -1,0 +1,4 @@
+- Both pencils have logarithmic blocking numbers for fixed d in all characteristics.
+- In characteristic above three, cubic permutations have lower coefficient 1/log 4.
+- On the same field and in the same degree, the two minima can differ without bound.
+- Norm spheres give exact cusp minima of three and four in two extension families.

@@ -1,0 +1,874 @@
+\documentclass[preprint,12pt,numbers]{elsarticle}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage[hidelinks]{hyperref}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\makeatletter
+\let\ps@pprintTitle\ps@plain
+\makeatother
+\begin{document}
+\begin{frontmatter}
+\title{Blocking vertical translates of monomial graphs and cuspidal curves}
+\author{GPT-6.2 Astra}
+\begin{abstract}
+We determine the order of the minimum number of vertical translates of
+the graph $y=x^d$ needed to meet all rational projective lines over
+$\mathbb F_q$. For each fixed $d\ge2$ this number is
+$\Theta_d(\log q)$ uniformly in the characteristic. The same order holds
+for the rational curves parametrized by $(t^{d-1},t^d)$. For cubic
+permutations in characteristic greater than three, a two-parameter
+count gives a lower limit of at least $1/\log 4$ after division by
+$\log q$, for both pencils. The two minima can nevertheless differ
+by an unbounded factor on the same field and in the same degree.
+Over $\mathbb F_{s^2}$ in degree $s$ the cuspidal pencil needs three
+translates and the graph needs $2s-1$ for every prime power $s$.
+Over $\mathbb F_{s^3}$ the corresponding exact values are four and
+$3s-2$ for $s\ge4$. These comparisons follow from an obstruction
+involving translates of norm fibres.
+\end{abstract}
+\begin{keyword}
+finite field \sep blocking set \sep monodromy \sep character sum \sep norm equation
+\MSC[2020] 11T06 \sep 11T23 \sep 14G15 \sep 51E21
+\end{keyword}
+\end{frontmatter}
+
+\section{Two pencils of rational curves}
+Let $F=\mathbb F_q$, and let $d\ge2$. A subset of the rational
+projective plane blocks if it meets every rational line. We consider
+the two pencils
+\begin{align*}
+ G_\alpha:\quad YZ^{d-1}&=X^d-\alpha Z^d,\\
+ C_\alpha:\quad X^d&=(Y+\alpha Z)^{d-1}Z,\qquad \alpha\in F .
+\end{align*}
+Write $B(q,d)$ and $B_{\rm cusp}(q,d)$ for the least numbers of parameters
+whose corresponding unions block. In degree two the members of the
+second pencil are smooth conics. Both pencils have the single point
+$[0:1:0]$ at infinity, so all vertical lines and the line at infinity
+meet every member. All logarithms are natural.
+
+The graph minimum is Problem~5.4 of Asgarli, Ghioca and Yip \cite{AGY}.
+Their Theorem~5.1 gives its logarithmic upper bound, and their
+Remark~5.3 gives a logarithmic lower bound when $\gcd(d,q-1)>1$.
+Indeed, the horizontal lines already require translates of the
+set of $d$th powers to cover $F$. Bounds for additive translates of
+multiplicative subgroups are developed further in \cite{ZhouWu}.
+In permutation degree, a single member meets every horizontal line.
+Theorem~\ref{thm:fixed-graph} obtains a logarithmic lower bound in
+this case as well, even if all translated covers share their only
+branch value. The question about arbitrary collections of plane curves
+in \cite[Thm.~1.3]{AGY} has different quantifiers.
+
+The second pencil has a separate source of monodromy. Over every
+characteristic, one finite fibre of $t^d-mt^{d-1}$, $m\ne0$, has
+multiplicities $d-1$ and $1$. For $d\ge3$ the inertia at this fibre
+gives a doubly transitive subgroup supported in a single coordinate
+after separation of the translates. The resulting argument for the
+cuspidal pencil uses no classification of finite doubly transitive
+groups. For both pencils the lower limit after division by $\log q$
+is at least $1/(2\log(d!))$. For fixed $d$ the blocking sets obtained
+with $O_d(\log q)$ translates are nontrivial for large $q$: each
+line meets each geometrically irreducible member in at most $d$ points.
+
+For $d=3$, $q\equiv2\bmod 3$ and $\operatorname{char}F>3$, the
+two-parameter estimate in Theorem~\ref{thm:cubic-surface} gives the
+stronger coefficient $1/\log4$. The estimate is uniform in the
+translate set, including its cardinality. The final section lets the
+degree vary and computes both minima on the same field. In quadratic
+and cubic extensions the cuspidal obstruction has a description by
+norm equations that gives a sharp finite result independently of the
+point-counting arguments.
+
+\subsection{A uniform point count on a twist}
+\begin{lemma}\label{lem:twist}
+Let $P_i\in F[x]$, $1\le i\le\ell$, be separable as maps of degree
+$d\ge2$ (so $P'_i$ is not identically zero), and let $M$ be the
+splitting field of the product of $P_i(x)-t$ over $F(t)$.
+Let $H$ be its geometric group and $b$ the number of geometric
+branch values, including infinity. Suppose the arithmetic group
+contains an element $\gamma$ acting on the full constant field as
+$q$-Frobenius and fixing no root in any coordinate. If
+\begin{equation}\label{eq:twist-budget}
+ q+1-\ell(d-1)|H|\sqrt q>b|H|,
+\end{equation}
+some $t_0\in F$ has the property that no $P_i(x)=t_0$ has a root in $F$.
+\end{lemma}
+\begin{proof}
+Over $k=\overline F$, adjoin the roots of each polynomial one at a
+time. A single root $x$ generates a rational field with
+$[k(x):k(t)]=d$. If the present field $K$ has degree $N$ over $k(t)$,
+let $K'=Kk(x)$, $e=[K':K]$ and $N'=eN$. Then
+$[K':k(x)]=N'/d$. The Castelnuovo--Severi inequality
+\cite[Thm.~3.11.3]{Stichtenoth} gives
+\[
+ \frac{g(K')}{N'}\le\frac{g(K)}N+
+       \frac{(e-1)(N'/d-1)}{N'}\le \frac{g(K)}N+\frac{e-1}{d}.
+\]
+The $j$th root of one polynomial costs $e\le d-j+1$, including
+steps of degree one. Summing gives $2g\le\ell(d-1)|H|$ for the
+geometric splitting field. This bound also allows wild ramification.
+
+Write $F'$ for the constants of $M$ and $a$ for the order of
+$\gamma$. Then $F'\subseteq\mathbb F_{q^a}$. On $M\mathbb F_{q^a}$
+combine $\gamma$ with $q$-Frobenius on $\mathbb F_{q^a}$, which
+agree on $F'$. The fixed field of the combined automorphism gives
+the twist over $F$ \cite[Thm.~2]{Kosters}. Its full constant field
+is $F$ and base change to $k$ recovers the geometric splitting
+field. Its smooth projective curve has genus $g$ and maps to the
+line with degree $|H|$. By Hasse--Weil it has at least
+$q+1-2g\sqrt q$ rational points. At most $b|H|$ geometric points lie
+over the excluded values. A remaining rational point specializes
+to the Frobenius class of $\gamma$ (or its inverse with the opposite
+convention); its cycles are the factor degrees in each fibre. This
+proves the lemma.
+\end{proof}
+
+For reference, both pencils have $|H|\le D^\ell$, $D=d!$, and
+$b\le1+d\ell$. A finite sufficient window for \eqref{eq:twist-budget}
+is $L=\log q\ge1$ and
+\begin{equation}\label{eq:fixed-window}
+       \ell\log D\le L/2-\log L-\log(4(d+1)).
+\end{equation}
+Indeed $\ell\le L$ since $\log D\ge\log2>1/2$, and
+$4(d+1)L D^\ell\le\sqrt q$. The genus loss is at most $q/4$ and
+the discarded fibres cost at most $\sqrt q/4$. The separate slope
+exclusions below are polynomial in $\ell$ for fixed $d$. In
+particular their validity is uniform throughout this window for
+all sufficiently large $q$.
+
+\section{Graph pencils in every characteristic}\label{sec:fixed-graph}
+
+\begin{theorem}\label{thm:fixed-graph}
+For every fixed $d\ge2$, along all prime powers $q$,
+\[
+ B(q,d)=\Theta_d(\log q),\qquad
+ \liminf_{q\to\infty}\frac{B(q,d)}{\log q}\ge \frac1{2\log(d!)}.
+\]
+\end{theorem}
+
+The upper bound is Theorem~5.1 of Asgarli--Ghioca--Yip
+\cite{AGY}. Their Remark~5.3 obtains a logarithmic lower bound from the
+horizontal lines when $\gcd(d,q-1)>1$. We treat all characteristics and
+both permutation and nonpermutation degrees.
+
+First consider $d=p^a$ and $q=p^h$. Put $g=\gcd(a,h)$, $s=p^g$ and
+$n=h/g$. The automorphism $\sigma(x)=x^d$ generates the Galois group
+of $\mathbb F_q/\mathbb F_s$. For each slope $m$ the map
+$\sigma-m\,\mathrm{id}$ is invertible or has one-dimensional kernel.
+In the latter case $m=\sigma(u)/u$ for some $u\ne0$, and its image is
+$\sigma(u)\operatorname{im}(\sigma-1)$. The latter unscaled image is
+the trace-zero hyperplane by dimension and the trace identity. By the
+nondegenerate trace pairing its scalar multiples range over all linear
+hyperplanes. Hence a set of translates blocks precisely when it meets
+every affine $\mathbb F_s$-hyperplane. The Jamison--Brouwer--Schrijver
+theorem gives at least $n(s-1)+1$ points \cite{Jamison,BS}; the union
+of the $n$ coordinate axes meets the bound. Consequently
+\begin{equation}\label{eq:graph-frob}
+                 B(p^h,p^a)=1+\frac hg(p^g-1).
+\end{equation}
+Its logarithmic coefficient $(s-1)/\log s$ is at least one.
+
+For the remaining degrees set $k=\overline{\mathbb F}_q$ and
+$f_m(x)=x^d-mx$. A missing line for $S$ is an intercept $b$ and a slope
+$m$ for which no $f_m(x)=b+\alpha$ has a rational root. We construct
+the required element of a Frobenius coset before applying
+Lemma~\ref{lem:twist}. The assertions about ramification in this
+section refer to geometric points.
+
+\paragraph{Separated finite branch loci.}
+Suppose $p\nmid d(d-1)$, which forces $p\ne2$. For
+$m=d u^{d-1}$ the finite critical values are $(1-d)u^d\zeta$ for
+$\zeta^{d-1}=1$. Their simple critical points give transposition inertia
+and infinity is tame of index $d$. For each distinct pair of shifts and
+each ordered pair of distinct roots of unity, a collision excludes
+at most $d$ choices of $u\in\mathbb F_q^\times$. Thus, once
+$q-1>d(d-1)(d-2)\binom{\ell}{2}$, all translated finite branch loci
+can be separated. This includes $d=2$ in odd characteristic, for which
+there is just one finite branch value per cover.
+
+A connected cover of the projective line tame everywhere and unramified
+away from infinity has degree one by Riemann--Hurwitz. The tame local
+extensions are closed under conjugates and composita, including when
+$p\mid d!$. The finite inertia groups therefore generate the single
+geometric group normally. They are transpositions and their conjugates
+generate a transitive group, hence $S_d$. The intersection of a new
+splitting field with the preceding compositum is unramified at every
+finite place and tame at infinity. It is trivial by the same argument.
+The geometric group of the compositum is $S_d^\ell$. This use of
+separated branch values for translated splitting fields belongs to
+earlier work on polynomial correlations \cite{Kurlberg,Pollack}.
+
+We shall use double transitivity in the other cases. Write $d=p^a v$
+with $p\nmid v$, allowing $a=0$. In the cases still under consideration
+$v>1$. For $f=x^d-x$ the geometric group $G$ is transitive, since
+$k(x)/k(f(x))$ is separable of degree $d$. The distinct ordered root
+pairs form a single orbit: their curve $f(x)=f(y)$, off the diagonal,
+has on the dense open with $z=x/y$ the equation
+\[
+                 y^{d-1}=(z-1)/(z^d-1).
+\]
+At a nonidentity $v$th root of unity the right side has valuation
+$-p^a$, prime to $d-1$. On adjoining any root $y$ the ramification
+index there is consequently divisible by $d-1$, so the equation is
+irreducible over $k(z)$. This valuation argument also works when the
+equation in $y$ is inseparable. The excluded loci $xy=0$ contribute
+no generic pairs. The resulting geometric irreducibility gives double
+transitivity of $G$.
+
+If $p\mid d-1$, all finite critical points of $f$ have value zero and
+infinity is tame. Take $m=1$. The translated branch values $-\alpha$
+are automatically distinct. The intersection argument proves that the
+composite geometric group is $G^\ell$ even though the finite inertia
+can be wild.
+
+\paragraph{Only the common wild place.}
+Now $p\mid d$ and $d$ is not a power of $p$. The derivative of $f$ is
+$-1$. Write $L/k(t)$ for its splitting field. Let $E$ be the additive
+group of $c\in k$ whose translation $t\mapsto t+c$ preserves $L$
+inside an algebraic closure; normality makes this independent of the
+extension of the translation. It acts on $G$-conjugacy classes of
+intermediate fields. The class of $k(x)$, where $t=f(x)$, has trivial
+stabilizer. Indeed, after composition with an element of $G$ a
+stabilizing translation lifts to an automorphism of $k(x)$ fixing the
+unique pole of $f$. It has the form $x\mapsto A x+B$, and
+\[
+             (Ax+B)^d-(Ax+B)=x^d-x+c .
+\]
+Here $a\ge1$, $v>1$ and $2\le d-p^a<d$. Comparison at $x^{d-p^a}$
+gives $vA^{d-p^a}B^{p^a}=0$, whence $B=0$. The linear and constant
+terms give $A=1$ and $c=0$. There are at most $2^{|G|}$ subgroups of
+$G$, so $|E|\le2^{d!}$.
+
+Choose $m=u^{d-1}$, write $x=uy$ and $b=u^dt$. Two normalized
+splitting fields coincide precisely when $(\alpha-\beta)/u^d\in E$.
+At most $d\,2^{d!}\binom{\ell}{2}$ nonzero values of $u$ are excluded.
+All fields can thus be made pairwise distinct when $\ell=O_d(\log q)$
+and $q$ is sufficiently large.
+
+Since $d$ has at least two distinct prime divisors, the double
+transitivity of $G$ excludes affine type. By the classification of
+finite doubly transitive groups, $T\le G\le\operatorname{Aut}(T)$ with
+$T$ nonabelian simple. Its socle $T$ is doubly transitive in this action
+except possibly for $\mathrm{P}\Gamma\mathrm L_2(8)$ in degree $28$
+\cite[\S2.2]{Reid}. In that exception $G/T$ has order $3$ and
+$p\in\{2,7\}$. This gives a cubic quotient cover unramified away from
+infinity and tame there, contradicting Riemann--Hurwitz. Thus $T$
+is doubly transitive.
+
+The composite geometric group $H$ is a subdirect subgroup of $G^\ell$.
+Its last derived subgroup $P$ lies in $T^\ell$ and projects onto $T$
+in each factor. Indeed, the last derived subgroup commutes with
+surjective images, $T$ is perfect, and $G/T$ is solvable by the
+Schreier theorem. If a two-coordinate projection of $P$ is proper,
+Goursat's lemma makes it the graph of an automorphism of $T$.
+Normality of $P$ in $H$ then implies that for each $h\in H$ its two
+coordinate conjugation actions on $T$ correspond under that
+automorphism. Since $C_G(T)=1$, one coordinate of $h$ is the identity
+exactly when the other is. The two kernel fixed fields coincide,
+contrary to the choice of $u$.
+
+It follows that $P=T^\ell$. To see this, project onto the first
+$\ell-1$ coordinates and use induction. The kernel in the last factor
+is normal in $T$. A trivial kernel would make the last projection
+a surjection $T^{\ell-1}\to T$. Its commuting normal factor images
+force it to factor through one coordinate, contradicting full pair
+projections. The other possibility is the full kernel $T$. We have
+proved $H\supseteq T^\ell$ without assuming independence of the
+solvable quotients.
+
+\paragraph{Frobenius and uniformity.}
+In every separable case the geometric group contains $J^\ell$ for a
+doubly transitive group $J$ on the $d$ roots. In the arithmetic group
+choose $\sigma$ inducing rational Frobenius on the full constant field.
+For any permutation $\tau$ of the roots and uniform $j\in J$, the
+number $Z$ of fixed points of $\tau j$ has
+$\mathbb E Z=\mathbb E[Z(Z-1)]=1$, by transitivity on points and on
+ordered distinct pairs. If $Z\ge1$ always, it would equal one always,
+contradicting the second identity. We may therefore choose the
+coordinates of $j\in J^\ell$ independently so that every coordinate of
+$\sigma j$ is a derangement.
+
+There are at most $1+(d-1)\ell$ geometric branch values, including
+infinity. With $D=d!$, Lemma~\ref{lem:twist} bounds the ratio of the
+point-count error to $q$ by
+\[
+    (d-1)\ell D^\ell/\sqrt q+
+    \big(1+(d-1)\ell\big)D^\ell/q .
+\]
+For $\ell=\lfloor c\log q\rfloor$ with $c<1/(2\log D)$, both terms
+tend to zero uniformly in $S$ and $p$, and the exclusions on $u$ are
+$O_d(\ell^2)=o(q)$. An unramified rational intercept with the chosen
+Frobenius class exists, giving a missing line. This proves
+Theorem~\ref{thm:fixed-graph}. The inequality is obtained from the
+point count on the twist, so possible extensions of the constants have
+already been included.
+
+\section{The pencil with adjacent exponents}\label{sec:cusp-general}
+
+Let $B_{\rm cusp}(q,d)$ denote the minimum number of members of
+\[
+                 X^d=(Y+\alpha Z)^{d-1}Z,\qquad \alpha\in\mathbb F_q,
+\]
+whose rational points meet every rational projective line. For $d=2$
+these are conics. For $d>2$ the affine origin of the untranslated
+member is a cusp. Each form is geometrically irreducible: in the
+coordinates $X,V=Y+\alpha Z,Z$, it is primitive and linear in $Z$
+over $\overline{\mathbb F}_q[X,V]$.
+
+\begin{theorem}\label{thm:cusp-general}
+For each $d\ge2$, uniformly over all characteristics,
+\[
+ B_{\rm cusp}(q,d)=\Theta_d(\log q),\qquad
+ \liminf_{q\to\infty}\frac{B_{\rm cusp}(q,d)}{\log q}
+                 \ge\frac{1}{2\log(d!)} .
+\]
+\end{theorem}
+
+\begin{proof}
+The affine points are $(t^{d-1},t^d-\alpha)$, including the point
+at $t=0$: for $x\ne0$ the inverse parameter is $(y+\alpha)/x$.
+The unique point at infinity is $[0:1:0]$. Thus the translates
+indexed by $S$ block precisely when for every slope $a$ and intercept
+$b$ the set $b+S$ meets the image of $f_a(t)=t^{d-1}(t-a)$.
+Every image has at least $q/d$ elements, since every fibre has size
+at most $d$. For $k=\lceil2d\log(2q)\rceil$ independent uniform
+shifts, the expected number of missed lines is at most
+$q^2(1-1/d)^k\le1/4$. Removing repeated shifts proves the upper
+bound by the same value-set covering principle as in
+\cite[Theorem~5.1]{AGY}. For large $q$ the resulting blocking set is nontrivial:
+each line contains at most $dk$ points of the union by B\'ezout.
+
+For $d=2$ this pencil equals the quadratic graph pencil, so the
+lower bound follows from the quadratic case. Suppose $d\ge3$ and
+fix a set $S$ of $\ell$ distinct shifts. Take $a\ne0$. The derivative
+of $f_a$ is $t^{d-2}(dt-(d-1)a)$, a nonzero polynomial in every
+characteristic. In the zero fibre the points $t=0,a$ have
+ramification indices $d-1,1$. There is at most one other finite
+branch value. It occurs only when $d(d-1)$ is nonzero in the field,
+and then equals $\kappa a^d$ with
+$\kappa=-(d-1)^{d-1}/d^d\ne0$. The finite branch values of
+$b=f_a(t)-\alpha$ are these values translated by $-\alpha$.
+If a second value occurs, exclude $\kappa a^d=\alpha-\beta$ for
+ordered distinct $\alpha,\beta\in S$. This excludes at most
+$d\ell(\ell-1)$ slopes. Whenever $q-1>d\ell(\ell-1)$ some slope
+remains, and each $-\alpha$ belongs to the branch locus of just
+one factor.
+
+Work first over $\overline{\mathbb F}_q(b)$. Let $H$ be the Galois
+group of the compositum of the splitting fields of
+$f_a(T)-b-\alpha$ and $G_\alpha$ its projection on the roots of one
+factor. This action is transitive, since the rational map $f_a$ is
+separable of degree $d$. Inertia over $-\alpha$ acts trivially in
+every other factor and surjects onto inertia in the chosen factor.
+The two orbits there have sizes $1,d-1$: over algebraically closed
+constants the inertia orbits at a fibre have precisely its
+ramification indices as sizes, including at wild places.
+Consequently the normal closure of this inertia in $H$ is supported
+in coordinate $\alpha$. Its projection $N_\alpha$ is normal in
+$G_\alpha$ and doubly transitive. Indeed, conjugation carries the
+inertia to a subgroup fixing any specified letter and transitive
+on its complement. To move one letter to another, fix a third
+letter; then a point stabilizer permits any prescribed move on
+the remaining letters. In particular $H$ contains the product of
+these $N_\alpha$ in their separate coordinates.
+
+Let $\sigma$ be a lift of the $q$-Frobenius on the full constant
+field of the arithmetic compositum. In every coset
+$\sigma_\alpha N_\alpha$ the average number of fixed letters is
+one by transitivity: each letter is carried to each given target
+equally often. Double transitivity supplies a member fixing two
+prescribed letters, so another fixes none. Multiplying $\sigma$ by
+an element of $\prod_\alpha N_\alpha$ gives an element $\gamma$ in
+the required arithmetic coset with no fixed letter in any coordinate.
+
+Put $D=d!$. Each root $x$ generates a rational field of degree $d$
+over the base, and $|H|\le D^\ell$. Lemma~\ref{lem:twist} therefore
+applies to $\gamma$, including shared wild ramification at infinity
+and the possibility of extra constants. There are at most $2\ell+1$
+geometric branch values including infinity. The twist has an
+unramified rational point, giving a missing line, as soon as
+\[
+ q+1>\ell(d-1)D^\ell\sqrt q+(2\ell+1)D^\ell.
+\]
+For $\ell\le c\log q$ with fixed $0<c<1/(2\log D)$ the two terms
+on the right, divided by $q$, are
+$O_d((1+\ell)q^{-\epsilon})$ and
+$O((1+\ell)q^{-1/2-\epsilon})$ respectively, where
+$\epsilon=1/2-c\log D>0$. The slope exclusion is $O_d(\ell^2)$.
+All three estimates are independent of the characteristic and of
+$S$, as required.
+\end{proof}
+
+\section{Two moving parameters for cubics}\label{sec:cubic-surface}
+
+Throughout this section $p>3$ and $q\equiv2\pmod3$. For a nonempty
+set $S\subset\mathbb F_q$ of cardinality $\ell$, let
+\[
+ X=\mathbb A^1\setminus(-S),\qquad U=(X\times X)\setminus\Delta,\qquad
+ t_\alpha=\frac{2(v+w+2\alpha)}{v-w}.
+\]
+Write $N(S)$ for the number of $(v,w)\in U(\mathbb F_q)$ for which
+$T^3-3T-t_\alpha$ is irreducible for every $\alpha\in S$.
+
+\begin{theorem}\label{thm:cubic-surface}
+Uniformly for all $q$ and $S$ as above,
+\begin{align}
+ \big|3^\ell N(S)-(q-\ell)(q-\ell-1)\big|
+ &\le \ell(\ell-1)(4^\ell-1)q \notag\\
+ &\quad +10\ell\,2^\ell(q+q^{3/2}).\label{eq:cubic-error}
+\end{align}
+With $L=\log q$, both the graph and the cusp blocking numbers in degree
+three are greater than $(L-2\log L)/\log4-5$ for all sufficiently
+large $q$. For each family the upper limit after division by $L$ is
+at most $2/\log3$.
+\end{theorem}
+
+For the graph, let $4u^3=v-w$, which has a unique solution, and put
+$m=3u^2$, $b=(v+w)/2$. Then $x=uT$ converts the intersection equation
+$x^3-mx=b+\alpha$ into $T^3-3T=t_\alpha$. Thus a pair counted by $N(S)$
+gives a missing line. Each missing line with $m\in3(\mathbb F_q^\times)^2$
+arises from the two orders of its pair.
+
+For the cusp, the affine parametrization is $(t^2,t^3-\alpha)$. This time
+set $m=3u$, $w=b$, $v=b+4u^3$. All nonzero slopes and intercepts occur
+exactly once. Substituting $t=u(T+1)$ gives
+\[
+  t^3-mt^2-b-\alpha =u^3(T^3-3T-t_\alpha).
+\]
+If $w=-\alpha$ or $v=-\alpha$, the original equation has the root $0$
+or $2u$, respectively. Horizontal lines meet each member by bijectivity
+of cubing. Vertical lines and the line at infinity contain $[0:1:0]$.
+Consequently $N(S)$ is the exact number of missing projective lines for
+the cusp. Translating $t=x+u$ in the same equation also shows that every
+blocking set of parameters for the cubic graphs blocks the cusps.
+
+\subsection{The two meridians at each puncture}
+
+The product of the ordering torsors of the three roots is finite
+\'etale on $U$, with group $G=S_3^\ell$. We compute its geometric
+monodromy first over $\mathbb C$ with arbitrary distinct finite marks
+$a_i=-\alpha_i$. Add the mark $a_\infty=\infty$ on the sphere. Place
+the marks on a topological equator and place the base positions of
+$v,w$ in opposite hemispheres. Join each base position to the marks
+by a fan of arcs in its hemisphere. Moving $v$ round one mark using
+its arc gives $x_i$ and moving $w$ gives $y_i$, with indices including
+$\infty$. For $i\ne j$ the two loops have disjoint tubes, so that
+$x_i y_j=y_j x_i$. These loops generate $\pi_1(U)$. Indeed, the fibre
+of the map forgetting $v$ is a sphere punctured at all marks and at
+$w$. Its meridians around the marks generate, by the boundary relation.
+The $y_i$ project to generators of the base. The homotopy sequence of
+the configuration-space fibration gives the assertion \cite{FN}.
+
+The cubic cover $T\mapsto T^3-3T$ has transposition inertia at
+$-2,2$ and a three-cycle at infinity. For fixed $w$, the map
+$v\mapsto t_{\alpha_i}$ is fractional linear, carrying $a_i,\infty,w$
+to $-2,2,\infty$. Thus a finite $x_i$ acts by a transposition $A_i$
+in coordinate $i$ alone. The analogous transposition for $y_i$ is
+$B_i$. In coordinate $i$, $x_\infty$ is a transposition commuting with
+$B_i$, hence equals $B_i$. The monodromy on the fixed-$w$ fibre is
+transitive and contains a transposition, so equals $S_3$; its image is
+generated by $A_i$ and the image of $x_\infty$. Thus $A_i\ne B_i$.
+The finite meridians generate every coordinate separately, giving
+geometric monodromy $G$.
+
+\subsection{The degree-one cohomology}
+
+Let $W$ run over the external tensors obtained by taking the trivial,
+sign or standard representation in each coordinate, over a field of
+characteristic zero. Write $b(W)=\dim H^1(U(\mathbb C),W)$. We claim
+\begin{equation}\label{eq:cubic-betti}
+ \sum_{W\ne{\bf1}} b(W)\le 10\ell\,2^\ell .
+\end{equation}
+For a crossed homomorphism $D$, put $u_i=D(x_i)$, $v_i=D(y_i)$.
+The commuting pairs impose
+\begin{equation}\label{eq:cubic-meridians}
+ (1-B_j)u_i=(1-A_i)v_j\qquad (i\ne j),
+\end{equation}
+where for the infinite index the letters denote the full meridian
+actions. Coboundaries have $D(g)=(1-g)z$. These necessary relations
+on a generating set suffice for an upper bound.
+
+First suppose the tensor has no sign and at least one standard factor.
+For finite $i$, the projection of $u_i$ to $W/(1-A_i)W$ is invariant
+under every $B_j$ with finite $j\ne i$. The quotient in factor $i$ and
+the fixed spaces in the other factors all have dimension at most one.
+The analogous statement for $v_i$ gives at most $2\ell$ dimensions in
+all, and these projections vanish on coboundaries. In their kernel
+write $u_i=(1-A_i)P_i$, $v_j=(1-B_j)Q_j$. In each standard factor use
+as basis $e,f$ on the distinct fixed lines of $A_i,B_i$, respectively.
+The quotient by $\ker(1-A_i)$ retains only words with $f$ in position
+$i$; the quotient for $B_j$ retains only words with $e$ in position $j$.
+Trivial factors retain no coefficient at their own index. For $i\ne j$
+the two operators act on different factors, so the kernel of their
+product is the sum of their kernels. Equation~\eqref{eq:cubic-meridians}
+therefore identifies the coefficients of $P_i,Q_j$ on every word
+retained by both quotients.
+
+For a mixed word the indices occupied by $f$ and by $e$ form two
+nonempty disjoint sets. Every left index is joined to every right one,
+so all retained coefficients of that word agree. Subtract a single
+coboundary whose $z$ has these common coefficients on all mixed words.
+The two constant words leave at most $2\ell$ coefficients altogether.
+With the finite-loop data fixed, the difference of two choices for
+$u_\infty$ is fixed by every finite $B_j$, a space of dimension at most
+one. The same reasoning applies to $v_\infty$. This gives $b(W)\le4\ell+2$.
+
+If there is a sign at $s$, subtract the unique coboundary making
+$u_s=0$ and put $h=v_s$. For $j\ne s$, including $j=\infty$,
+\[
+          v_j=0,\qquad 2u_j=(1-A_j)h.
+\]
+Thus a cohomology class is determined by $h$. For distinct finite
+$i,j\ne s$ we have $(1-A_i)(1-B_j)h=0$. With exactly one sign this
+excludes every mixed word on the standard factors, giving $b(W)\le2$.
+With another sign at $t$, the equations with $(i,t)$ and $(t,i)$ force
+any standard factor $i$ to lie in both its fixed lines, so $h=0$.
+Two signs with all remaining factors trivial leave at most one
+dimension. Three or more signs give $4h=0$ by taking two of them
+different from $s$. The resulting sum is at most
+\[
+ (4\ell+2)(2^\ell-1)+2\ell\,2^{\ell-1}+\binom{\ell}{2}
+ \le 10\ell\,2^\ell ,
+\]
+which proves \eqref{eq:cubic-betti}.
+
+\subsection{Specialization and the trace estimate}
+
+Lift the marks to disjoint sections over the localization of
+$\mathbb Z[\zeta_{q-1}]$ at a prime above $p$ using roots of unity and
+the constant sections $0,\infty$. The residue field is $\mathbb F_q$:
+if $q=p^h$, the order of $p$ modulo $p^h-1$ is $h$. In
+$\mathbb P^1\times\mathbb P^1$ the removed verticals, horizontals and
+diagonal have triple intersections precisely at $(a,a)$ for the marks
+$a$, including infinity. Blow up those disjoint sections. The three
+tangents are distinct in both fibres, giving a smooth proper relative
+surface with relative simple normal crossings boundary. On its open
+complement the ordered-root torsor extends because each discriminant
+is a unit. Its order $6^\ell$ is prime to $p$, so the local systems it
+trivializes are tame, including at the exceptional divisors.
+
+Over the strictly henselian base, apply the tame base-change theorem
+in degrees zero and one \cite[Exp.~XIII, Cor.~2.9]{SGA1}. First apply
+it to the sheaf of $\mathbb F_2$-valued functions on the torsor. The
+dimension of $H^0$ counts geometric connected components, so the
+complex computation gives full geometric monodromy in the special
+fibre as well. Apply the same theorem to successive quotients modulo
+$2^j$ of an invariant $\mathbb Z_2$-lattice in each $W$. The finite
+degree-zero groups satisfy the Mittag--Leffler condition. Passing to
+the inverse limit and inverting $2$, then using \'etale--singular
+comparison in characteristic zero, transports \eqref{eq:cubic-betti}
+to $\overline{\mathbb F}_q$.
+
+For nontrivial $W$ of rank $r$, affine vanishing, Poincar\'e duality
+and the absence of geometric invariants give $H_c^0=H_c^1=H_c^4=0$
+and $\dim H_c^3=b(W)$; the representations are self-dual. A nonidentity
+deck transformation of the $G$-torsor acts freely and has order prime
+to $p$. Its alternating compactly supported trace vanishes by the
+finite-order trace theorem \cite[Thm.~3.2, Prop.~3.12]{DL}. The
+equivariant Euler characteristic is consequently a multiple of the
+regular character. Taking invariants identifies the multiple as
+$\chi_c(U)=(1-\ell)^2-(1-\ell)=\ell(\ell-1)$, by subtracting the
+diagonal. It follows that $\dim H_c^2=r\ell(\ell-1)+b(W)$.
+Finite monodromy gives weight zero. The trace formula and the weight
+bound \cite[\S3.3]{WeilII} give
+\[
+ \left|\sum_{z\in U(\mathbb F_q)}
+             \operatorname{tr}(\operatorname{Frob}_z\mid W)\right|
+ \le r\ell(\ell-1)q+b(W)(q+q^{3/2}).
+\]
+On $S_3$, three times the indicator of the three-cycles is the character
+$1+\mathrm{sgn}-\mathrm{std}$. Expand the product over the $\ell$
+coordinates. The trivial term contributes $(q-\ell)(q-\ell-1)$, and
+the sum of the nontrivial ranks is $4^\ell-1$. The preceding estimate
+and \eqref{eq:cubic-betti} give \eqref{eq:cubic-error}.
+
+After division by $q^2$ the error is at most
+\[
+       \frac{\ell^2 4^\ell}{q}+
+       \frac{10\ell\,2^\ell}{\sqrt q}(1+q^{-1/2}).
+\]
+It tends to zero uniformly for $1\le\ell\le cL$ if $c<1/\log4$.
+At $\ell=\lfloor(L-2\log L)/\log4-5\rfloor$, the upper limit of
+this error is at most $4^{-5}/(\log4)^2+10\cdot2^{-5}/\log4<0.23$.
+The normalized main term tends to one. Thus every set of that size has
+a missing line, proving the strict lower bound in
+Theorem~\ref{thm:cubic-surface}.
+
+For the upper bound, $x^3-mx$ omits exactly $(q+1)/3$ values for
+$m\ne0$. Indeed, $x^2+xy+y^2=m$ is a norm conic with $q+1$ ordered
+solutions, since the nontrivial cube roots of unity are quadratic over
+$\mathbb F_q$. Let $h$ count its diagonal solutions. The cubic has $h$
+fibres of size two, one at each rational critical value. If $k$ fibres
+have size three, counting ordered unequal collisions gives
+$2h+6k=q+1-h$. Hence the number of empty fibres is $h+2k=(q+1)/3$.
+Horizontal lines are all hit. With $j$ independent uniform translates
+the expected number of missed lines is at most
+$q(q-1)((q+1)/(3q))^j$, which yields the claimed upper limit.
+The transfer to the cusp was proved above.
+
+The fixed-length tuple asymptotic \cite{BaryTuple} and the exact cubic
+twin-prime count \cite{BaryStix} concern related irreducibility
+conditions. The estimate needed here controls every configuration of
+$\ell$ marks with $\ell$ growing. The gain in \eqref{eq:cubic-error}
+comes from summing the first Betti numbers separately from the ranks.
+
+For orientation, applying a one-variable trace estimate to a slope with
+disjoint critical values gives the smaller coefficient $1/\log16$:
+there are $2\ell$ finite branch points, the nontrivial tensor ranks
+sum to $4^\ell-1$, and the tame curve estimate gives an error at most
+$(2\ell-1)(4^\ell-1)\sqrt q$ in the normalized count multiplied by
+$3^\ell$. This follows from the character estimate in
+\cite[Prop.~5.1]{Zywina} and the full-cycle norm in
+\cite[Props.~6,10]{Bellaiche}. More general explicit Chebotarev
+estimates are also available \cite{Shpilka}; the multishift
+specialization in its Theorem~1.6 assumes degree at least four.
+
+\subsection{Earlier tuple estimates and two further cubic bounds}
+
+For $p>3$, Pollack's estimate for an individual cubic already gives a
+logarithmic lower bound. Apply \cite[Lem.~6, Cor.~15 and the estimate
+preceding (4.4)]{Pollack} to the outer polynomials $T-\alpha$. At least
+$q^2-36q(1+\binom{\ell}{2})$ cubics $h=T^3+aT^2+eT$ are admissible.
+For each, at least
+$3^{-\ell}[q-2(g\sqrt q+g+6^\ell)]-2\ell$ values of $v$ make all
+$h-v-\alpha$ irreducible, with $g\le3\ell6^\ell$. Translation by
+$-a/3$ removes the quadratic term. This proves the lower coefficient
+$1/(2\log6)$ directly from Pollack, even with $\ell$ growing.
+The two-parameter estimate \eqref{eq:cubic-error} gives $1/\log4$.
+
+In characteristic two take $q=2^{2j+1}$. At slope one the substitution
+$x=z+z^{-1}$ gives $x^3+x=z^3+z^{-3}$. Inversion and multiplication
+by cube roots of unity give its $S_3$-closure. At infinity inertia is
+tame of order three. At the single finite branch value, inversion at
+$z=1$ changes $z-1$ by a term of valuation two, hence
+$I_0=I_1=C_2$ and $I_2=1$. The $\ell$ translated finite branch values
+are distinct, so the intersection argument of Section~\ref{sec:fixed-graph}
+gives geometric group $S_3^\ell$. For a nontrivial tensor of rank $r$
+the total Swan conductor is at most $\ell r$. The Euler characteristic
+formula on the punctured affine line consequently gives
+$\dim H_c^1\le(2\ell-1)r$. If $N_1$ counts intercepts missing every
+translate, the same character expansion yields
+\[
+  |3^\ell N_1-(q-\ell)|\le(2\ell-1)(4^\ell-1)\sqrt q .
+\]
+This gives $\liminf B(q,3)/\log q\ge1/\log16$ along these fields.
+
+For all $q\equiv2\pmod3$, the graph upper bound refines to
+$B(q,3)\le(2L-\log L)/\log3+17$. In characteristic two the norm conic
+still has $q+1$ points and one diagonal point; the fibre at zero is
+the unique two-point fibre. The same single-line miss rate follows.
+After $k$ independent samples, at most $t$ lines can remain uncovered
+for some sample whenever $q(q-1)((q+1)/(3q))^k\le t$. One further
+translate hits all $t$ lines if
+$q+1>[2+(2t-1)3^t]\sqrt q+3^t$. Indeed, put $\alpha=z^{-3}$ and
+lift the root $1$ of $Y_i^3-1-m_iY_iz^2-b_iz^3$ by Hensel's lemma.
+The roots $Y_i/z$ generate over $\mathbb F_q(\alpha)$ a function field of degree at most
+$3^t$ with full constants in $\mathbb F_q((z))$. Successive
+Castelnuovo--Severi bounds give twice its genus at most
+$2+(2t-1)3^t$. Hasse--Weil then gives a rational place away from
+the at most $3^t$ poles of $\alpha$. For $L\ge128$ take
+$t=\lfloor L/(4\log3)\rfloor$ and $k=\lfloor(2L-\log L)/\log3\rfloor+16$.
+Here $t\ge L/16$, $k/q<1$, $3^t\le q^{1/4}$ and
+$2t+4\le q^{1/4}$, which imply both inequalities.
+For $q\ge16$ with $L<128$, $k=\lceil2L/\log3\rceil+3$ samples already
+give expected misses below one, since $k/q<1$. For $q<16$ use all
+parameters. The companion manuscript, \S\S12--13, gives the detailed
+genus and rational-place bounds.
+
+\section{Different blocking numbers on the same field}\label{sec:norm-spheres}
+
+Let $F=\mathbb F_s\subset E=\mathbb F_{s^n}$, and let $N=N_{E/F}$.
+Write $B_{\rm cusp}(q,d)$ for the pencil $X^d=(Y+\alpha Z)^{d-1}Z$
+and put $B_{\rm graph}(q,d)=B(q,d)$ for the pencil $YZ^{d-1}=X^d-\alpha Z^d$.
+
+\begin{theorem}\label{thm:sphere-minimum}
+In relative degree two, for every prime power $s\ge2$,
+\[
+   B_{\rm cusp}(s^2,s)=3,\qquad B_{\rm graph}(s^2,s)=2s-1 .
+\]
+In relative degree three, for $s\ge4$,
+\[
+   B_{\rm cusp}(s^3,s)=4,\qquad B_{\rm graph}(s^3,s)=3s-2 .
+\]
+Both minima in each pair are realized by nontrivial projective blocking
+sets. In particular the ratio of the two minima is unbounded.
+\end{theorem}
+
+Call $S\subset E$ cospherical if there exist $b\in E$ and
+$R\in F^\times$ such that $N(b+\alpha)=R$ for every $\alpha\in S$.
+The following reduction also holds outside the two degrees of the theorem.
+
+\begin{lemma}\label{lem:cospherical}
+Every set that fails to block the cusp of degree $s$ is cospherical.
+If $|S|<s$, a cospherical set fails to block.
+\end{lemma}
+\begin{proof}
+Assume $S\ne\varnothing$, the empty case being immediate. A missing
+line $y=mx+b$ has $m\ne0$ because $t\mapsto t^s$ is onto, and all
+$z=b+\alpha$ are nonzero because $t=0$ gives the value zero. For
+$v=t^{-1}$ the intercept equation becomes
+\[
+                     zv^s+mv=1.
+\]
+Every solution has $v\ne0$. This $F$-linear operator is invertible
+unless $N(z)=N(-m)$: a nonzero kernel vector exists precisely when
+$-m/z$ is an $(s-1)$st power, equivalently when $N(-m/z)=1$.
+Thus every omitted line forces a common nonzero norm.
+
+Conversely, suppose $N(z)=R$ for all $z=b+\alpha$ and choose one such
+element $a$. Each map $v\mapsto zv^s-av$ has an $F$-line as its
+kernel, hence image of size $q/s$. If $|S|<s$, some $u\in E$ belongs to
+none of the images, and $u\ne0$. Take $k\in E$ with $k^s=u$ and put
+$m=-ak/u$. A solution of $zv^s+mv=1$ would give
+$z(kv)^s-a(kv)=u$. This excludes every shift at once.
+\end{proof}
+
+For any fixed $b$, the polynomial $N(b+T)=\prod_{j=0}^{n-1}
+(T+b^{s^j})$ in $F[T]$ is monic of degree $n$. Any $n+1$ distinct
+elements of $F$ therefore block by Lemma~\ref{lem:cospherical}.
+Conversely, in degree at least two, any two distinct elements $x,y$
+are cospherical. Choose $w\ne1$ of norm one, put $v=(y-x)/(w-1)$,
+and translate by $v-x$. The two values $v,wv$ have the same nonzero norm.
+This proves the quadratic cusp minimum for $s\ge3$, including $s=3$,
+where the upper bound uses the first assertion of the lemma. When
+$s=2$, both conic pencils have exactly the same homogeneous equation;
+\eqref{eq:graph-frob} gives the common value $B(4,2)=3$.
+
+In degree three we show that every three distinct points are
+cospherical. By translation we may take them to be $0,a,c$; put
+$u=c/(a-c)$, so $u(1+a/z)=(1+u)(1+c/z)-1$. For any $A,B\in
+F^\times$, consider
+\[
+             g_j(T)=T^3+jT^2+(j+B-A-1)T-A,\qquad j\in F .
+\]
+Their values at $0,-1$ are $-A,-B$. Every other point of $F$ excludes
+precisely one $j$, as its coefficient in the root equation is
+$T(T+1)\ne0$. Thus at least two $g_j$ have no root in $F$ and are
+irreducible. Each splits in $E$. Any root $y$ of such a cubic has
+$N(y)=A$, $N(1+y)=B$. Take $A=N(u)$ and $B=N(1+u)$, and choose $y\ne
+u$; the two irreducibles have disjoint root sets. Set $z=ua/(y-u)$.
+Then $N(z+a)=N(z)=N(z+c)\ne0$ by the two displayed identities.
+The lemma proves the cubic lower bound. This argument uses only the
+degree-three case of simultaneous norm equations.
+The existence of such sphere centres already follows, for all $s$, from
+the common-neighbour formulas of Bayer, M\'esz\'aros, R\'onyai and
+Szab\'o for the projective norm graph $\mathrm{NG}(s,4)$
+\cite[Thm.~1(a), Lem.~2(iv), Prop.~1]{Bayer}. In their recurrence
+the quadratic two-norm fibres have at most two points, giving at least
+$2(s+1)-2(s-2)=6$ solutions before exclusion of one point. Their
+vertices $(\alpha_i,1)$ therefore have at least five common neighbours
+when the three first coordinates are distinct. A neighbour $(b,R)$
+specifies precisely such a centre and radius. We included the cubic
+argument to give an elementary kernel-verified proof. The
+blocking-number application also requires the simultaneous missed-line
+criterion and a blocking set attaining the upper bound.
+
+For comparison, the Frobenius graph formula gives
+$B_{\rm graph}(s^n,s)=n(s-1)+1$. In both examples the graph minimum
+is $<q$, so its optimal unions contain no full rational line by the
+projective graph criterion. The cusps all have the single point
+$[0:1:0]$ at infinity. At each fixed $x$, the equation
+$(y+\alpha)^{s-1}=x^s$ admits at most $s-1$ values of $y$ per shift.
+For the stated sizes, $3(s-1)<s^2$ and $4(s-1)<s^3$, so even the
+vertical lines cannot be contained in the union. All other projective
+lines have a point at infinity outside the union.
+
+\section*{Proof verification and reproducibility}
+The accompanying Lean~4.8 project uses the homogeneous projective
+equations of the two pencils. It proves the two exact comparisons of
+Theorem~\ref{thm:sphere-minimum} over the same extension field, the
+projective nontriviality bounds, and the cubic simultaneous-norm
+construction, without geometric or analytic hypotheses. It checks
+geometric irreducibility over the algebraic closure for both pencils. The
+general cuspidal parametrization, the equivalence with the slope test,
+and the cuspidal logarithmic upper bound are also unconditional.
+
+For the fixed-degree lower bounds the kernel checks numerical
+positivity and the finite permutation argument used to obtain
+derangements. Identification of the geometric groups and inertia
+in the actual splitting fields, the root-tower genus estimate, and
+rational-point descent on a Frobenius twist are proved in the text.
+For the cubic surface estimate, Lean checks the actual pair-count
+reduction, the linear algebra of crossed cocycles under the stated
+meridian relations, and the passage from the cohomological input to
+the $1/\log4$ bound. The identification of the meridians, specialization
+of the marked surface, the trace formula and the weight estimates are
+geometric inputs. The cubic upper bound with the negative $\log\log q$
+term is unconditional in Lean for $\log q\le3^9$. Its all-field
+formalization uses the genus and point theorems on the constructed
+Laurent branch. The \href{https://github.com/Heinz1729/monomial-blocking-curves}{public
+repository} includes the sources, finite-field checks, proof-scope
+index and a reproducible audit of theorem dependencies.
+
+\section*{Attribution}
+GPT-6.2 Astra is the AI byline of this public preprint. The research
+chat supplied the proposals for the cuspidal pencil and the norm-sphere
+comparison. OpenAI's Codex was used for proof development, Lean
+formalization, source checks and preparation of the manuscript.
+
+\begin{thebibliography}{99}
+\raggedright
+
+\bibitem{AGY} S. Asgarli, D. Ghioca, C.~H. Yip, Blocking sets from a
+union of plane curves, Des. Codes Cryptogr. 94 (2026), article 217.
+\href{https://doi.org/10.1007/s10623-026-01958-z}{doi:10.1007/s10623-026-01958-z}.
+\bibitem{Jamison} R.~E. Jamison, Covering finite fields with cosets of
+subspaces, J. Combin. Theory Ser.~A 22 (1977), 253--266.
+\href{https://doi.org/10.1016/0097-3165(77)90001-2}{doi:10.1016/0097-3165(77)90001-2}.
+\bibitem{BS} A.~E. Brouwer, A. Schrijver, The blocking number of an
+affine space, J. Combin. Theory Ser.~A 24 (1978), 251--253.
+\href{https://doi.org/10.1016/0097-3165(78)90013-4}{doi:10.1016/0097-3165(78)90013-4}.
+\bibitem{Kurlberg} P. Kurlberg, Poisson spacing statistics for value
+sets of polynomials, Int. J. Number Theory 5 (2009), 489--513.
+\href{https://arxiv.org/abs/math/0602673}{arXiv:math/0602673}.
+\bibitem{Pollack} P. Pollack, Simultaneous prime specializations of
+polynomials over finite fields, Proc. Lond. Math. Soc. (3) 97 (2008),
+545--567. \href{https://doi.org/10.1112/plms/pdn013}{doi:10.1112/plms/pdn013}.
+\bibitem{Reid} C.~D. Reid, Multiple transitivity except for a system of
+imprimitivity, J. Group Theory 27 (2024), 651--712.
+\href{https://doi.org/10.1515/jgth-2023-0062}{doi:10.1515/jgth-2023-0062}.
+
+\bibitem{FN} E. Fadell, L. Neuwirth, Configuration spaces, Math. Scand.
+10 (1962), 111--118.
+\href{https://doi.org/10.7146/math.scand.a-10517}{doi:10.7146/math.scand.a-10517}.
+\bibitem{SGA1} A. Grothendieck et al., Rev\^etements \'etales et groupe
+fondamental (SGA 1), Expos\'e XIII, Lecture Notes in Mathematics 224,
+Springer, 1971. \href{https://arxiv.org/abs/math/0206203}{Updated edition}.
+\bibitem{DL} P. Deligne, G. Lusztig, Representations of reductive groups
+over finite fields, Ann. of Math. (2) 103 (1976), 103--161.
+\href{https://doi.org/10.2307/1971021}{doi:10.2307/1971021}.
+\bibitem{WeilII} P. Deligne, La conjecture de Weil. II, Publ. Math.
+IH\'ES 52 (1980), 137--252.
+\href{https://doi.org/10.1007/BF02684780}{doi:10.1007/BF02684780}.
+\bibitem{BaryTuple} L. Bary-Soroker, Hardy--Littlewood tuple conjecture
+over large finite fields, Int. Math. Res. Not. IMRN 2014 (2014), 568--575.
+\href{https://doi.org/10.1093/imrn/rns249}{doi:10.1093/imrn/rns249}.
+\bibitem{BaryStix} L. Bary-Soroker, J. Stix, Cubic twin prime polynomials
+are counted by a modular form, Canad. J. Math. 71 (2019), 1323--1350.
+\href{https://doi.org/10.4153/CJM-2018-018-9}{doi:10.4153/CJM-2018-018-9}.
+
+\bibitem{ZhouWu} J. Zhou, H. Wu, Covering finite fields by translates of
+multiplicative subgroups, preprint (2026).
+\href{https://arxiv.org/abs/2610.25228}{arXiv:2610.25228}.
+\bibitem{Stichtenoth} H. Stichtenoth, Algebraic Function Fields and Codes,
+second edition, Graduate Texts in Mathematics 254, Springer, 2009.
+\href{https://doi.org/10.1007/978-3-540-76878-4}{doi:10.1007/978-3-540-76878-4}.
+\bibitem{Kosters} M. Kosters, A short proof of the Chebotarev density
+theorem for function fields, Math. Commun. 22 (2017), 227--233.
+\href{https://hrcak.srce.hr/file/274189}{Journal article}.
+\bibitem{Bellaiche} J. Bella\"iche, Th\'eor\`eme de Chebotarev et
+complexit\'e de Littlewood, Ann. Sci. \'Ec. Norm. Sup\'er. (4) 49
+(2016), 579--632.
+\href{https://doi.org/10.24033/asens.2291}{doi:10.24033/asens.2291}.
+\bibitem{Zywina} D. Zywina, Hilbert's irreducibility theorem and the
+larger sieve, preprint (2010).
+\href{https://arxiv.org/abs/1011.6465}{arXiv:1011.6465}.
+\bibitem{Shpilka} I. Benbenishty Shpilka, Explicit error term in the
+Chebotarev density theorem for function fields, preprint (2026).
+\href{https://arxiv.org/abs/2611.28155}{arXiv:2611.28155}.
+\bibitem{Bayer} T. Bayer, T. M\'esz\'aros, L. R\'onyai, T. Szab\'o,
+Subgraphs of the projective norm graph, Forum Math. Sigma 14 (2026), e121.
+\href{https://doi.org/10.1017/fms.2026.10245}{doi:10.1017/fms.2026.10245}.
+\end{thebibliography}
+\end{document}

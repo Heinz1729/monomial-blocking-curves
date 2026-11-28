@@ -37,4 +37,7 @@ lean_lib BlockingCurves where
     `PiecewiseCandidates, `PiecewiseFibres, `PiecewiseCharacter, `PiecewiseWeil,
     `PiecewisePolynomials, `PiecewiseGeometric, `PiecewiseLargeEscape, `PiecewiseNormSlice,
     `PiecewiseNormPolynomial, `PiecewiseBoundedEscape, `PiecewiseGroundEscape,
-    `PiecewiseSyncUpper, `PiecewiseMinimum]
+    `PiecewiseSyncUpper, `PiecewiseMinimum, `FixedDegreeBudget,
+    `CuspidalGeneral, `CuspidalGeneralBranch, `CuspidalGeneralInertia, `CuspidalGeneralLower,
+    `CuspidalGeneralUpper, `CuspidalNontrivial, `CuspidalGeometry,
+    `CuspidalCubicSphere, `CuspidalNorm, `CuspidalNormMinimum]

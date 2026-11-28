@@ -32,7 +32,7 @@ theorem monomialCurveForm_eval_eq_zero_iff (d : ℕ) (α x y z : K) :
   simp [monomialCurveForm, sub_eq_zero, eq_sub_iff_add_eq, eq_comm]
   rw [sub_eq_iff_eq_add]
 
-private theorem irreducible_variable_binomial (d : ℕ) (hd : 0 < d) :
+theorem irreducible_variable_binomial (d : ℕ) (hd : 0 < d) :
     Irreducible ((X : Polynomial (Polynomial K)) ^ d - C X) := by
   let P : Ideal (Polynomial K) := Ideal.span {X}
   have hP : P.IsPrime := (Ideal.span_singleton_prime X_ne_zero).2 prime_X

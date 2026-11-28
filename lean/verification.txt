@@ -6,6 +6,30 @@ All safe declarations and source-located unsafe declarations in all project modu
 Allowed axioms: Classical.choice, Quot.sound, propext
 
 Selected results
+BlockingCurves.FixedDegreeBudget.growing_window  [Classical.choice, Quot.sound, propext]
+BlockingCurves.CuspidalGeneral.blocks_iff  [Classical.choice, Quot.sound, propext]
+BlockingCurves.CuspidalGeneral.degree_two_iff_graph  [Classical.choice, Quot.sound, propext]
+BlockingCurves.CuspidalGeneral.cuspForm_geometrically_irreducible  [Classical.choice, Quot.sound, propext]
+BlockingCurves.CuspidalGeneral.cuspForm_admissible  [Classical.choice, Quot.sound, propext]
+BlockingCurves.CuspidalGeneral.cusp_family_iff  [Classical.choice, Quot.sound, propext]
+BlockingCurves.CuspidalGeneral.cusp_containsNoLine_iff  [Classical.choice, Quot.sound, propext]
+BlockingCurves.CuspidalGeneral.logarithmic_upper  [Classical.choice, Quot.sound, propext]
+BlockingCurves.CuspidalGeneral.zero_fibre_roots  [Classical.choice, Quot.sound, propext]
+BlockingCurves.CuspidalGeneral.critical_point_iff  [Classical.choice, Quot.sound, propext]
+BlockingCurves.CuspidalGeneral.critical_value_cases  [Classical.choice, Quot.sound, propext]
+BlockingCurves.CuspidalGeneral.exists_separating_slope  [Classical.choice, Quot.sound, propext]
+BlockingCurves.CuspidalGeneral.independent_inertia_derangements  [Classical.choice, Quot.sound, propext]
+BlockingCurves.CuspidalGeneral.rational_root_fixed  [Classical.choice, Quot.sound, propext]
+BlockingCurves.CuspidalGeneral.lower_of_inertia_twists  [Classical.choice, Quot.sound, propext]
+BlockingCurves.CuspidalNorm.hits_iff_no_sphere  [Classical.choice, Quot.sound, propext]
+BlockingCurves.CuspidalNorm.blocks_iff_no_sphere  [Classical.choice, Quot.sound, propext]
+BlockingCurves.CuspidalNorm.ground_line_blocks  [Classical.choice, Quot.sound, propext]
+BlockingCurves.CuspidalCubicSphere.norm_pair_avoiding  [Classical.choice, Quot.sound, propext]
+BlockingCurves.CuspidalCubicSphere.sphere_through_three  [Classical.choice, Quot.sound, propext]
+BlockingCurves.CuspidalNorm.quadratic_comparison  [Classical.choice, Quot.sound, propext]
+BlockingCurves.CuspidalNorm.cubic_comparison  [Classical.choice, Quot.sound, propext]
+BlockingCurves.CuspidalGeneral.quadratic_three_nontrivial  [Classical.choice, Quot.sound, propext]
+BlockingCurves.CuspidalGeneral.cubic_four_nontrivial  [Classical.choice, Quot.sound, propext]
 BlockingCurves.projective_prime_power_minimum  [Classical.choice, Quot.sound, propext]
 BlockingCurves.scattered_iff_forall_graphHits_iff  [Classical.choice, Quot.sound, propext]
 BlockingCurves.exact_scattered_minimum  [Classical.choice, Quot.sound, propext]
@@ -235,7 +259,7 @@ BlockingCurves.PiecewiseFrobenius.synchronous_table_minimum  [Classical.choice, 
 BlockingCurves.PiecewiseFrobenius.nonsynchronous_table_minimum  [Classical.choice, Quot.sound, propext]
 
 SHA-256 (UTF-8 source bytes with LF line endings)
-b7a0d8e66f86e23c818b718b0c5df824f13e62aea7bd2214db235dbe18d06c5c  BlockingCurves.lean
+576134847e9092a27154aa0307bdc39906bfb5ef297b976e58146b46ec60ac28  BlockingCurves.lean
 e64549853052c3ee8e86744b6c365e553a1361ce482a3b0f051b36ead0ec4c2f  Cubic41.lean
 da432c523306c0267c0dee96ff81242a672a60f1a971b246de0750d925d8597c  Cubic41Semantics.lean
 f09a9868931d0cf1dd6828f0bc51be0bc5acecca4f095a07e6d44ee98f2b856e  Cubic47.lean
@@ -278,14 +302,25 @@ afc05577c4afc252e28e3b91ca53d86e54296f533dc0e680a61b9bd705c9b402  CubicSurfaceTr
 197ab9a33e02f41cb221301873a9d00cddf084f050740fca3f40e8e958dee659  CubicUnsigned.lean
 dcb5edf91201f369fd1ab0181f25c45868c970f6666ee68ee246d5a749ab43d1  CubicValueSet.lean
 2b1a39125f57d22848a228c69e6d975feee5946883d3afbb9d33065b8bc150c9  CubicZetaPoints.lean
+89dd1e236e8672105e743ee7d5af2b6cdc2f180f433ab0a8da8eea690fa09f7b  CuspidalCubicSphere.lean
+feebb55f8badf198eb6ffef95abad33d8a1546726fd329b1a60360dde422d022  CuspidalGeneral.lean
+1c38aafd34c4a6f48a8e615c0d342478fb0753fb028e901882c6acb41f29eacf  CuspidalGeneralBranch.lean
+20ab4aca3528c34c56ef30e8fa0e6106832635bdc8c1c3b6ea05c09bbb0c65b8  CuspidalGeneralInertia.lean
+76e519f96476009afe88f4a71e027988cd18045f1c475444a412836c2fe8d6a2  CuspidalGeneralLower.lean
+fae98186fc93b2cd06672abdb000f23b27810e8b9f5829f57da9b27ce034f1dd  CuspidalGeneralUpper.lean
+ac2549ca21627c362bd134d36fe6c1211dc40232d9eb0061c5b3f037cb65234a  CuspidalGeometry.lean
+d1af1a52112e67272df16c335d79bc963463ea5c76a27002dcde277813a416b5  CuspidalNontrivial.lean
+2ad22835543bda2850a7c339a227103a208560c8ce20b58ced680beffb4f116f  CuspidalNorm.lean
+37d9da744e07f9f7c547fc7f25072134509610ddac7f8b57a5bf10d8ca6cdbd3  CuspidalNormMinimum.lean
 a9c7044a81d55ee6b12fb6511e05ec14c48871e8bd493f839a4b69487d30f2ea  CuspidalTransfer.lean
 1f3f67c7f9683e73102c948d7b3d57e25933eda5a9218e4c8d53be00e6c99925  F8Example.lean
 2c61fc19c7debca20948e187a1ad64d97d90515d7660aca60dcbabfb301019d1  F8Semantics.lean
 b7f77d12eaa7d5c22355658cf6dde38e29ce788f27a948723574afbe1b054085  FieldTransport.lean
+dde8c89240cce501f7747f6db745bcb89d31e0faf65b8c0c064cd6f94b93c37f  FixedDegreeBudget.lean
 44f6ca950b47d090e79c332af9144faf6a4a4fb0619fd39295c46d2068a2e23a  Frobenius.lean
 dd2cc5afef1ae43210e14a36dbc805605eb53ea1a5a5dd232ed429d2f0d62240  FrobeniusCoset.lean
 144356f1d1eea85a33515744a37d4ee5136e2eb915e76273f8a26c9cec056e57  GeneralGeometry.lean
-8e78b721353ee30bd58ef9fc7472c8ab033bca90a17a7c20a3e788bfa79c2c62  GeometricIrreducibility.lean
+7105197dc3d5586e7327f3303cb20c0883f38ec567042cd9518f057755951e89  GeometricIrreducibility.lean
 fbdcd87aebdaa352199770e7d94f3b6a21223995116f414a7baa0f0868c0c5d7  LowerBound.lean
 69dcf0420a7e6142a409acab637f06de581e51f4353fecb9d14c2c2ecfe912fd  MainResult.lean
 e5281bf1b549f55b241466e714cb82cbe67d5d0478517810a3d665df2bcb3a87  NontrivialPencil.lean
@@ -337,7 +372,7 @@ d3594286eed503b9ead6f29b9c32ad7d79f2084204f12193037ca2781e7d1758  PhaseEigenFibr
 edbc3cfaf15fa39d3ea36e6edf96b2c008b26c597a7e2d259a776efd24202965  PiecewiseCandidates.lean
 cca42a4cea4da2cbb4fb9732b5e811f939b6ba22f3c3942f04435bae1bbe5c22  PiecewiseCharacter.lean
 947a01c8bf606eaed776e88a1d0f04ba049d5868dc6bc17844ad6e5fb26fae9f  PiecewiseFibres.lean
-3db4bb61ec74f589fa2b1fb54b3fa67fa868db9c5eefb751226b5b61a7c87beb  PiecewiseFrobenius.lean
+2d6e5c320f43bcb2969820a9d2d8b2711bf9a4559d4d66b1a6f3ce46c04e0f04  PiecewiseFrobenius.lean
 f1ca31def252c771006c71f10a841235cb70d75d3abc48ebab3a9410a0b5c6db  PiecewiseGeometric.lean
 0e3dfb8e858f0b20854e2da9876ab4417570083cf1dcbb4eb7934bcc7a87c494  PiecewiseGroundEscape.lean
 a0dca173771bce1551e25ce03248e0985e07b5f060cbf4a6735462d9b9bd2e39  PiecewiseLargeEscape.lean
@@ -357,6 +392,6 @@ c6e2cd3f92eb0bd834495bfe9cf29b85058b2e7bfc36f9bb389045d6745a12e7  Sextic32Geomet
 53c8cf3861a169b511720fd33d3e55eccbdffead57377b9e5258be1646457865  Sextic32Search.lean
 c7bdcc1960065ca0dd1a5a901cf3b07ad9c1544e39a792ac50304308d7a974a9  StatementComparison.lean
 2e906616c04bc8a2e91c101f9cfb8e3d62a458e84193beff13331ca68b594de4  UpperBound.lean
-e8005f55961920f539f93007e9a134ed0c5c5b245318b3147e221924c3ec555f  lakefile.lean
+93589f3b43aa0302dff32051efdad41116d19873032bdac5b42b4124cc1c4554  lakefile.lean
 021b17d7609dca541fab5fc95f674618fb9dd8ace15871f8f35f7d1e53336996  lake-manifest.json
 61561b06f5587e027815fac8f59bf6ca160dfbf3f7372fc6297664acfd85b8c0  lean-toolchain
