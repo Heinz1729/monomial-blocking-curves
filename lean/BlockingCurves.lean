@@ -13,6 +13,8 @@ import CubicPairCount
 import CuspidalTransfer
 import CuspidalGeneralLower
 import CuspidalGeometricLower
+import CuspidalCompositumLower
+import CuspidalConstantLift
 import CuspidalFinitePlace
 import CuspidalGeneralUpper
 import CuspidalGeometry
@@ -87,6 +89,31 @@ import PiecewiseMinimum
 #print axioms BlockingCurves.CuspidalTower.uniform_point_budget
 #print axioms BlockingCurves.CuspidalGeneral.lower_of_geometric_root_tower
 #print axioms BlockingCurves.CuspidalGeneral.lower_of_twist_geometry
+#print axioms BlockingCurves.CuspidalRootTower.stage_succ
+#print axioms BlockingCurves.CuspidalRootTower.stage_top
+#print axioms BlockingCurves.CuspidalRootTower.relative_eq_minpoly_degree
+#print axioms BlockingCurves.CuspidalRootTower.relative_degree_bound
+#print axioms BlockingCurves.CuspidalRootTower.single_root_degree
+#print axioms BlockingCurves.CuspidalRootTower.first_sheet_degree
+#print axioms BlockingCurves.CuspidalRootTower.last_sheet_degree_one
+#print axioms BlockingCurves.CuspidalRootTower.splitting_degree_bound
+#print axioms BlockingCurves.CuspidalTower.single_root_rational
+#print axioms BlockingCurves.CuspidalTower.single_root_forms_eq_bot
+#print axioms BlockingCurves.CuspidalTower.fieldGenus_top
+#print axioms BlockingCurves.CuspidalRootTower.stage_forms_finite
+#print axioms BlockingCurves.CuspidalRootTower.realizedTower
+#print axioms BlockingCurves.CuspidalRootTower.splitting_genus_budget
+#print axioms BlockingCurves.CuspidalRootTower.uniform_compositum_budget
+#print axioms BlockingCurves.CuspidalGeneral.lineFibre_separable
+#print axioms BlockingCurves.CuspidalGeneral.regularFibreAction
+#print axioms BlockingCurves.CuspidalGeneral.cuspCompositum_constant_frobenius
+#print axioms BlockingCurves.CuspidalGeneral.exists_semilinear_splitting_lift
+#print axioms BlockingCurves.CuspidalGeneral.geometricFrobenius_extends
+#print axioms BlockingCurves.CuspidalGeneral.geometricFrobenius_coset
+#print axioms BlockingCurves.CuspidalGeneral.frobenius_coset_action
+#print axioms BlockingCurves.CuspidalGeneral.frobenius_iterate_fixes_sheets
+#print axioms BlockingCurves.CuspidalGeneral.lower_of_frobenius_twists
+#print axioms BlockingCurves.CuspidalGeneral.logarithmic_lower_of_frobenius_twists
 #print axioms BlockingCurves.CuspidalNorm.hits_iff_no_sphere
 #print axioms BlockingCurves.CuspidalNorm.blocks_iff_no_sphere
 #print axioms BlockingCurves.CuspidalNorm.ground_line_blocks

@@ -14,20 +14,24 @@ variable {F : Type*} [Field F]
 
 private abbrev incl (F : Type*) [Field F] := algebraMap F (AlgebraicClosure F)
 
-private def geometricShifts (S : Finset F) : Finset (AlgebraicClosure F) :=
+/-- The distinct shift parameters after extending the constants. -/
+def geometricShifts (S : Finset F) : Finset (AlgebraicClosure F) :=
   S.map ⟨incl F,(incl F).injective⟩
+
+theorem geometricShifts_card (S : Finset F) : (geometricShifts S).card = S.card :=
+  Finset.card_map _
 
 /-- The product splitting field over the geometric rational function field. -/
 abbrev GeometricSplitting (d : ℕ) (a : F) (S : Finset F) :=
   cuspCompositum d (incl F a) (geometricShifts S)
 
-private abbrev sheets (d : ℕ) (a : F) (S : Finset F) (i : S) :=
+abbrev sheets (d : ℕ) (a : F) (S : Finset F) (i : S) :=
   (cuspCoordinate d (incl F a) (incl F i.val)).rootSet (GeometricSplitting d a S)
 
 private theorem shifted_mem (S : Finset F) (i : S) : incl F i.val ∈ geometricShifts S :=
   Finset.mem_map.mpr ⟨i.val,i.property,rfl⟩
 
-private def rootLabel {d : ℕ} (hd : 3 ≤ d) {a : F} (ha : a≠0) (S : Finset F) (i : S) :
+def rootLabel {d : ℕ} (hd : 3 ≤ d) {a : F} (ha : a≠0) (S : Finset F) (i : S) :
     Fin d ≃ sheets d a S i := by
   classical
   apply Equiv.symm
@@ -72,7 +76,7 @@ def geometricRootAction {d : ℕ} (hd : 3 ≤ d) {a : F} (ha : a≠0) (S : Finse
     rw [Equiv.apply_symm_apply]
     rfl
 
-private theorem rootLabel_action {d : ℕ} (hd : 3 ≤ d) {a : F} (ha : a≠0)
+theorem rootLabel_action {d : ℕ} (hd : 3 ≤ d) {a : F} (ha : a≠0)
     (S : Finset F) (g : GeometricSplitting d a S ≃ₐ[RatFunc (AlgebraicClosure F)]
       GeometricSplitting d a S) (i : S) (x : Fin d) :
     (rootLabel hd ha S i (geometricRootAction hd ha S g i x)).val =

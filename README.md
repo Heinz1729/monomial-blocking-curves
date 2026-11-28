@@ -27,7 +27,7 @@
 
 对有限尖点的三次族 $`(Y+\alpha Z)^2 Z=X^3`$，第一篇定理 4 将全部射影漏线与原曲面上的有序配置逐一对应。误差对 $`\ell\le c\log q`$、$`c\lt 1/\log 4`$ 保持一致。十一元域中，尖点族只需 3 个平移，原图像族需要 4 个。[尖点族与仿射图样](Manuscript.html#cuspidal-translates) · [Lean 计数恒等式](lean/CuspidalTransfer.lean)
 
-一般尖点族的下界现已把单坐标置换落实到实际复合分裂域。在零分支上方，整个惯性群逐点固定其他坐标；本坐标剩下的根构成可分 Eisenstein 因子，包含特征整除分歧指数的情形。逐根亏格估计和删点估计对所有允许的平移集使用同一个域阶阈值。实际曲线的 Castelnuovo–Severi、扭曲、Hasse–Weil 和特化仍是形式定理的几何输入。[单坐标作用](lean/CuspidalSheetAction.lean) · [增长窗口](lean/CuspidalTowerBudget.lean) · [核验范围](lean/README.md)
+一般尖点族的 Lean 下界使用实际复合分裂域。在零分支上方，惯性逐点固定其余坐标，包含野分歧的情形。逐根塔的相对次数、单根域的亏格零及覆盖次数上界 $`D^\ell`$（$`D=d!`$）均已无条件证明。给定 Castelnuovo–Severi 不等式，Lean 从这些域的正则微分维数推出亏格界。算术分裂域中已构造固定参数、在全常数域上取 Frobenius 的自同构。在几何分裂域中，常数上的 Frobenius 提升给出根标号上的具体陪集。每个允许截距的纤维都可分，根上的 $`q`$ 次幂置换也已构造。将实际扭曲的有理点与这些置换的共轭类对应起来，并应用 Hasse–Weil 和纤维次数界，仍属于几何输入。所得域阶阈值对所有 $`\ell\le c\log q`$ 的平移集一致，其中 $`0\lt c\lt 1/(2\log D)`$。[逐根塔与亏格](lean/CuspidalCompositumGenus.lean) · [下界定理](lean/CuspidalCompositumLower.lean) · [核验范围](lean/README.md)
 
 ## 次数随域阶增长
 

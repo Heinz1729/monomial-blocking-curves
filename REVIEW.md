@@ -22,7 +22,9 @@ $`d=2`$ 时尖点族等于图像二次族。$`d\ge3`$ 时，分开有限分支�
 
 这次复核把惯性的两种用途分别落实到了原方程的根上。在复合分裂域的零分支上方，其他坐标均有可分约化；模极大理想作用平凡即推出这些坐标逐根固定。取局部参数后，指定坐标除一条简单截面外是一个可分 Eisenstein 因子，其他坐标则经 Hensel 提升完全分裂。由局部到全局的限制给出单独移动指定坐标的自同构。此构造足以推出错排，形式证明无需将它的像识别为预先固定的某个赋值的全部惯性。[零纤维](lean/CuspidalZeroCluster.lean) · [实际全局作用](lean/CuspidalSheetAction.lean) · [Stacks，惯性群](https://stacks.math.columbia.edu/tag/09EC)
 
-逐根塔中以 $`(g-1)/N`$ 归一化，保留相消项后得 $`2g+2H\le\ell(d-1)H+2`$，其中 $`H`$ 为几何覆盖次数。无穷远同有限分支一起删除，扣除上界为 $`(2\ell+1)H`$。这些估计对所有 $`\ell\le c\log q`$ 使用同一阈值。几何定理接入实际曲线、扭曲和 Frobenius 特化的边界见形式化说明。[逐层估计](lean/CuspidalTowerBudget.lean) · [形式化范围](lean/README.md)
+对同一坐标已添入 $`j`$ 个根时，令 $`x`$ 为下一根，$`K`$ 为此前各根生成的域。实际相对次数 $`e=[K(x):K]`$ 是 $`x`$ 在 $`K`$ 上的最小多项式次数，满足 $`e\le d-j`$，并允许 $`e=1`$。新层是 $`K`$ 与有理域 $`k(x)`$ 的合成。给定 Castelnuovo–Severi 不等式，以 $`(g-1)/N`$ 归一化得到实际塔顶的 $`2g+2H\le\ell(d-1)H+2`$，这里 $`H`$ 为几何覆盖次数。Lean 也证明 $`H\le(d!)^\ell`$。此处的亏格定义为所有正规仿射模型上正则微分之交的维数。在完美常数域上与光滑射影模型的亏格比较，仍须在 Lean 内建立。[逐根次数](lean/CuspidalRootDegrees.lean) · [实际亏格递推](lean/CuspidalCompositumGenus.lean) · [Stacks，几何亏格](https://stacks.math.columbia.edu/tag/0BYE)
+
+无穷远和至多 $`2\ell`$ 个可能的有限分支值一起删除，其余纤维可分。每个好纤维的 $`q`$ 次幂置换已在其根上构造。Lean 在算术分裂域中构造固定参数线、在全常数域上取 Frobenius 的自同构。几何分裂域上的半线性提升同样固定截距参数，使根标号上的 Frobenius 陪集成为具体构造。由 Kosters 定理 2，可按算术元素的阶扩张常数并下降到原域，所得扭曲几何不可约。形式化尚须在这个下降模型上取得 Hasse–Weil 下界、每个有理纤维至多 $`H`$ 个点，以及好纤维上对 $`q`$ 次幂置换的共轭比较。由这些输入即可扣除至多 $`(2\ell+1)H`$ 个点，同一域阶阈值对所有 $`\ell\le c\log q`$ 有效。[Kosters，定理 2、引理 1](https://hrcak.srce.hr/file/274189#page=3) · [扭曲与下界接口](lean/CuspidalCompositumLower.lean)
 
 相对次数三的共球引理可由 Bayer 等人的范数图计数直接推出，包括小域。英文稿给出适合 Lean 的独立初等证明，并以遗漏直线的共同换元推得阻塞数。已复核球面判据的逆向需要小集合假设，而底域直线上的上界无需该假设。三次扩张的精确比较覆盖 $`s=4`$。[范数图原文](https://doi.org/10.1017/fms.2026.10245) · [两个精确值](Manuscript.html#cuspidal-spheres)
 

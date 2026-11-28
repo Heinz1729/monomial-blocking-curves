@@ -42,5 +42,7 @@ lean_lib BlockingCurves where
     `CuspidalRootInertia, `CuspidalZeroCluster, `CuspidalGenericAction, `CuspidalFinitePlace,
     `CuspidalLocalFactor, `CuspidalSimpleLift, `CuspidalLiftedSheets, `CuspidalGlobalChart,
     `CuspidalSheetAction, `CuspidalTowerBudget, `CuspidalGeometricLower,
+    `CuspidalRootTower, `CuspidalRootDegrees, `CuspidalRootGenus, `CuspidalCompositumGenus,
+    `CuspidalTwistFibre, `CuspidalConstantLift, `CuspidalGeometricFrobenius, `CuspidalCompositumLower,
     `CuspidalGeneralUpper, `CuspidalNontrivial, `CuspidalGeometry,
     `CuspidalCubicSphere, `CuspidalNorm, `CuspidalNormMinimum]

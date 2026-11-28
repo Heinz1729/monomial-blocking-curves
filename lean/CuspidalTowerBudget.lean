@@ -142,35 +142,98 @@ theorem genus_budget {d ell : ℕ} (hd : 0<d) (T : RootTower d ell) :
   rw [← Nat.cast_one (R:=ℝ), ← Nat.cast_sub hd] at hreal
   exact_mod_cast hreal
 
-/-- The same relative degrees give the factorial bound on the order of
-the geometric group, independently of the genera and of the constants. -/
-theorem degree_budget {d ell : ℕ} (T : RootTower d ell) :
-    T.degree ell 0 ≤ d.factorial^ell := by
+/-- The factorial budget requires only bounds on the degrees of successive
+adjoinings. In particular it does not require any genus data. -/
+theorem degree_budget_of_steps {d ell : ℕ} (degree : ℕ → ℕ → ℕ)
+    (base : degree 0 0 = 1)
+    (glue : ∀ i < ell, degree (i+1) 0 = degree i d)
+    (step : ∀ i < ell, ∀ j < d, degree i (j+1) ≤ (d-j)*degree i j) :
+    degree ell 0 ≤ d.factorial^ell := by
   have block (i : ℕ) (hi : i<ell) (j : ℕ) (hj : j≤d) :
-      T.degree i j * (d-j).factorial ≤ T.degree i 0 * d.factorial := by
+      degree i j * (d-j).factorial ≤ degree i 0 * d.factorial := by
     induction j with
     | zero => simp
     | succ j ih =>
       have hj' : j<d := hj
-      have hrel := T.residual_degree i hi j hj'
       have hfac : (d-j).factorial = (d-j)*(d-(j+1)).factorial := by
         conv_lhs => rw [show d-j=(d-(j+1))+1 by omega,Nat.factorial_succ]
         congr 1
         omega
-      rw [T.tower_degree i hi j hj',Nat.mul_comm (T.relative i j),Nat.mul_assoc]
-      apply (le_trans ?_ (ih hj'.le))
-      apply Nat.mul_le_mul_left
-      rw [hfac]
-      exact Nat.mul_le_mul_right _ (show T.relative i j≤d-j by omega)
-  have bound (i : ℕ) (hi : i≤ell) : T.degree i 0 ≤ d.factorial^i := by
+      calc
+        _ ≤ ((d-j)*degree i j)*(d-(j+1)).factorial :=
+          Nat.mul_le_mul_right _ (step i hi j hj')
+        _ = degree i j*(d-j).factorial := by rw [hfac]; ac_rfl
+        _ ≤ _ := ih hj'.le
+  have bound (i : ℕ) (hi : i≤ell) : degree i 0 ≤ d.factorial^i := by
     induction i with
-    | zero => simp [T.base_degree]
+    | zero => simp [base]
     | succ i ih =>
       have hi' : i<ell := hi
-      rw [T.glue_degree i hi',pow_succ]
+      rw [glue i hi',pow_succ]
       exact (by simpa using block i hi' d le_rfl :
-        T.degree i d ≤ T.degree i 0*d.factorial).trans (Nat.mul_le_mul_right _ (ih hi'.le))
+        degree i d ≤ degree i 0*d.factorial).trans (Nat.mul_le_mul_right _ (ih hi'.le))
   exact bound ell le_rfl
+
+/-- The same bound in the genus calculation, with the relative degrees
+and tower equalities supplied by `T`. -/
+theorem degree_budget {d ell : ℕ} (T : RootTower d ell) :
+    T.degree ell 0 ≤ d.factorial^ell := by
+  apply degree_budget_of_steps T.degree T.base_degree T.glue_degree
+  intro i hi j hj
+  rw [T.tower_degree i hi j hj]
+  have h := T.residual_degree i hi j hj
+  exact Nat.mul_le_mul_right _ (show T.relative i j ≤ d-j by omega)
+
+private theorem logarithmic_window {d : ℕ} (hd : 2≤d) {c : ℝ} (hc : 0<c)
+    (subcritical : c*log (d.factorial:ℝ) < 1/2) (C : ℝ) :
+    ∀ᶠ q : ℝ in atTop, 16 ≤ q ∧ 1 ≤ log q ∧ 1+(d:ℝ)*(c*log q)^2 < q ∧
+      c*log q*log (d.factorial:ℝ) < log q/2-log (log q)-C := by
+  let D : ℝ := d.factorial
+  let ε := 1/2-c*log D
+  have hε : 0<ε := sub_pos.mpr subcritical
+  let A := (d:ℝ)*c^2
+  have hA : 0<A := mul_pos (by exact_mod_cast (show 0<d by omega)) (sq_pos_of_pos hc)
+  have log_small := tendsto_log_atTop.eventually
+    (isLittleO_log_id_atTop.def (show 0<ε/2 by positivity))
+  have sq_small := (isLittleO_log_rpow_rpow_atTop 2 (show (0:ℝ)<1 by norm_num)).def
+    (show 0<(2*A)⁻¹ by positivity)
+  filter_upwards [eventually_ge_atTop (16:ℝ),tendsto_log_atTop.eventually_ge_atTop 1,
+    tendsto_log_atTop.eventually (eventually_gt_atTop (2*C/ε)), log_small, sq_small]
+    with q hq hL hC hls hsq
+  have qpos : 0<q := by linarith
+  have ep : C < ε/2*log q := calc
+    C = (2*C)/2 := by ring
+    _ < (log q*ε)/2 := div_lt_div_of_pos_right ((div_lt_iff hε).mp hC) (by norm_num)
+    _ = ε/2*log q := by ring
+  have ll : log (log q) ≤ ε/2*log q := by
+    simpa only [id_eq,Real.norm_eq_abs,abs_of_nonneg (log_nonneg hL),
+      abs_of_nonneg (by linarith : 0 ≤ log q)] using hls
+  have sq : (log q)^2 ≤ (2*A)⁻¹*q := by
+    simpa only [Real.rpow_two,Real.rpow_one,Real.norm_eq_abs,abs_of_nonneg (sq_nonneg (log q)),
+      abs_of_pos qpos] using hsq
+  have loss : A*(log q)^2 ≤ q/2 := by
+    calc
+      _ ≤ A*((2*A)⁻¹*q) := mul_le_mul_of_nonneg_left sq hA.le
+      _ = q/2 := by field_simp; ring
+  refine ⟨hq,hL,?_,?_⟩
+  · dsimp [A] at loss
+    nlinarith only [loss,hq]
+  · dsimp [ε,D] at ep ll
+    nlinarith only [ep,ll]
+
+/-- Below the factorial threshold, every sufficiently large field leaves room
+both for slope separation and for the explicit lower bound with its log-log loss. -/
+theorem eventual_explicit_window {d : ℕ} (hd : 2≤d) {c : ℝ} (hc : 0<c)
+    (subcritical : c*log (d.factorial:ℝ) < 1/2) :
+    ∀ᶠ q : ℝ in atTop, 16 ≤ q ∧ 1+(d:ℝ)*(c*log q)^2 < q ∧
+      c*log q < (log q-2*log (log q))/(2*log (d.factorial:ℝ)) -
+        log (16*(d:ℝ))/log (d.factorial:ℝ) := by
+  have hD : (2:ℝ) ≤ d.factorial := by exact_mod_cast (Nat.factorial_le hd : 2 ≤ d.factorial)
+  have hpos : 0 < log (d.factorial:ℝ) := log_pos (by linarith)
+  filter_upwards [logarithmic_window hd hc subcritical (log (16*(d:ℝ)))] with q hq
+  refine ⟨hq.1,hq.2.2.1,?_⟩
+  rw [←div_div,←sub_div,lt_div_iff hpos]
+  nlinarith only [hq.2.2.2]
 
 /-- For every fixed coefficient strictly below the leading threshold the
 point surplus holds simultaneously for *all* towers with at most c log q
@@ -182,45 +245,15 @@ theorem uniform_point_budget {d : ℕ} (hd : 2≤d) {c : ℝ} (hc : 0<c)
       (2*(ell:ℝ)+1)*T.degree ell 0 <
         q+1-2*(T.genus ell 0:ℝ)*sqrt q := by
   let D : ℝ := d.factorial
-  let ε := 1/2-c*log D
-  have hε : 0<ε := sub_pos.mpr subcritical
   have hd' : (2:ℝ)≤d := by exact_mod_cast hd
   have hD : 2≤D := by
     dsimp [D]
-    have h : 2≤d.factorial := Nat.factorial_le hd
-    exact_mod_cast h
-  have hlogD := log_nonneg (show 1≤D by linarith)
-  let A := (d:ℝ)*c^2
-  have hA : 0<A := by dsimp [A]; positivity
-  have log_small := tendsto_log_atTop.eventually
-    (isLittleO_log_id_atTop.def (show 0<ε/2 by positivity))
-  have sq_small := (isLittleO_log_rpow_rpow_atTop 2 (show (0:ℝ)<1 by norm_num)).def
-    (show 0<(2*A)⁻¹ by positivity)
-  filter_upwards [eventually_gt_atTop (2:ℝ),tendsto_log_atTop.eventually_ge_atTop 1,
-    tendsto_log_atTop.eventually_ge_atTop (2*log (4*(d+1:ℝ))/ε), log_small, sq_small]
-    with q hq hL hC hls hsq
+    exact_mod_cast (Nat.factorial_le hd : 2 ≤ d.factorial)
+  filter_upwards [logarithmic_window hd hc subcritical (log (4*(d+1:ℝ)))] with q hq
+  obtain ⟨qsize,hL,room,strict⟩ := hq
+  have qpos : 0 < q := by linarith
   intro ell hell T
-  have qpos : 0<q := by linarith
-  have ep : log (4*(d+1:ℝ)) ≤ ε/2*log q := by
-    have h := (div_le_iff hε).mp hC
-    calc
-      _ = (2*log (4*(d+1:ℝ)))/2 := by ring
-      _ ≤ (log q*ε)/2 := div_le_div_of_nonneg_right h (by norm_num)
-      _ = _ := by ring
-  have ll : log (log q) ≤ ε/2*log q := by
-    simpa only [id_eq,Real.norm_eq_abs,abs_of_nonneg (log_nonneg hL),
-      abs_of_nonneg (by linarith : 0 ≤ log q)] using hls
-  have win : (ell:ℝ)*log D ≤ log q/2-log (log q)-log (4*(d+1:ℝ)) := by
-    have he := mul_le_mul_of_nonneg_right hell hlogD
-    dsimp [ε] at ll ep
-    nlinarith only [he,ep,ll]
-  have sq : (log q)^2 ≤ (2*A)⁻¹*q := by
-    simpa only [Real.rpow_two,Real.rpow_one,Real.norm_eq_abs,abs_of_nonneg (sq_nonneg (log q)),
-      abs_of_pos qpos] using hsq
-  have loss : A*(log q)^2 ≤ q/2 := by
-    calc
-      _ ≤ A*((2*A)⁻¹*q) := mul_le_mul_of_nonneg_left sq hA.le
-      _ = q/2 := by field_simp; ring
+  have win := (mul_le_mul_of_nonneg_right hell (log_nonneg (by linarith : 1 ≤ D))).trans strict.le
   have sqell := pow_le_pow_left (Nat.cast_nonneg ell : (0:ℝ)≤ell) hell 2
   have deg : (T.degree ell 0:ℝ)≤D^ell := by dsimp [D]; exact_mod_cast degree_budget T
   have gen := genus_budget (by omega : 0<d) T
@@ -229,8 +262,7 @@ theorem uniform_point_budget {d : ℕ} (hd : 2≤d) {c : ℝ} (hc : 0<c)
     rw [← Nat.cast_one (R:=ℝ), ← Nat.cast_sub (by omega : 1≤d)]
     exact_mod_cast (show 2*T.genus ell 0 ≤ ell*(d-1)*T.degree ell 0 by omega)
   constructor
-  · dsimp [A] at loss
-    nlinarith only [mul_le_mul_of_nonneg_left sqell (by linarith : (0:ℝ)≤d),loss,hq]
+  · nlinarith only [mul_le_mul_of_nonneg_left sqell (Nat.cast_nonneg d : (0:ℝ) ≤ d),room]
   · exact FixedDegreeBudget.growing_window hd' hD hL qpos gen' deg (Nat.cast_nonneg _)
       (by nlinarith only [mul_le_mul_of_nonneg_right hd' (Nat.cast_nonneg ell)]) win
 

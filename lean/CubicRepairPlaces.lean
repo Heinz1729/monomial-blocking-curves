@@ -92,9 +92,9 @@ private theorem map_ratfunc_mem {E : Type*} [Field E] (g : RatFunc F →+* E) (T
 
 /-- If a transcendental rational parameter is a polynomial in x, adjoining x
 produces the rational field F(x). The isomorphism respects the coefficient field. -/
-theorem rational_single_of_equation {K : Type*} [Field K] [Algebra (RatFunc F) K]
-    (x : K) (d : ℕ) (m b : F)
-    (equation : x^d = algebraMap (RatFunc F) K (RatFunc.C m)*x +
+theorem rational_single_of_power_equation {K : Type*} [Field K] [Algebra (RatFunc F) K]
+    (x : K) (d h : ℕ) (m b : F)
+    (equation : x^d = algebraMap (RatFunc F) K (RatFunc.C m)*x^h +
       algebraMap (RatFunc F) K (RatFunc.X + RatFunc.C b)) :
     ∃ e : RatFunc F ≃+* adjoin (RatFunc F) {x},
       ∀ c : F, (e (RatFunc.C c) : K) = algebraMap (RatFunc F) K (RatFunc.C c) := by
@@ -113,7 +113,7 @@ theorem rational_single_of_equation {K : Type*} [Field K] [Algebra (RatFunc F) K
     apply isAlgebraic_iff_not_injective.mp halg
     rw [eqn]
     exact ι.injective.comp (IsFractionRing.injective (Polynomial F) (RatFunc F))
-  have he : t = x^d - ψ m*x - ψ b := by
+  have he : t = x^d - ψ m*x^h - ψ b := by
     rw [map_add] at equation
     dsimp [t,ι,ψ]
     linear_combination -equation
@@ -122,7 +122,7 @@ theorem rational_single_of_equation {K : Type*} [Field K] [Algebra (RatFunc F) K
     apply ht
     rw [he]
     have hc (a : F) : IsIntegral F (ψ a) := isIntegral_algebraMap
-    exact (((ha.isIntegral.pow d).sub ((hc _).mul ha.isIntegral)).sub (hc _)).isAlgebraic
+    exact (((ha.isIntegral.pow d).sub ((hc _).mul (ha.isIntegral.pow h))).sub (hc _)).isAlgebraic
   have hi : Function.Injective (Polynomial.aeval x : Polynomial F →ₐ[F] K) := by
     by_contra h
     exact hx (isAlgebraic_iff_not_injective.mpr h)
@@ -144,7 +144,7 @@ theorem rational_single_of_equation {K : Type*} [Field K] [Algebra (RatFunc F) K
   have constMem (a : F) : ψ a ∈ g.fieldRange := ⟨_,hC a⟩
   have paramMem : t ∈ g.fieldRange := by
     rw [he]
-    exact sub_mem (sub_mem (pow_mem rootMem _) (mul_mem (constMem _) rootMem)) (constMem _)
+    exact sub_mem (sub_mem (pow_mem rootMem _) (mul_mem (constMem _) (pow_mem rootMem _))) (constMem _)
   have hbase (t : RatFunc F) : ι t ∈ g.fieldRange :=
     map_ratfunc_mem ι g.fieldRange.toSubfield constMem paramMem t
   let E' : IntermediateField (RatFunc F) K := g.fieldRange.toSubfield.toIntermediateField hbase
@@ -155,6 +155,15 @@ theorem rational_single_of_equation {K : Type*} [Field K] [Algebra (RatFunc F) K
     obtain ⟨r,hr⟩ := AlgHom.mem_fieldRange.mp (hT t.property)
     exact ⟨r,Subtype.ext hr⟩
   exact ⟨RingEquiv.ofBijective f ⟨f.injective,fj⟩,hC⟩
+
+/-- The graph-pencil specialization has a linear term in the root. -/
+theorem rational_single_of_equation {K : Type*} [Field K] [Algebra (RatFunc F) K]
+    (x : K) (d : ℕ) (m b : F)
+    (equation : x^d = algebraMap (RatFunc F) K (RatFunc.C m)*x +
+      algebraMap (RatFunc F) K (RatFunc.X + RatFunc.C b)) :
+    ∃ e : RatFunc F ≃+* adjoin (RatFunc F) {x},
+      ∀ c : F, (e (RatFunc.C c) : K) = algebraMap (RatFunc F) K (RatFunc.C c) :=
+  rational_single_of_power_equation x d 1 m b (by simpa using equation)
 
 /-- The one-root stage of the common cubic branch is rational over the original base field. -/
 theorem single_root_rational (D : Branch F R) (i : R) :

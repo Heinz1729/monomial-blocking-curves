@@ -119,7 +119,8 @@ noncomputable def regular (d : ℕ) (m : F) : Finset F := by
   classical
   exact univ.filter fun t => (fibre d m t).Separable
 
-private theorem multiple_root {P : F[X]} (hP : P ≠ 0) (hs : ¬P.Separable) :
+/-- Failure of separability is witnessed by a common geometric root with the derivative. -/
+theorem exists_common_root_of_not_separable {P : F[X]} (hP : P ≠ 0) (hs : ¬P.Separable) :
     ∃ z : AlgebraicClosure F, aeval z P=0 ∧ aeval z (derivative P)=0 := by
   classical
   by_contra! h
@@ -156,7 +157,7 @@ theorem exceptional_fibres_le {d : ℕ} (hd : 2 ≤ d) (m : F) (hm : m ≠ 0) :
       simpa [regular] using ht
     have hp : fibre d m t.val ≠ 0 := fun he => by
       have h := fibre_degree hd m t.val; rw [he,natDegree_zero] at h; omega
-    simpa [dx t.val] using multiple_root hp hn
+    simpa [dx t.val] using exists_common_root_of_not_separable hp hn
   let f (t : B) : D.rootSet K := ⟨(ex t).choose,(mem_rootSet_of_ne hD).2 (ex t).choose_spec.2⟩
   have hi : Function.Injective f := by
     intro t u he

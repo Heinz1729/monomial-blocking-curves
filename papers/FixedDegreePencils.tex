@@ -104,9 +104,13 @@ $[K':k(x)]=N'/d$. The Castelnuovo--Severi inequality
 \[
  \frac{g(K')-1}{N'}\le\frac{g(K)-1}{N}+\frac{e-1}{d}.
 \]
-The $j$th root of one polynomial costs $e\le d-j+1$, including
-steps of degree one. Indeed, the $j-1$ previously adjoined
-distinct roots leave a polynomial of degree $d-j+1$.
+If $j$ distinct roots of this polynomial have already been adjoined,
+then $e=\deg\operatorname{minpoly}_{K}(x)\le d-j$ for the next root $x$. Its minimal
+polynomial divides the residual factor after division by the $j$
+known linear factors. The first root of the first polynomial costs
+$d$, and the last root of each polynomial costs $1$. The last
+stage contains every root and hence is the geometric
+splitting field.
 With $N=1$ and $g=0$ at the start, the sum telescopes to
 \[
         2g+2|H|\le\ell(d-1)|H|+2 .
@@ -123,9 +127,11 @@ is $F$ and base change to $k$ recovers the geometric splitting
 field. Its smooth projective curve has genus $g$ and maps to the
 line with degree $|H|$. By Hasse--Weil it has at least
 $q+1-2g\sqrt q$ rational points. At most $b|H|$ geometric points lie
-over the excluded values. A remaining rational point specializes
-to the Frobenius class of $\gamma$ (or its inverse with the opposite
-convention); its cycles are the factor degrees in each fibre. This
+over the excluded values. With arithmetic Frobenius acting by
+$z\mapsto z^q$ on residues, a remaining rational point specializes
+to the conjugacy class of $\gamma$. Relabelling the distinct roots
+in any coordinate conjugates the permutation and preserves its
+fixed-point count. Its cycles are the factor degrees in that fibre. This
 proves the lemma.
 \end{proof}
 
@@ -410,8 +416,12 @@ prescribed letters, so another fixes none. Multiplying $\sigma$ by
 an element of $\prod_\alpha N_\alpha$ gives an element $\gamma$ in
 the required arithmetic coset with no fixed letter in any coordinate.
 
-Put $D=d!$. Each root $x$ generates a rational field of degree $d$
-over the base, and $|H|\le D^\ell$. Lemma~\ref{lem:twist} therefore
+Put $k=\overline{\mathbb F}_q$ and $D=d!$. The identity
+$b=x^d-ax^{d-1}-\alpha$ gives $k(b)(x)=k(x)$, of degree $d$ over
+$k(b)$. Thus the two fields in each application of Castelnuovo--Severi
+are the preceding stage and this rational root field inside the same
+splitting field. Multiplying the step bounds gives $|H|\le D^\ell$.
+Lemma~\ref{lem:twist} therefore
 applies to $\gamma$, including shared wild ramification at infinity
 and the possibility of extra constants. There are at most $2\ell+1$
 geometric branch values including infinity. The twist has an
@@ -816,12 +826,31 @@ For the cuspidal lower bound the kernel checks off-coordinate
 fixedness for the inertia subgroup of the actual product splitting
 field, the local Eisenstein factor, Hensel lifting of the other
 sheets, and restriction of the resulting permutations to that field.
-The proof of the uniform count uses one threshold for all shift sets
-in the logarithmic range. Lean derives the degree and genus budgets
-from the individual root steps. Applying Castelnuovo--Severi to the
-actual function fields, constructing the arithmetic twist, and
-applying Hasse--Weil and Frobenius specialization remain geometric
-inputs. The wild graph argument also uses the geometric group
+Lean constructs the intermediate fields, proves the relative-degree
+identities, rationality and zero genus of each single-root field,
+and the factorial bound for the full splitting field. Given the
+Castelnuovo--Severi inequality for regular differentials, it derives
+the \href{https://github.com/Heinz1729/monomial-blocking-curves/blob/main/lean/CuspidalCompositumGenus.lean}{genus bound on that field and the common logarithmic window}.
+An independent Lean~4.36.0-rc2 development proves Castelnuovo--Severi
+using a divisor-theoretic genus \cite{TauCeti}. Comparing that genus
+with our intersection of affine spaces of regular differentials
+remains a prerequisite for using it here.
+
+In the arithmetic splitting field Lean constructs an automorphism
+fixing $\mathbb F_q(b)$ and acting by $z\mapsto z^q$ on every
+algebraic constant. On the geometric splitting field it also
+extends the constant Frobenius while fixing $b$, inducing the
+specified coset on the labelled roots. Every lift in this coset fixes
+all the roots after $d!$ iterations, independently of $\ell$, since it
+permutes the $d$ roots in each coordinate. Its action on the geometric
+constants at that iterate is $z\mapsto z^{q^{d!}}$. Outside the
+excluded values Lean proves separability and constructs the $q$-power permutation
+on each fibre. The remaining arithmetic input realizes the Frobenius
+coset on twists that recover the same geometric cover after base
+change, gives their Hasse--Weil and fibre-degree
+bounds, and identifies the specializations up to conjugacy in the
+\href{https://github.com/Heinz1729/monomial-blocking-curves/blob/main/lean/CuspidalCompositumLower.lean}{formal lower-bound theorem}.
+The wild graph argument also uses the geometric group
 identifications of Section~\ref{sec:fixed-graph}.
 For the cubic surface estimate, Lean checks the actual pair-count
 reduction, the linear algebra of crossed cocycles under the stated
@@ -891,6 +920,9 @@ second edition, Graduate Texts in Mathematics 254, Springer, 2009.
 \bibitem{Kosters} M. Kosters, A short proof of the Chebotarev density
 theorem for function fields, Math. Commun. 22 (2017), 227--233.
 \href{https://hrcak.srce.hr/file/274189}{Journal article}.
+\bibitem{TauCeti} Tau Ceti Project, Castelnuovo's inequality,
+Lean formalization, revision \texttt{04dc6d30}.
+\href{https://github.com/TauCetiProject/TauCeti/blob/04dc6d30e3935b9ea621d4ebb74d8ff2b0017a9b/TauCeti/FieldTheory/FunctionField/Consequences/Castelnuovo.lean}{Theorem over a perfect constant field}.
 \bibitem{Stacks} The Stacks Project Authors, Galois extensions and
 ramification, \href{https://stacks.math.columbia.edu/tag/09E3}{Tag 09E3}
 and \href{https://stacks.math.columbia.edu/tag/09EC}{Tag 09EC}.
