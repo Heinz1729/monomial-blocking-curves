@@ -75,7 +75,7 @@ theorem hit_of_regular_place (D : Branch F R) (p : Place D) (h : parameter D ∈
   exact ⟨p.residue X, by linear_combination er⟩
 
 
-private theorem map_ratfunc_mem {E : Type*} [Field E] (g : RatFunc F →+* E) (T : Subfield E)
+theorem map_ratfunc_mem {E : Type*} [Field E] (g : RatFunc F →+* E) (T : Subfield E)
     (hc : ∀ a : F, g (RatFunc.C a) ∈ T) (hx : g RatFunc.X ∈ T) (t : RatFunc F) :
     g t ∈ T := by
   have pol (p : Polynomial F) : g (algebraMap (Polynomial F) _ p) ∈ T := by

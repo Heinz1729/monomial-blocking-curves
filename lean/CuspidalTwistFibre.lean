@@ -55,19 +55,25 @@ theorem excludedBranches_card (d : ℕ) (a : F) (S : Finset F) :
   have h₂ := card_image_le (f := fun α : F => some (extraCritical d a - α)) (s := S)
   omega
 
+/-- Every coordinate is separable off the explicit translated branch values. -/
+theorem unexcluded_separable {d : ℕ} (hd : 3 ≤ d) {a : F} (ha : a ≠ 0)
+    (S : Finset F) {b : F} (hb : some b ∉ excludedBranches d a S) (α : S) :
+    (lineFibre d a (b+α.val)).Separable := by
+  have avoid₀ : b ≠ -α.val := by
+    rintro rfl
+    exact hb (Finset.mem_insert_of_mem (Finset.mem_union_left _ (Finset.mem_image_of_mem _ α.property)))
+  have avoid₁ : b ≠ extraCritical d a - α.val := by
+    rintro rfl
+    exact hb (Finset.mem_insert_of_mem (Finset.mem_union_right _ (Finset.mem_image_of_mem _ α.property)))
+  exact lineFibre_separable hd ha (fun h => avoid₀ (by linear_combination h))
+    (fun h => avoid₁ (by linear_combination h))
+
 variable [Fintype F]
 
 /-- The q-power permutation on the actual geometric sheets of each unexcluded rational fibre. -/
 def regularFibreAction {d : ℕ} (hd : 3 ≤ d) {a : F} (ha : a ≠ 0) (S : Finset F) {b : F}
     (hb : some b ∉ excludedBranches d a S) (α : S) : FibreAction (lineFibre d a (b+α.val)) d := by
-  have avoid₀ : b ≠ -α.val := by
-    rintro rfl
-    exact hb (mem_insert_of_mem (mem_union_left _ (mem_image_of_mem _ α.property)))
-  have avoid₁ : b ≠ extraCritical d a - α.val := by
-    rintro rfl
-    exact hb (mem_insert_of_mem (mem_union_right _ (mem_image_of_mem _ α.property)))
-  exact fibreAction (lineFibre_separable hd ha (fun h => avoid₀ (by linear_combination h))
-    (fun h => avoid₁ (by linear_combination h))) (lineFibre_natDegree (by omega) _ _)
+  exact fibreAction (unexcluded_separable hd ha S hb α) (lineFibre_natDegree (by omega) _ _)
 
 /-- A conjugacy comparison can always be realized as equality by relabelling the same roots. -/
 theorem relabel_conjugate {P : F[X]} {d : ℕ} (A : FibreAction P d)

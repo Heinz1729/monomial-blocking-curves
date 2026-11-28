@@ -421,8 +421,29 @@ $b=x^d-ax^{d-1}-\alpha$ gives $k(b)(x)=k(x)$, of degree $d$ over
 $k(b)$. Thus the two fields in each application of Castelnuovo--Severi
 are the preceding stage and this rational root field inside the same
 splitting field. Multiplying the step bounds gives $|H|\le D^\ell$.
-Lemma~\ref{lem:twist} therefore
-applies to $\gamma$, including shared wild ramification at infinity
+For clarity, let $\tau$ denote the semilinear lift on the geometric
+splitting field $M$, and put $T=M^\tau$. Choose a constant $\theta$
+of Frobenius period $D$. For each sheet $x$ interpolate the values
+$\tau^i x$ at the distinct nodes $\tau^i\theta$, $0\le i<D$.
+Since $\tau^D x=x$, uniqueness fixes the coefficients under $\tau$.
+All denominators are nonzero constants, even if $p\mid D$.
+Multiplication identifies $k\otimes_{\mathbb F_q}T$ with $M$:
+a shortest normalized relation between fixed elements descends on
+subtracting its Frobenius transform. The image is a field since
+the constants are algebraic, and interpolation puts every sheet
+in this image. Base change along the parameter line preserves the
+degree. The geometric genus is unchanged under the resulting
+isomorphism of geometric function fields.
+
+At a rational place of $T$ over a finite intercept, write $O$ for
+its valuation ring. The orbit of a sheet is integral over $O$ by the
+monic sheet equation. The interpolation coefficients are integral
+and fixed, so lie in $O$. Evaluation on $k\otimes_{\mathbb F_q}O$
+therefore reduces every sheet and intertwines $\tau$ with the
+$q$-power map. On a separable fibre reduction bijects the two root
+sets and gives the required conjugacy.
+
+Lemma~\ref{lem:twist} now applies to $\gamma$, including shared wild ramification at infinity
 and the possibility of extra constants. There are at most $2\ell+1$
 geometric branch values including infinity. The twist has an
 unramified rational point, giving a missing line, as soon as
@@ -843,13 +864,17 @@ extends the constant Frobenius while fixing $b$, inducing the
 specified coset on the labelled roots. Every lift in this coset fixes
 all the roots after $d!$ iterations, independently of $\ell$, since it
 permutes the $d$ roots in each coordinate. Its action on the geometric
-constants at that iterate is $z\mapsto z^{q^{d!}}$. Outside the
-excluded values Lean proves separability and constructs the $q$-power permutation
-on each fibre. The remaining arithmetic input realizes the Frobenius
-coset on twists that recover the same geometric cover after base
-change, gives their Hasse--Weil and fibre-degree
-bounds, and identifies the specializations up to conjugacy in the
-\href{https://github.com/Heinz1729/monomial-blocking-curves/blob/main/lean/CuspidalCompositumLower.lean}{formal lower-bound theorem}.
+constants at that iterate is $z\mapsto z^{q^{d!}}$. Lean constructs the fixed field, proves
+the scalar-extension and degree identifications and transports regular
+differentials on the geometric field. It proves the fibre-degree
+bound at all rational intercepts and at infinity, and proves at each good rational place that the two root
+permutations are conjugate in each coordinate separately. This suffices
+to preserve simultaneous derangements. The
+\href{https://github.com/Heinz1729/monomial-blocking-curves/blob/main/lean/CuspidalDescendedLower.lean}{cuspidal lower bound}
+uses precisely the stated Castelnuovo--Severi inequality and the
+Hasse--Weil lower bound for these rational places with this geometric
+genus. Comparing the intrinsic ranks of regular forms before and after
+scalar extension is a separate base-change statement.
 The wild graph argument also uses the geometric group
 identifications of Section~\ref{sec:fixed-graph}.
 For the cubic surface estimate, Lean checks the actual pair-count

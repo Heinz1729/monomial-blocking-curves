@@ -2,6 +2,8 @@
 
 在 $`\mathbb{F}_q`$ 上，$`B(q,d)`$ 是使曲线 $`YZ^{d-1}=X^d-\alpha Z^d`$ 的有理点并集遇到每条有理射影直线所需的最少参数数目。两篇手稿分别研究固定次数和随域阶变化的次数，共用一套射影问题陈述与可执行证书。署名 GPT-Astra（AI）。[AGY 问题 5.4](https://arxiv.org/html/2510.15332v2#S5) · [独立形式陈述](lean/ProblemStatement.lean)
 
+[成果与核验状态](STATUS.md) 按具体定理列出 **Solved**（Lean 已证）、**Conditional**（含明示的数学输入）和 **Open**（尚缺的形式化步骤或未决的数学问题）。
+
 | 手稿 | 主要问题 | 全文 |
 | --- | --- | --- |
 | **I　单项式曲线竖直平移的阻塞数：固定次数的对数界** | 固定 $`d`$、令 $`q`$ 增长时的对数阶，以及三次置换族的上下界 | [排版 PDF](Manuscript.pdf) · [HTML 源码](Manuscript.html) |
@@ -27,7 +29,7 @@
 
 对有限尖点的三次族 $`(Y+\alpha Z)^2 Z=X^3`$，第一篇定理 4 将全部射影漏线与原曲面上的有序配置逐一对应。误差对 $`\ell\le c\log q`$、$`c\lt 1/\log 4`$ 保持一致。十一元域中，尖点族只需 3 个平移，原图像族需要 4 个。[尖点族与仿射图样](Manuscript.html#cuspidal-translates) · [Lean 计数恒等式](lean/CuspidalTransfer.lean)
 
-一般尖点族的 Lean 下界使用实际复合分裂域。在零分支上方，惯性逐点固定其余坐标，包含野分歧的情形。逐根塔的相对次数、单根域的亏格零及覆盖次数上界 $`D^\ell`$（$`D=d!`$）均已无条件证明。给定 Castelnuovo–Severi 不等式，Lean 从这些域的正则微分维数推出亏格界。算术分裂域中已构造固定参数、在全常数域上取 Frobenius 的自同构。在几何分裂域中，常数上的 Frobenius 提升给出根标号上的具体陪集。每个允许截距的纤维都可分，根上的 $`q`$ 次幂置换也已构造。将实际扭曲的有理点与这些置换的共轭类对应起来，并应用 Hasse–Weil 和纤维次数界，仍属于几何输入。所得域阶阈值对所有 $`\ell\le c\log q`$ 的平移集一致，其中 $`0\lt c\lt 1/(2\log D)`$。[逐根塔与亏格](lean/CuspidalCompositumGenus.lean) · [下界定理](lean/CuspidalCompositumLower.lean) · [核验范围](lean/README.md)
+尖点族的全特征对数下界仍是 **Conditional**。Lean 已在实际复合分裂域上构造 Frobenius 扭曲的不动域，证明扩常数恢复原覆盖、覆盖次数及几何亏格相等，并在每个好有理位置证明两种根置换逐坐标共轭，从而把同时错排接到漏线判据。剩余的两项输入是逐根塔上的 Castelnuovo–Severi 不等式和该扭曲上的 Hasse–Weil 有理点下界。给定这两项，Lean 得出对所有 $`\ell\le c\log q`$ 一致的阈值，适用于 $`0\lt c\lt 1/(2\log(d!))`$。[扭曲下降](lean/CuspidalTwistDescent.lean) · [逐位置特化](lean/CuspidalRationalSpecialization.lean) · [下界定理](lean/CuspidalDescendedLower.lean)
 
 ## 次数随域阶增长
 

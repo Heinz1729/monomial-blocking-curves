@@ -14,6 +14,8 @@ import CuspidalTransfer
 import CuspidalGeneralLower
 import CuspidalGeometricLower
 import CuspidalCompositumLower
+import CuspidalDescendedLower
+import CuspidalFiniteTwist
 import CuspidalConstantLift
 import CuspidalFinitePlace
 import CuspidalGeneralUpper
@@ -114,6 +116,20 @@ import PiecewiseMinimum
 #print axioms BlockingCurves.CuspidalGeneral.frobenius_iterate_fixes_sheets
 #print axioms BlockingCurves.CuspidalGeneral.lower_of_frobenius_twists
 #print axioms BlockingCurves.CuspidalGeneral.logarithmic_lower_of_frobenius_twists
+#print axioms BlockingCurves.CuspidalDescent.coefficientFrobenius_fixed_iff
+#print axioms BlockingCurves.CuspidalDescent.orbitPolynomial_fixed_eval
+#print axioms BlockingCurves.CuspidalDescent.finite_fixed_degree
+#print axioms BlockingCurves.CuspidalDescent.finite_constant_recovery
+#print axioms BlockingCurves.CuspidalDescent.twist_constant_tensor_equiv
+#print axioms BlockingCurves.CuspidalDescent.twist_parameter_tensor_equiv
+#print axioms BlockingCurves.CuspidalDescent.twist_degree_eq
+#print axioms BlockingCurves.CuspidalDescent.twist_exact_constants
+#print axioms BlockingCurves.CuspidalDescent.twist_geometric_genus
+#print axioms BlockingCurves.CuspidalDescent.sheets_mem_local_chart
+#print axioms BlockingCurves.CubicFiniteFibres.field_fibre_card
+#print axioms BlockingCurves.CuspidalDescent.rational_place_specialization
+#print axioms BlockingCurves.CuspidalDescent.lower_of_descended_curves
+#print axioms BlockingCurves.CuspidalDescent.logarithmic_lower_of_descended_curves
 #print axioms BlockingCurves.CuspidalNorm.hits_iff_no_sphere
 #print axioms BlockingCurves.CuspidalNorm.blocks_iff_no_sphere
 #print axioms BlockingCurves.CuspidalNorm.ground_line_blocks

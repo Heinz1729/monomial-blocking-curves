@@ -24,7 +24,9 @@ $`d=2`$ 时尖点族等于图像二次族。$`d\ge3`$ 时，分开有限分支�
 
 对同一坐标已添入 $`j`$ 个根时，令 $`x`$ 为下一根，$`K`$ 为此前各根生成的域。实际相对次数 $`e=[K(x):K]`$ 是 $`x`$ 在 $`K`$ 上的最小多项式次数，满足 $`e\le d-j`$，并允许 $`e=1`$。新层是 $`K`$ 与有理域 $`k(x)`$ 的合成。给定 Castelnuovo–Severi 不等式，以 $`(g-1)/N`$ 归一化得到实际塔顶的 $`2g+2H\le\ell(d-1)H+2`$，这里 $`H`$ 为几何覆盖次数。Lean 也证明 $`H\le(d!)^\ell`$。此处的亏格定义为所有正规仿射模型上正则微分之交的维数。在完美常数域上与光滑射影模型的亏格比较，仍须在 Lean 内建立。[逐根次数](lean/CuspidalRootDegrees.lean) · [实际亏格递推](lean/CuspidalCompositumGenus.lean) · [Stacks，几何亏格](https://stacks.math.columbia.edu/tag/0BYE)
 
-无穷远和至多 $`2\ell`$ 个可能的有限分支值一起删除，其余纤维可分。每个好纤维的 $`q`$ 次幂置换已在其根上构造。Lean 在算术分裂域中构造固定参数线、在全常数域上取 Frobenius 的自同构。几何分裂域上的半线性提升同样固定截距参数，使根标号上的 Frobenius 陪集成为具体构造。由 Kosters 定理 2，可按算术元素的阶扩张常数并下降到原域，所得扭曲几何不可约。形式化尚须在这个下降模型上取得 Hasse–Weil 下界、每个有理纤维至多 $`H`$ 个点，以及好纤维上对 $`q`$ 次幂置换的共轭比较。由这些输入即可扣除至多 $`(2\ell+1)H`$ 个点，同一域阶阈值对所有 $`\ell\le c\log q`$ 有效。[Kosters，定理 2、引理 1](https://hrcak.srce.hr/file/274189#page=3) · [扭曲与下界接口](lean/CuspidalCompositumLower.lean)
+无穷远与至多 $`2\ell`$ 个有限值构成例外集。令 $`r=d!`$。半线性提升的第 $`r`$ 次幂逐一固定根，仍在代数闭常数上作 Frobenius 的第 $`r`$ 次幂。取周期恰为 $`r`$ 的常数作插值节点，可将每个根表示成固定域系数的多项式在该常数处的值。节点差是非零常数，故插值在特征整除 $`r`$ 时仍成立。乘法张量映射的单射性来自最短线性关系，满射性来自轨道插值和代数常数扩张。由此恢复原覆盖及其次数。几何亏格通过该同构上的正则微分计算。[有限下降](lean/CuspidalFiniteTwist.lean) · [张量单射](lean/CuspidalTensorDescent.lean) · [几何亏格](lean/CuspidalTwistGenus.lean)
+
+在固定域的有限有理位置，每个轨道根均满足整的首一方程。插值系数既整又固定，属于原赋值环。扩常数后的剩余映射将根上的提升送到 $`q`$ 次幂；可分纤维上恰好得到指定的共轭类。形式结论是两种根置换在各坐标的对称群中分别共轭，足以传递同时错排性质。所有例外纤维（含无穷远）合计至多损失 $`(2\ell+1)|H|`$ 个点。给定塔上的 Castelnuovo–Severi 与固定域几何亏格的 Hasse–Weil 界，Lean 推出对所有 $`\ell\le c\log q`$ 一致的域阶阈值。固定域上正则微分空间的算术维数与几何维数的比较仍可另行形式化。[局部张量环](lean/CuspidalTensorResidue.lean) · [未分歧特化](lean/CuspidalRationalSpecialization.lean) · [下界接口](lean/CuspidalDescendedLower.lean) · [Kosters，定理 2](https://hrcak.srce.hr/file/274189#page=3) · [Stacks，曲线亏格的域扩张](https://stacks.math.columbia.edu/tag/0BY9)
 
 相对次数三的共球引理可由 Bayer 等人的范数图计数直接推出，包括小域。英文稿给出适合 Lean 的独立初等证明，并以遗漏直线的共同换元推得阻塞数。已复核球面判据的逆向需要小集合假设，而底域直线上的上界无需该假设。三次扩张的精确比较覆盖 $`s=4`$。[范数图原文](https://doi.org/10.1017/fms.2026.10245) · [两个精确值](Manuscript.html#cuspidal-spheres)
 
